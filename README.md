@@ -1,6 +1,8 @@
 # brightframe
 
-Independent React UI kit extracted from the [LAN](https://github.com/mkokoulin/lan-site) coworking site — a small set of presentational primitives (buttons, cards, tags, headings, ...) built on a light/dark/high-contrast design token system.
+[📖 Storybook](https://mkokoulin.github.io/brightframe/)
+
+Independent React UI kit extracted from the [LAN](https://lancoworking.am) coworking site — a small set of presentational primitives (buttons, cards, tags, headings, ...) built on a light/dark/high-contrast design token system.
 
 No app framework, i18n, or routing dependencies — every component here is a pure, self-contained function of its props.
 
