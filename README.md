@@ -1,4 +1,4 @@
-# haloui
+# brightframe
 
 Independent React UI kit extracted from the [LAN](https://github.com/mkokoulin/lan-site) coworking site — a small set of presentational primitives (buttons, cards, tags, headings, ...) built on a light/dark/high-contrast design token system.
 
@@ -7,7 +7,7 @@ No app framework, i18n, or routing dependencies — every component here is a pu
 ## Install
 
 ```bash
-npm install haloui
+npm install brightframe
 ```
 
 React 18+ and React DOM 18+ are peer dependencies.
@@ -17,9 +17,9 @@ React 18+ and React DOM 18+ are peer dependencies.
 Import the design tokens once at your app root, then use any component:
 
 ```tsx
-import "haloui/tokens.css";
-import "haloui/style.css";
-import { Btn, Card, Tag } from "haloui";
+import "brightframe/tokens.css";
+import "brightframe/style.css";
+import { Btn, Card, Tag } from "brightframe";
 
 function Example() {
   return (
@@ -31,8 +31,8 @@ function Example() {
 }
 ```
 
-- `haloui/tokens.css` — CSS custom properties (colors, shadows, motion). Required.
-- `haloui/style.css` — compiled component styles (CSS Modules output). Required.
+- `brightframe/tokens.css` — CSS custom properties (colors, shadows, motion). Required.
+- `brightframe/style.css` — compiled component styles (CSS Modules output). Required.
 
 ### Theming
 
@@ -46,7 +46,7 @@ Tokens respond to `data-theme`/`data-a11y` attributes on any ancestor element (t
 Omit both attributes for the light (default) theme. Or use `<ThemeProvider>` to manage them for you:
 
 ```tsx
-import { ThemeProvider, useTheme } from "haloui";
+import { ThemeProvider, useTheme } from "brightframe";
 
 function ThemeToggle() {
   const { theme, resolvedTheme, setTheme, toggleTheme, a11y, setA11y } = useTheme();
@@ -69,7 +69,7 @@ export function App() {
 
 `ThemeProvider`:
 - Resolves `"system"` against `prefers-color-scheme` and keeps it in sync if the OS theme changes while mounted.
-- Persists the choice to `localStorage` (key configurable via `storageKey`, default `"haloui"`).
+- Persists the choice to `localStorage` (key configurable via `storageKey`, default `"brightframe"`).
 - Applies `data-theme`/`data-a11y` to `document.documentElement` — no wrapper `<div>`, no layout impact.
 - Briefly suppresses CSS transitions on theme change so colors don't visibly animate (`disableTransitionOnChange`, default `true`).
 

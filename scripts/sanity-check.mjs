@@ -1,6 +1,6 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import React from "react";
-import * as Kit from "../dist/haloui.js";
+import * as Kit from "../dist/brightframe.js";
 
 const expected = [
   "Btn", "Card", "Tag", "InfoTooltip", "GhostButton", "Eyebrow",

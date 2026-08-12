@@ -93,7 +93,7 @@ describe("ThemeProvider / useTheme", () => {
   });
 
   it("reads a persisted theme on mount instead of defaultTheme", () => {
-    window.localStorage.setItem("haloui-theme", "dark");
+    window.localStorage.setItem("brightframe-theme", "dark");
     mockMatchMedia(false);
     render(
       <ThemeProvider defaultTheme="light">

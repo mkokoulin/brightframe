@@ -11,7 +11,7 @@ export type ThemeProviderProps = {
   defaultTheme?: Theme;
   /** Initial a11y mode when nothing is stored yet. Defaults to "default". */
   defaultA11y?: A11yMode;
-  /** localStorage key prefix — must match getThemeInitScript's storageKey. Defaults to "haloui". */
+  /** localStorage key prefix — must match getThemeInitScript's storageKey. Defaults to "brightframe". */
   storageKey?: string;
   /** Briefly disables CSS transitions while the theme attribute changes, so colors don't visibly animate. Defaults to true. */
   disableTransitionOnChange?: boolean;
@@ -65,7 +65,7 @@ function applyDocumentAttributes(resolvedTheme: "light" | "dark", a11y: A11yMode
 }
 
 /**
- * Applies haloui's design tokens to the document by setting `data-theme`/`data-a11y`
+ * Applies brightframe's design tokens to the document by setting `data-theme`/`data-a11y`
  * on <html>, persists the choice to localStorage, and exposes it via useTheme().
  *
  * Pair with getThemeInitScript() to avoid a flash of the wrong theme on first paint.
@@ -74,7 +74,7 @@ export function ThemeProvider({
   children,
   defaultTheme = "system",
   defaultA11y = "default",
-  storageKey = "haloui",
+  storageKey = "brightframe",
   disableTransitionOnChange = true,
 }: ThemeProviderProps) {
   const themeKey = `${storageKey}-theme`;

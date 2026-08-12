@@ -5,9 +5,9 @@ Copy-paste snippets for the common integration scenarios. For a full runnable ap
 ## 1. Minimal setup (any React app)
 
 ```tsx
-import "haloui/tokens.css";
-import "haloui/style.css";
-import { Btn, Card, Tag } from "haloui";
+import "brightframe/tokens.css";
+import "brightframe/style.css";
+import { Btn, Card, Tag } from "brightframe";
 
 function Example() {
   return (
@@ -24,9 +24,9 @@ function Example() {
 Wrap your app once. `useTheme()` gives you the current theme and setters anywhere below it.
 
 ```tsx
-import "haloui/tokens.css";
-import "haloui/style.css";
-import { ThemeProvider, useTheme, Btn } from "haloui";
+import "brightframe/tokens.css";
+import "brightframe/style.css";
+import { ThemeProvider, useTheme, Btn } from "brightframe";
 
 function ThemeToggle() {
   const { theme, resolvedTheme, setTheme, toggleTheme } = useTheme();
@@ -49,7 +49,7 @@ export function App() {
 }
 ```
 
-`ThemeProvider` persists the choice to `localStorage` and applies `data-theme`/`data-a11y` to `<html>` — every haloui component (and your own CSS, if it uses the same `--c-*` custom properties) reacts automatically.
+`ThemeProvider` persists the choice to `localStorage` and applies `data-theme`/`data-a11y` to `<html>` — every brightframe component (and your own CSS, if it uses the same `--c-*` custom properties) reacts automatically.
 
 ### Accessibility mode
 
@@ -66,9 +66,9 @@ setA11y("default");           // back to normal
 **Next.js (App Router)** — `app/layout.tsx`:
 
 ```tsx
-import { ThemeProvider, getThemeInitScript } from "haloui";
-import "haloui/tokens.css";
-import "haloui/style.css";
+import { ThemeProvider, getThemeInitScript } from "brightframe";
+import "brightframe/tokens.css";
+import "brightframe/style.css";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -89,7 +89,7 @@ Keep `getThemeInitScript()`'s options (`storageKey`, `defaultTheme`) in sync wit
 ## 4. A small pricing card composition
 
 ```tsx
-import { Card, Tag, Btn, InfoTooltip } from "haloui";
+import { Card, Tag, Btn, InfoTooltip } from "brightframe";
 
 function PricingCard() {
   return (
@@ -108,7 +108,7 @@ function PricingCard() {
 ## 5. Page shell primitives
 
 ```tsx
-import { Container, Eyebrow, Title, SubTitle, SectionHeading } from "haloui";
+import { Container, Eyebrow, Title, SubTitle, SectionHeading } from "brightframe";
 
 function Hero() {
   return (
@@ -124,4 +124,4 @@ function Hero() {
 
 ## Runnable app
 
-[`examples/basic-vite`](./examples/basic-vite) wires all of the above together in a real Vite project that installs `haloui` the same way a consumer would (`npm install`, importing from `dist/`). See its README for how to run it.
+[`examples/basic-vite`](./examples/basic-vite) wires all of the above together in a real Vite project that installs `brightframe` the same way a consumer would (`npm install`, importing from `dist/`). See its README for how to run it.

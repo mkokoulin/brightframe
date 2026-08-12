@@ -1,5 +1,5 @@
 {
-  "name": "haloui-example-basic-vite",
+  "name": "brightframe-example-basic-vite",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "haloui": "file:../..",
+    "brightframe": "file:../..",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

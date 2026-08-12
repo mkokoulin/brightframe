@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "haloui",
+      "name": "brightframe",
       "devDependencies": {
         "@storybook/react-vite": "10.3.6",
         "@testing-library/jest-dom": "^7.0.1",

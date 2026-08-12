@@ -1,5 +1,5 @@
 {
-  "name": "haloui",
+  "name": "brightframe",
   "version": "0.1.0",
   "description": "Independent React UI kit extracted from the LAN coworking site — presentational primitives (Btn, Card, Tag, Title, ...) with light/dark/a11y design tokens.",
   "keywords": ["react", "ui-kit", "components", "design-system"],
@@ -8,18 +8,18 @@
   "type": "module",
   "sideEffects": ["**/*.css"],
   "files": ["dist"],
-  "main": "./dist/haloui.cjs",
-  "module": "./dist/haloui.js",
+  "main": "./dist/brightframe.cjs",
+  "module": "./dist/brightframe.js",
   "types": "./dist/index.d.ts",
-  "style": "./dist/haloui.css",
+  "style": "./dist/brightframe.css",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/haloui.js",
-      "require": "./dist/haloui.cjs"
+      "import": "./dist/brightframe.js",
+      "require": "./dist/brightframe.cjs"
     },
     "./tokens.css": "./dist/tokens.css",
-    "./style.css": "./dist/haloui.css"
+    "./style.css": "./dist/brightframe.css"
   },
   "scripts": {
     "dev": "vite",

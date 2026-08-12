@@ -53,7 +53,7 @@ type Story = StoryObj<typeof ThemeProvider>;
 
 export const Playground: Story = {
   render: () => (
-    <ThemeProvider storageKey="haloui-storybook">
+    <ThemeProvider storageKey="brightframe-storybook">
       <DemoPanel />
     </ThemeProvider>
   ),

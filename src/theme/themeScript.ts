@@ -2,7 +2,7 @@ export type Theme = "light" | "dark" | "system";
 export type A11yMode = "default" | "visually-impaired";
 
 export type ThemeScriptOptions = {
-  /** Must match the `storageKey` passed to <ThemeProvider>. Defaults to "haloui". */
+  /** Must match the `storageKey` passed to <ThemeProvider>. Defaults to "brightframe". */
   storageKey?: string;
   /** Must match the `defaultTheme` passed to <ThemeProvider>. Defaults to "system". */
   defaultTheme?: Theme;
@@ -26,7 +26,7 @@ export type ThemeScriptOptions = {
  * ```
  */
 export function getThemeInitScript(options: ThemeScriptOptions = {}): string {
-  const storageKey = options.storageKey ?? "haloui";
+  const storageKey = options.storageKey ?? "brightframe";
   const defaultTheme = options.defaultTheme ?? "system";
   const themeKey = `${storageKey}-theme`;
   const a11yKey = `${storageKey}-a11y`;

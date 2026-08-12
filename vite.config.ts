@@ -15,8 +15,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, "src/index.ts"),
-      name: "HaloUi",
-      fileName: (format) => (format === "es" ? "haloui.js" : "haloui.cjs"),
+      name: "BrightFrame",
+      fileName: (format) => (format === "es" ? "brightframe.js" : "brightframe.cjs"),
       formats: ["es", "cjs"],
     },
     rollupOptions: {

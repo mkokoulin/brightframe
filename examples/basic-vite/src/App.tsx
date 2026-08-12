@@ -17,7 +17,7 @@ import {
   Loader,
   Link,
   Burger,
-} from "haloui";
+} from "brightframe";
 
 function ThemeToggle() {
   const { theme, setTheme, resolvedTheme, a11y, setA11y } = useTheme();
@@ -60,7 +60,7 @@ function Page() {
           borderBottom: "1px solid var(--c-border-soft)",
         }}
       >
-        <strong>haloui example</strong>
+        <strong>brightframe example</strong>
         <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
           <ThemeToggle />
           <Burger open={menuOpen} setOpen={setMenuOpen} />
@@ -138,7 +138,7 @@ function Page() {
 
 export function App() {
   return (
-    <ThemeProvider storageKey="haloui-example">
+    <ThemeProvider storageKey="brightframe-example">
       <Page />
     </ThemeProvider>
   );

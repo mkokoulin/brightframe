@@ -10,8 +10,8 @@ describe("getThemeInitScript", () => {
 
   it("embeds the default storageKey and defaultTheme", () => {
     const script = getThemeInitScript();
-    expect(script).toContain('"haloui-theme"');
-    expect(script).toContain('"haloui-a11y"');
+    expect(script).toContain('"brightframe-theme"');
+    expect(script).toContain('"brightframe-a11y"');
     expect(script).toContain('"system"');
   });
 
