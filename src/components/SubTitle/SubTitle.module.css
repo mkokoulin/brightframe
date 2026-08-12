@@ -1,0 +1,7 @@
+.subtitle {
+  font-weight: 700;
+  font-size: 2rem;
+  color: var(--c-text-1);
+  text-transform: uppercase;
+  margin: 0;
+}

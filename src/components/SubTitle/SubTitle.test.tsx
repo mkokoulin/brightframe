@@ -1,0 +1,15 @@
+import { describe, it, expect } from "vitest";
+import { render, screen } from "@testing-library/react";
+import { SubTitle } from "./SubTitle";
+
+describe("SubTitle", () => {
+  it("renders its children as an <h2>", () => {
+    render(<SubTitle>Workspaces and meeting rooms</SubTitle>);
+    expect(screen.getByRole("heading", { level: 2, name: "Workspaces and meeting rooms" })).toBeInTheDocument();
+  });
+
+  it("merges a custom className", () => {
+    render(<SubTitle className="custom">Workspaces</SubTitle>);
+    expect(screen.getByRole("heading").className).toContain("custom");
+  });
+});

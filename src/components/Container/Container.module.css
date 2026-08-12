@@ -1,0 +1,4 @@
+.container {
+  background-color: var(--c-surface);
+  height: 100%;
+}

@@ -1,0 +1,58 @@
+.burger {
+  top: 5%;
+  left: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 2rem;
+  height: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 10;
+}
+
+.burger:focus {
+  outline: none;
+}
+
+.line {
+  width: 2rem;
+  height: 0.25rem;
+  background-color: var(--c-brand);
+  border-radius: 10px;
+  transition: all 0.3s var(--ease-native);
+  position: relative;
+  transform-origin: 1px;
+}
+
+.line:first-child {
+  transform: rotate(0);
+}
+
+.line:nth-child(2) {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.line:nth-child(3) {
+  transform: rotate(0);
+}
+
+.lineOpen {
+  background-color: var(--c-brand);
+}
+
+.lineOpen:first-child {
+  transform: rotate(45deg);
+}
+
+.lineOpen:nth-child(2) {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.lineOpen:nth-child(3) {
+  transform: rotate(-45deg);
+}

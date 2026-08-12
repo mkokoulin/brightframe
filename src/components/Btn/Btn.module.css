@@ -1,0 +1,195 @@
+/* ──────────────────────────────────────────
+   Btn — unified button component
+   ────────────────────────────────────────── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: "PT Sans", sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  flex-shrink: 0;
+  transition:
+    background 160ms var(--ease-native),
+    color 160ms var(--ease-native),
+    border-color 160ms var(--ease-native),
+    transform 120ms var(--ease-native),
+    box-shadow 160ms var(--ease-native),
+    opacity 160ms var(--ease-native);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+}
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ── Shape ── */
+.pill { border-radius: 999px; }
+
+/* ── Width ── */
+.fullWidth { width: 100%; }
+
+/* ── Sizes ── */
+
+.sm {
+  height: 36px;
+  padding: 0 16px;
+  font-size: 13px;
+}
+
+.md {
+  height: 44px;
+  padding: 0 24px;
+  font-size: 15px;
+}
+
+.lg {
+  height: 52px;
+  padding: 0 32px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* ── Variants ── */
+
+/* primary — main call to action */
+.primary {
+  background: var(--c-accent);
+  color: #fff;
+  border-color: transparent;
+}
+.primary:hover:not(:disabled),
+.primary:focus-visible:not(:disabled) {
+  background: var(--c-accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(255, 160, 95, 0.4);
+}
+.primary:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+/* secondary — alternative action, outlined */
+.secondary {
+  background: transparent;
+  color: var(--c-brand);
+  border-color: var(--c-brand);
+}
+.secondary:hover:not(:disabled),
+.secondary:focus-visible:not(:disabled) {
+  background: var(--c-brand);
+  color: #fff;
+  transform: translateY(-1px);
+}
+.secondary:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+/* brand — confirming with data, navigation action */
+.brand {
+  background: var(--c-brand);
+  color: #fff;
+  border-color: transparent;
+}
+.brand:hover:not(:disabled),
+.brand:focus-visible:not(:disabled) {
+  background: var(--c-brand-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(29, 80, 134, 0.32);
+}
+.brand:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+/* ghost — secondary action */
+.ghost {
+  background: transparent;
+  color: var(--c-text-2);
+  border-color: transparent;
+}
+.ghost:hover:not(:disabled),
+.ghost:focus-visible:not(:disabled) {
+  background: var(--c-surface-2);
+  border-color: var(--c-border);
+}
+.ghost:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+/* danger — urgent / irreversible action */
+.danger {
+  background: var(--c-error);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 4px 12px var(--c-error-soft);
+}
+.danger:hover:not(:disabled),
+.danger:focus-visible:not(:disabled) {
+  background: var(--c-error-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px var(--c-error-soft);
+}
+.danger:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+/* white — secondary action on a dark background */
+.white {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.45);
+}
+.white:hover:not(:disabled),
+.white:focus-visible:not(:disabled) {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.8);
+  transform: translateY(-1px);
+}
+.white:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+/* external — linking to an external service (Telegram, Instagram…) */
+.external {
+  background: #229ED9;
+  color: #fff;
+  border-color: transparent;
+}
+.external:hover:not(:disabled),
+.external:focus-visible:not(:disabled) {
+  background: #1a8cbf;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(34, 158, 217, 0.35);
+}
+.external:active:not(:disabled) {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+/* ── Icon slot ── */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.icon svg {
+  width: 1em;
+  height: 1em;
+}

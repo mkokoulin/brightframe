@@ -1,0 +1,55 @@
+.root {
+  /* Auto layout */
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  padding: 6px 16px;
+  gap: 8px;
+
+  height: 32px;
+  border-radius: 8px;
+
+  /* ghost */
+  background: transparent;
+  border: 1px solid transparent;
+
+  /* typography */
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.02em;
+  color: var(--c-text-2);
+
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+
+  transition: background 140ms var(--ease-native), border-color 140ms var(--ease-native), transform 120ms var(--ease-native);
+
+  border: none;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  color: var(--c-text-2); /* matches the design */
+}
+
+.text {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.root:hover, .root:focus-visible {
+  border-color: var(--c-border);
+  box-shadow: var(--c-shadow-sm);
+}
+
+.root:active {
+  transform: translateY(1px);
+}

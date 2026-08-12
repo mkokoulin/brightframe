@@ -1,0 +1,37 @@
+.root {
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 100;
+}
+
+.rootBg {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.circle {
+  animation: rotate 2s infinite linear;
+  transform-origin: center center 0;
+}
+
+.fixed {
+  top: 50%;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

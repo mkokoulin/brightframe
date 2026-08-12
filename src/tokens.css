@@ -1,0 +1,176 @@
+/* ══════════════════════════════════════════
+   LAN UI KIT — DESIGN TOKENS
+   Light (default) / Dark / Accessibility themes.
+   Import this once (e.g. in your app root) before
+   using any component from the kit.
+
+   Theme switching:
+     <html data-theme="dark">                     — dark theme
+     <html data-a11y="visually-impaired">          — high-contrast a11y mode
+   ══════════════════════════════════════════ */
+:root {
+  /* ── Motion ── */
+  --ease-native: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ── Backgrounds ── */
+  --c-bg: #fbfbfd;
+  --c-surface: #ffffff;
+  --c-surface-alt: #f4f5f5;
+  --c-surface-2: #eef1f5;
+
+  /* ── Text ── */
+  --c-text-1: #030717;
+  --c-text-2: #5f6b78;
+  --c-text-3: #808385;
+  --c-text-nav: #4f4f4f;
+
+  /* ── Borders ── */
+  --c-border: #ccd6e6;
+  --c-border-soft: #e8eaec;
+
+  /* ── Accents ── */
+  --c-accent: #ffa05f;
+  --c-accent-hover: #f09050;
+  --c-brand: #1d5086;
+  --c-brand-hover: #1a4878;
+  --c-brand-soft: rgba(29, 80, 134, 0.08);
+
+  /* ── Shadows ── */
+  --c-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --c-shadow-md: 0px 4px 24px rgba(43, 72, 174, 0.12), 0px 12px 20px rgba(0, 30, 136, 0.14);
+  --c-shadow-card: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+  /* ── Errors / status ── */
+  --c-error: #eb5757;
+  --c-error-hover: #c45e5e;
+  --c-error-soft: rgba(235, 87, 87, 0.12);
+
+  /* ── UI states ── */
+  --c-disabled: #c1c1c1;
+  --c-hover-overlay: rgba(0, 0, 0, 0.06);
+  --c-dot: #d9d9d9;
+  --c-range-bar: rgba(29, 80, 134, 0.14);
+
+  /* ── Transparent surface variants (for gradient fades) ── */
+  --c-surface-0: rgba(255, 255, 255, 0);
+  --c-surface-2-0: rgba(238, 241, 245, 0);
+
+  /* ── Form / drawers ── */
+  --c-form-accent-bg: #eaddff;
+
+  /* ── Page hero section background ── */
+  --c-page-hero: linear-gradient(135deg, #f0f4fb 0%, #edf1f8 100%);
+
+  /* ── Badge / feature-card colors ── */
+  --c-badge-blue-bg: #dbeafe;
+  --c-badge-blue-text: #1d5086;
+  --c-badge-orange-bg: #ffe8d0;
+  --c-badge-orange-text: #c05800;
+  --c-badge-green-bg: #d4f0d4;
+  --c-badge-green-text: #1a6b1a;
+  --c-badge-purple-bg: #ede8fb;
+  --c-badge-purple-text: #5c3db0;
+}
+
+/* ── Dark theme ── */
+[data-theme="dark"] {
+  --c-bg: #0c0e14;
+  --c-surface: #1d2230;
+  --c-surface-alt: #2a3140;
+  --c-surface-2: #38415a;
+
+  --c-text-1: #eef1f6;
+  --c-text-2: #a0a9ba;
+  --c-text-3: #7a8498;
+  --c-text-nav: #b6becd;
+
+  --c-border: #3a425a;
+  --c-border-soft: #2a3040;
+
+  --c-accent: #ffa05f;
+  --c-accent-hover: #ffb27d;
+  --c-brand: #4d97e0;
+  --c-brand-hover: #64a9ec;
+  --c-brand-soft: rgba(93, 163, 232, 0.14);
+
+  --c-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3);
+  --c-shadow-md: 0 8px 32px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.4);
+  --c-shadow-card: 0 4px 16px rgba(0, 0, 0, 0.45);
+
+  --c-error: #f47069;
+  --c-error-hover: #e25a53;
+  --c-error-soft: rgba(244, 112, 105, 0.14);
+
+  --c-disabled: #3a4152;
+  --c-hover-overlay: rgba(255, 255, 255, 0.06);
+  --c-dot: #2c3242;
+
+  --c-surface-0: rgba(29, 34, 48, 0);
+  --c-surface-2-0: rgba(56, 65, 90, 0);
+
+  --c-range-bar: rgba(93, 163, 232, 0.24);
+
+  --c-form-accent-bg: #2f2650;
+
+  --c-page-hero: linear-gradient(135deg, #171c2c 0%, #1f2740 55%, #2b2138 100%);
+
+  --c-badge-blue-bg: #16283f;
+  --c-badge-blue-text: #8ec3f7;
+  --c-badge-orange-bg: #33200f;
+  --c-badge-orange-text: #ffb27d;
+  --c-badge-green-bg: #142a19;
+  --c-badge-green-text: #6ed46e;
+  --c-badge-purple-bg: #251b3d;
+  --c-badge-purple-text: #b79bf0;
+}
+
+/* ── Low-vision mode ── */
+[data-a11y="visually-impaired"] {
+  --c-bg: #ffffff;
+  --c-surface: #ffffff;
+  --c-surface-alt: #f0f0f0;
+  --c-surface-2: #e0e0e0;
+
+  --c-text-1: #000000;
+  --c-text-2: #111111;
+  --c-text-3: #333333;
+  --c-text-nav: #000000;
+
+  --c-border: #000000;
+  --c-border-soft: #444444;
+
+  --c-accent: #0044cc;
+  --c-accent-hover: #0033aa;
+  --c-brand: #003388;
+  --c-brand-hover: #002266;
+  --c-brand-soft: rgba(0, 51, 136, 0.12);
+
+  --c-shadow-sm: none;
+  --c-shadow-md: 0 0 0 2px #000000;
+  --c-shadow-card: 0 0 0 1px #000000;
+
+  --c-error: #cc0000;
+  --c-error-hover: #aa0000;
+  --c-error-soft: rgba(204, 0, 0, 0.1);
+
+  --c-disabled: #777777;
+  --c-hover-overlay: rgba(0, 0, 0, 0.1);
+  --c-dot: #333333;
+  --c-range-bar: rgba(0, 51, 136, 0.2);
+
+  --c-surface-0: rgba(255, 255, 255, 0);
+  --c-surface-2-0: rgba(224, 224, 224, 0);
+
+  --c-form-accent-bg: #e8e0ff;
+
+  --c-page-hero: #f8f8f8;
+
+  --c-badge-blue-bg: #dde8ff;
+  --c-badge-blue-text: #002299;
+  --c-badge-orange-bg: #fff0dd;
+  --c-badge-orange-text: #7a3800;
+  --c-badge-green-bg: #ddffdd;
+  --c-badge-green-text: #004400;
+  --c-badge-purple-bg: #eeeeff;
+  --c-badge-purple-text: #380088;
+}
