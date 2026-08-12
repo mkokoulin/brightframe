@@ -1,6 +1,6 @@
 {
   "name": "brightframe",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "React UI component kit with buttons, cards, tags, and more — themeable via a light/dark/high-contrast design token system and a drop-in ThemeProvider.",
   "keywords": [
     "react",
@@ -27,8 +27,12 @@
   "author": "mkokoulin",
   "license": "MIT",
   "type": "module",
-  "sideEffects": ["**/*.css"],
-  "files": ["dist"],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist"
+  ],
   "main": "./dist/brightframe.cjs",
   "module": "./dist/brightframe.js",
   "types": "./dist/index.d.ts",
