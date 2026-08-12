@@ -8,7 +8,7 @@ const config: StorybookConfig = {
     options: {},
   },
   // GitHub Pages serves project sites under /<repo>/, not at the domain root.
-  // Set STORYBOOK_BASE_PATH (e.g. "/haloui/") in CI; local dev keeps the default "/".
+  // Set STORYBOOK_BASE_PATH (e.g. "/brightframe/") in CI; local dev keeps the default "/".
   async viteFinal(viteConfig) {
     return {
       ...viteConfig,
