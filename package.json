@@ -1,8 +1,29 @@
 {
   "name": "brightframe",
   "version": "0.1.0",
-  "description": "Independent React UI kit extracted from the LAN coworking site — presentational primitives (Btn, Card, Tag, Title, ...) with light/dark/a11y design tokens.",
-  "keywords": ["react", "ui-kit", "components", "design-system"],
+  "description": "React UI component kit with buttons, cards, tags, and more — themeable via a light/dark/high-contrast design token system and a drop-in ThemeProvider.",
+  "keywords": [
+    "react",
+    "react-components",
+    "ui-kit",
+    "ui-library",
+    "component-library",
+    "design-system",
+    "design-tokens",
+    "storybook",
+    "typescript",
+    "theme",
+    "dark-mode",
+    "accessibility",
+    "a11y",
+    "css-modules",
+    "buttons",
+    "cards"
+  ],
+  "homepage": "https://mkokoulin.github.io/brightframe/",
+  "bugs": {
+    "url": "https://github.com/mkokoulin/brightframe/issues"
+  },
   "author": "mkokoulin",
   "license": "MIT",
   "type": "module",
