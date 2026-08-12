@@ -5,10 +5,7 @@
   justify-content: center;
   align-items: center;
 
-  padding: 6px 16px;
   gap: 8px;
-
-  height: 32px;
   border-radius: 8px;
 
   /* ghost */
@@ -18,8 +15,6 @@
   /* typography */
   font-style: normal;
   font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
   letter-spacing: -0.02em;
   color: var(--c-text-2);
 
@@ -30,6 +25,27 @@
   transition: background 140ms var(--ease-native), border-color 140ms var(--ease-native), transform 120ms var(--ease-native);
 
   border: none;
+}
+
+.sm {
+  padding: 4px 12px;
+  height: 28px;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.md {
+  padding: 6px 16px;
+  height: 32px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.lg {
+  padding: 8px 20px;
+  height: 40px;
+  font-size: 15px;
+  line-height: 22px;
 }
 
 .icon {

@@ -64,11 +64,14 @@ const Icon = ({ name }: { name: InfoCardItem["icon"] }) => {
   }
 };
 
-export type InfoCardsProps = { items: InfoCardItem[] };
+export type InfoCardsProps = {
+  items: InfoCardItem[];
+  className?: string;
+} & Omit<React.HTMLAttributes<HTMLElement>, "className">;
 
-export function InfoCards({ items }: InfoCardsProps) {
+export function InfoCards({ items, className, ...rest }: InfoCardsProps) {
   return (
-    <section className={styles.root}>
+    <section className={[styles.root, className].filter(Boolean).join(" ")} {...rest}>
       <div className={styles.container}>
         <div className={styles.list}>
           {items.map((item) => {

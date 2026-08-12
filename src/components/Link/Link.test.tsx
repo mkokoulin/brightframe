@@ -24,4 +24,26 @@ describe("Link", () => {
     expect(link).toHaveAttribute("target", "_blank");
     expect(link).toHaveAttribute("rel", "noreferrer");
   });
+
+  it("defaults to the default variant with underline", () => {
+    render(<Link href="#">Learn more</Link>);
+    const link = screen.getByRole("link");
+    expect(link.className).toContain("default");
+    expect(link.className).not.toContain("noUnderline");
+  });
+
+  it("applies the requested variant", () => {
+    render(<Link href="#" variant="brand">Learn more</Link>);
+    expect(screen.getByRole("link").className).toContain("brand");
+  });
+
+  it("applies the noUnderline class when underline=false", () => {
+    render(<Link href="#" underline={false}>Learn more</Link>);
+    expect(screen.getByRole("link").className).toContain("noUnderline");
+  });
+
+  it("forwards rest props to the anchor", () => {
+    render(<Link href="#" data-testid="link">Learn more</Link>);
+    expect(screen.getByTestId("link")).toBeInTheDocument();
+  });
 });

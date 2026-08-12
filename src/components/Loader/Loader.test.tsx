@@ -24,4 +24,24 @@ describe("Loader", () => {
     const { container } = render(<Loader overlay={false} />);
     expect(container.querySelector(`.${styles.rootBg}`)).not.toBeInTheDocument();
   });
+
+  it("defaults to a 60px (md) svg", () => {
+    const { container } = render(<Loader />);
+    const svg = container.querySelector("svg");
+    expect(svg).toHaveAttribute("width", "60");
+    expect(svg).toHaveAttribute("height", "60");
+  });
+
+  it("resizes the svg for sm/lg", () => {
+    const { container: sm } = render(<Loader size="sm" />);
+    expect(sm.querySelector("svg")).toHaveAttribute("width", "32");
+
+    const { container: lg } = render(<Loader size="lg" />);
+    expect(lg.querySelector("svg")).toHaveAttribute("width", "96");
+  });
+
+  it("forwards rest props to the root element", () => {
+    const { getByTestId } = render(<Loader data-testid="loader" />);
+    expect(getByTestId("loader")).toBeInTheDocument();
+  });
 });

@@ -1,12 +1,15 @@
-import { HTMLAttributes, PropsWithChildren } from "react";
+import { ElementType, HTMLAttributes, PropsWithChildren } from "react";
 import styles from "./Title.module.css";
 
-export type TitleProps = HTMLAttributes<HTMLHeadingElement>;
+export type TitleProps = {
+  /** Tag to render — override for document outline (e.g. "h2" if an h1 already exists). Defaults to "h1". */
+  as?: ElementType;
+} & HTMLAttributes<HTMLHeadingElement>;
 
-export function Title({ children, className, ...rest }: PropsWithChildren<TitleProps>) {
+export function Title({ children, className, as: Tag = "h1", ...rest }: PropsWithChildren<TitleProps>) {
   return (
-    <h1 className={[styles.title, className].filter(Boolean).join(" ")} {...rest}>
+    <Tag className={[styles.title, className].filter(Boolean).join(" ")} {...rest}>
       {children}
-    </h1>
+    </Tag>
   );
 }

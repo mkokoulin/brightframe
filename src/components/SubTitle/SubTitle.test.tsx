@@ -12,4 +12,9 @@ describe("SubTitle", () => {
     render(<SubTitle className="custom">Workspaces</SubTitle>);
     expect(screen.getByRole("heading").className).toContain("custom");
   });
+
+  it("renders as a different tag when as is given", () => {
+    render(<SubTitle as="h3">Workspaces</SubTitle>);
+    expect(screen.getByRole("heading", { level: 3 })).toBeInTheDocument();
+  });
 });

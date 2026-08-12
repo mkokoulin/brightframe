@@ -32,4 +32,19 @@ describe("DayBadge", () => {
     expect(container.querySelector(`.${styles.weekday}`)).toHaveTextContent("Mon");
     expect(container.querySelector(`.${styles.month}`)).toHaveTextContent("MAY");
   });
+
+  it("applies the compact size class when requested", () => {
+    const { container } = render(<DayBadge date={MONDAY} size="compact" />);
+    expect(container.querySelector(`.${styles.compact}`)).toBeInTheDocument();
+  });
+
+  it("does not apply the compact class by default", () => {
+    const { container } = render(<DayBadge date={MONDAY} />);
+    expect(container.querySelector(`.${styles.compact}`)).not.toBeInTheDocument();
+  });
+
+  it("forwards rest props to the root element", () => {
+    const { getByTestId } = render(<DayBadge date={MONDAY} data-testid="badge" />);
+    expect(getByTestId("badge")).toBeInTheDocument();
+  });
 });

@@ -56,4 +56,26 @@ describe("InfoTooltip", () => {
     fireEvent.mouseDown(document.body);
     expect(screen.queryByRole("tooltip")).not.toBeInTheDocument();
   });
+
+  it("defaults to the top position", () => {
+    render(<InfoTooltip label="Discount details" />);
+    fireEvent.click(screen.getByRole("button"));
+    expect(screen.getByRole("tooltip").className).toContain("top");
+  });
+
+  it("respects a custom position", () => {
+    render(<InfoTooltip label="Discount details" position="right" />);
+    fireEvent.click(screen.getByRole("button"));
+    expect(screen.getByRole("tooltip").className).toContain("right");
+  });
+
+  it("renders a custom trigger icon", () => {
+    render(<InfoTooltip label="Discount details" icon={<span data-testid="custom-icon" />} />);
+    expect(screen.getByTestId("custom-icon")).toBeInTheDocument();
+  });
+
+  it("forwards rest props to the wrapper", () => {
+    render(<InfoTooltip label="Discount details" data-testid="wrap" />);
+    expect(screen.getByTestId("wrap")).toBeInTheDocument();
+  });
 });

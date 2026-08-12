@@ -12,4 +12,14 @@ describe("Title", () => {
     render(<Title className="custom">Letters and Numbers</Title>);
     expect(screen.getByRole("heading").className).toContain("custom");
   });
+
+  it("renders as a different tag when as is given", () => {
+    render(<Title as="h2">Letters and Numbers</Title>);
+    expect(screen.getByRole("heading", { level: 2 })).toBeInTheDocument();
+  });
+
+  it("forwards rest props", () => {
+    render(<Title data-testid="title">Letters and Numbers</Title>);
+    expect(screen.getByTestId("title")).toBeInTheDocument();
+  });
 });

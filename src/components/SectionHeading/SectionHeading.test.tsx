@@ -23,4 +23,21 @@ describe("SectionHeading", () => {
     render(<SectionHeading title="Our plans" className="custom" />);
     expect(screen.getByRole("heading").className).toContain("custom");
   });
+
+  it("renders as h1 when as='h1' is given", () => {
+    render(<SectionHeading title="Our plans" as="h1" />);
+    expect(screen.getByRole("heading", { level: 1 })).toBeInTheDocument();
+  });
+
+  it("applies the center alignment class to both title and subtitle", () => {
+    render(<SectionHeading title="Our plans" subtitle="Sub" align="center" />);
+    expect(screen.getByRole("heading").className).toContain("center");
+    expect(screen.getByText("Sub").className).toContain("center");
+  });
+
+  it("does not apply an alignment class for the default left align", () => {
+    render(<SectionHeading title="Our plans" />);
+    expect(screen.getByRole("heading").className).not.toContain("center");
+    expect(screen.getByRole("heading").className).not.toContain("right");
+  });
 });

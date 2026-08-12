@@ -13,4 +13,9 @@ describe("Eyebrow", () => {
     render(<Eyebrow className="custom">Coworking</Eyebrow>);
     expect(screen.getByText("Coworking").className).toContain("custom");
   });
+
+  it("renders as a different tag when as is given", () => {
+    render(<Eyebrow as="span">Coworking</Eyebrow>);
+    expect(screen.getByText("Coworking").tagName).toBe("SPAN");
+  });
 });

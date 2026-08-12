@@ -1,4 +1,33 @@
 .link {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 140ms var(--ease-native);
+}
+
+.default {
   color: var(--c-text-1);
+}
+.default:hover {
+  color: var(--c-brand);
+}
+
+.muted {
+  color: var(--c-text-2);
+}
+.muted:hover {
+  color: var(--c-text-1);
+}
+
+.brand {
+  color: var(--c-brand);
+}
+.brand:hover {
+  color: var(--c-brand-hover);
+}
+
+.noUnderline {
+  text-decoration: none;
+}
+.noUnderline:hover {
   text-decoration: underline;
 }

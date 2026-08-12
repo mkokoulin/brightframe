@@ -32,4 +32,25 @@ describe("GuestsCounter", () => {
     await user.click(screen.getByRole("button", { name: "Decrease" }));
     expect(onChange).toHaveBeenCalledWith(1);
   });
+
+  it("renders the default emoji icon", () => {
+    render(<GuestsCounter value={1} onChange={() => {}} />);
+    expect(screen.getByText("👤")).toBeInTheDocument();
+  });
+
+  it("renders a custom icon when provided", () => {
+    render(<GuestsCounter value={1} onChange={() => {}} icon={<span data-testid="custom-icon" />} />);
+    expect(screen.getByTestId("custom-icon")).toBeInTheDocument();
+    expect(screen.queryByText("👤")).not.toBeInTheDocument();
+  });
+
+  it("hides the icon when icon={null}", () => {
+    render(<GuestsCounter value={1} onChange={() => {}} icon={null} />);
+    expect(screen.queryByText("👤")).not.toBeInTheDocument();
+  });
+
+  it("forwards rest props to the root element", () => {
+    render(<GuestsCounter value={1} onChange={() => {}} data-testid="counter" />);
+    expect(screen.getByTestId("counter")).toBeInTheDocument();
+  });
 });

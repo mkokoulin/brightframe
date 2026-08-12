@@ -10,7 +10,10 @@ export type TextareaFieldProps = {
   rows?: number;
   error?: string;
   className?: string;
-};
+} & Omit<
+  React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+  "value" | "onChange" | "onBlur" | "placeholder" | "rows" | "className" | "id"
+>;
 
 export function TextareaField({
   label,
@@ -21,6 +24,7 @@ export function TextareaField({
   rows = 3,
   error,
   className,
+  ...rest
 }: TextareaFieldProps) {
   const id = useId();
   const errorId = error ? `${id}-error` : undefined;
@@ -41,6 +45,7 @@ export function TextareaField({
             rows={rows}
             aria-invalid={!!error}
             aria-describedby={errorId}
+            {...rest}
           />
         </div>
       </div>

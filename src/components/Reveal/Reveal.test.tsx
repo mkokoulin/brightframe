@@ -93,4 +93,36 @@ describe("Reveal", () => {
     render(<Reveal delay={200}>Content</Reveal>);
     expect(screen.getByText("Content")).toHaveStyle({ transitionDelay: "200ms" });
   });
+
+  it("defaults to the up direction", () => {
+    mockReducedMotion(true);
+    mockIntersectionObserver();
+    render(<Reveal>Content</Reveal>);
+    expect(screen.getByText("Content").className).toContain(styles.up);
+  });
+
+  it("applies the requested direction class", () => {
+    mockReducedMotion(true);
+    mockIntersectionObserver();
+    render(<Reveal direction="left">Content</Reveal>);
+    expect(screen.getByText("Content").className).toContain(styles.left);
+  });
+
+  it("passes a custom threshold to the observer", () => {
+    mockReducedMotion(false);
+    let usedOptions: IntersectionObserverInit | undefined;
+    class FakeObserver {
+      constructor(_cb: unknown, options?: IntersectionObserverInit) {
+        usedOptions = options;
+      }
+      observe = () => {};
+      disconnect = () => {};
+      unobserve = () => {};
+      takeRecords = () => [];
+    }
+    window.IntersectionObserver = FakeObserver as unknown as typeof IntersectionObserver;
+
+    render(<Reveal threshold={0.5}>Content</Reveal>);
+    expect(usedOptions?.threshold).toBe(0.5);
+  });
 });

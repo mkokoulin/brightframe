@@ -40,6 +40,24 @@
   color: var(--c-surface-alt);
 }
 
+.compact {
+  width: 72px;
+  flex: 0 0 72px;
+  padding: 12px 8px;
+  border-radius: 10px;
+}
+
+.compact .weekday,
+.compact .month {
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.compact .day {
+  font-size: 24px;
+  line-height: 24px;
+}
+
 @media (max-width: 768px) {
   .badge {
     width: 100%;

@@ -77,7 +77,23 @@ export function App() {
 
 For server-rendered apps (Next.js, etc.), pair it with `getThemeInitScript()` to avoid a flash of the wrong theme before hydration — see [EXAMPLES.md](./EXAMPLES.md#3-avoiding-a-flash-of-the-wrong-theme-on-first-paint).
 
+### Customization
+
+Every presentational component (the ones in the first table below) follows the same rules:
+
+- **Native attributes pass through.** `style`, `id`, `data-*`, `aria-*`, event handlers, and any other valid HTML attribute for the underlying element are forwarded — you don't need a wrapper `<div>` to add a `style` override or a `data-testid`.
+- **`className` merges**, it never replaces the component's own classes.
+- **Polymorphic tag via `as`.** `Title`, `SubTitle`, `SectionHeading`, `Container`, and `Eyebrow` accept an `as` prop (e.g. `<Title as="h2">`) to change the rendered tag without changing how it looks — use it to keep a single `<h1>` per page while still getting Title's styling elsewhere.
+- **Sizes/variants are additive**, existing defaults never change between patch/minor releases.
+
+Interactive form widgets (`MobileDatePicker`, `CalendarSlider`, `TimeRangePicker`, `DateTimePicker`, `SelectField`) intentionally expose a narrower, purpose-built API (`locale`, `labels`, `minDate`/`maxDate`, `businessHours`, ...) instead of raw DOM prop spreading — their root elements carry click-outside/keyboard logic that a stray `onClick` or `style` override could break.
+
 ## Components
+
+### Primitives
+
+| Component | Description |
+|---|---|
 
 | Component | Description |
 |---|---|
@@ -99,11 +115,28 @@ For server-rendered apps (Next.js, etc.), pair it with `getThemeInitScript()` to
 | `ThemeProvider` / `useTheme` | Light/dark/system theme + a11y mode, persisted and applied to `<html>` |
 | `getThemeInitScript` | Inline script to prevent a flash of the wrong theme on server-rendered pages |
 
+### Form controls
+
+| Component | Description |
+|---|---|
+| `LabeledField` | Labeled text input, optional prefix (e.g. `+1`) and input mask via `react-imask` |
+| `TextareaField` | Labeled textarea with error state |
+| `SelectField` | Accessible custom select (listbox pattern, keyboard navigation) |
+| `SegmentedBar` / `SegmentedItem` | Segmented control container, e.g. Day / Week / Month toggles |
+| `GuestsCounter` | Stepper with a label and min/max clamping |
+| `SubmitButton` | Form submit button — `accent`/`brand`/`ghost` variants |
+| `FormCard` | Padded `<section>` wrapper for grouping a form |
+| `FormDatePicker` | Text-field-style trigger that opens `MobileDatePicker` in single-date mode |
+| `MobileDatePicker` | Full-screen bottom-sheet calendar (single date or range) |
+| `TimeRangePicker` | Date + start/end time range picker with configurable business hours |
+| `CalendarSlider` | Two-month range calendar with quick presets (today, this week, ...) |
+| `DateTimePicker` | Combined date + time dropdown picker |
+
 All components are named exports and ship their own `.d.ts` types.
 
 ## Examples
 
-See [EXAMPLES.md](./EXAMPLES.md) for copy-paste snippets (basic usage, theming, Next.js flash-free setup, page composition), and [`examples/basic-vite`](./examples/basic-vite) for a full runnable app.
+See [EXAMPLES.md](./EXAMPLES.md) for copy-paste snippets (basic usage, theming, Next.js flash-free setup, page composition), and [`examples/basic-vite`](./examples/basic-vite) for a full runnable app. The [Storybook](https://mkokoulin.github.io/brightframe/) also has an **Examples/Booking Form** story showing most form components wired together into one working form.
 
 ## Local development
 

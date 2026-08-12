@@ -15,7 +15,19 @@ export type LabeledFieldProps = {
   maxLength?: number;
   mask?: string;
   className?: string;
-};
+} & Omit<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  | "value"
+  | "onChange"
+  | "onBlur"
+  | "placeholder"
+  | "type"
+  | "autoComplete"
+  | "maxLength"
+  | "className"
+  | "id"
+  | "prefix"
+>;
 
 export function LabeledField({
   label,
@@ -30,6 +42,7 @@ export function LabeledField({
   maxLength,
   mask,
   className,
+  ...rest
 }: LabeledFieldProps) {
   const id = useId();
   const errorId = error ? `${id}-error` : undefined;
@@ -72,6 +85,7 @@ export function LabeledField({
               inputMode="numeric"
               aria-invalid={!!error}
               aria-describedby={errorId}
+              {...(rest as Record<string, unknown>)}
             />
           ) : (
             <input
@@ -86,6 +100,7 @@ export function LabeledField({
               maxLength={maxLength}
               aria-invalid={!!error}
               aria-describedby={errorId}
+              {...rest}
             />
           )}
         </div>

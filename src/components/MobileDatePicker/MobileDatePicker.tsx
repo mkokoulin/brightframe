@@ -39,6 +39,8 @@ export type MobileDatePickerProps = {
   /** BCP 47 locale used to format month/weekday/chip text, e.g. "en-US" or "ru-RU". */
   locale?: string;
   labels?: Partial<MobileDatePickerLabels>;
+  /** Extra class applied to the bottom sheet (not the overlay). */
+  className?: string;
 };
 
 const TODAY = (() => {
@@ -99,6 +101,7 @@ export function MobileDatePicker({
   minDate,
   locale = "en-US",
   labels,
+  className,
 }: MobileDatePickerProps) {
   const L = { ...DEFAULT_MOBILE_DATE_PICKER_LABELS, ...labels };
   const weekdays = useMemo(() => buildWeekdayLabels(locale), [locale]);
@@ -210,7 +213,10 @@ export function MobileDatePicker({
 
   return createPortal(
     <div className={styles.overlay} onPointerDown={onClose}>
-      <div className={styles.sheet} onPointerDown={(e) => e.stopPropagation()}>
+      <div
+        className={[styles.sheet, className].filter(Boolean).join(" ")}
+        onPointerDown={(e) => e.stopPropagation()}
+      >
         {/* Top bar: drag handle + close button */}
         <div className={styles.topBar}>
           <div className={styles.handle} />

@@ -31,4 +31,18 @@ describe("Burger", () => {
     expect(container.querySelectorAll(`.${styles.lineOpen}`)).toHaveLength(3);
     expect(screen.getByRole("button")).toHaveAttribute("aria-pressed", "true");
   });
+
+  it("applies a size modifier class for sm/lg", () => {
+    const { container: sm } = render(<Burger open={false} setOpen={() => {}} size="sm" />);
+    expect(sm.querySelector(`.${styles.sm}`)).toBeInTheDocument();
+
+    const { container: md } = render(<Burger open={false} setOpen={() => {}} />);
+    expect(md.querySelector(`.${styles.sm}`)).not.toBeInTheDocument();
+    expect(md.querySelector(`.${styles.lg}`)).not.toBeInTheDocument();
+  });
+
+  it("sets the --burger-color CSS variable when color is given", () => {
+    render(<Burger open={false} setOpen={() => {}} color="#ff0000" />);
+    expect(screen.getByRole("button")).toHaveStyle({ "--burger-color": "#ff0000" });
+  });
 });

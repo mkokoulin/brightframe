@@ -1,15 +1,17 @@
-import { HTMLAttributes, ReactNode } from "react";
+import { ElementType, HTMLAttributes, ReactNode } from "react";
 import styles from "./Eyebrow.module.css";
 
-export type EyebrowProps = HTMLAttributes<HTMLParagraphElement> & {
+export type EyebrowProps = {
   children: ReactNode;
-};
+  /** Tag to render. Defaults to "p". */
+  as?: ElementType;
+} & HTMLAttributes<HTMLElement>;
 
-export function Eyebrow({ children, className, ...rest }: EyebrowProps) {
+export function Eyebrow({ children, className, as: Tag = "p", ...rest }: EyebrowProps) {
   const cls = [styles.eyebrow, className].filter(Boolean).join(" ");
   return (
-    <p className={cls} {...rest}>
+    <Tag className={cls} {...rest}>
       {children}
-    </p>
+    </Tag>
   );
 }

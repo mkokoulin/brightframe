@@ -7,10 +7,12 @@ export type GuestsCounterProps = {
   min?: number;
   max?: number;
   label?: string | null;
+  /** Replaces the default 👤 emoji icon. Pass `null` to hide it. */
+  icon?: React.ReactNode | null;
   decreaseLabel?: string;
   increaseLabel?: string;
   className?: string;
-};
+} & Omit<React.HTMLAttributes<HTMLDivElement>, "className" | "onChange">;
 
 export function GuestsCounter({
   value,
@@ -18,20 +20,25 @@ export function GuestsCounter({
   min = 1,
   max = 20,
   label,
+  icon,
   decreaseLabel = "Decrease",
   increaseLabel = "Increase",
   className,
+  ...rest
 }: GuestsCounterProps) {
   const resolvedLabel = label ?? "Guests";
+  const resolvedIcon = icon === undefined ? "👤" : icon;
   const dec = () => onChange(Math.max(min, value - 1));
   const inc = () => onChange(Math.min(max, value + 1));
 
   return (
-    <div className={[styles.row, className].filter(Boolean).join(" ")}>
+    <div className={[styles.row, className].filter(Boolean).join(" ")} {...rest}>
       <div className={styles.title}>
-        <span className={styles.icon} aria-hidden="true">
-          👤
-        </span>
+        {resolvedIcon !== null && (
+          <span className={styles.icon} aria-hidden="true">
+            {resolvedIcon}
+          </span>
+        )}
         <span className={styles.label}>{resolvedLabel}</span>
       </div>
 

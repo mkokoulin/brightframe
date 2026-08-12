@@ -18,4 +18,21 @@ describe("SubmitButton", () => {
     render(<SubmitButton disabled>Send</SubmitButton>);
     expect(screen.getByRole("button")).toBeDisabled();
   });
+
+  it("defaults to the accent variant and fullWidth", () => {
+    render(<SubmitButton>Send</SubmitButton>);
+    const btn = screen.getByRole("button");
+    expect(btn.className).toContain("accent");
+    expect(btn.className).toContain("fullWidth");
+  });
+
+  it("applies the requested variant", () => {
+    render(<SubmitButton variant="ghost">Send</SubmitButton>);
+    expect(screen.getByRole("button").className).toContain("ghost");
+  });
+
+  it("omits the fullWidth class when fullWidth=false", () => {
+    render(<SubmitButton fullWidth={false}>Send</SubmitButton>);
+    expect(screen.getByRole("button").className).not.toContain("fullWidth");
+  });
 });

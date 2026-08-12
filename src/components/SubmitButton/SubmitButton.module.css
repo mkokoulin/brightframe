@@ -1,7 +1,5 @@
 .btn {
-  width: 100%;
   height: 38px;
-  background: var(--c-accent);
   border: none;
   border-radius: 12px;
   cursor: pointer;
@@ -10,18 +8,44 @@
   font-weight: 700;
   font-size: 14px;
   line-height: 22px;
-  color: #ffffff;
 
-  transition: background 160ms var(--ease-native), transform 120ms var(--ease-native), box-shadow 160ms var(--ease-native);
+  transition: background 160ms var(--ease-native), transform 120ms var(--ease-native), box-shadow 160ms var(--ease-native), border-color 160ms var(--ease-native), color 160ms var(--ease-native);
 }
 
-.btn:hover:not(:disabled) {
+.fullWidth {
+  width: 100%;
+}
+
+.accent {
+  background: var(--c-accent);
+  color: #ffffff;
+}
+.accent:hover:not(:disabled) {
   background: var(--c-accent-hover);
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(255, 160, 95, 0.4);
 }
 
-.btn:active {
+.brand {
+  background: var(--c-brand);
+  color: #ffffff;
+}
+.brand:hover:not(:disabled) {
+  background: var(--c-brand-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(29, 80, 134, 0.32);
+}
+
+.ghost {
+  background: transparent;
+  color: var(--c-text-2);
+  border: 1px solid var(--c-border);
+}
+.ghost:hover:not(:disabled) {
+  background: var(--c-surface-2);
+}
+
+.btn:active:not(:disabled) {
   transform: translateY(1px);
   box-shadow: none;
 }

@@ -12,4 +12,14 @@ describe("Container", () => {
     render(<Container className="custom">Page content</Container>);
     expect(screen.getByText("Page content").className).toContain("custom");
   });
+
+  it("renders as a div by default", () => {
+    render(<Container>Page content</Container>);
+    expect(screen.getByText("Page content").tagName).toBe("DIV");
+  });
+
+  it("renders as a different tag when as is given", () => {
+    render(<Container as="main">Page content</Container>);
+    expect(screen.getByText("Page content").tagName).toBe("MAIN");
+  });
 });

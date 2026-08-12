@@ -33,4 +33,24 @@ describe("GhostButton", () => {
     render(<GhostButton label="Go" icon={<span data-testid="custom-icon" />} />);
     expect(screen.getByTestId("custom-icon")).toBeInTheDocument();
   });
+
+  it("defaults to the md size", () => {
+    render(<GhostButton label="Go" onClick={() => {}} />);
+    expect(screen.getByRole("button").className).toContain("md");
+  });
+
+  it("applies the requested size", () => {
+    render(<GhostButton label="Go" size="lg" onClick={() => {}} />);
+    expect(screen.getByRole("button").className).toContain("lg");
+  });
+
+  it("forwards rest props to the button", () => {
+    render(<GhostButton label="Go" onClick={() => {}} data-testid="ghost" />);
+    expect(screen.getByTestId("ghost")).toBeInTheDocument();
+  });
+
+  it("forwards rest props to the anchor", () => {
+    render(<GhostButton label="Go" href="/somewhere" data-testid="ghost-link" />);
+    expect(screen.getByTestId("ghost-link")).toBeInTheDocument();
+  });
 });
