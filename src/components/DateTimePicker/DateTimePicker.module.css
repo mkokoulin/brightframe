@@ -1,0 +1,242 @@
+.root {
+  position: relative;
+  display: inline-flex;
+}
+
+.tabGroup {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 1px;
+  gap: 2px;
+
+  width: 208px;
+  height: 46px;
+
+  background: var(--c-surface);
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.tabGroup:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.tab {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  gap: 4px;
+
+  border-radius: 16px;
+  user-select: none;
+}
+
+.tab:nth-child(1) { width: 120px; }
+.tab:nth-child(2) { width: 84px; }
+
+.icon {
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  opacity: 0.85;
+}
+
+.tabText {
+  font-family: "PT Sans", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: var(--c-text-2);
+}
+
+.tab[data-active="true"] {
+  background: var(--c-hover-overlay);
+}
+
+.dropdown {
+  position: absolute;
+  left: 0;
+  top: calc(100% + 8px);
+  width: 320px;
+  z-index: 10;
+
+  opacity: 0;
+  transform: translateY(-6px) scale(0.98);
+  pointer-events: none;
+  transition: opacity 160ms var(--ease-native), transform 160ms var(--ease-native);
+}
+
+.dropdown[data-open="true"] {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.dropdownInner {
+  background: var(--c-surface);
+  border-radius: 16px;
+  box-shadow: 0px 10px 30px rgba(0,0,0,0.12);
+  border: 1px solid var(--c-border-soft);
+  padding: 12px;
+}
+
+/* Calendar */
+.calendar {}
+
+.calHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 6px 10px;
+}
+
+.monthTitle {
+  font-family: "PT Sans", sans-serif;
+  font-size: 14px;
+  color: var(--c-text-1);
+  font-weight: 600;
+}
+
+.navBtn {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  border: none;
+  background: var(--c-surface-alt);
+  cursor: pointer;
+  transition: background 140ms var(--ease-native);
+}
+
+.navBtn:hover, .navBtn:focus-visible {
+  background: var(--c-surface-2);
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  padding: 0 6px 6px;
+  font-family: "PT Sans", sans-serif;
+  font-size: 12px;
+  color: var(--c-text-3);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  padding: 6px;
+}
+
+.day {
+  height: 34px;
+  border-radius: 12px;
+  border: none;
+  background: var(--c-surface);
+  cursor: pointer;
+  font-family: "PT Sans", sans-serif;
+  font-size: 13px;
+  color: var(--c-text-1);
+}
+
+.day[data-out="true"] {
+  color: var(--c-disabled);
+}
+
+.day[data-selected="true"] {
+  background: rgba(255,160,95,0.22);
+}
+
+.day:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.day:not(:disabled):hover, .day:not(:disabled):focus-visible {
+  background: var(--c-hover-overlay);
+}
+
+/* Time */
+.timePanel {}
+
+.timeHeader {
+  padding: 6px 6px 10px;
+}
+
+.timeTitle {
+  font-family: "PT Sans", sans-serif;
+  font-size: 14px;
+  color: var(--c-text-1);
+  font-weight: 600;
+}
+
+.tz {
+  font-weight: 400;
+  color: var(--c-text-3);
+  margin-left: 6px;
+}
+
+.timeList {
+  max-height: 240px;
+  overflow: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  padding: 6px;
+}
+
+.timeItem {
+  height: 34px;
+  border-radius: 12px;
+  border: none;
+  background: var(--c-surface-alt);
+  cursor: pointer;
+
+  font-family: "PT Sans", sans-serif;
+  font-size: 13px;
+  color: var(--c-text-1);
+}
+
+.timeItem[data-active="true"] {
+  background: rgba(255,160,95,0.35);
+}
+
+.timeItem:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* Footer */
+.footerRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 6px 4px;
+}
+
+.quickBtn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: "PT Sans", sans-serif;
+  font-size: 13px;
+  color: var(--c-brand);
+  padding: 6px 8px;
+  border-radius: 12px;
+}
+
+.quickBtn:hover, .quickBtn:focus-visible {
+  background: var(--c-hover-overlay);
+}
+
+.timeItem:not(:disabled):hover, .timeItem:not(:disabled):focus-visible {
+  background: var(--c-surface-2);
+}

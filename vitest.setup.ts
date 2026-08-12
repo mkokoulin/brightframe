@@ -14,6 +14,10 @@ if (!window.matchMedia) {
     }) as unknown as MediaQueryList;
 }
 
+if (!Element.prototype.scrollIntoView) {
+  Element.prototype.scrollIntoView = () => {};
+}
+
 if (!window.IntersectionObserver) {
   class MockIntersectionObserver implements IntersectionObserver {
     readonly root: Element | null = null;

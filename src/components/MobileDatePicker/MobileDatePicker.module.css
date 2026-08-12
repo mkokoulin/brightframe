@@ -1,0 +1,375 @@
+/* ── Overlay ── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: flex-end;
+  animation: overlayIn 200ms var(--ease-native) both;
+}
+@keyframes overlayIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Bottom sheet ── */
+.sheet {
+  width: 100%;
+  max-height: 90svh;
+  background: var(--c-surface);
+  border-radius: 20px 20px 0 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: sheetUp 300ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes sheetUp {
+  from { transform: translateY(60px); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+/* ── Top bar: handle + close button ── */
+.topBar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 12px 16px 8px;
+}
+
+.handle {
+  width: 36px;
+  height: 4px;
+  background: var(--c-border);
+  border-radius: 2px;
+}
+
+.closeBtn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-text-2);
+  transition: background 140ms var(--ease-native);
+}
+.closeBtn:hover,
+.closeBtn:focus-visible {
+  background: var(--c-hover-overlay);
+  outline: none;
+}
+
+/* ── Range header: chips + hint ── */
+.rangeHeader {
+  flex-shrink: 0;
+  padding: 12px 24px 16px;
+  border-bottom: 1px solid var(--c-border-soft);
+}
+
+.chips {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.chip {
+  flex: 1;
+  height: 44px;
+  border-radius: 12px;
+  border: 1.5px solid transparent;
+  background: transparent;
+  cursor: pointer;
+
+  font-family: 'Rubik', system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--c-text-1);
+  text-align: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 140ms var(--ease-native), background 140ms var(--ease-native);
+}
+
+/* Inactive chip with a date */
+.chipIdle {
+  border-color: var(--c-border);
+  background: var(--c-surface-alt);
+}
+
+/* Active chip — the step being selected */
+.chipActive {
+  border-color: var(--c-brand);
+  background: var(--c-brand-soft);
+  color: var(--c-brand);
+}
+
+/* Placeholder chip with no date yet */
+.chipEmpty {
+  color: var(--c-text-3);
+}
+
+.chipArrow {
+  flex-shrink: 0;
+  color: var(--c-text-3);
+}
+
+.hint {
+  margin: 0;
+  font-family: 'Rubik', system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--c-text-3);
+  text-align: center;
+}
+
+/* ── Scrollable months ── */
+.scrollArea {
+  overflow-y: auto;
+  flex: 1;
+  padding: 0 20px 8px;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ── Month block ── */
+.monthBlock {
+  padding-bottom: 8px;
+}
+
+/* ── Month header ── */
+.monthHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 4px 12px;
+}
+
+.monthTitle {
+  font-family: 'Rubik', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--c-text-1);
+  text-align: center;
+  flex: 1;
+}
+
+.navBtn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--c-text-2);
+  flex-shrink: 0;
+  transition: background 140ms var(--ease-native);
+}
+.navBtn:hover,
+.navBtn:focus-visible {
+  background: var(--c-hover-overlay);
+  outline: none;
+}
+.navBtnHidden {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* ── Weekday labels ── */
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 2px;
+}
+.weekdayLabel {
+  text-align: center;
+  font-family: 'Rubik', system-ui, sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+  color: var(--c-text-3);
+  padding: 4px 0;
+  user-select: none;
+}
+
+/* ── Days grid ── */
+.daysGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+/* ── Day outer cell ── */
+.dayOuter {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  isolation: isolate;
+}
+
+/* ── Range highlight bar (behind button) ── */
+.rangeBar {
+  position: absolute;
+  height: 36px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--c-range-bar);
+  z-index: 0;
+  pointer-events: none;
+}
+.rangeBarMiddle {
+  left: 0; right: 0;
+  border-radius: 0;
+}
+.rangeBarStart {
+  left: 0; right: 0;
+  border-radius: 18px 0 0 18px;
+}
+.rangeBarEnd {
+  left: 0; right: 0;
+  border-radius: 0 18px 18px 0;
+}
+
+/* ── Day button ── */
+.dayBtn {
+  position: relative;
+  z-index: 1;
+  width: 36px;
+  height: 36px;
+  border: none;
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+
+  font-family: 'Rubik', system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--c-text-1);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 120ms var(--ease-native);
+  user-select: none;
+}
+.dayBtn:hover:not(.daySelected),
+.dayBtn:focus-visible:not(.daySelected) {
+  background: var(--c-brand-soft);
+  outline: none;
+}
+.dayToday {
+  border: 1.5px solid var(--c-brand);
+  color: var(--c-brand);
+  font-weight: 500;
+}
+.daySelected {
+  background: var(--c-brand);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* ── Footer: Reset + Apply ── */
+.footer {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 24px;
+  padding-bottom: max(14px, env(safe-area-inset-bottom));
+  border-top: 1px solid var(--c-border-soft);
+  background: var(--c-surface);
+}
+
+.resetBtn {
+  flex: 0 0 auto;
+  height: 48px;
+  padding: 0 20px;
+  border: 1.5px solid var(--c-border);
+  border-radius: 14px;
+  background: transparent;
+  cursor: pointer;
+
+  font-family: 'Rubik', system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--c-text-2);
+
+  transition: border-color 140ms var(--ease-native), color 140ms var(--ease-native);
+}
+.resetBtn:hover,
+.resetBtn:focus-visible {
+  border-color: var(--c-text-2);
+  color: var(--c-text-1);
+  outline: none;
+}
+
+.applyBtn {
+  flex: 1;
+  height: 48px;
+  border: none;
+  border-radius: 14px;
+  background: var(--c-brand);
+  cursor: pointer;
+
+  font-family: 'Rubik', system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+
+  transition: background 140ms var(--ease-native), transform 100ms var(--ease-native);
+}
+.applyBtn:hover,
+.applyBtn:focus-visible {
+  background: var(--c-brand-hover, var(--c-brand));
+  filter: brightness(1.08);
+  outline: none;
+}
+.applyBtn:active {
+  transform: scale(0.98);
+}
+
+.dayDisabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ── Dark theme ── */
+:global([data-theme="dark"]) .footer {
+  background: var(--c-surface);
+}
+
+/* ── Desktop: centered dialog instead of bottom sheet ── */
+@media (min-width: 640px) {
+  .overlay {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sheet {
+    width: 360px;
+    max-height: 80vh;
+    border-radius: 20px;
+    animation: dialogIn 220ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+@keyframes dialogIn {
+  from { transform: scale(0.96) translateY(8px); opacity: 0; }
+  to   { transform: scale(1)    translateY(0);   opacity: 1; }
+}

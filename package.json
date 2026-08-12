@@ -1,7 +1,7 @@
 {
   "name": "brightframe",
-  "version": "0.1.1",
-  "description": "React UI component kit with buttons, cards, tags, and more — themeable via a light/dark/high-contrast design token system and a drop-in ThemeProvider.",
+  "version": "0.2.0",
+  "description": "React UI component kit with buttons, cards, tags, form controls, and date/time pickers — themeable via a light/dark/high-contrast design token system and a drop-in ThemeProvider.",
   "keywords": [
     "react",
     "react-components",
@@ -18,7 +18,11 @@
     "a11y",
     "css-modules",
     "buttons",
-    "cards"
+    "cards",
+    "forms",
+    "form-validation",
+    "date-picker",
+    "time-picker"
   ],
   "homepage": "https://mkokoulin.github.io/brightframe/",
   "bugs": {
@@ -59,6 +63,9 @@
   "peerDependencies": {
     "react": ">=18",
     "react-dom": ">=18"
+  },
+  "dependencies": {
+    "react-imask": "^7.6.1"
   },
   "devDependencies": {
     "@storybook/react-vite": "10.3.6",

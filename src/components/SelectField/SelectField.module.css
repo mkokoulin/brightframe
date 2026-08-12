@@ -1,0 +1,160 @@
+@keyframes panelIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes errorIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-family: "PT Sans", sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--c-text-3);
+  white-space: nowrap;
+  padding-left: 4px;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+}
+
+/* ── Trigger ── */
+.trigger {
+  width: 100%;
+  height: 44px;
+  background: var(--c-surface);
+  border-radius: 16px;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px 0 20px;
+  box-sizing: border-box;
+  cursor: pointer;
+  box-shadow: 0 0 0 1.5px transparent;
+  transition: box-shadow 160ms var(--ease-native), border-radius 140ms var(--ease-native);
+  text-align: left;
+}
+
+.trigger:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 1.5px var(--c-brand);
+}
+
+.triggerOpen {
+  border-radius: 16px 16px 0 0;
+  box-shadow: 0 0 0 1.5px var(--c-brand);
+}
+
+.triggerError {
+  box-shadow: 0 0 0 1.5px var(--c-error);
+}
+
+.placeholder {
+  font-family: "PT Sans", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--c-text-3);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.valueText {
+  font-family: "PT Sans", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--c-text-1);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ── Chevron ── */
+.chevron {
+  width: 16px;
+  height: 16px;
+  flex: none;
+  color: var(--c-text-3);
+  transition: transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+              color 160ms var(--ease-native);
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+  color: var(--c-brand);
+}
+
+/* ── Panel ── */
+.panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--c-surface);
+  border-radius: 0 0 16px 16px;
+  box-shadow:
+    0 0 0 1.5px var(--c-brand),
+    0 8px 24px rgba(0, 0, 0, 0.10);
+  z-index: 200;
+  list-style: none;
+  margin: 0;
+  padding: 4px 0 8px;
+  overflow-y: auto;
+  max-height: 248px;
+  animation: panelIn 160ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ── Option ── */
+.option {
+  height: 40px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  font-family: "PT Sans", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--c-text-1);
+  cursor: pointer;
+  user-select: none;
+  transition: background 80ms var(--ease-native);
+}
+
+.optionFocused {
+  background: var(--c-surface-2);
+}
+
+.optionSelected {
+  color: var(--c-brand);
+  font-weight: 600;
+}
+
+.optionSelected.optionFocused {
+  background: var(--c-brand-soft);
+}
+
+/* ── Error message ── */
+.errorMsg {
+  font-family: "PT Sans", sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--c-error);
+  padding-left: 16px;
+  animation: errorIn 180ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}

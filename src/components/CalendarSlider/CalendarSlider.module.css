@@ -1,0 +1,375 @@
+/* CalendarSlider.module.css */
+
+.block {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* ===== Calendar: two columns ===== */
+
+.root {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: 160px;
+  box-sizing: border-box;
+}
+
+.colLeft {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 52%;
+  height: 160px;
+  box-sizing: border-box;
+}
+
+.colRight {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  width: 48%;
+  height: 160px;
+  box-sizing: border-box;
+}
+
+/* ── Selection row: arrows + month name ── */
+
+.selectionRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+  width: 100%;
+  height: 64px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.iconBtn,
+.iconBtnGhost {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  flex-shrink: 0;
+}
+
+.iconBtn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background 160ms var(--ease-native);
+}
+
+.iconBtn:hover,
+.iconBtn:focus-visible {
+  background: var(--c-hover-overlay);
+}
+
+.iconBtnGhost {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.monthPill {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+
+  font-family: 'Rubik', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--c-text-1);
+  text-align: center;
+  white-space: nowrap;
+  user-select: none;
+}
+
+/* ── Weekday row ── */
+
+.daysRow {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0;
+}
+
+/* ── Weekday header cell ── */
+
+.weekday {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 100px;
+  flex-shrink: 0;
+
+  font-family: 'Rubik', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--c-text-3);
+  user-select: none;
+}
+
+.weekend {
+  color: var(--c-error);
+}
+
+/* ── Day cell ── */
+
+/* Outer wrapper: 48×48, contains the range highlight and the button */
+.dayOuter {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  isolation: isolate;
+}
+
+/* Range highlight (behind the button) */
+.rangeBar {
+  position: absolute;
+  height: 40px;
+  top: 4px;
+  background: var(--c-range-bar);
+  border-radius: 12px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Middle range cells: full-width bar */
+.rangeBarMiddle {
+  left: 0;
+  right: 0;
+  border-radius: 0;
+}
+
+/* Range start: full cell, rounded on the left */
+.rangeBarStart {
+  left: 0;
+  right: 0;
+  border-radius: 20px 0 0 20px;
+}
+
+/* Range end: full cell, rounded on the right */
+.rangeBarEnd {
+  left: 0;
+  right: 0;
+  border-radius: 0 20px 20px 0;
+}
+
+/* Day number button */
+.dayCell {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  transition: background 140ms var(--ease-native);
+}
+
+.dayCell:hover:not(.daySelected),
+.dayCell:focus-visible:not(.daySelected) {
+  background: var(--c-brand-soft);
+}
+
+/* Selected date: solid circle */
+.daySelected {
+  background: var(--c-brand);
+}
+
+.dayNumber {
+  font-family: 'Rubik', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--c-text-1);
+  user-select: none;
+}
+
+.dayNumberSelected {
+  color: #ffffff;
+}
+
+/* ── Chevrons ── */
+
+.chevronLeft,
+.chevronRight {
+  width: 10px;
+  height: 10px;
+  border-right: 1.5px solid var(--c-text-3);
+  border-bottom: 1.5px solid var(--c-text-3);
+  display: inline-block;
+}
+
+.chevronLeft {
+  transform: rotate(135deg) translate(-1px, -1px);
+}
+
+.chevronRight {
+  transform: rotate(-45deg) translate(-1px, 1px);
+}
+
+/* ===== Preset toggle ===== */
+
+.filters {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 2px;
+  gap: 2px;
+  width: 100%;
+  height: 40px;
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+
+.filterBtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 12px;
+  height: 36px;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--c-text-1);
+  white-space: nowrap;
+
+  transition: color 160ms var(--ease-native);
+}
+
+.filterBtn:hover:not(.filterActive),
+.filterBtn:focus-visible:not(.filterActive) {
+  color: var(--c-brand);
+}
+
+/* Active toggle item */
+.filterActive {
+  background: var(--c-surface);
+  box-shadow: var(--c-shadow-md);
+}
+
+/* Mobile date-range button — hidden on desktop */
+.mobileDateBtn {
+  display: none;
+}
+
+/* ===== Stacking: right column drops below the left one when cells no longer fit ===== */
+/* Left column (52%) needs 13×48=624px → container ≥ 1200px → viewport ≥ 1440px */
+@media (min-width: 769px) and (max-width: 1439px) {
+  .root {
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+  }
+
+  .colLeft {
+    width: 100%;
+    height: auto;
+  }
+
+  .colRight {
+    width: 100%;
+    height: auto;
+    align-items: flex-start;
+  }
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 768px) {
+  .block {
+    width: 100%;
+  }
+
+  /* Hide the full calendar on mobile */
+  .root {
+    display: none;
+  }
+
+  /* Filters: horizontal scroll */
+  .filters {
+    width: 100%;
+    height: auto;
+    overflow-x: auto;
+    overflow-y: visible;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 4px 0;
+    border-radius: 12px;
+    background: var(--c-surface-alt);
+    gap: 2px;
+  }
+
+  .filters::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filterBtn {
+    flex-shrink: 0;
+    padding: 8px 16px;
+    font-size: 14px;
+    line-height: 20px;
+    white-space: nowrap;
+  }
+
+  .mobileDateBtn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 16px;
+    margin-bottom: 8px;
+    border: 1px solid var(--c-border);
+    border-radius: 12px;
+    background: var(--c-surface);
+    cursor: pointer;
+
+    font-family: 'Rubik', system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--c-text-1);
+    text-align: left;
+
+    transition: background 140ms var(--ease-native);
+  }
+
+  .mobileDateBtn:hover,
+  .mobileDateBtn:focus-visible {
+    background: var(--c-surface-alt);
+    outline: none;
+  }
+}

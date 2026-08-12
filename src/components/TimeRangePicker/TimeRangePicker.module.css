@@ -1,0 +1,178 @@
+.root {
+  width: 100%;
+  position: relative;
+}
+
+/* ── Pill container ─────────────────────────────────── */
+.group {
+  width: 100%;
+  height: 46px;
+  display: flex;
+  gap: 2px;
+  padding: 1px;
+  background: var(--c-surface);
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+
+.item {
+  height: 44px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  box-sizing: border-box;
+  flex: 1;
+}
+
+.icon {
+  width: 20px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+/* ── Date button ─────────────────────────────────────── */
+.dateInput {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--c-text-nav);
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  padding: 0;
+}
+
+/* ── Time row ────────────────────────────────────────── */
+.range {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 100%;
+}
+
+.timeBtn {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--c-text-nav);
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 8px;
+  transition: background 0.15s var(--ease-native), color 0.15s var(--ease-native);
+  white-space: nowrap;
+}
+
+.timeBtn:hover {
+  background: var(--c-hover-overlay);
+}
+
+.timeBtnActive {
+  background: var(--c-accent);
+  color: #fff;
+}
+
+.timeBtnActive:hover {
+  background: var(--c-accent-hover);
+}
+
+.dash {
+  color: var(--c-text-3);
+  user-select: none;
+  font-size: 14px;
+}
+
+.duration {
+  margin-left: auto;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 16px;
+  color: var(--c-text-2);
+  background: var(--c-surface-alt);
+  border-radius: 999px;
+  padding: 3px 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Dropdown panel ──────────────────────────────────── */
+.panel {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  left: 0;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border-soft);
+  border-radius: 16px;
+  box-shadow: var(--c-shadow-md);
+  padding: 12px;
+  z-index: 50;
+  animation: panelIn 0.14s var(--ease-native);
+}
+
+@keyframes panelIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.panelLabel {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-text-3);
+  margin-bottom: 10px;
+  padding: 0 2px;
+}
+
+/* ── Slots grid ──────────────────────────────────────── */
+.slots {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+
+.slot {
+  border: none;
+  outline: none;
+  background: var(--c-surface-alt);
+  color: var(--c-text-nav);
+  font-family: inherit;
+  font-size: 13px;
+  line-height: 1;
+  padding: 8px 4px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.12s var(--ease-native), color 0.12s var(--ease-native), transform 0.1s var(--ease-native);
+}
+
+.slot:hover {
+  background: var(--c-brand-soft);
+  color: var(--c-brand);
+}
+
+.slot:active {
+  transform: scale(0.95);
+}
+
+.slotActive {
+  background: var(--c-accent);
+  color: #fff;
+  font-weight: 600;
+}
+
+.slotActive:hover {
+  background: var(--c-accent-hover);
+  color: #fff;
+}
