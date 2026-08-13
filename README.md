@@ -33,8 +33,35 @@ function Example() {
 }
 ```
 
-- `brightframe/tokens.css` — CSS custom properties (colors, shadows, motion). Required.
+- `brightframe/tokens.css` — CSS custom properties (colors, shadows, motion, fonts). Required.
 - `brightframe/style.css` — compiled component styles (CSS Modules output). Required.
+- `brightframe/fonts.css` — loads the default typeface. Optional, see [Fonts](#fonts).
+
+### Fonts
+
+Every component reads its font from one custom property, `--font-sans`, defined in `tokens.css`:
+
+```css
+--font-sans: "PT Sans", "Helvetica Neue", Arial, sans-serif;
+```
+
+Naming a font isn't the same as loading it — the browser only renders PT Sans if it's actually available on the page. That's what `brightframe/fonts.css` is for: an optional module that loads PT Sans from Google Fonts.
+
+```tsx
+import "brightframe/tokens.css";
+import "brightframe/fonts.css"; // optional — loads PT Sans
+import "brightframe/style.css";
+```
+
+Skip it if you already load PT Sans yourself, self-host it, or want a different family entirely — just override `--font-sans` in your own CSS instead:
+
+```css
+:root {
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+```
+
+Without either `fonts.css` or your own override, the browser falls back through `--font-sans`'s stack (Helvetica Neue, Arial, then the system sans-serif) — visually close to PT Sans, but not it. See the **Foundations/Fonts** story in [Storybook](https://mkokoulin.github.io/brightframe/) for a live before/after.
 
 ### Theming
 

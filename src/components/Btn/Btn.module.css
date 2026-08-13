@@ -10,7 +10,7 @@
   border: 2px solid transparent;
   border-radius: 12px;
   cursor: pointer;
-  font-family: "PT Sans", sans-serif;
+  font-family: var(--font-sans);
   font-weight: 600;
   text-decoration: none;
   white-space: nowrap;

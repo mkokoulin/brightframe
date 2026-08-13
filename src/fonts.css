@@ -1,0 +1,15 @@
+/* ══════════════════════════════════════════
+   BRIGHTFRAME — FONTS
+   Optional. Loads PT Sans — brightframe's default typeface
+   (see --font-sans in tokens.css) — from Google Fonts.
+
+   Import this once at your app root if you don't already load
+   PT Sans yourself:
+
+     import "brightframe/fonts.css";
+
+   Skip it if you self-host fonts, load PT Sans through your own
+   pipeline, or want a different family entirely — just override
+   --font-sans in your own CSS instead. See README.md#fonts.
+   ══════════════════════════════════════════ */
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap");

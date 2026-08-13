@@ -19,7 +19,25 @@ function Example() {
 }
 ```
 
-## 2. Theming with `<ThemeProvider>`
+## 2. Loading the default font
+
+Components render with `var(--font-sans)`, which defaults to `"PT Sans", "Helvetica Neue", Arial, sans-serif` (set in `tokens.css`). Naming the font isn't the same as loading it — import `brightframe/fonts.css` if you want the actual PT Sans webfont instead of the fallback stack:
+
+```tsx
+import "brightframe/tokens.css";
+import "brightframe/fonts.css"; // optional — loads PT Sans from Google Fonts
+import "brightframe/style.css";
+```
+
+Prefer a different typeface, or want to self-host? Skip `fonts.css` and override the variable instead:
+
+```css
+:root {
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+```
+
+## 3. Theming with `<ThemeProvider>`
 
 Wrap your app once. `useTheme()` gives you the current theme and setters anywhere below it.
 
@@ -59,7 +77,7 @@ setA11y("visually-impaired"); // high-contrast palette from tokens.css
 setA11y("default");           // back to normal
 ```
 
-## 3. Avoiding a flash of the wrong theme on first paint
+## 4. Avoiding a flash of the wrong theme on first paint
 
 `ThemeProvider` applies the theme after mount, which is fine for client-rendered apps but can cause a visible flash on server-rendered pages. Inline `getThemeInitScript()`'s output in the document `<head>` so the correct `data-theme` is set before hydration.
 
@@ -86,7 +104,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
 Keep `getThemeInitScript()`'s options (`storageKey`, `defaultTheme`) in sync with the `<ThemeProvider>` props — they read/write the same `localStorage` keys.
 
-## 4. A small pricing card composition
+## 5. A small pricing card composition
 
 ```tsx
 import { Card, Tag, Btn, InfoTooltip } from "brightframe";
@@ -105,7 +123,7 @@ function PricingCard() {
 }
 ```
 
-## 5. Page shell primitives
+## 6. Page shell primitives
 
 ```tsx
 import { Container, Eyebrow, Title, SubTitle, SectionHeading } from "brightframe";

@@ -91,7 +91,7 @@
   background: transparent;
   cursor: pointer;
 
-  font-family: 'Rubik', system-ui, sans-serif;
+  font-family: var(--font-sans);
   font-size: 15px;
   font-weight: 500;
   color: var(--c-text-1);
@@ -128,7 +128,7 @@
 
 .hint {
   margin: 0;
-  font-family: 'Rubik', system-ui, sans-serif;
+  font-family: var(--font-sans);
   font-size: 13px;
   font-weight: 400;
   color: var(--c-text-3);
@@ -157,7 +157,7 @@
 }
 
 .monthTitle {
-  font-family: 'Rubik', system-ui, sans-serif;
+  font-family: var(--font-sans);
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
@@ -198,7 +198,7 @@
 }
 .weekdayLabel {
   text-align: center;
-  font-family: 'Rubik', system-ui, sans-serif;
+  font-family: var(--font-sans);
   font-size: 12px;
   line-height: 20px;
   color: var(--c-text-3);
@@ -256,7 +256,7 @@
   border-radius: 50%;
   cursor: pointer;
 
-  font-family: 'Rubik', system-ui, sans-serif;
+  font-family: var(--font-sans);
   font-size: 15px;
   font-weight: 400;
   color: var(--c-text-1);
@@ -304,7 +304,7 @@
   background: transparent;
   cursor: pointer;
 
-  font-family: 'Rubik', system-ui, sans-serif;
+  font-family: var(--font-sans);
   font-size: 15px;
   font-weight: 400;
   color: var(--c-text-2);
@@ -326,7 +326,7 @@
   background: var(--c-brand);
   cursor: pointer;
 
-  font-family: 'Rubik', system-ui, sans-serif;
+  font-family: var(--font-sans);
   font-size: 15px;
   font-weight: 600;
   color: #ffffff;

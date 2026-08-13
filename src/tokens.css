@@ -12,6 +12,13 @@
   /* ── Motion ── */
   --ease-native: cubic-bezier(0.22, 1, 0.36, 1);
 
+  /* ── Typography ──
+     PT Sans is the kit's default typeface. This variable only names the
+     font — it doesn't load it. Import "brightframe/fonts.css" to pull
+     PT Sans from Google Fonts, or override --font-sans to use your own
+     (self-hosted or otherwise). See README.md#fonts. */
+  --font-sans: "PT Sans", "Helvetica Neue", Arial, sans-serif;
+
   /* ── Backgrounds ── */
   --c-bg: #fbfbfd;
   --c-surface: #ffffff;

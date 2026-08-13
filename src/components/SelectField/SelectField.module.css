@@ -16,7 +16,7 @@
 }
 
 .label {
-  font-family: "PT Sans", sans-serif;
+  font-family: var(--font-sans);
   font-weight: 400;
   font-size: 13px;
   line-height: 18px;
@@ -63,7 +63,7 @@
 }
 
 .placeholder {
-  font-family: "PT Sans", sans-serif;
+  font-family: var(--font-sans);
   font-size: 14px;
   line-height: 20px;
   color: var(--c-text-3);
@@ -75,7 +75,7 @@
 }
 
 .valueText {
-  font-family: "PT Sans", sans-serif;
+  font-family: var(--font-sans);
   font-size: 14px;
   line-height: 20px;
   color: var(--c-text-1);
@@ -127,7 +127,7 @@
   padding: 0 20px;
   display: flex;
   align-items: center;
-  font-family: "PT Sans", sans-serif;
+  font-family: var(--font-sans);
   font-size: 14px;
   line-height: 20px;
   color: var(--c-text-1);
@@ -151,7 +151,7 @@
 
 /* ── Error message ── */
 .errorMsg {
-  font-family: "PT Sans", sans-serif;
+  font-family: var(--font-sans);
   font-size: 12px;
   line-height: 16px;
   color: var(--c-error);

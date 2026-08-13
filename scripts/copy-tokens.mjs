@@ -3,9 +3,13 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const src = resolve(__dirname, "../src/tokens.css");
-const dest = resolve(__dirname, "../dist/tokens.css");
 
-mkdirSync(dirname(dest), { recursive: true });
-copyFileSync(src, dest);
-console.log("copied tokens.css -> dist/tokens.css");
+const files = ["tokens.css", "fonts.css"];
+
+for (const file of files) {
+  const src = resolve(__dirname, "../src", file);
+  const dest = resolve(__dirname, "../dist", file);
+  mkdirSync(dirname(dest), { recursive: true });
+  copyFileSync(src, dest);
+  console.log(`copied ${file} -> dist/${file}`);
+}

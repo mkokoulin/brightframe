@@ -48,6 +48,7 @@
       "require": "./dist/brightframe.cjs"
     },
     "./tokens.css": "./dist/tokens.css",
+    "./fonts.css": "./dist/fonts.css",
     "./style.css": "./dist/brightframe.css"
   },
   "scripts": {

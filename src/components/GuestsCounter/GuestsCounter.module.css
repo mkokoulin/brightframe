@@ -23,7 +23,7 @@
 }
 
 .label {
-  font-family: "PT Sans", sans-serif;
+  font-family: var(--font-sans);
   font-size: 14px;
   line-height: 20px;
   color: var(--c-text-3);
@@ -61,7 +61,7 @@
 .value {
   width: 24px;
   text-align: center;
-  font-family: "PT Sans", sans-serif;
+  font-family: var(--font-sans);
   font-weight: 600;
   font-size: 14px;
   line-height: 20px;
