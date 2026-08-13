@@ -110,7 +110,7 @@ Every presentational component (the ones in the first table below) follows the s
 
 - **Native attributes pass through.** `style`, `id`, `data-*`, `aria-*`, event handlers, and any other valid HTML attribute for the underlying element are forwarded — you don't need a wrapper `<div>` to add a `style` override or a `data-testid`.
 - **`className` merges**, it never replaces the component's own classes.
-- **Polymorphic tag via `as`.** `Title`, `SubTitle`, `SectionHeading`, `Container`, and `Eyebrow` accept an `as` prop (e.g. `<Title as="h2">`) to change the rendered tag without changing how it looks — use it to keep a single `<h1>` per page while still getting Title's styling elsewhere.
+- **Polymorphic tag via `as`.** `Title`, `SubTitle`, `SectionHeading`, `Container`, `Eyebrow`, `Grid`, and `GridItem` accept an `as` prop (e.g. `<Title as="h2">`) to change the rendered tag without changing how it looks — use it to keep a single `<h1>` per page while still getting Title's styling elsewhere.
 - **Sizes/variants are additive**, existing defaults never change between patch/minor releases.
 
 Interactive form widgets (`MobileDatePicker`, `CalendarSlider`, `TimeRangePicker`, `DateTimePicker`, `SelectField`) intentionally expose a narrower, purpose-built API (`locale`, `labels`, `minDate`/`maxDate`, `businessHours`, ...) instead of raw DOM prop spreading — their root elements carry click-outside/keyboard logic that a stray `onClick` or `style` override could break.
@@ -139,8 +139,22 @@ Interactive form widgets (`MobileDatePicker`, `CalendarSlider`, `TimeRangePicker
 | `Link` | Simple underlined text link |
 | `Title` / `SubTitle` | `<h1>` / `<h2>` display headings |
 | `Container` | Full-height block with a surface background |
+| `Grid` / `GridItem` | Responsive CSS Grid layout — per-breakpoint column count and gap (`columns={{ base: 1, md: 2, lg: 4 }}`), items span columns responsively (`span={{ base: 12, md: 6 }}`) |
+| `Badge` | Pins children (typically a `<Tag>`) to a corner of a `position: relative` parent — e.g. a discount ribbon on a card |
+| `Fab` | Circular icon-only floating action button — 4 color variants, 3 sizes |
+| `EmptyState` | Centered icon + title + description + optional CTA, for empty lists/results |
+| `ActionCard` | Clickable tile — icon top-left, always-visible arrow button top-right, title/description below, renders as `<a>` when `href` is passed |
+| `Carousel` | Single active slide with prev/next arrow buttons and/or dot pagination, optional autoplay (respects `prefers-reduced-motion`) |
+| `HorizontalScroller` | Native scroll-snap horizontal row with edge arrow buttons and a fade mask over hidden content |
 | `ThemeProvider` / `useTheme` | Light/dark/system theme + a11y mode, persisted and applied to `<html>` |
 | `getThemeInitScript` | Inline script to prevent a flash of the wrong theme on server-rendered pages |
+
+### Layout & navigation
+
+| Component | Description |
+|---|---|
+| `Navbar` / `NavbarItem` | Page header bar — brand slot, nav items with an active-state pill highlight, right-aligned actions slot for your own theme/language/`<Burger>` controls |
+| `Footer` / `FooterColumn` | Responsive footer — 1 column on mobile, side by side from `md` up |
 
 ### Form controls
 

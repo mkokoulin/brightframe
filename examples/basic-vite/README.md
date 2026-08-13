@@ -5,6 +5,7 @@ A minimal Vite + React app consuming `brightframe` as a real npm dependency (via
 - `<ThemeProvider>` / `useTheme()` — light/dark/system theme switching + the high-contrast a11y mode
 - Importing `brightframe/tokens.css` and `brightframe/style.css`
 - A handful of components together on one page: `Btn`, `Card`, `Tag`, `InfoTooltip`, `InfoCards`, `DayBadge`, `GhostButton`, `Link`, `Loader`, `Burger`, `Container`, `Title`/`SubTitle`/`Eyebrow`/`SectionHeading`
+- `Grid`/`GridItem` — the "Our plans" cards stack in one column on mobile and sit side by side from `sm` (≥640px) up; resize the browser to see it reflow
 
 ## Run it
 

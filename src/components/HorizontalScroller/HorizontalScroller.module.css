@@ -1,0 +1,83 @@
+.root {
+  position: relative;
+}
+
+.row {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.row::-webkit-scrollbar {
+  display: none;
+}
+
+.row > * {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+.fade {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 64px;
+  pointer-events: none;
+}
+
+.fadeLeft {
+  left: 0;
+  background: linear-gradient(to right, var(--c-bg), var(--c-surface-0));
+}
+
+.fadeRight {
+  right: 0;
+  background: linear-gradient(to left, var(--c-bg), var(--c-surface-0));
+}
+
+.navBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: 999px;
+  box-shadow: var(--c-shadow-sm);
+  color: var(--c-text-1);
+  cursor: pointer;
+
+  transition: background 160ms var(--ease-native);
+}
+
+.navBtn:hover {
+  background: var(--c-surface-alt);
+}
+
+.navBtn:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+}
+
+.navBtn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.navBtnLeft {
+  left: 8px;
+}
+
+.navBtnRight {
+  right: 8px;
+}

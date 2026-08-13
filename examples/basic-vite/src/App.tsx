@@ -17,6 +17,8 @@ import {
   Loader,
   Link,
   Burger,
+  Grid,
+  GridItem,
 } from "brightframe";
 
 function ThemeToggle() {
@@ -76,26 +78,31 @@ function Page() {
 
         <section>
           <SectionHeading title="Our plans" subtitle="Flexible options for any work rhythm" />
-          <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-            <Card variant="elevated" radius="lg" hover style={{ padding: 24, width: 260 }}>
-              <Tag variant="accent">Popular</Tag>
-              <p style={{ margin: "12px 0", display: "flex", alignItems: "center", gap: 6 }}>
-                <strong style={{ fontSize: 21 }}>70 000 ֏</strong>
-                <InfoTooltip label="5 000 ֏ discount when renewing your subscription" />
-              </p>
-              <Btn variant="primary" fullWidth>
-                Register
-              </Btn>
-            </Card>
+          {/* Grid: 1 column on mobile, 2 side by side from the sm breakpoint (≥640px) up */}
+          <Grid columns={{ base: 1, sm: 2 }} gap={16}>
+            <GridItem>
+              <Card variant="elevated" radius="lg" hover style={{ padding: 24 }}>
+                <Tag variant="accent">Popular</Tag>
+                <p style={{ margin: "12px 0", display: "flex", alignItems: "center", gap: 6 }}>
+                  <strong style={{ fontSize: 21 }}>70 000 ֏</strong>
+                  <InfoTooltip label="5 000 ֏ discount when renewing your subscription" />
+                </p>
+                <Btn variant="primary" fullWidth>
+                  Register
+                </Btn>
+              </Card>
+            </GridItem>
 
-            <Card variant="outlined" radius="lg" style={{ padding: 24, width: 260 }}>
-              <Tag variant="neutral">Day pass</Tag>
-              <p style={{ margin: "12px 0", fontSize: 21, fontWeight: 700 }}>5 000 ֏</p>
-              <Btn variant="secondary" fullWidth>
-                Book a day
-              </Btn>
-            </Card>
-          </div>
+            <GridItem>
+              <Card variant="outlined" radius="lg" style={{ padding: 24 }}>
+                <Tag variant="neutral">Day pass</Tag>
+                <p style={{ margin: "12px 0", fontSize: 21, fontWeight: 700 }}>5 000 ֏</p>
+                <Btn variant="secondary" fullWidth>
+                  Book a day
+                </Btn>
+              </Card>
+            </GridItem>
+          </Grid>
         </section>
 
         <section>

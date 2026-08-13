@@ -14,6 +14,15 @@ export * from "./components/Link";
 export * from "./components/Title";
 export * from "./components/SubTitle";
 export * from "./components/Container";
+export * from "./components/Grid";
+export * from "./components/Badge";
+export * from "./components/Fab";
+export * from "./components/EmptyState";
+export * from "./components/ActionCard";
+export * from "./components/Carousel";
+export * from "./components/HorizontalScroller";
+export * from "./components/Navbar";
+export * from "./components/Footer";
 
 export * from "./components/FormCard";
 export * from "./components/SubmitButton";

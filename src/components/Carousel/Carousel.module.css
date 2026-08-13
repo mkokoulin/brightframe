@@ -1,0 +1,100 @@
+.root {
+  width: 100%;
+}
+
+.viewport {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.track {
+  display: flex;
+  width: 100%;
+  transition: transform 400ms var(--ease-native);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    transition: none;
+  }
+}
+
+.slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
+
+.navBtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 999px;
+  color: var(--c-text-1);
+  cursor: pointer;
+
+  transition:
+    background 160ms var(--ease-native),
+    transform 160ms var(--ease-native);
+}
+
+.navBtn:hover {
+  background: #fff;
+}
+
+.navBtn:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+}
+
+.navBtn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.navBtnLeft {
+  left: 16px;
+}
+
+.navBtnRight {
+  right: 16px;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: var(--c-dot);
+  cursor: pointer;
+  transition: background 160ms var(--ease-native), width 160ms var(--ease-native);
+}
+
+.dot:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+}
+
+.dotActive {
+  width: 20px;
+  background: var(--c-brand);
+}

@@ -1,0 +1,70 @@
+.grid {
+  box-sizing: border-box;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(var(--grid-cols-base, 12), minmax(0, 1fr));
+  gap: var(--grid-gap-base, 16px);
+}
+
+.item {
+  min-width: 0;
+  grid-column: span var(--item-span-base, 1);
+}
+
+/* ===== sm ≥ 640px (large phone / small tablet) ===== */
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(var(--grid-cols-sm, var(--grid-cols-base, 12)), minmax(0, 1fr));
+    gap: var(--grid-gap-sm, var(--grid-gap-base, 16px));
+  }
+
+  .item {
+    grid-column: span var(--item-span-sm, var(--item-span-base, 1));
+  }
+}
+
+/* ===== md ≥ 768px (tablet) ===== */
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(
+      var(--grid-cols-md, var(--grid-cols-sm, var(--grid-cols-base, 12))),
+      minmax(0, 1fr)
+    );
+    gap: var(--grid-gap-md, var(--grid-gap-sm, var(--grid-gap-base, 16px)));
+  }
+
+  .item {
+    grid-column: span var(--item-span-md, var(--item-span-sm, var(--item-span-base, 1)));
+  }
+}
+
+/* ===== lg ≥ 1024px (small desktop / tablet landscape) ===== */
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(
+      var(--grid-cols-lg, var(--grid-cols-md, var(--grid-cols-sm, var(--grid-cols-base, 12)))),
+      minmax(0, 1fr)
+    );
+    gap: var(--grid-gap-lg, var(--grid-gap-md, var(--grid-gap-sm, var(--grid-gap-base, 16px))));
+  }
+
+  .item {
+    grid-column: span var(--item-span-lg, var(--item-span-md, var(--item-span-sm, var(--item-span-base, 1))));
+  }
+}
+
+/* ===== xl ≥ 1280px (desktop) ===== */
+@media (min-width: 1280px) {
+  .grid {
+    grid-template-columns: repeat(
+      var(--grid-cols-xl, var(--grid-cols-lg, var(--grid-cols-md, var(--grid-cols-sm, var(--grid-cols-base, 12))))),
+      minmax(0, 1fr)
+    );
+    gap: var(--grid-gap-xl, var(--grid-gap-lg, var(--grid-gap-md, var(--grid-gap-sm, var(--grid-gap-base, 16px)))));
+  }
+
+  .item {
+    grid-column: span
+      var(--item-span-xl, var(--item-span-lg, var(--item-span-md, var(--item-span-sm, var(--item-span-base, 1)))));
+  }
+}

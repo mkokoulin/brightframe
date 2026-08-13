@@ -32,3 +32,12 @@ if (!window.IntersectionObserver) {
   }
   window.IntersectionObserver = MockIntersectionObserver as unknown as typeof IntersectionObserver;
 }
+
+if (!window.ResizeObserver) {
+  class MockResizeObserver implements ResizeObserver {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+  }
+  window.ResizeObserver = MockResizeObserver as unknown as typeof ResizeObserver;
+}

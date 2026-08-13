@@ -1,0 +1,86 @@
+.root {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 12px 24px;
+  background: var(--c-surface);
+  border-bottom: 1px solid var(--c-border-soft);
+}
+
+.brand {
+  flex: none;
+  display: flex;
+  align-items: center;
+}
+
+.nav {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.actions {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 14px;
+
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--c-text-nav);
+
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 400;
+  white-space: nowrap;
+
+  transition:
+    background 160ms var(--ease-native),
+    color 160ms var(--ease-native);
+}
+
+.item:hover {
+  background: var(--c-surface-2);
+}
+
+.item:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.itemActive {
+  background: var(--c-accent);
+  color: #fff;
+}
+
+.itemActive:hover {
+  background: var(--c-accent-hover);
+}
+
+@media (max-width: 768px) {
+  .nav {
+    display: none;
+  }
+}
