@@ -23,6 +23,9 @@ export * from "./components/Carousel";
 export * from "./components/HorizontalScroller";
 export * from "./components/Navbar";
 export * from "./components/Footer";
+export * from "./components/Modal";
+export * from "./components/Tabs";
+export * from "./components/Accordion";
 
 export * from "./components/FormCard";
 export * from "./components/SubmitButton";
