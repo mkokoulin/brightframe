@@ -1,0 +1,28 @@
+name: Feature / component request
+description: Propose a new component, prop, or variant
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to build?
+      description: The concrete UI/screen this would unblock — helps judge whether the shape fits the kit's scope.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed API
+      description: Rough props/variants, or a reference to how another kit (Radix, MUI, Ant, ...) shapes it.
+      render: tsx
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: What are you doing today instead?
+      description: Composing it from existing primitives, a workaround, a different library.
+    validations:
+      required: false

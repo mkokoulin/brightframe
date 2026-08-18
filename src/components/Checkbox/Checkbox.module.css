@@ -1,0 +1,94 @@
+/* ──────────────────────────────────────────
+   Checkbox
+   ────────────────────────────────────────── */
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.row {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.row.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.control {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+}
+
+.box {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1.5px solid var(--c-border);
+  border-radius: 6px;
+  background: var(--c-surface);
+  color: #fff;
+  transition: background 140ms var(--ease-native), border-color 140ms var(--ease-native);
+}
+
+.check,
+.dash {
+  opacity: 0;
+  transition: opacity 100ms var(--ease-native);
+}
+
+.input:checked + .box {
+  background: var(--c-accent);
+  border-color: var(--c-accent);
+}
+.input:checked + .box .check {
+  opacity: 1;
+}
+
+.input:indeterminate + .box {
+  background: var(--c-accent);
+  border-color: var(--c-accent);
+}
+.input:indeterminate + .box .dash {
+  opacity: 1;
+}
+
+.input:focus-visible + .box {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+}
+
+.input:disabled + .box {
+  cursor: not-allowed;
+}
+
+.text {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--c-text-1);
+}
+
+.errorMsg {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--c-error);
+  padding-left: 30px;
+}

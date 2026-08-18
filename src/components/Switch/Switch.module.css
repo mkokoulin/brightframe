@@ -1,0 +1,74 @@
+/* ──────────────────────────────────────────
+   Switch — boolean toggle
+   ────────────────────────────────────────── */
+
+.row {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.row.disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.track {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 24px;
+  border-radius: 999px;
+  background: var(--c-border);
+}
+
+.input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+}
+
+.fill {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: var(--c-accent);
+  opacity: 0;
+  transition: opacity 160ms var(--ease-native);
+}
+
+.input:checked ~ .fill {
+  opacity: 1;
+}
+
+.input:checked ~ .thumb {
+  transform: translateX(16px);
+}
+
+.thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: var(--c-shadow-sm);
+  transition: transform 160ms var(--ease-native);
+}
+
+.input:focus-visible ~ .thumb {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+}
+
+.text {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--c-text-1);
+}

@@ -98,6 +98,6 @@ npm publish --tag next
 - **Within 72 hours of publishing**: `npm unpublish brightframe@<version>` removes that version entirely. npm blocks unpublishing versions older than 72 hours except in narrow cases (security, legal) — don't rely on this as a normal workflow.
 - **Preferred fix, any time**: ship a new patch version with the fix. Optionally mark the bad one so people don't install it: `npm deprecate brightframe@<version> "reason, use >=<fixed-version> instead"`.
 
-## CI (not yet set up)
+## CI
 
-There's currently no CI pipeline publishing automatically. Every release above is manual. If this repo grows a GitHub Actions workflow later, prefer [npm's trusted publishing / provenance](https://docs.npmjs.com/generating-provenance-statements) over storing a long-lived `NPM_TOKEN` secret.
+`.github/workflows/ci.yml` runs `typecheck`, `test`, and `build` on every push to `main` and every pull request — it's a correctness gate, not a publish pipeline. Every release above is still manual. If automated publishing gets added later, prefer [npm's trusted publishing / provenance](https://docs.npmjs.com/generating-provenance-statements) over storing a long-lived `NPM_TOKEN` secret.

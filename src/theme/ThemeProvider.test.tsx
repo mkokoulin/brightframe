@@ -136,4 +136,75 @@ describe("ThemeProvider / useTheme", () => {
     expect(() => render(<Probe />)).toThrow(/must be used within a <ThemeProvider>/);
     spy.mockRestore();
   });
+
+  describe("palette overrides", () => {
+    it("applies the light palette as inline custom properties when resolved light", () => {
+      mockMatchMedia(false);
+      render(
+        <ThemeProvider defaultTheme="light" palette={{ light: { "--c-accent": "#ff0000" } }}>
+          <Probe />
+        </ThemeProvider>,
+      );
+      expect(document.documentElement.style.getPropertyValue("--c-accent")).toBe("#ff0000");
+    });
+
+    it("does not apply the dark palette while resolved light", () => {
+      mockMatchMedia(false);
+      render(
+        <ThemeProvider
+          defaultTheme="light"
+          palette={{ light: { "--c-accent": "#ff0000" }, dark: { "--c-accent": "#00ff00" } }}
+        >
+          <Probe />
+        </ThemeProvider>,
+      );
+      expect(document.documentElement.style.getPropertyValue("--c-accent")).toBe("#ff0000");
+    });
+
+    it("swaps the active palette set when the resolved theme changes", async () => {
+      mockMatchMedia(false);
+      render(
+        <ThemeProvider
+          defaultTheme="light"
+          palette={{ light: { "--c-accent": "#ff0000" }, dark: { "--c-accent": "#00ff00" } }}
+        >
+          <Probe />
+        </ThemeProvider>,
+      );
+      expect(document.documentElement.style.getPropertyValue("--c-accent")).toBe("#ff0000");
+
+      await userEvent.click(screen.getByText("set dark"));
+      expect(document.documentElement.style.getPropertyValue("--c-accent")).toBe("#00ff00");
+    });
+
+    it("clears an overridden property once the palette prop stops setting it", async () => {
+      mockMatchMedia(false);
+      function Wrapper() {
+        return (
+          <ThemeProvider defaultTheme="light" palette={{ light: { "--c-accent": "#ff0000" } }}>
+            <Probe />
+          </ThemeProvider>
+        );
+      }
+      const { rerender } = render(<Wrapper />);
+      expect(document.documentElement.style.getPropertyValue("--c-accent")).toBe("#ff0000");
+
+      rerender(
+        <ThemeProvider defaultTheme="light">
+          <Probe />
+        </ThemeProvider>,
+      );
+      expect(document.documentElement.style.getPropertyValue("--c-accent")).toBe("");
+    });
+
+    it("leaves tokens.css's defaults untouched when no palette is passed", () => {
+      mockMatchMedia(false);
+      render(
+        <ThemeProvider defaultTheme="light">
+          <Probe />
+        </ThemeProvider>,
+      );
+      expect(document.documentElement.style.getPropertyValue("--c-accent")).toBe("");
+    });
+  });
 });

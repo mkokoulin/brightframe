@@ -1,6 +1,13 @@
 # brightframe
 
-[📖 Storybook](https://mkokoulin.github.io/brightframe/)
+[![npm version](https://img.shields.io/npm/v/brightframe.svg)](https://www.npmjs.com/package/brightframe)
+[![CI](https://github.com/mkokoulin/brightframe/actions/workflows/ci.yml/badge.svg)](https://github.com/mkokoulin/brightframe/actions/workflows/ci.yml)
+[![npm downloads](https://img.shields.io/npm/dm/brightframe.svg)](https://www.npmjs.com/package/brightframe)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/brightframe)](https://bundlephobia.com/package/brightframe)
+[![license](https://img.shields.io/npm/l/brightframe.svg)](./LICENSE)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-support-ffdd00?logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/kokoulin92u)
+
+[📖 Storybook](https://mkokoulin.github.io/brightframe/) · [☕ Support this project](https://buymeacoffee.com/kokoulin92u)
 
 Independent React UI kit extracted from the [LAN](https://lancoworking.am) coworking site — a small set of presentational primitives (buttons, cards, tags, headings, ...) built on a light/dark/high-contrast design token system.
 
@@ -116,6 +123,25 @@ export function App() {
 
 For server-rendered apps (Next.js, etc.), pair it with `getThemeInitScript()` to avoid a flash of the wrong theme before hydration — see [EXAMPLES.md](./EXAMPLES.md#3-avoiding-a-flash-of-the-wrong-theme-on-first-paint).
 
+#### Custom brand palette
+
+Pass `palette` to override individual color/shadow tokens per resolved theme, without writing your own CSS file:
+
+```tsx
+<ThemeProvider
+  palette={{
+    light: { "--c-accent": "#7c3aed", "--c-brand": "#0f766e" },
+    dark: { "--c-accent": "#a78bfa", "--c-brand": "#2dd4bf" },
+  }}
+>
+  {/* ... */}
+</ThemeProvider>
+```
+
+Only the tokens you name are changed — everything else keeps its `tokens.css` default. `ThemeTokenVar` (exported from `brightframe`) lists every overridable variable name. Overrides are applied client-side as inline styles on `<html>` after mount, so for SSR apps there's a brief flash of the default palette before hydration (unlike the light/dark/a11y choice itself, this isn't covered by `getThemeInitScript()`).
+
+If you don't need it to be runtime-configurable, overriding the same `--c-*` custom properties in your own global CSS works too, with no flash and no extra JS.
+
 ### Customization
 
 Every presentational component (the ones in the first table below) follows the same rules:
@@ -158,6 +184,21 @@ Interactive form widgets (`MobileDatePicker`, `CalendarSlider`, `TimeRangePicker
 | `ActionCard` | Clickable tile — icon top-left, always-visible arrow button top-right, title/description below, renders as `<a>` when `href` is passed |
 | `Carousel` | Single active slide with prev/next arrow buttons and/or dot pagination, optional autoplay (respects `prefers-reduced-motion`) |
 | `HorizontalScroller` | Native scroll-snap horizontal row with edge arrow buttons and a fade mask over hidden content |
+| `Modal` | Portal dialog — 3 sizes, footer slot, closes on Escape/overlay click |
+| `Tabs` | Content switcher — `line`/`pill` variants, full ARIA `tablist`/`tab`/`tabpanel`, arrow-key navigation |
+| `Accordion` | Collapsible disclosure list — single or multiple panels open, CSS-only expand animation |
+| `Tooltip` | General-purpose hover/focus bubble around any trigger, 4 positions, optional show delay |
+| `Avatar` | Image with initials (from `name`) or icon fallback, 5 sizes |
+| `Skeleton` | Shimmering loading placeholder — `text`/`circle`/`rect`, multi-line text, respects `prefers-reduced-motion` |
+| `Divider` | Horizontal/vertical separator, optional centered label |
+| `Alert` | Inline status banner — info/success/warning/error, optional dismiss button |
+| `Progress` | Linear progress bar — determinate or indeterminate, 3 sizes |
+| `Breadcrumb` | Nav trail from an `items` array — last item renders as the current page |
+| `Pagination` | Page number list with Previous/Next, collapses distant pages behind an ellipsis |
+| `Popover` | Click-triggered floating panel for richer content than `Tooltip` — click-outside/Escape to close |
+| `DropdownMenu` | Click-triggered action menu — `role="menu"`, arrow-key navigation, separators, danger items |
+| `Drawer` | Portal side panel — left/right/top/bottom placement, same overlay/Escape/body-lock behavior as `Modal` |
+| `ToastProvider` / `useToast` | Stacked notification system — `toast()`/`dismiss()`/`dismissAll()`, configurable position and auto-dismiss duration |
 | `ThemeProvider` / `useTheme` | Light/dark/system theme + a11y mode, persisted and applied to `<html>` |
 | `getThemeInitScript` | Inline script to prevent a flash of the wrong theme on server-rendered pages |
 
@@ -176,6 +217,11 @@ Interactive form widgets (`MobileDatePicker`, `CalendarSlider`, `TimeRangePicker
 | `TextareaField` | Labeled textarea with error state |
 | `SelectField` | Accessible custom select (listbox pattern, keyboard navigation) |
 | `SegmentedBar` / `SegmentedItem` | Segmented control container, e.g. Day / Week / Month toggles |
+| `Checkbox` | Custom checkbox — indeterminate state, label, error message |
+| `RadioGroup` | Accessible radio group from an `options` array — native arrow-key navigation, vertical/horizontal |
+| `Switch` | Boolean toggle (`role="switch"`) |
+| `Slider` | Native `<input type="range">`, styled — single value or two-thumb `[min, max]` range |
+| `Combobox` | Searchable select — filters an `options` array as you type |
 | `GuestsCounter` | Stepper with a label and min/max clamping |
 | `SubmitButton` | Form submit button — `accent`/`brand`/`ghost` variants |
 | `FormCard` | Padded `<section>` wrapper for grouping a form |

@@ -1,0 +1,44 @@
+name: Bug report
+description: Something in the kit isn't working as documented
+labels: [bug]
+body:
+  - type: input
+    id: component
+    attributes:
+      label: Component
+      description: Which component (or CSS token / build output) is affected?
+      placeholder: e.g. Btn, MobileDatePicker, tokens.css
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: brightframe version
+      placeholder: e.g. 0.3.4
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: Reproduction
+      description: Minimal code sample, Storybook story, or a link to a sandbox reproducing the issue.
+      render: tsx
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected vs actual behavior
+    validations:
+      required: true
+
+  - type: textarea
+    id: env
+    attributes:
+      label: Environment
+      description: React version, browser, framework (Next.js/Vite/CRA/...), SSR or client-only.
+    validations:
+      required: false

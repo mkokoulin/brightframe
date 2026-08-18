@@ -58,3 +58,18 @@ export const Playground: Story = {
     </ThemeProvider>
   ),
 };
+
+export const CustomPalette: Story = {
+  name: "Custom brand palette",
+  render: () => (
+    <ThemeProvider
+      storageKey="brightframe-storybook-palette"
+      palette={{
+        light: { "--c-accent": "#7c3aed", "--c-accent-hover": "#6d28d9", "--c-brand": "#0f766e" },
+        dark: { "--c-accent": "#a78bfa", "--c-accent-hover": "#c4b5fd", "--c-brand": "#2dd4bf" },
+      }}
+    >
+      <DemoPanel />
+    </ThemeProvider>
+  ),
+};

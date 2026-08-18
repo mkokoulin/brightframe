@@ -1,6 +1,6 @@
 {
   "name": "brightframe",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "description": "React UI component kit with buttons, cards, tags, form controls, and date/time pickers — themeable via a light/dark/high-contrast design token system and a drop-in ThemeProvider.",
   "keywords": [
     "react",
@@ -101,5 +101,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mkokoulin/brightframe.git"
+  },
+  "funding": {
+    "type": "buymeacoffee",
+    "url": "https://buymeacoffee.com/kokoulin92u"
   }
 }

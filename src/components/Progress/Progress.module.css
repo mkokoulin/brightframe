@@ -1,0 +1,68 @@
+/* ──────────────────────────────────────────
+   Progress — linear progress bar
+   ────────────────────────────────────────── */
+
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+
+.labelRow {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.labelText {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--c-text-2);
+}
+
+.track {
+  width: 100%;
+  border-radius: 999px;
+  background: var(--c-surface-2);
+  overflow: hidden;
+}
+
+.sm {
+  height: 4px;
+}
+.md {
+  height: 8px;
+}
+.lg {
+  height: 12px;
+}
+
+.fill {
+  height: 100%;
+  border-radius: 999px;
+  background: var(--c-accent);
+  transition: width 220ms var(--ease-native);
+}
+
+.indeterminate {
+  width: 40% !important;
+  animation: indeterminate 1.2s ease-in-out infinite;
+}
+
+@keyframes indeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(250%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .indeterminate {
+    animation: none;
+    width: 100% !important;
+    opacity: 0.5;
+  }
+}

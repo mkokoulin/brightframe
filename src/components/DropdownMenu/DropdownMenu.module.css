@@ -1,0 +1,89 @@
+/* ──────────────────────────────────────────
+   DropdownMenu — click-triggered action menu
+   ────────────────────────────────────────── */
+
+.wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.trigger {
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  z-index: 50;
+  min-width: 180px;
+  background: var(--c-surface);
+  border: 1px solid var(--c-border-soft);
+  border-radius: 12px;
+  box-shadow: var(--c-shadow-md);
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  animation: fadeIn 140ms var(--ease-native) both;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.start {
+  left: 0;
+}
+
+.end {
+  right: 0;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 9px 10px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--c-text-1);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  text-align: left;
+  cursor: pointer;
+  transition: background 120ms var(--ease-native);
+}
+
+.item:hover:not(:disabled),
+.item:focus-visible {
+  background: var(--c-surface-2);
+  outline: none;
+}
+
+.item:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.item.danger {
+  color: var(--c-error);
+}
+
+.icon {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.separator {
+  height: 1px;
+  margin: 4px 2px;
+  background: var(--c-border-soft);
+}

@@ -1,0 +1,57 @@
+/* ──────────────────────────────────────────
+   Breadcrumb
+   ────────────────────────────────────────── */
+
+.nav {
+  font-family: var(--font-sans);
+  font-size: 13px;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.link,
+.linkButton {
+  color: var(--c-text-2);
+  text-decoration: none;
+  border: none;
+  background: transparent;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  transition: color 140ms var(--ease-native);
+}
+.link:hover,
+.linkButton:hover {
+  color: var(--c-brand);
+  text-decoration: underline;
+}
+.link:focus-visible,
+.linkButton:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 2px;
+}
+
+.current {
+  color: var(--c-text-1);
+  font-weight: 600;
+}
+
+.separator {
+  display: inline-flex;
+  align-items: center;
+  color: var(--c-text-3);
+}
