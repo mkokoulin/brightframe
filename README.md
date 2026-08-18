@@ -37,6 +37,18 @@ function Example() {
 - `brightframe/style.css` — compiled component styles (CSS Modules output). Required.
 - `brightframe/fonts.css` — loads the default typeface. Optional, see [Fonts](#fonts).
 
+### Importing a single component
+
+Every component also ships as its own entry point, so you don't have to pull in the whole kit (and its whole stylesheet) just to use `<Btn>`:
+
+```tsx
+import "brightframe/tokens.css";
+import "brightframe/Btn.css";
+import { Btn } from "brightframe/Btn";
+```
+
+`brightframe/<Name>` mirrors the named export (`Btn`, `Modal`, `Tabs`, `ThemeProvider` via `brightframe/theme`, `PinIcon` via `brightframe/icons`, ...), and `brightframe/<Name>.css` is that component's own stylesheet — both are tree-shaken independently of `brightframe/style.css`, so unused components add nothing to your bundle.
+
 ### Fonts
 
 Every component reads its font from one custom property, `--font-sans`, defined in `tokens.css`:
