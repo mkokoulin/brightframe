@@ -52,7 +52,7 @@ export function Checkbox({
           />
           <span className={styles.box} aria-hidden="true">
             <svg className={styles.check} width="12" height="10" viewBox="0 0 12 10" fill="none">
-              <path d="M1 5l3.2 3.2L11 1" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              <path d="M1 5.4l3.2 3.2L11 1.4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
             <svg className={styles.dash} width="10" height="2" viewBox="0 0 10 2" fill="none">
               <path d="M1 1h8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />

@@ -5,6 +5,7 @@
   max-width: 1200px;
   margin: 0 auto;
   box-sizing: border-box;
+  container-type: inline-size;
 }
 
 /* ===== Calendar: two columns ===== */
@@ -289,8 +290,10 @@
 }
 
 /* ===== Stacking: right column drops below the left one when cells no longer fit ===== */
-/* Left column (52%) needs 13×48=624px → container ≥ 1200px → viewport ≥ 1440px */
-@media (min-width: 769px) and (max-width: 1439px) {
+/* Left column (52%) needs 13×48=624px → .block itself needs to be ≥ 1200px wide.
+   Queried against .block's own inline size (not the viewport) so this also works when
+   .block is embedded in a narrower container than the viewport, e.g. Storybook Docs. */
+@container (max-width: 1199.98px) {
   .root {
     flex-direction: column;
     align-items: stretch;

@@ -15,6 +15,21 @@ Independent React UI kit extracted from the [LAN](https://lancoworking.am) cowor
 
 No app framework, i18n, or routing dependencies — every component here is a pure, self-contained function of its props.
 
+<p align="center">
+  <img src="./docs/preview-light.png" alt="FormCard, LabeledField, SelectField, GuestsCounter, FormDatePicker and TimeRangePicker composed into a booking form, light theme" width="46%" />
+  &nbsp;&nbsp;
+  <img src="./docs/preview-dark.png" alt="Same booking form in dark theme, driven by the same design tokens" width="46%" />
+</p>
+
+<p align="center"><em>Same components, same code — the booking form above switches from light to dark purely through <code>data-theme</code>, no per-component dark-mode styles. See it live in <a href="https://mkokoulin.github.io/brightframe/?path=/story/examples-booking-form--default">Storybook</a>.</em></p>
+
+## Why brightframe
+
+- **Token-driven theming, not per-component overrides.** Light, dark, and high-contrast modes come from one `tokens.css` file and a `data-theme`/`data-a11y` attribute — components never hardcode colors.
+- **Tree-shakeable per component.** Every component is also its own entry point (`brightframe/Btn`, `brightframe/Btn.css`), so importing one button doesn't pull in the rest of the kit.
+- **No framework lock-in.** No Next.js, no router, no i18n dependency — just React and CSS Modules, so it drops into any React 18+ app.
+- **Built for real product screens, not just a demo.** It ships full flows like date/time range pickers and a booking form example, not only buttons and cards.
+
 ## Install
 
 ```bash

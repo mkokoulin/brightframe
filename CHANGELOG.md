@@ -10,6 +10,8 @@ before that date are dated by commit, not by release announcement.
 
 ## [Unreleased]
 
+## [0.3.6] - 2026-08-19
+
 ### Added
 
 - `Stack` and `Spacer` layout primitives — `Stack` for flex row/column layouts with a
@@ -130,7 +132,8 @@ before that date are dated by commit, not by release announcement.
 - Design tokens, full test coverage, Storybook, examples, and docs (README,
   EXAMPLES.md, PUBLISHING.md).
 
-[Unreleased]: https://github.com/mkokoulin/brightframe/compare/v0.3.5...HEAD
+[Unreleased]: https://github.com/mkokoulin/brightframe/compare/v0.3.6...HEAD
+[0.3.6]: https://github.com/mkokoulin/brightframe/compare/v0.3.5...v0.3.6
 [0.3.5]: https://github.com/mkokoulin/brightframe/compare/v0.3.4...v0.3.5
 [0.3.4]: https://github.com/mkokoulin/brightframe/compare/v0.3.3...v0.3.4
 [0.3.3]: https://github.com/mkokoulin/brightframe/compare/v0.3.2...v0.3.3
