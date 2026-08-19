@@ -245,6 +245,8 @@ npm run storybook       # interactive component playground on :6006
 npm run build            # emit dist/ (ESM + CJS + types + CSS)
 npm run typecheck
 npm run test              # vitest, jsdom
+npm run css-types         # regenerate *.module.css.d.ts (typed class names); runs automatically before build/typecheck/dev
+npm run css-types:watch   # same, but watches for CSS changes
 ```
 
 ## Publishing

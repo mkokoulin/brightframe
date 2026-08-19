@@ -15,6 +15,8 @@ export * from "./components/Title";
 export * from "./components/SubTitle";
 export * from "./components/Container";
 export * from "./components/Grid";
+export * from "./components/Stack";
+export * from "./components/Spacer";
 export * from "./components/Badge";
 export * from "./components/Fab";
 export * from "./components/EmptyState";

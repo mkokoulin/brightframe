@@ -4,7 +4,7 @@
 
 .row {
   display: flex;
-  gap: 16px;
+  gap: var(--space-16);
   overflow-x: auto;
   scroll-snap-type: x proximity;
   scrollbar-width: none;

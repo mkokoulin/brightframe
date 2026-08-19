@@ -6,13 +6,13 @@
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 32px 16px;
+  padding: var(--space-32) var(--space-16);
 }
 
 .list {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: var(--space-16);
 }
 
 .card {
@@ -22,9 +22,9 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  gap: 12px;
+  gap: var(--space-12);
 
-  padding: 24px 16px;
+  padding: var(--space-24) var(--space-16);
 
   background: var(--c-surface);
   border: 0.5px solid var(--c-border);
@@ -71,7 +71,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 8px;
+  gap: var(--space-8);
 }
 
 .title {
@@ -113,23 +113,23 @@
 /* ===== Desktop ===== */
 @media (min-width: 768px) {
   .container {
-    padding: 48px 24px;
+    padding: var(--space-48) var(--space-24);
   }
 
   .list {
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
+    gap: var(--space-24);
   }
 }
 
 @media (min-width: 1024px) {
   .container {
-    padding: 48px 32px;
+    padding: var(--space-48) var(--space-32);
   }
 
   .card {
-    padding: 32px;
-    gap: 20px;
+    padding: var(--space-32);
+    gap: var(--space-20);
     border: none;
     border-radius: 12px;
     box-shadow: var(--c-shadow-card);
@@ -144,7 +144,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: var(--space-8);
   }
 
   .iconLabel {
@@ -160,7 +160,7 @@
   }
 
   .content {
-    gap: 8px;
+    gap: var(--space-8);
   }
 
   .title {

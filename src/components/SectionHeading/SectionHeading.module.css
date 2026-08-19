@@ -3,14 +3,14 @@
   font-size: 36px;
   line-height: 44px;
   color: var(--c-brand);
-  margin: 0 0 12px;
+  margin: 0 0 var(--space-12);
 }
 
 .subtitle {
   font-size: 16px;
   line-height: 26px;
   color: var(--c-text-2);
-  margin: 0 0 40px;
+  margin: 0 0 var(--space-40);
   max-width: 640px;
 }
 

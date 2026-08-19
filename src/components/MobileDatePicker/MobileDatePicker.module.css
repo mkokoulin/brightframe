@@ -13,8 +13,11 @@
   to   { opacity: 1; }
 }
 
-/* ── Bottom sheet ── */
+/* ── Bottom sheet ──
+   --picker-inset is the single horizontal inset shared by every content row
+   (range header, calendar grid, footer) so they all line up on one edge. */
 .sheet {
+  --picker-inset: var(--space-20);
   width: 100%;
   max-height: 90svh;
   background: var(--c-surface);
@@ -29,14 +32,19 @@
   to   { transform: translateY(0);    opacity: 1; }
 }
 
-/* ── Top bar: handle + close button ── */
+/* ── Top bar: handle + close button ──
+   min-height is set explicitly because .closeBtn is absolutely positioned
+   (it doesn't contribute to the row's auto height): without it the row
+   collapses to the handle's height and the 36px button — centered via
+   top: 50% — overflows above the sheet's top edge. */
 .topBar {
   flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  padding: 12px 16px 8px;
+  min-height: 56px;
+  padding: var(--space-8) var(--space-16);
 }
 
 .handle {
@@ -48,7 +56,7 @@
 
 .closeBtn {
   position: absolute;
-  right: 12px;
+  right: var(--space-12);
   top: 50%;
   transform: translateY(-50%);
   width: 36px;
@@ -72,15 +80,15 @@
 /* ── Range header: chips + hint ── */
 .rangeHeader {
   flex-shrink: 0;
-  padding: 12px 24px 16px;
+  padding: var(--space-12) var(--picker-inset) var(--space-16);
   border-bottom: 1px solid var(--c-border-soft);
 }
 
 .chips {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 8px;
+  gap: var(--space-10);
+  margin-bottom: var(--space-8);
 }
 
 .chip {
@@ -139,21 +147,23 @@
 .scrollArea {
   overflow-y: auto;
   flex: 1;
-  padding: 0 20px 8px;
+  padding: 0 var(--picker-inset) var(--space-8);
   -webkit-overflow-scrolling: touch;
 }
 
 /* ── Month block ── */
 .monthBlock {
-  padding-bottom: 8px;
+  padding-bottom: var(--space-8);
 }
 
-/* ── Month header ── */
+/* ── Month header ──
+   No horizontal padding: it sits inside .scrollArea, which already applies
+   --picker-inset, so its edges line up with the weekday/day grid below it. */
 .monthHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 4px 12px;
+  padding: var(--space-20) 0 var(--space-12);
 }
 
 .monthTitle {
@@ -194,7 +204,7 @@
 .weekdays {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  margin-bottom: 2px;
+  margin-bottom: var(--space-2);
 }
 .weekdayLabel {
   text-align: center;
@@ -202,7 +212,7 @@
   font-size: 12px;
   line-height: 20px;
   color: var(--c-text-3);
-  padding: 4px 0;
+  padding: var(--space-4) 0;
   user-select: none;
 }
 
@@ -288,9 +298,9 @@
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 14px 24px;
-  padding-bottom: max(14px, env(safe-area-inset-bottom));
+  gap: var(--space-12);
+  padding: var(--space-14) var(--picker-inset);
+  padding-bottom: max(var(--space-14), env(safe-area-inset-bottom));
   border-top: 1px solid var(--c-border-soft);
   background: var(--c-surface);
 }
@@ -298,7 +308,7 @@
 .resetBtn {
   flex: 0 0 auto;
   height: 48px;
-  padding: 0 20px;
+  padding: 0 var(--picker-inset);
   border: 1.5px solid var(--c-border);
   border-radius: 14px;
   background: transparent;

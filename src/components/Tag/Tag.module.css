@@ -19,12 +19,12 @@
 }
 
 .md {
-  padding: 4px 8px;
+  padding: var(--space-4) var(--space-8);
   font-size: 12px;
 }
 
 .lg {
-  padding: 5px 10px;
+  padding: 5px var(--space-10);
   font-size: 13px;
 }
 

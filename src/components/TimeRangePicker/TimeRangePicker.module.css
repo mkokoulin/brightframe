@@ -8,7 +8,7 @@
   width: 100%;
   height: 46px;
   display: flex;
-  gap: 2px;
+  gap: var(--space-2);
   padding: 1px;
   background: var(--c-surface);
   border-radius: 16px;
@@ -20,8 +20,8 @@
   border-radius: 16px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 0 12px;
+  gap: var(--space-8);
+  padding: 0 var(--space-12);
   box-sizing: border-box;
   flex: 1;
 }
@@ -54,7 +54,7 @@
 .range {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: var(--space-4);
   width: 100%;
 }
 
@@ -67,7 +67,7 @@
   line-height: 20px;
   color: var(--c-text-nav);
   cursor: pointer;
-  padding: 2px 6px;
+  padding: var(--space-2) var(--space-6);
   border-radius: 8px;
   transition: background 0.15s var(--ease-native), color 0.15s var(--ease-native);
   white-space: nowrap;
@@ -100,7 +100,7 @@
   color: var(--c-text-2);
   background: var(--c-surface-alt);
   border-radius: 999px;
-  padding: 3px 10px;
+  padding: 3px var(--space-10);
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -115,7 +115,7 @@
   border: 1px solid var(--c-border-soft);
   border-radius: 16px;
   box-shadow: var(--c-shadow-md);
-  padding: 12px;
+  padding: var(--space-12);
   z-index: 50;
   animation: panelIn 0.14s var(--ease-native);
 }
@@ -131,15 +131,15 @@
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--c-text-3);
-  margin-bottom: 10px;
-  padding: 0 2px;
+  margin-bottom: var(--space-10);
+  padding: 0 var(--space-2);
 }
 
 /* ── Slots grid ──────────────────────────────────────── */
 .slots {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 6px;
+  gap: var(--space-6);
 }
 
 .slot {
@@ -150,7 +150,7 @@
   font-family: inherit;
   font-size: 13px;
   line-height: 1;
-  padding: 8px 4px;
+  padding: var(--space-8) var(--space-4);
   border-radius: 8px;
   cursor: pointer;
   text-align: center;

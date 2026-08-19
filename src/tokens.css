@@ -9,6 +9,28 @@
      <html data-a11y="visually-impaired">          — high-contrast a11y mode
    ══════════════════════════════════════════ */
 :root {
+  /* ── Spacing ──
+     4px base grid (plus 2px/6px/10px/14px half-steps for tight, dense UI —
+     chips, badges, icon buttons). Token suffix = its pixel value, so
+     `var(--space-16)` always means 16px. Use these for padding, margin and
+     gap wherever a component needs rhythm; reach for the Stack/Spacer
+     components when composing layout in JSX. */
+  --space-0: 0px;
+  --space-2: 2px;
+  --space-4: 4px;
+  --space-6: 6px;
+  --space-8: 8px;
+  --space-10: 10px;
+  --space-12: 12px;
+  --space-14: 14px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-40: 40px;
+  --space-48: 48px;
+  --space-64: 64px;
+
   /* ── Motion ── */
   --ease-native: cubic-bezier(0.22, 1, 0.36, 1);
 

@@ -19,6 +19,8 @@ bun run build
 
 All three must pass — CI runs the same three commands on every PR.
 
+Also add an entry to [CHANGELOG.md](./CHANGELOG.md) under `[Unreleased]`, describing the change from a consumer's point of view.
+
 ## Adding a component
 
 Every component lives in its own folder under `src/components/<Name>/` and follows the same shape. Use an existing one (`Btn` is a good simple reference, `Modal` a good reference for portal/overlay components) as a template:

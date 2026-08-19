@@ -11,7 +11,7 @@
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: var(--space-6);
   margin: 0;
   padding: 0;
   list-style: none;
@@ -20,7 +20,7 @@
 .item {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--space-6);
 }
 
 .link,

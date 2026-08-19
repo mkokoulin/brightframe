@@ -26,7 +26,7 @@
   border: 1px solid var(--c-border-soft);
   border-radius: 12px;
   box-shadow: var(--c-shadow-md);
-  padding: 6px;
+  padding: var(--space-6);
   display: flex;
   flex-direction: column;
   gap: 1px;
@@ -48,9 +48,9 @@
 .item {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--space-8);
   width: 100%;
-  padding: 9px 10px;
+  padding: 9px var(--space-10);
   border: none;
   border-radius: 8px;
   background: transparent;
@@ -84,6 +84,6 @@
 
 .separator {
   height: 1px;
-  margin: 4px 2px;
+  margin: var(--space-4) var(--space-2);
   background: var(--c-border-soft);
 }

@@ -5,13 +5,13 @@
 .wrap {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: var(--space-6);
 }
 
 .row {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: var(--space-10);
   cursor: pointer;
 }
 

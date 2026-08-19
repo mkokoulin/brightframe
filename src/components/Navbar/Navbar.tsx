@@ -48,7 +48,7 @@ export function NavbarItem({ as: Tag = "a", icon, active = false, className, chi
           {icon}
         </span>
       ) : null}
-      <span className={styles.label}>{children}</span>
+      <span>{children}</span>
     </Tag>
   );
 }

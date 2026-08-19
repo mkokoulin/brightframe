@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
 
-  gap: 8px;
+  gap: var(--space-8);
   border-radius: 8px;
 
   /* ghost */
@@ -28,21 +28,21 @@
 }
 
 .sm {
-  padding: 4px 12px;
+  padding: var(--space-4) var(--space-12);
   height: 28px;
   font-size: 13px;
   line-height: 18px;
 }
 
 .md {
-  padding: 6px 16px;
+  padding: var(--space-6) var(--space-16);
   height: 32px;
   font-size: 14px;
   line-height: 20px;
 }
 
 .lg {
-  padding: 8px 20px;
+  padding: var(--space-8) var(--space-20);
   height: 40px;
   font-size: 15px;
   line-height: 22px;

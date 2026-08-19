@@ -6,7 +6,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: var(--space-8);
   border: 2px solid transparent;
   border-radius: 12px;
   cursor: pointer;
@@ -47,19 +47,19 @@
 
 .sm {
   height: 36px;
-  padding: 0 16px;
+  padding: 0 var(--space-16);
   font-size: 13px;
 }
 
 .md {
   height: 44px;
-  padding: 0 24px;
+  padding: 0 var(--space-24);
   font-size: 15px;
 }
 
 .lg {
   height: 52px;
-  padding: 0 32px;
+  padding: 0 var(--space-32);
   font-size: 16px;
   font-weight: 700;
 }

@@ -6,7 +6,7 @@
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
-  padding: 20px 14px;
+  padding: var(--space-20) var(--space-14);
   box-sizing: border-box;
 }
 
@@ -18,7 +18,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-8);
 }
 
 .weekday,
@@ -43,7 +43,7 @@
 .compact {
   width: 72px;
   flex: 0 0 72px;
-  padding: 12px 8px;
+  padding: var(--space-12) var(--space-8);
   border-radius: 10px;
 }
 
@@ -63,7 +63,7 @@
     width: 100%;
     flex: none;
     border-radius: 10px 10px 0 0;
-    padding: 8px 16px 18px;
+    padding: var(--space-8) var(--space-16) 18px;
     align-items: center;
     justify-content: center;
     background: var(--c-border);
@@ -79,7 +79,7 @@
   .inner {
     flex-direction: row;
     align-items: center;
-    gap: 6px;
+    gap: var(--space-6);
     width: auto;
   }
 

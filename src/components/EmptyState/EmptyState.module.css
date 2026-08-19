@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 40px 16px;
+  padding: var(--space-40) var(--space-16);
 }
 
 .icon {
@@ -12,7 +12,7 @@
   justify-content: center;
   width: 48px;
   height: 48px;
-  margin-bottom: 16px;
+  margin-bottom: var(--space-16);
   color: var(--c-text-3);
 }
 
@@ -31,7 +31,7 @@
 }
 
 .description {
-  margin: 8px 0 0;
+  margin: var(--space-8) 0 0;
   font-size: 15px;
   line-height: 22px;
   color: var(--c-text-2);
@@ -39,5 +39,5 @@
 }
 
 .action {
-  margin-top: 20px;
+  margin-top: var(--space-20);
 }

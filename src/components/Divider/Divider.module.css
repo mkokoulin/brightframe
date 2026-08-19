@@ -22,7 +22,7 @@
 .withLabel {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-12);
   width: 100%;
 }
 

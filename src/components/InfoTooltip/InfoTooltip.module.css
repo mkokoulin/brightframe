@@ -21,7 +21,7 @@
 
   width: max-content;
   max-width: 220px;
-  padding: 8px 10px;
+  padding: var(--space-8) var(--space-10);
 
   background: var(--c-text-1);
   color: var(--c-surface);

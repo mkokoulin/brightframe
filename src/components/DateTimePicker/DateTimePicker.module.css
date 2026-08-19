@@ -8,7 +8,7 @@
   flex-direction: row;
   align-items: flex-start;
   padding: 1px;
-  gap: 2px;
+  gap: var(--space-2);
 
   width: 208px;
   height: 46px;
@@ -29,8 +29,8 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 12px;
-  gap: 4px;
+  padding: var(--space-12);
+  gap: var(--space-4);
 
   border-radius: 16px;
   user-select: none;
@@ -84,7 +84,7 @@
   border-radius: 16px;
   box-shadow: 0px 10px 30px rgba(0,0,0,0.12);
   border: 1px solid var(--c-border-soft);
-  padding: 12px;
+  padding: var(--space-12);
 }
 
 /* Calendar */
@@ -94,8 +94,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
-  padding: 6px 6px 10px;
+  gap: var(--space-8);
+  padding: var(--space-6) var(--space-6) var(--space-10);
 }
 
 .monthTitle {
@@ -122,8 +122,8 @@
 .weekdays {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
-  padding: 0 6px 6px;
+  gap: var(--space-6);
+  padding: 0 var(--space-6) var(--space-6);
   font-family: var(--font-sans);
   font-size: 12px;
   color: var(--c-text-3);
@@ -132,8 +132,8 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 6px;
-  padding: 6px;
+  gap: var(--space-6);
+  padding: var(--space-6);
 }
 
 .day {
@@ -168,7 +168,7 @@
 .timePanel {}
 
 .timeHeader {
-  padding: 6px 6px 10px;
+  padding: var(--space-6) var(--space-6) var(--space-10);
 }
 
 .timeTitle {
@@ -181,7 +181,7 @@
 .tz {
   font-weight: 400;
   color: var(--c-text-3);
-  margin-left: 6px;
+  margin-left: var(--space-6);
 }
 
 .timeList {
@@ -189,8 +189,8 @@
   overflow: auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 6px;
-  padding: 6px;
+  gap: var(--space-6);
+  padding: var(--space-6);
 }
 
 .timeItem {
@@ -218,8 +218,8 @@
 .footerRow {
   display: flex;
   justify-content: space-between;
-  gap: 8px;
-  padding: 8px 6px 4px;
+  gap: var(--space-8);
+  padding: var(--space-8) var(--space-6) var(--space-4);
 }
 
 .quickBtn {
@@ -229,7 +229,7 @@
   font-family: var(--font-sans);
   font-size: 13px;
   color: var(--c-brand);
-  padding: 6px 8px;
+  padding: var(--space-6) var(--space-8);
   border-radius: 12px;
 }
 

@@ -74,8 +74,8 @@
 .dots {
   display: flex;
   justify-content: center;
-  gap: 8px;
-  margin-top: 16px;
+  gap: var(--space-8);
+  margin-top: var(--space-16);
 }
 
 .dot {

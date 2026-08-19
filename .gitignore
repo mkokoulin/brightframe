@@ -4,3 +4,4 @@ storybook-static/
 .DS_Store
 *.log
 .vscode/
+src/**/*.module.css.d.ts

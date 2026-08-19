@@ -1,0 +1,51 @@
+.stack {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: var(--stack-direction-base, column);
+  gap: var(--stack-gap-base, var(--space-0));
+}
+
+.wrap {
+  flex-wrap: wrap;
+}
+
+/* ===== sm ≥ 640px (large phone / small tablet) ===== */
+@media (min-width: 640px) {
+  .stack {
+    flex-direction: var(--stack-direction-sm, var(--stack-direction-base, column));
+    gap: var(--stack-gap-sm, var(--stack-gap-base, var(--space-0)));
+  }
+}
+
+/* ===== md ≥ 768px (tablet) ===== */
+@media (min-width: 768px) {
+  .stack {
+    flex-direction: var(--stack-direction-md, var(--stack-direction-sm, var(--stack-direction-base, column)));
+    gap: var(--stack-gap-md, var(--stack-gap-sm, var(--stack-gap-base, var(--space-0))));
+  }
+}
+
+/* ===== lg ≥ 1024px (small desktop / tablet landscape) ===== */
+@media (min-width: 1024px) {
+  .stack {
+    flex-direction: var(
+      --stack-direction-lg,
+      var(--stack-direction-md, var(--stack-direction-sm, var(--stack-direction-base, column)))
+    );
+    gap: var(--stack-gap-lg, var(--stack-gap-md, var(--stack-gap-sm, var(--stack-gap-base, var(--space-0)))));
+  }
+}
+
+/* ===== xl ≥ 1280px (desktop) ===== */
+@media (min-width: 1280px) {
+  .stack {
+    flex-direction: var(
+      --stack-direction-xl,
+      var(--stack-direction-lg, var(--stack-direction-md, var(--stack-direction-sm, var(--stack-direction-base, column))))
+    );
+    gap: var(
+      --stack-gap-xl,
+      var(--stack-gap-lg, var(--stack-gap-md, var(--stack-gap-sm, var(--stack-gap-base, var(--space-0)))))
+    );
+  }
+}

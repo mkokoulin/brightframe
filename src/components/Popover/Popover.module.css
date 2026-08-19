@@ -26,7 +26,7 @@
   border: 1px solid var(--c-border-soft);
   border-radius: 12px;
   box-shadow: var(--c-shadow-md);
-  padding: 16px;
+  padding: var(--space-16);
   animation: fadeIn 140ms var(--ease-native) both;
 }
 @keyframes fadeIn {

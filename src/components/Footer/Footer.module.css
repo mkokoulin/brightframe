@@ -1,14 +1,14 @@
 .root {
   width: 100%;
   box-sizing: border-box;
-  padding: 48px 24px;
+  padding: var(--space-48) var(--space-24);
   background: var(--c-surface-alt);
 }
 
 .columns {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 32px;
+  gap: var(--space-32);
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -16,7 +16,7 @@
 @media (min-width: 768px) {
   .columns {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 40px;
+    gap: var(--space-40);
   }
 }
 
@@ -25,7 +25,7 @@
 }
 
 .columnTitle {
-  margin: 0 0 16px;
+  margin: 0 0 var(--space-16);
   font-family: var(--font-sans);
   font-weight: 700;
   font-size: 14px;
@@ -36,7 +36,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 12px;
+  gap: var(--space-12);
   font-size: 14px;
   color: var(--c-text-2);
 }
