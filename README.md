@@ -9,6 +9,8 @@
 
 [📖 Storybook](https://mkokoulin.github.io/brightframe/) · [☕ Support this project](https://buymeacoffee.com/kokoulin92u)
 
+This is an independent, solo-maintained project. If you find it useful, a ⭐ on [GitHub](https://github.com/mkokoulin/brightframe) is a nice way to show it — and any feedback or suggestions are always welcome.
+
 Independent React UI kit extracted from the [LAN](https://lancoworking.am) coworking site — a small set of presentational primitives (buttons, cards, tags, headings, ...) built on a light/dark/high-contrast design token system.
 
 No app framework, i18n, or routing dependencies — every component here is a pure, self-contained function of its props.
