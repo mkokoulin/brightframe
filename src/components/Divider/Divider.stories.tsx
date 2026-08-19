@@ -8,6 +8,14 @@ const meta: Meta<typeof Divider> = {
   argTypes: {
     orientation: { control: "select", options: ["horizontal", "vertical"] },
   },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          '```tsx\nimport { Divider } from "brightframe/Divider";\n\n<Divider />\n<Divider label="OR" />\n<Divider orientation="vertical" />\n```',
+      },
+    },
+  },
 };
 
 export default meta;

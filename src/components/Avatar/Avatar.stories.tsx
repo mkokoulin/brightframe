@@ -8,6 +8,17 @@ const meta: Meta<typeof Avatar> = {
   argTypes: {
     size: { control: "select", options: ["xs", "sm", "md", "lg", "xl"] },
   },
+  parameters: {
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { Avatar } from "brightframe/Avatar";
+
+<Avatar src="https://i.pravatar.cc/160?img=12" name="Ana Torres" size="md" />
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

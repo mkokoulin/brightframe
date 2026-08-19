@@ -5,7 +5,20 @@ const meta: Meta<typeof Fab> = {
   title: "Atoms/Fab",
   component: Fab,
   tags: ["autodocs"],
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { Fab } from "brightframe/Fab";
+
+<Fab label="Scroll to next section" variant="brand" style={{ position: "fixed", bottom: 24, right: 24 }}>
+  ↓
+</Fab>
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

@@ -5,7 +5,15 @@ const meta: Meta<typeof SubTitle> = {
   title: "Atoms/SubTitle",
   component: SubTitle,
   tags: ["autodocs"],
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component:
+          '```tsx\nimport { SubTitle } from "brightframe/SubTitle";\n\n<SubTitle>Workspaces and meeting rooms</SubTitle>\n```',
+      },
+    },
+  },
 };
 
 export default meta;

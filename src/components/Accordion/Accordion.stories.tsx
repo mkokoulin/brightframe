@@ -9,6 +9,22 @@ const meta: Meta<typeof Accordion> = {
   argTypes: {
     multiple: { control: "boolean" },
   },
+  parameters: {
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { Accordion } from "brightframe/Accordion";
+
+<Accordion
+  items={[
+    { id: "checkin", title: "What time is check-in?", content: "Check-in is from 3 PM." },
+    { id: "pets", title: "Are pets allowed?", content: "Small pets are welcome in select rooms." },
+  ]}
+/>
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

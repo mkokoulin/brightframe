@@ -8,7 +8,15 @@ const meta: Meta<typeof SubmitButton> = {
   argTypes: {
     variant: { control: "select", options: ["accent", "brand", "ghost"] },
   },
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component:
+          '```tsx\nimport { SubmitButton } from "brightframe/SubmitButton";\n\n<SubmitButton variant="accent">Submit request</SubmitButton>\n```',
+      },
+    },
+  },
 };
 
 export default meta;

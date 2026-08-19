@@ -6,7 +6,22 @@ const meta: Meta<typeof SegmentedBar> = {
   title: "Form/SegmentedBar",
   component: SegmentedBar,
   tags: ["autodocs"],
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { SegmentedBar, SegmentedItem } from "brightframe/SegmentedBar";
+
+<SegmentedBar>
+  <SegmentedItem>Day</SegmentedItem>
+  <SegmentedItem>Week</SegmentedItem>
+  <SegmentedItem>Month</SegmentedItem>
+</SegmentedBar>
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

@@ -5,7 +5,20 @@ const meta: Meta<typeof Reveal> = {
   title: "Atoms/Reveal",
   component: Reveal,
   tags: ["autodocs"],
-  parameters: { layout: "fullscreen" },
+  parameters: {
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { Reveal } from "brightframe/Reveal";
+
+<Reveal direction="up">
+  <div>Scrolled into view</div>
+</Reveal>
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

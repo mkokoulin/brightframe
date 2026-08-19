@@ -10,7 +10,20 @@ const meta: Meta<typeof Card> = {
     radius: { control: "select", options: ["sm", "md", "lg", "xl"] },
     hover: { control: "boolean" },
   },
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { Card } from "brightframe/Card";
+
+<Card variant="elevated" hover>
+  Card content
+</Card>
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

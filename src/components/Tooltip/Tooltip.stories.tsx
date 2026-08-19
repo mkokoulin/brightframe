@@ -9,7 +9,15 @@ const meta: Meta<typeof Tooltip> = {
   argTypes: {
     position: { control: "select", options: ["top", "bottom", "left", "right"] },
   },
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component:
+          '```tsx\nimport { Tooltip } from "brightframe/Tooltip";\n\n<Tooltip content="Saved to your favorites">\n  <button>Hover me</button>\n</Tooltip>\n```',
+      },
+    },
+  },
 };
 
 export default meta;

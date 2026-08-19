@@ -8,7 +8,15 @@ const meta: Meta<typeof DayBadge> = {
   argTypes: {
     size: { control: "select", options: ["md", "compact"] },
   },
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component:
+          '```tsx\nimport { DayBadge } from "brightframe/DayBadge";\n\n<DayBadge date={new Date(2025, 4, 12)} size="compact" />\n```',
+      },
+    },
+  },
 };
 
 export default meta;

@@ -6,6 +6,21 @@ const meta: Meta<typeof Switch> = {
   title: "Form/Switch",
   component: Switch,
   tags: ["autodocs"],
+  parameters: {
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { useState } from "react";
+import { Switch } from "brightframe/Switch";
+
+function DarkModeSwitch() {
+  const [checked, setChecked] = useState(false);
+  return <Switch checked={checked} onChange={setChecked} label="Enable dark mode" />;
+}
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

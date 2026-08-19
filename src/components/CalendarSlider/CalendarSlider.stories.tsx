@@ -6,7 +6,21 @@ const meta: Meta<typeof CalendarSlider> = {
   title: "Form/CalendarSlider",
   component: CalendarSlider,
   tags: ["autodocs"],
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { useState } from "react";
+import { CalendarSlider, type Range } from "brightframe/CalendarSlider";
+
+const [range, setRange] = useState<Range>({ start: new Date(), end: new Date() });
+
+<CalendarSlider value={range} onChange={(r) => setRange(r)} />
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

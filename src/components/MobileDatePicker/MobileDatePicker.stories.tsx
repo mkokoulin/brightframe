@@ -6,7 +6,21 @@ const meta: Meta<typeof MobileDatePicker> = {
   title: "Form/MobileDatePicker",
   component: MobileDatePicker,
   tags: ["autodocs"],
-  parameters: { layout: "fullscreen" },
+  parameters: {
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { MobileDatePicker } from "brightframe/MobileDatePicker";
+
+const [open, setOpen] = useState(false);
+const [range, setRange] = useState({ start: new Date(), end: new Date() });
+
+<MobileDatePicker open={open} onClose={() => setOpen(false)} value={range} onChange={setRange} mode="range" />
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

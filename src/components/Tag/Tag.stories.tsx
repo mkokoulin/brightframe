@@ -10,7 +10,15 @@ const meta: Meta<typeof Tag> = {
     size: { control: "select", options: ["sm", "md", "lg"] },
     children: { control: "text" },
   },
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component:
+          '```tsx\nimport { Tag } from "brightframe/Tag";\n\n<Tag variant="brand">Workshop</Tag>\n```',
+      },
+    },
+  },
 };
 
 export default meta;

@@ -6,7 +6,21 @@ const meta: Meta<typeof DateTimePicker> = {
   title: "Form/DateTimePicker",
   component: DateTimePicker,
   tags: ["autodocs"],
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { useState } from "react";
+import { DateTimePicker } from "brightframe/DateTimePicker";
+
+const [value, setValue] = useState(new Date());
+
+<DateTimePicker value={value} onChange={setValue} />
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

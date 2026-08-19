@@ -10,6 +10,14 @@ const meta: Meta<typeof Skeleton> = {
   argTypes: {
     variant: { control: "select", options: ["text", "circle", "rect"] },
   },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          '```tsx\nimport { Skeleton } from "brightframe/Skeleton";\n\n<Skeleton variant="text" lines={3} />\n```',
+      },
+    },
+  },
 };
 
 export default meta;

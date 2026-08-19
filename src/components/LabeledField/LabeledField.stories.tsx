@@ -6,7 +6,20 @@ const meta: Meta<typeof LabeledField> = {
   title: "Form/LabeledField",
   component: LabeledField,
   tags: ["autodocs"],
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { LabeledField } from "brightframe/LabeledField";
+
+const [name, setName] = useState("");
+
+<LabeledField label="Name" value={name} onChange={setName} placeholder="Jane Doe" />
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

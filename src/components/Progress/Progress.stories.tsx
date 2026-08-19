@@ -9,7 +9,14 @@ const meta: Meta<typeof Progress> = {
     size: { control: "select", options: ["sm", "md", "lg"] },
     value: { control: { type: "range", min: 0, max: 100 } },
   },
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component: '```tsx\nimport { Progress } from "brightframe/Progress";\n\n<Progress value={60} showLabel />\n```',
+      },
+    },
+  },
 };
 
 export default meta;

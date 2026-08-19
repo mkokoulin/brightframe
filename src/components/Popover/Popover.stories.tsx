@@ -10,7 +10,20 @@ const meta: Meta<typeof Popover> = {
   argTypes: {
     position: { control: "select", options: ["top", "bottom", "left", "right"] },
   },
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { Popover } from "brightframe/Popover";
+
+<Popover trigger={<button>Filters</button>}>
+  <p>Price range: $50 – $200</p>
+</Popover>
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

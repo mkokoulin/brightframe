@@ -9,7 +9,15 @@ const meta: Meta<typeof Link> = {
     variant: { control: "select", options: ["default", "muted", "brand"] },
     underline: { control: "boolean" },
   },
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component:
+          '```tsx\nimport { Link } from "brightframe/Link";\n\n<Link href="/terms" variant="brand">Learn more</Link>\n```',
+      },
+    },
+  },
 };
 
 export default meta;

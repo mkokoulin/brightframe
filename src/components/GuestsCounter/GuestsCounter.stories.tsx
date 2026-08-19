@@ -6,7 +6,21 @@ const meta: Meta<typeof GuestsCounter> = {
   title: "Form/GuestsCounter",
   component: GuestsCounter,
   tags: ["autodocs"],
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { useState } from "react";
+import { GuestsCounter } from "brightframe/GuestsCounter";
+
+const [guests, setGuests] = useState(2);
+
+<GuestsCounter value={guests} onChange={setGuests} label="Guests" />
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

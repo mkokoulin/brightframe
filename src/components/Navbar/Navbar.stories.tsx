@@ -7,7 +7,21 @@ const meta: Meta<typeof Navbar> = {
   title: "Molecules/Navbar",
   component: Navbar,
   tags: ["autodocs"],
-  parameters: { layout: "fullscreen" },
+  parameters: {
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { Navbar, NavbarItem } from "brightframe/Navbar";
+
+<Navbar brand={<strong>Acme</strong>}>
+  <NavbarItem href="/" active>Home</NavbarItem>
+  <NavbarItem href="/about">About</NavbarItem>
+</Navbar>
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

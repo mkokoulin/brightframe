@@ -5,7 +5,15 @@ const meta: Meta<typeof FormCard> = {
   title: "Form/FormCard",
   component: FormCard,
   tags: ["autodocs"],
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component:
+          '```tsx\nimport { FormCard } from "brightframe/FormCard";\n\n<FormCard>\n  <p>Card content goes here</p>\n</FormCard>\n```',
+      },
+    },
+  },
 };
 
 export default meta;

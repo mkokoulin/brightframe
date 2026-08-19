@@ -6,6 +6,20 @@ const meta: Meta<typeof Checkbox> = {
   title: "Form/Checkbox",
   component: Checkbox,
   tags: ["autodocs"],
+  parameters: {
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { useState } from "react";
+import { Checkbox } from "brightframe/Checkbox";
+
+const [checked, setChecked] = useState(false);
+
+<Checkbox checked={checked} onChange={setChecked} label="Send me booking confirmations by email" />
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

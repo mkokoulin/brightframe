@@ -5,6 +5,23 @@ const meta: Meta<typeof Breadcrumb> = {
   title: "Molecules/Breadcrumb",
   component: Breadcrumb,
   tags: ["autodocs"],
+  parameters: {
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { Breadcrumb } from "brightframe/Breadcrumb";
+
+<Breadcrumb
+  items={[
+    { label: "Home", href: "/" },
+    { label: "Locations", href: "/locations" },
+    { label: "Meeting Room A" },
+  ]}
+/>
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

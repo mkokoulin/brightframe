@@ -7,7 +7,15 @@ const meta: Meta<typeof EmptyState> = {
   title: "Molecules/EmptyState",
   component: EmptyState,
   tags: ["autodocs"],
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component:
+          '```tsx\nimport { EmptyState } from "brightframe/EmptyState";\n\n<EmptyState\n  title="No reviews yet"\n  description="Be the first to share your experience"\n/>\n```',
+      },
+    },
+  },
 };
 
 export default meta;

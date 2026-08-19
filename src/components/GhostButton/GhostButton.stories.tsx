@@ -19,7 +19,15 @@ const meta: Meta<typeof GhostButton> = {
   argTypes: {
     size: { control: "select", options: ["sm", "md", "lg"] },
   },
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component:
+          '```tsx\nimport { GhostButton } from "brightframe/GhostButton";\n\n<GhostButton label="How to find us" onClick={() => {}} />\n<GhostButton label="Open on the map" href="#" />\n```',
+      },
+    },
+  },
 };
 
 export default meta;

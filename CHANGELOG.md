@@ -19,6 +19,11 @@ before that date are dated by commit, not by release announcement.
   same 4px grid `Stack`/`Spacer` consume.
 - `css-types` script (via `typed-css-modules`) generating typed declarations for
   `*.module.css` files, run automatically before `dev`, `build`, and `typecheck`.
+- `@storybook/addon-docs`, wired into `.storybook/main.ts` — the `tags: ["autodocs"]`
+  already present on every story was a no-op without it, so no component had a Docs
+  tab or source panel at all.
+- A "how to use this in code" snippet (import statement + minimal JSX) on every
+  component's Storybook Docs page, via `parameters.docs.description.component`.
 
 ### Changed
 

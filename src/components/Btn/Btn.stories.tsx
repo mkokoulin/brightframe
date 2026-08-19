@@ -25,6 +25,17 @@ const meta: Meta<typeof Btn> = {
     fullWidth: { control: "boolean" },
     children: { control: "text" },
   },
+  parameters: {
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { Btn } from "brightframe/Btn";
+
+<Btn variant="primary" size="md">Register</Btn>
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

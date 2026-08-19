@@ -9,7 +9,20 @@ const meta: Meta<typeof Alert> = {
   argTypes: {
     variant: { control: "select", options: ["info", "success", "warning", "error"] },
   },
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { Alert } from "brightframe/Alert";
+
+<Alert variant="info" title="Heads up">
+  Check-in opens at 3 PM local time.
+</Alert>
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

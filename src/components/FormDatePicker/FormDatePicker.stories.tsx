@@ -6,7 +6,21 @@ const meta: Meta<typeof FormDatePicker> = {
   title: "Form/FormDatePicker",
   component: FormDatePicker,
   tags: ["autodocs"],
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { useState } from "react";
+import { FormDatePicker } from "brightframe/FormDatePicker";
+
+const [date, setDate] = useState("");
+
+<FormDatePicker label="Date" value={date} onChange={setDate} />
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

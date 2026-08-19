@@ -10,6 +10,22 @@ const meta: Meta<typeof Tabs> = {
     variant: { control: "select", options: ["line", "pill"] },
     fullWidth: { control: "boolean" },
   },
+  parameters: {
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { Tabs, type TabItem } from "brightframe/Tabs";
+
+const items: TabItem[] = [
+  { id: "overview", label: "Overview", content: "A quiet coworking space." },
+  { id: "pricing", label: "Pricing", content: "Day passes and monthly desks." },
+];
+
+<Tabs items={items} variant="line" />
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

@@ -6,7 +6,22 @@ const meta: Meta<typeof TextareaField> = {
   title: "Form/TextareaField",
   component: TextareaField,
   tags: ["autodocs"],
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { useState } from "react";
+import { TextareaField } from "brightframe/TextareaField";
+
+function CommentField() {
+  const [value, setValue] = useState("");
+  return <TextareaField label="Comment" value={value} onChange={setValue} placeholder="Leave a comment" />;
+}
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

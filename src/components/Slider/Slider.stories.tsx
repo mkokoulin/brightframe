@@ -6,7 +6,22 @@ const meta: Meta<typeof Slider> = {
   title: "Form/Slider",
   component: Slider,
   tags: ["autodocs"],
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { useState } from "react";
+import { Slider } from "brightframe/Slider";
+
+function GuestsSlider() {
+  const [value, setValue] = useState(4);
+  return <Slider label="Guests" value={value} onChange={(v) => setValue(v as number)} min={1} max={10} showValue />;
+}
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

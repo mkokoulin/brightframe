@@ -5,7 +5,15 @@ const meta: Meta<typeof Stack> = {
   title: "Layout/Stack",
   component: Stack,
   tags: ["autodocs"],
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component:
+          '```tsx\nimport { Stack } from "brightframe/Stack";\n\n<Stack direction="row" gap={12} align="center">\n  <span>One</span>\n  <span>Two</span>\n</Stack>\n```',
+      },
+    },
+  },
 };
 
 export default meta;

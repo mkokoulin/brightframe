@@ -12,7 +12,24 @@ const meta: Meta<typeof SelectField> = {
   title: "Form/SelectField",
   component: SelectField,
   tags: ["autodocs"],
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { SelectField } from "brightframe/SelectField";
+
+const [lang, setLang] = useState("en");
+const options = [
+  { value: "en", label: "English" },
+  { value: "ru", label: "Russian" },
+];
+
+<SelectField label="Language" value={lang} onChange={setLang} options={options} />
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

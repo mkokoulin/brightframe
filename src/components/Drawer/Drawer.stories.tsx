@@ -7,7 +7,23 @@ const meta: Meta<typeof Drawer> = {
   title: "Molecules/Drawer",
   component: Drawer,
   tags: ["autodocs"],
-  parameters: { layout: "fullscreen" },
+  parameters: {
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { useState } from "react";
+import { Drawer } from "brightframe/Drawer";
+
+const [open, setOpen] = useState(false);
+
+<Drawer open={open} onClose={() => setOpen(false)} placement="right" title="Filters">
+  <p>Narrow results by price, amenities, and availability.</p>
+</Drawer>
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

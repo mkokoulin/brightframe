@@ -8,7 +8,23 @@ const meta: Meta<typeof HorizontalScroller> = {
   title: "Molecules/HorizontalScroller",
   component: HorizontalScroller,
   tags: ["autodocs"],
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { HorizontalScroller } from "brightframe/HorizontalScroller";
+import { ActionCard } from "brightframe/ActionCard";
+
+<HorizontalScroller>
+  {events.map((e) => (
+    <ActionCard key={e.id} title={e.title} description={e.time} href={e.href} style={{ width: 240 }} />
+  ))}
+</HorizontalScroller>
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

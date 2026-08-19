@@ -6,6 +6,26 @@ const meta: Meta<typeof Combobox> = {
   title: "Form/Combobox",
   component: Combobox,
   tags: ["autodocs"],
+  parameters: {
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { useState } from "react";
+import { Combobox } from "brightframe/Combobox";
+
+const [value, setValue] = useState("");
+
+<Combobox
+  label="City"
+  value={value}
+  onChange={setValue}
+  options={[{ value: "yer", label: "Yerevan" }, { value: "tbi", label: "Tbilisi" }]}
+  placeholder="Search a city…"
+/>
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

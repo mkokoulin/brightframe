@@ -9,7 +9,15 @@ const meta: Meta<typeof InfoTooltip> = {
     label: { control: "text" },
     position: { control: "select", options: ["top", "bottom", "left", "right"] },
   },
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component:
+          '```tsx\nimport { InfoTooltip } from "brightframe/InfoTooltip";\n\n<InfoTooltip label="Discount when renewing your subscription" position="top" />\n```',
+      },
+    },
+  },
 };
 
 export default meta;

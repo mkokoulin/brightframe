@@ -5,7 +5,26 @@ const meta: Meta<typeof Footer> = {
   title: "Molecules/Footer",
   component: Footer,
   tags: ["autodocs"],
-  parameters: { layout: "fullscreen" },
+  parameters: {
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { Footer, FooterColumn } from "brightframe/Footer";
+
+<Footer>
+  <FooterColumn title="About">
+    <a href="/coworking">Coworking</a>
+    <a href="/events">Events</a>
+  </FooterColumn>
+  <FooterColumn title="Contacts">
+    <a href="mailto:hello@example.com">hello@example.com</a>
+  </FooterColumn>
+</Footer>
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

@@ -80,6 +80,7 @@
     "react-imask": "^7.6.1"
   },
   "devDependencies": {
+    "@storybook/addon-docs": "10.3.6",
     "@storybook/react-vite": "10.3.6",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.2",

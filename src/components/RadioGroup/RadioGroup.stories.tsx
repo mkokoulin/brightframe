@@ -9,6 +9,23 @@ const meta: Meta<typeof RadioGroup> = {
   argTypes: {
     direction: { control: "select", options: ["vertical", "horizontal"] },
   },
+  parameters: {
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { RadioGroup } from "brightframe/RadioGroup";
+
+const [plan, setPlan] = useState("month");
+const options = [
+  { value: "day", label: "Day pass" },
+  { value: "month", label: "Monthly desk" },
+];
+
+<RadioGroup options={options} value={plan} onChange={setPlan} label="Plan" />
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

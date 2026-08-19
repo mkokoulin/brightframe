@@ -6,7 +6,22 @@ const meta: Meta<typeof ActionCard> = {
   title: "Molecules/ActionCard",
   component: ActionCard,
   tags: ["autodocs"],
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { ActionCard } from "brightframe/ActionCard";
+
+<ActionCard
+  title="Storage"
+  description="Reliable storage — your comfort and peace of mind"
+  href="#"
+/>
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

@@ -7,7 +7,20 @@ const meta: Meta<typeof Container> = {
   title: "Atoms/Container",
   component: Container,
   tags: ["autodocs"],
-  parameters: { layout: "fullscreen" },
+  parameters: {
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { Container } from "brightframe/Container";
+
+<Container as="main">
+  Page content
+</Container>
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

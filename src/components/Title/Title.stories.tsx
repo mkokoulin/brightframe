@@ -7,7 +7,15 @@ const meta: Meta<typeof Title> = {
   title: "Atoms/Title",
   component: Title,
   tags: ["autodocs"],
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component:
+          '```tsx\nimport { Title } from "brightframe/Title";\n\n<Title>Letters and Numbers</Title>\n```',
+      },
+    },
+  },
 };
 
 export default meta;

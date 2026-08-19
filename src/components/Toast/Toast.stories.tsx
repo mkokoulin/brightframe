@@ -6,7 +6,25 @@ const meta: Meta<typeof ToastProvider> = {
   title: "Molecules/Toast",
   component: ToastProvider,
   tags: ["autodocs"],
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { ToastProvider, useToast } from "brightframe/Toast";
+
+function SaveButton() {
+  const { toast } = useToast();
+  return <button onClick={() => toast({ title: "Saved" })}>Save</button>;
+}
+
+<ToastProvider>
+  <SaveButton />
+</ToastProvider>
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

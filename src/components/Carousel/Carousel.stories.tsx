@@ -6,7 +6,21 @@ const meta: Meta<typeof Carousel> = {
   title: "Molecules/Carousel",
   component: Carousel,
   tags: ["autodocs"],
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { Carousel } from "brightframe/Carousel";
+
+<Carousel dots>
+  <img src="/room-1.jpg" alt="Room 1" />
+  <img src="/room-2.jpg" alt="Room 2" />
+</Carousel>
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

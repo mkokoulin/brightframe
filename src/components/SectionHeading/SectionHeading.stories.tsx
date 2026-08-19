@@ -8,7 +8,15 @@ const meta: Meta<typeof SectionHeading> = {
   argTypes: {
     align: { control: "select", options: ["left", "center", "right"] },
   },
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component:
+          '```tsx\nimport { SectionHeading } from "brightframe/SectionHeading";\n\n<SectionHeading title="Our plans" subtitle="Flexible options for any work rhythm" />\n```',
+      },
+    },
+  },
 };
 
 export default meta;

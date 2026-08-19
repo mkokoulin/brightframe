@@ -5,7 +5,22 @@ const meta: Meta<typeof InfoCards> = {
   title: "Organisms/InfoCards",
   component: InfoCards,
   tags: ["autodocs"],
-  parameters: { layout: "fullscreen" },
+  parameters: {
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { InfoCards } from "brightframe/InfoCards";
+
+<InfoCards
+  items={[
+    { id: "1", icon: "building", title: "Meeting Rooms", description: "Cozy rooms for up to 20 people.", href: "#" },
+  ]}
+/>
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

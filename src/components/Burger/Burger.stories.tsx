@@ -9,7 +9,21 @@ const meta: Meta<typeof Burger> = {
   argTypes: {
     size: { control: "select", options: ["sm", "md", "lg"] },
   },
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { useState } from "react";
+import { Burger } from "brightframe/Burger";
+
+const [open, setOpen] = useState(false);
+
+<Burger open={open} setOpen={setOpen} />
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

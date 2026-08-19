@@ -9,7 +9,24 @@ const meta: Meta<typeof DropdownMenu> = {
   argTypes: {
     align: { control: "select", options: ["start", "end"] },
   },
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { DropdownMenu } from "brightframe/DropdownMenu";
+
+<DropdownMenu
+  trigger={<button>Actions</button>}
+  items={[
+    { id: "edit", label: "Edit", onSelect: () => {} },
+    { id: "delete", label: "Delete", danger: true, onSelect: () => {} },
+  ]}
+/>
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

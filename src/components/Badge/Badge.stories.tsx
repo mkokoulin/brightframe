@@ -7,7 +7,23 @@ const meta: Meta<typeof Badge> = {
   title: "Atoms/Badge",
   component: Badge,
   tags: ["autodocs"],
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { Badge } from "brightframe/Badge";
+import { Tag } from "brightframe/Tag";
+
+<div style={{ position: "relative" }}>
+  <Badge>
+    <Tag variant="accent" size="sm">-20%</Tag>
+  </Badge>
+</div>
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

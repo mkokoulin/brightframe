@@ -6,7 +6,15 @@ const meta: Meta<typeof Spacer> = {
   title: "Layout/Spacer",
   component: Spacer,
   tags: ["autodocs"],
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component:
+          '```tsx\nimport { Spacer } from "brightframe/Spacer";\n\n<>\n  <div>Above</div>\n  <Spacer size={32} />\n  <div>Below</div>\n</>\n```',
+      },
+    },
+  },
 };
 
 export default meta;

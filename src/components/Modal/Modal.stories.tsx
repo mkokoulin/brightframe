@@ -7,7 +7,22 @@ const meta: Meta<typeof Modal> = {
   title: "Molecules/Modal",
   component: Modal,
   tags: ["autodocs"],
-  parameters: { layout: "fullscreen" },
+  parameters: {
+    layout: "fullscreen",
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { Modal } from "brightframe/Modal";
+
+const [open, setOpen] = useState(false);
+
+<Modal open={open} onClose={() => setOpen(false)} title="Confirm booking">
+  <p>Your room is reserved.</p>
+</Modal>
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

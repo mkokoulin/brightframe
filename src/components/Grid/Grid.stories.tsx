@@ -6,7 +6,21 @@ const meta: Meta<typeof Grid> = {
   title: "Layout/Grid",
   component: Grid,
   tags: ["autodocs"],
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { Grid, GridItem } from "brightframe/Grid";
+
+<Grid gap={16}>
+  <GridItem span={4}>Column</GridItem>
+  <GridItem span={8}>Column</GridItem>
+</Grid>
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;

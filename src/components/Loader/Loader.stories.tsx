@@ -8,7 +8,14 @@ const meta: Meta<typeof Loader> = {
   argTypes: {
     size: { control: "select", options: ["sm", "md", "lg"] },
   },
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component: '```tsx\nimport { Loader } from "brightframe/Loader";\n\n<Loader size="md" />\n```',
+      },
+    },
+  },
 };
 
 export default meta;

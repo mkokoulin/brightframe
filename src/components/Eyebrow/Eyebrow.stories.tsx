@@ -5,7 +5,15 @@ const meta: Meta<typeof Eyebrow> = {
   title: "Atoms/Eyebrow",
   component: Eyebrow,
   tags: ["autodocs"],
-  parameters: { layout: "padded" },
+  parameters: {
+    layout: "padded",
+    docs: {
+      description: {
+        component:
+          '```tsx\nimport { Eyebrow } from "brightframe/Eyebrow";\n\n<Eyebrow>Coworking</Eyebrow>\n```',
+      },
+    },
+  },
 };
 
 export default meta;

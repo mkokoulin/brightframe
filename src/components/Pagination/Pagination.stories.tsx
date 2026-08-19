@@ -6,6 +6,19 @@ const meta: Meta<typeof Pagination> = {
   title: "Molecules/Pagination",
   component: Pagination,
   tags: ["autodocs"],
+  parameters: {
+    docs: {
+      description: {
+        component: `\`\`\`tsx
+import { Pagination } from "brightframe/Pagination";
+
+const [page, setPage] = useState(1);
+
+<Pagination page={page} totalPages={12} onChange={setPage} />
+\`\`\``,
+      },
+    },
+  },
 };
 
 export default meta;
