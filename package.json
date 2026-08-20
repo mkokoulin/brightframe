@@ -1,6 +1,6 @@
 {
   "name": "brightframe",
-  "version": "0.3.7",
+  "version": "0.3.8",
   "description": "React UI component kit with buttons, cards, tags, form controls, and date/time pickers — themeable via a light/dark/high-contrast design token system and a drop-in ThemeProvider.",
   "keywords": [
     "react",
@@ -80,15 +80,18 @@
     "react-imask": "^7.6.1"
   },
   "devDependencies": {
+    "@storybook/addon-a11y": "^10.3.6",
     "@storybook/addon-docs": "10.3.6",
     "@storybook/react-vite": "10.3.6",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.2",
     "@testing-library/user-event": "^14.6.4",
+    "@types/jest-axe": "^3.5.9",
     "@types/node": "^26.2.0",
     "@types/react": "^18.3.27",
     "@types/react-dom": "^18.3.7",
     "@vitejs/plugin-react": "^5.0.0",
+    "jest-axe": "^11.0.0",
     "jsdom": "^30.0.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

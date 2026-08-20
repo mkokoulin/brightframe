@@ -6,15 +6,15 @@
 
   background: var(--c-surface);
   border: 0.5px solid var(--c-border);
-  border-radius: 16px;
+  border-radius: var(--radius-16);
 
   text-decoration: none;
   color: inherit;
   cursor: pointer;
 
   transition:
-    box-shadow 160ms var(--ease-native),
-    transform 160ms var(--ease-native);
+    box-shadow var(--duration-160) var(--ease-native),
+    transform var(--duration-160) var(--ease-native);
 }
 
 a.card:hover {
@@ -56,7 +56,7 @@ a.card:hover {
   height: 32px;
   flex: none;
 
-  border-radius: 999px;
+  border-radius: var(--radius-999);
   border: 1.5px solid var(--c-accent);
   color: var(--c-accent);
 }

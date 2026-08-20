@@ -48,7 +48,7 @@
   border: none;
   cursor: pointer;
   background: var(--c-surface-alt);
-  border-radius: 100px;
+  border-radius: var(--radius-100);
   font-size: 20px;
   line-height: 40px;
   color: var(--c-text-1);

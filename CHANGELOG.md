@@ -10,6 +10,22 @@ before that date are dated by commit, not by release announcement.
 
 ## [Unreleased]
 
+### Added
+
+- `--radius-*` and `--duration-*` design tokens in `tokens.css`, on the same
+  "suffix = literal value" convention as `--space-*` — centralizes the radii and
+  transition/animation durations already in use across components.
+- `@storybook/addon-a11y`, wired into `.storybook/main.ts` — surfaces automated
+  accessibility violations per story.
+- `jest-axe`-based accessibility assertions (`toHaveNoViolations`) for `Modal`,
+  `Drawer`, `Tabs`, `DropdownMenu`, `RadioGroup`, `Combobox`, and `SelectField`.
+
+### Changed
+
+- All components' hardcoded `border-radius` and transition/animation `Nms` durations
+  replaced with the new `--radius-*`/`--duration-*` tokens — no visual change, but both
+  are now themeable/overridable like color, typography, and spacing already were.
+
 ## [0.3.6] - 2026-08-19
 
 ### Added

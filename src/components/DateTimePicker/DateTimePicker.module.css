@@ -14,7 +14,7 @@
   height: 46px;
 
   background: var(--c-surface);
-  border-radius: 16px;
+  border-radius: var(--radius-16);
   border: none;
   cursor: pointer;
 }
@@ -32,7 +32,7 @@
   padding: var(--space-12);
   gap: var(--space-4);
 
-  border-radius: 16px;
+  border-radius: var(--radius-16);
   user-select: none;
 }
 
@@ -70,7 +70,7 @@
   opacity: 0;
   transform: translateY(-6px) scale(0.98);
   pointer-events: none;
-  transition: opacity 160ms var(--ease-native), transform 160ms var(--ease-native);
+  transition: opacity var(--duration-160) var(--ease-native), transform var(--duration-160) var(--ease-native);
 }
 
 .dropdown[data-open="true"] {
@@ -81,7 +81,7 @@
 
 .dropdownInner {
   background: var(--c-surface);
-  border-radius: 16px;
+  border-radius: var(--radius-16);
   box-shadow: 0px 10px 30px rgba(0,0,0,0.12);
   border: 1px solid var(--c-border-soft);
   padding: var(--space-12);
@@ -108,11 +108,11 @@
 .navBtn {
   width: 34px;
   height: 34px;
-  border-radius: 12px;
+  border-radius: var(--radius-12);
   border: none;
   background: var(--c-surface-alt);
   cursor: pointer;
-  transition: background 140ms var(--ease-native);
+  transition: background var(--duration-140) var(--ease-native);
 }
 
 .navBtn:hover, .navBtn:focus-visible {
@@ -138,7 +138,7 @@
 
 .day {
   height: 34px;
-  border-radius: 12px;
+  border-radius: var(--radius-12);
   border: none;
   background: var(--c-surface);
   cursor: pointer;
@@ -195,7 +195,7 @@
 
 .timeItem {
   height: 34px;
-  border-radius: 12px;
+  border-radius: var(--radius-12);
   border: none;
   background: var(--c-surface-alt);
   cursor: pointer;
@@ -230,7 +230,7 @@
   font-size: 13px;
   color: var(--c-brand);
   padding: var(--space-6) var(--space-8);
-  border-radius: 12px;
+  border-radius: var(--radius-12);
 }
 
 .quickBtn:hover, .quickBtn:focus-visible {

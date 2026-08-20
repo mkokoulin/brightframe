@@ -1,7 +1,7 @@
 .btn {
   height: 38px;
   border: none;
-  border-radius: 12px;
+  border-radius: var(--radius-12);
   cursor: pointer;
 
   font-family: var(--font-sans);
@@ -9,7 +9,7 @@
   font-size: 14px;
   line-height: 22px;
 
-  transition: background 160ms var(--ease-native), transform 120ms var(--ease-native), box-shadow 160ms var(--ease-native), border-color 160ms var(--ease-native), color 160ms var(--ease-native);
+  transition: background var(--duration-160) var(--ease-native), transform var(--duration-120) var(--ease-native), box-shadow var(--duration-160) var(--ease-native), border-color var(--duration-160) var(--ease-native), color var(--duration-160) var(--ease-native);
 }
 
 .fullWidth {

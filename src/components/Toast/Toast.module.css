@@ -65,11 +65,11 @@
   width: 340px;
   max-width: 100%;
   padding: var(--space-12) var(--space-14);
-  border-radius: 12px;
+  border-radius: var(--radius-12);
   background: var(--c-surface);
   box-shadow: var(--c-shadow-md);
   border: 1px solid var(--c-border-soft);
-  animation: toastIn 200ms var(--ease-native) both;
+  animation: toastIn var(--duration-200) var(--ease-native) both;
 }
 @keyframes toastIn {
   from { opacity: 0; transform: translateY(8px) scale(0.98); }
@@ -117,7 +117,7 @@
   background: transparent;
   color: var(--c-text-3);
   cursor: pointer;
-  transition: background 140ms var(--ease-native), color 140ms var(--ease-native);
+  transition: background var(--duration-140) var(--ease-native), color var(--duration-140) var(--ease-native);
 }
 .closeBtn:hover {
   background: var(--c-surface-2);

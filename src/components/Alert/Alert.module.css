@@ -7,7 +7,7 @@
   align-items: flex-start;
   gap: var(--space-10);
   padding: var(--space-12) var(--space-14);
-  border-radius: 12px;
+  border-radius: var(--radius-12);
   border: 1px solid transparent;
 }
 
@@ -50,7 +50,7 @@
   background: transparent;
   cursor: pointer;
   opacity: 0.7;
-  transition: opacity 140ms var(--ease-native), background 140ms var(--ease-native);
+  transition: opacity var(--duration-140) var(--ease-native), background var(--duration-140) var(--ease-native);
 }
 .closeBtn:hover {
   opacity: 1;

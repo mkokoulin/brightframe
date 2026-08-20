@@ -43,16 +43,16 @@
   align-items: center;
   justify-content: center;
   border: 1.5px solid var(--c-border);
-  border-radius: 6px;
+  border-radius: var(--radius-6);
   background: var(--c-surface);
   color: #fff;
-  transition: background 140ms var(--ease-native), border-color 140ms var(--ease-native);
+  transition: background var(--duration-140) var(--ease-native), border-color var(--duration-140) var(--ease-native);
 }
 
 .check,
 .dash {
   opacity: 0;
-  transition: opacity 100ms var(--ease-native);
+  transition: opacity var(--duration-100) var(--ease-native);
 }
 
 .input:checked + .box {

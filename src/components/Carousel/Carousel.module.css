@@ -6,13 +6,13 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: var(--radius-12);
 }
 
 .track {
   display: flex;
   width: 100%;
-  transition: transform 400ms var(--ease-native);
+  transition: transform var(--duration-400) var(--ease-native);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -40,13 +40,13 @@
 
   background: rgba(255, 255, 255, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 999px;
+  border-radius: var(--radius-999);
   color: var(--c-text-1);
   cursor: pointer;
 
   transition:
-    background 160ms var(--ease-native),
-    transform 160ms var(--ease-native);
+    background var(--duration-160) var(--ease-native),
+    transform var(--duration-160) var(--ease-native);
 }
 
 .navBtn:hover {
@@ -83,10 +83,10 @@
   height: 8px;
   padding: 0;
   border: none;
-  border-radius: 999px;
+  border-radius: var(--radius-999);
   background: var(--c-dot);
   cursor: pointer;
-  transition: background 160ms var(--ease-native), width 160ms var(--ease-native);
+  transition: background var(--duration-160) var(--ease-native), width var(--duration-160) var(--ease-native);
 }
 
 .dot:focus-visible {

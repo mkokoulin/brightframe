@@ -32,7 +32,7 @@
   padding: 0;
   font: inherit;
   cursor: pointer;
-  transition: color 140ms var(--ease-native);
+  transition: color var(--duration-140) var(--ease-native);
 }
 .link:hover,
 .linkButton:hover {

@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { SelectField, type SelectOption } from "./SelectField";
 
 const OPTIONS: SelectOption[] = [
@@ -29,5 +30,10 @@ describe("SelectField", () => {
   it("shows an error message", () => {
     render(<SelectField label="Choice" value="" options={OPTIONS} error="Required" onChange={() => {}} />);
     expect(screen.getByRole("alert")).toHaveTextContent("Required");
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<SelectField label="Choice" value="b" options={OPTIONS} onChange={() => {}} />);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

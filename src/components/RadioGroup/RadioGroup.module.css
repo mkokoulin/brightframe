@@ -61,7 +61,7 @@
   border: 1.5px solid var(--c-border);
   border-radius: 50%;
   background: var(--c-surface);
-  transition: border-color 140ms var(--ease-native);
+  transition: border-color var(--duration-140) var(--ease-native);
 }
 
 .dot::after {
@@ -71,7 +71,7 @@
   border-radius: 50%;
   background: var(--c-accent);
   transform: scale(0);
-  transition: transform 140ms var(--ease-native);
+  transition: transform var(--duration-140) var(--ease-native);
 }
 
 .input:checked + .dot {

@@ -11,13 +11,13 @@
   gap: var(--space-2);
   padding: 1px;
   background: var(--c-surface);
-  border-radius: 16px;
+  border-radius: var(--radius-16);
   box-sizing: border-box;
 }
 
 .item {
   height: 44px;
-  border-radius: 16px;
+  border-radius: var(--radius-16);
   display: flex;
   align-items: center;
   gap: var(--space-8);
@@ -68,7 +68,7 @@
   color: var(--c-text-nav);
   cursor: pointer;
   padding: var(--space-2) var(--space-6);
-  border-radius: 8px;
+  border-radius: var(--radius-8);
   transition: background 0.15s var(--ease-native), color 0.15s var(--ease-native);
   white-space: nowrap;
 }
@@ -99,7 +99,7 @@
   line-height: 16px;
   color: var(--c-text-2);
   background: var(--c-surface-alt);
-  border-radius: 999px;
+  border-radius: var(--radius-999);
   padding: 3px var(--space-10);
   white-space: nowrap;
   flex-shrink: 0;
@@ -113,7 +113,7 @@
   left: 0;
   background: var(--c-surface);
   border: 1px solid var(--c-border-soft);
-  border-radius: 16px;
+  border-radius: var(--radius-16);
   box-shadow: var(--c-shadow-md);
   padding: var(--space-12);
   z-index: 50;
@@ -151,7 +151,7 @@
   font-size: 13px;
   line-height: 1;
   padding: var(--space-8) var(--space-4);
-  border-radius: 8px;
+  border-radius: var(--radius-8);
   cursor: pointer;
   text-align: center;
   transition: background 0.12s var(--ease-native), color 0.12s var(--ease-native), transform 0.1s var(--ease-native);

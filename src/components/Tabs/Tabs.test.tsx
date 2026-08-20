@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Tabs, type TabItem } from "./Tabs";
 
 const ITEMS: TabItem[] = [
@@ -68,5 +69,10 @@ describe("Tabs", () => {
     tabA.focus();
     fireEvent.keyDown(tabA, { key: "End" });
     expect(screen.getByRole("tab", { name: "B" })).toHaveAttribute("aria-selected", "true");
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<Tabs items={ITEMS} />);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

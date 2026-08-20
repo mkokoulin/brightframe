@@ -39,14 +39,14 @@
   left: 0;
   right: 0;
   height: 4px;
-  border-radius: 999px;
+  border-radius: var(--radius-999);
   background: var(--c-surface-2);
 }
 
 .fill {
   position: absolute;
   height: 4px;
-  border-radius: 999px;
+  border-radius: var(--radius-999);
   background: var(--c-accent);
 }
 

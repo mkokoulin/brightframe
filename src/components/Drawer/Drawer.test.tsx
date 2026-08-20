@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Drawer } from "./Drawer";
 
 describe("Drawer", () => {
@@ -87,5 +88,14 @@ describe("Drawer", () => {
       </Drawer>,
     );
     expect(screen.getByRole("dialog").className).toMatch(/left/);
+  });
+
+  it("has no accessibility violations", async () => {
+    render(
+      <Drawer open onClose={vi.fn()} title="Filters">
+        Body content
+      </Drawer>,
+    );
+    expect(await axe(document.body)).toHaveNoViolations();
   });
 });

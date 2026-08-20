@@ -31,18 +31,18 @@
 
 /* ── Radius ── */
 
-.rsm  { border-radius: 8px; }
-.rmd  { border-radius: 12px; }
-.rlg  { border-radius: 16px; }
-.rxl  { border-radius: 20px; }
+.rsm  { border-radius: var(--radius-8); }
+.rmd  { border-radius: var(--radius-12); }
+.rlg  { border-radius: var(--radius-16); }
+.rxl  { border-radius: var(--radius-20); }
 
 /* ── Hover animation ── */
 
 /* Slow ease-in on exit, fast ease-out on enter — standard spring feel */
 .hover {
   transition:
-    transform 200ms cubic-bezier(0.4, 0, 0.6, 1),
-    box-shadow 200ms cubic-bezier(0.4, 0, 0.6, 1);
+    transform var(--duration-200) cubic-bezier(0.4, 0, 0.6, 1),
+    box-shadow var(--duration-200) cubic-bezier(0.4, 0, 0.6, 1);
   cursor: pointer;
 }
 
@@ -51,8 +51,8 @@
   transform: translateY(-5px);
   box-shadow: 0px 16px 36px rgba(0, 0, 0, 0.14);
   transition:
-    transform 380ms cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 380ms cubic-bezier(0.22, 1, 0.36, 1);
+    transform var(--duration-380) cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow var(--duration-380) cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .hover:focus-visible {

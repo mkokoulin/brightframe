@@ -31,7 +31,43 @@
   --space-48: 48px;
   --space-64: 64px;
 
-  /* ── Motion ── */
+  /* ── Radius ──
+     Same convention as spacing: token suffix = its pixel value. Centralizes
+     the radii already in use across components — use these instead of a
+     bare `border-radius: 16px` so the value has one source of truth.
+     `--radius-pill` is the semantic alias for a fully-rounded (pill/circle)
+     edge; prefer it over `--radius-999`/`--radius-100` when that's the intent. */
+  --radius-2: 2px;
+  --radius-4: 4px;
+  --radius-6: 6px;
+  --radius-8: 8px;
+  --radius-9: 9px;
+  --radius-10: 10px;
+  --radius-12: 12px;
+  --radius-14: 14px;
+  --radius-16: 16px;
+  --radius-18: 18px;
+  --radius-20: 20px;
+  --radius-24: 24px;
+  --radius-100: 100px;
+  --radius-999: 999px;
+  --radius-pill: 999px;
+
+  /* ── Motion ──
+     Durations follow the spacing/radius convention: token suffix = its
+     millisecond value, centralizing the values already in use for
+     transitions/animations across components. */
+  --duration-80: 80ms;
+  --duration-100: 100ms;
+  --duration-120: 120ms;
+  --duration-140: 140ms;
+  --duration-160: 160ms;
+  --duration-180: 180ms;
+  --duration-200: 200ms;
+  --duration-220: 220ms;
+  --duration-300: 300ms;
+  --duration-380: 380ms;
+  --duration-400: 400ms;
   --ease-native: cubic-bezier(0.22, 1, 0.36, 1);
 
   /* ── Typography ──

@@ -52,12 +52,12 @@
 
   background: var(--c-surface);
   border: 1px solid var(--c-border);
-  border-radius: 999px;
+  border-radius: var(--radius-999);
   box-shadow: var(--c-shadow-sm);
   color: var(--c-text-1);
   cursor: pointer;
 
-  transition: background 160ms var(--ease-native);
+  transition: background var(--duration-160) var(--ease-native);
 }
 
 .navBtn:hover {

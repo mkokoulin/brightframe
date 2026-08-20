@@ -24,10 +24,10 @@
   max-width: 320px;
   background: var(--c-surface);
   border: 1px solid var(--c-border-soft);
-  border-radius: 12px;
+  border-radius: var(--radius-12);
   box-shadow: var(--c-shadow-md);
   padding: var(--space-16);
-  animation: fadeIn 140ms var(--ease-native) both;
+  animation: fadeIn var(--duration-140) var(--ease-native) both;
 }
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-4px); }

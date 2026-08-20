@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Combobox, type ComboboxOption } from "./Combobox";
 
 const OPTIONS: ComboboxOption[] = [
@@ -72,5 +73,11 @@ describe("Combobox", () => {
   it("renders an error message with role=alert", () => {
     render(<Combobox label="City" value="" onChange={vi.fn()} options={OPTIONS} error="Required" />);
     expect(screen.getByRole("alert")).toHaveTextContent("Required");
+  });
+
+  it("has no accessibility violations with the list open", async () => {
+    const { container } = render(<Combobox label="City" value="" onChange={vi.fn()} options={OPTIONS} />);
+    fireEvent.focus(screen.getByRole("combobox", { name: "City" }));
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

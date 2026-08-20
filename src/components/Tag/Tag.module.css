@@ -5,7 +5,7 @@
 .tag {
   display: inline-flex;
   align-items: center;
-  border-radius: 20px;
+  border-radius: var(--radius-20);
   font-weight: 600;
   line-height: 1;
   white-space: nowrap;

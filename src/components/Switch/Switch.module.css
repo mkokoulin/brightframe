@@ -21,7 +21,7 @@
   flex-shrink: 0;
   width: 40px;
   height: 24px;
-  border-radius: 999px;
+  border-radius: var(--radius-999);
   background: var(--c-border);
 }
 
@@ -36,10 +36,10 @@
 .fill {
   position: absolute;
   inset: 0;
-  border-radius: 999px;
+  border-radius: var(--radius-999);
   background: var(--c-accent);
   opacity: 0;
-  transition: opacity 160ms var(--ease-native);
+  transition: opacity var(--duration-160) var(--ease-native);
 }
 
 .input:checked ~ .fill {
@@ -59,7 +59,7 @@
   border-radius: 50%;
   background: #fff;
   box-shadow: var(--c-shadow-sm);
-  transition: transform 160ms var(--ease-native);
+  transition: transform var(--duration-160) var(--ease-native);
 }
 
 .input:focus-visible ~ .thumb {

@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Modal } from "./Modal";
 
 describe("Modal", () => {
@@ -87,5 +88,14 @@ describe("Modal", () => {
       </Modal>,
     );
     expect(screen.getByRole("button", { name: "Confirm" })).toBeInTheDocument();
+  });
+
+  it("has no accessibility violations", async () => {
+    render(
+      <Modal open onClose={vi.fn()} title="Confirm booking" footer={<button type="button">Confirm</button>}>
+        Body content
+      </Modal>,
+    );
+    expect(await axe(document.body)).toHaveNoViolations();
   });
 });
