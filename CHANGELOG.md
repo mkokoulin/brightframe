@@ -25,6 +25,10 @@ before that date are dated by commit, not by release announcement.
   heights already in use across components. Percentage line heights (`120%`,
   `140%`, `150%`) are exposed as `--line-height-120`/`140`/`150`, holding the
   unitless equivalent (`1.2`/`1.4`/`1.5`) per CSS best practice.
+- `--z-*` design tokens in `tokens.css` (`--z-10` through `--z-400`), covering the
+  global overlay stack: tooltips/bubbles below menus/popovers below loading
+  overlays below listbox/sheet overlays below modal/drawer below toast, gapped
+  to leave room for new layers between tiers.
 
 ### Changed
 
@@ -36,6 +40,12 @@ before that date are dated by commit, not by release announcement.
   three `rem`-based font sizes were also normalized to the kit's existing px
   convention (`2.5rem`/`2rem`/`1.5rem` → `--font-size-40`/`32`/`24`, equal at the
   default 16px root).
+- Components' `z-index` values that belong to the shared overlay stack (`10`, `50`,
+  `100`, `200`, `300`, `400`) replaced with the new `--z-*` tokens — no visual
+  change. Small `z-index` values used only to order elements within one
+  component's own stacking context (a carousel slide above its siblings, a badge
+  above its card, a slider thumb above its track, ...) are left as plain numbers,
+  since they aren't part of this global scale.
 
 ## [0.3.6] - 2026-08-19
 

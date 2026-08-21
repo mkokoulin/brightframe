@@ -70,6 +70,21 @@
   --duration-400: 400ms;
   --ease-native: cubic-bezier(0.22, 1, 0.36, 1);
 
+  /* ── Layering ──
+     Same "suffix = literal value" convention, for the global overlay stack —
+     tooltips/bubbles below menus/popovers below loading overlays below
+     listbox/sheet overlays below modal/drawer below toast, gapped to leave
+     room for new layers between tiers. Small in-component values (0/1/3/4
+     used to order a slide above its siblings, a badge above its card, a
+     thumb above a track, ...) are local to one stacking context, not part
+     of this global scale, and intentionally stay as plain numbers. */
+  --z-10: 10;
+  --z-50: 50;
+  --z-100: 100;
+  --z-200: 200;
+  --z-300: 300;
+  --z-400: 400;
+
   /* ── Typography ──
      PT Sans is the kit's default typeface. This variable only names the
      font — it doesn't load it. Import "brightframe/fonts.css" to pull

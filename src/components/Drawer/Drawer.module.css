@@ -5,7 +5,7 @@
 .overlay {
   position: fixed;
   inset: 0;
-  z-index: 300;
+  z-index: var(--z-300);
   background: rgba(0, 0, 0, 0.45);
   animation: overlayIn var(--duration-180) var(--ease-native) both;
 }

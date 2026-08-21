@@ -19,7 +19,7 @@
 
 .panel {
   position: absolute;
-  z-index: 50;
+  z-index: var(--z-50);
   min-width: 220px;
   max-width: 320px;
   background: var(--c-surface);

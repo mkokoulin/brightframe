@@ -20,7 +20,7 @@
 .menu {
   position: absolute;
   top: calc(100% + 6px);
-  z-index: 50;
+  z-index: var(--z-50);
   min-width: 180px;
   background: var(--c-surface);
   border: 1px solid var(--c-border-soft);

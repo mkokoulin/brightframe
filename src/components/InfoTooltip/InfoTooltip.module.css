@@ -17,7 +17,7 @@
 
 .bubble {
   position: absolute;
-  z-index: 10;
+  z-index: var(--z-10);
 
   width: max-content;
   max-width: 220px;
