@@ -69,15 +69,15 @@ a.card:hover {
 .title {
   margin: 0;
   font-family: var(--font-sans);
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 22px;
+  font-weight: var(--font-weight-700);
+  font-size: var(--font-size-16);
+  line-height: var(--line-height-22);
   color: var(--c-text-1);
 }
 
 .description {
   margin: var(--space-6) 0 0;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-20);
   color: var(--c-text-2);
 }

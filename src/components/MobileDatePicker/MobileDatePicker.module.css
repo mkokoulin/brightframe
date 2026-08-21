@@ -100,8 +100,8 @@
   cursor: pointer;
 
   font-family: var(--font-sans);
-  font-size: 15px;
-  font-weight: 500;
+  font-size: var(--font-size-15);
+  font-weight: var(--font-weight-500);
   color: var(--c-text-1);
   text-align: center;
 
@@ -137,8 +137,8 @@
 .hint {
   margin: 0;
   font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 400;
+  font-size: var(--font-size-13);
+  font-weight: var(--font-weight-400);
   color: var(--c-text-3);
   text-align: center;
 }
@@ -168,9 +168,9 @@
 
 .monthTitle {
   font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 24px;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-16);
+  line-height: var(--line-height-24);
   color: var(--c-text-1);
   text-align: center;
   flex: 1;
@@ -209,8 +209,8 @@
 .weekdayLabel {
   text-align: center;
   font-family: var(--font-sans);
-  font-size: 12px;
-  line-height: 20px;
+  font-size: var(--font-size-12);
+  line-height: var(--line-height-20);
   color: var(--c-text-3);
   padding: var(--space-4) 0;
   user-select: none;
@@ -267,8 +267,8 @@
   cursor: pointer;
 
   font-family: var(--font-sans);
-  font-size: 15px;
-  font-weight: 400;
+  font-size: var(--font-size-15);
+  font-weight: var(--font-weight-400);
   color: var(--c-text-1);
 
   display: flex;
@@ -285,12 +285,12 @@
 .dayToday {
   border: 1.5px solid var(--c-brand);
   color: var(--c-brand);
-  font-weight: 500;
+  font-weight: var(--font-weight-500);
 }
 .daySelected {
   background: var(--c-brand);
   color: #ffffff;
-  font-weight: 600;
+  font-weight: var(--font-weight-600);
 }
 
 /* ── Footer: Reset + Apply ── */
@@ -315,8 +315,8 @@
   cursor: pointer;
 
   font-family: var(--font-sans);
-  font-size: 15px;
-  font-weight: 400;
+  font-size: var(--font-size-15);
+  font-weight: var(--font-weight-400);
   color: var(--c-text-2);
 
   transition: border-color var(--duration-140) var(--ease-native), color var(--duration-140) var(--ease-native);
@@ -337,8 +337,8 @@
   cursor: pointer;
 
   font-family: var(--font-sans);
-  font-size: 15px;
-  font-weight: 600;
+  font-size: var(--font-size-15);
+  font-weight: var(--font-weight-600);
   color: #ffffff;
 
   transition: background var(--duration-140) var(--ease-native), transform var(--duration-100) var(--ease-native);

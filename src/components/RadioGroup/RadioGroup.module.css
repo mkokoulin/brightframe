@@ -10,8 +10,8 @@
 
 .groupLabel {
   font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: 13px;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-13);
   color: var(--c-text-3);
 }
 
@@ -88,12 +88,12 @@
 
 .text {
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size: var(--font-size-14);
   color: var(--c-text-1);
 }
 
 .errorMsg {
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: var(--font-size-12);
   color: var(--c-error);
 }

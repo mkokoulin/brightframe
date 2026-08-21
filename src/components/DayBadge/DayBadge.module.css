@@ -23,9 +23,9 @@
 
 .weekday,
 .month {
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 22px;
+  font-weight: var(--font-weight-700);
+  font-size: var(--font-size-18);
+  line-height: var(--line-height-22);
   letter-spacing: -0.01em;
   color: var(--c-surface-alt);
   text-transform: capitalize;
@@ -33,9 +33,9 @@
 }
 
 .day {
-  font-weight: 700;
-  font-size: 40px;
-  line-height: 40px;
+  font-weight: var(--font-weight-700);
+  font-size: var(--font-size-40);
+  line-height: var(--line-height-40);
   letter-spacing: -0.02em;
   color: var(--c-surface-alt);
 }
@@ -49,13 +49,13 @@
 
 .compact .weekday,
 .compact .month {
-  font-size: 12px;
-  line-height: 15px;
+  font-size: var(--font-size-12);
+  line-height: var(--line-height-15);
 }
 
 .compact .day {
-  font-size: 24px;
-  line-height: 24px;
+  font-size: var(--font-size-24);
+  line-height: var(--line-height-24);
 }
 
 @media (max-width: 768px) {
@@ -85,8 +85,8 @@
 
   .weekday,
   .month {
-    font-size: 14px;
-    line-height: 18px;
+    font-size: var(--font-size-14);
+    line-height: var(--line-height-18);
     color: var(--c-text-2);
     text-transform: capitalize;
   }
@@ -96,8 +96,8 @@
   }
 
   .day {
-    font-size: 18px;
-    line-height: 18px;
+    font-size: var(--font-size-18);
+    line-height: var(--line-height-18);
     color: var(--c-text-2);
   }
 }

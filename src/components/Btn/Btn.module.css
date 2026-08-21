@@ -11,7 +11,7 @@
   border-radius: var(--radius-12);
   cursor: pointer;
   font-family: var(--font-sans);
-  font-weight: 600;
+  font-weight: var(--font-weight-600);
   text-decoration: none;
   white-space: nowrap;
   user-select: none;
@@ -48,20 +48,20 @@
 .sm {
   height: 36px;
   padding: 0 var(--space-16);
-  font-size: 13px;
+  font-size: var(--font-size-13);
 }
 
 .md {
   height: 44px;
   padding: 0 var(--space-24);
-  font-size: 15px;
+  font-size: var(--font-size-15);
 }
 
 .lg {
   height: 52px;
   padding: 0 var(--space-32);
-  font-size: 16px;
-  font-weight: 700;
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-700);
 }
 
 /* ── Variants ── */

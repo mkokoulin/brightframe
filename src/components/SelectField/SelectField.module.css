@@ -17,9 +17,9 @@
 
 .label {
   font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 18px;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-13);
+  line-height: var(--line-height-18);
   color: var(--c-text-3);
   white-space: nowrap;
   padding-left: var(--space-4);
@@ -64,8 +64,8 @@
 
 .placeholder {
   font-family: var(--font-sans);
-  font-size: 14px;
-  line-height: 20px;
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-20);
   color: var(--c-text-3);
   flex: 1;
   min-width: 0;
@@ -76,8 +76,8 @@
 
 .valueText {
   font-family: var(--font-sans);
-  font-size: 14px;
-  line-height: 20px;
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-20);
   color: var(--c-text-1);
   flex: 1;
   min-width: 0;
@@ -128,8 +128,8 @@
   display: flex;
   align-items: center;
   font-family: var(--font-sans);
-  font-size: 14px;
-  line-height: 20px;
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-20);
   color: var(--c-text-1);
   cursor: pointer;
   user-select: none;
@@ -142,7 +142,7 @@
 
 .optionSelected {
   color: var(--c-brand);
-  font-weight: 600;
+  font-weight: var(--font-weight-600);
 }
 
 .optionSelected.optionFocused {
@@ -152,8 +152,8 @@
 /* ── Error message ── */
 .errorMsg {
   font-family: var(--font-sans);
-  font-size: 12px;
-  line-height: 16px;
+  font-size: var(--font-size-12);
+  line-height: var(--line-height-16);
   color: var(--c-error);
   padding-left: var(--space-16);
   animation: errorIn var(--duration-180) cubic-bezier(0.22, 1, 0.36, 1) both;

@@ -19,12 +19,23 @@ before that date are dated by commit, not by release announcement.
   accessibility violations per story.
 - `jest-axe`-based accessibility assertions (`toHaveNoViolations`) for `Modal`,
   `Drawer`, `Tabs`, `DropdownMenu`, `RadioGroup`, `Combobox`, and `SelectField`.
+- `--font-size-*`, `--font-weight-*`, and `--line-height-*` design tokens in
+  `tokens.css`, on the same "suffix = literal value" convention as `--space-*`/
+  `--radius-*`/`--duration-*` — centralizes the type sizes, weights, and line
+  heights already in use across components. Percentage line heights (`120%`,
+  `140%`, `150%`) are exposed as `--line-height-120`/`140`/`150`, holding the
+  unitless equivalent (`1.2`/`1.4`/`1.5`) per CSS best practice.
 
 ### Changed
 
 - All components' hardcoded `border-radius` and transition/animation `Nms` durations
   replaced with the new `--radius-*`/`--duration-*` tokens — no visual change, but both
   are now themeable/overridable like color, typography, and spacing already were.
+- All components' hardcoded `font-size`, `font-weight`, and `line-height` values
+  replaced with the new typography tokens — no visual change. `Title`/`SubTitle`'s
+  three `rem`-based font sizes were also normalized to the kit's existing px
+  convention (`2.5rem`/`2rem`/`1.5rem` → `--font-size-40`/`32`/`24`, equal at the
+  default 16px root).
 
 ## [0.3.6] - 2026-08-19
 

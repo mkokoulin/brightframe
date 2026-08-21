@@ -19,8 +19,8 @@
   background: var(--c-text-1);
   color: var(--c-surface);
   font-family: var(--font-sans);
-  font-size: 12px;
-  line-height: 140%;
+  font-size: var(--font-size-12);
+  line-height: var(--line-height-140);
   text-align: center;
 
   border-radius: var(--radius-8);

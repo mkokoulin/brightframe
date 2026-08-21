@@ -1,6 +1,6 @@
 .title {
-  font-weight: 700;
-  font-size: 2.5rem;
+  font-weight: var(--font-weight-700);
+  font-size: var(--font-size-40);
   color: var(--c-text-1);
   text-transform: uppercase;
   margin: 0;
@@ -8,6 +8,6 @@
 
 @media (max-width: 860px) {
   .title {
-    font-size: 1.5rem;
+    font-size: var(--font-size-24);
   }
 }

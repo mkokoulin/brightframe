@@ -78,9 +78,9 @@
   margin: 0;
 
   font-family: var(--font-sans);
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 24px;
+  font-weight: var(--font-weight-500);
+  font-size: var(--font-size-18);
+  line-height: var(--line-height-24);
 
   color: var(--c-text-1);
 }
@@ -88,9 +88,9 @@
 .desc {
   margin: 0;
 
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-20);
 
   color: var(--c-text-2);
 }
@@ -98,9 +98,9 @@
 .mobileLink {
   margin: 0;
 
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 120%;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-120);
   letter-spacing: 0.5px;
 
   color: var(--c-brand);
@@ -151,9 +151,9 @@
     display: block;
 
     font-family: var(--font-sans);
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 15px;
+    font-weight: var(--font-weight-400);
+    font-size: var(--font-size-12);
+    line-height: var(--line-height-15);
     text-align: center;
 
     color: var(--c-text-nav);
@@ -164,18 +164,18 @@
   }
 
   .title {
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 20px;
+    font-weight: var(--font-weight-700);
+    font-size: var(--font-size-14);
+    line-height: var(--line-height-20);
     letter-spacing: 0.1px;
 
     color: var(--c-text-1);
   }
 
   .desc {
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 16px;
+    font-weight: var(--font-weight-600);
+    font-size: var(--font-size-12);
+    line-height: var(--line-height-16);
     letter-spacing: 0.5px;
 
     color: var(--c-text-2);

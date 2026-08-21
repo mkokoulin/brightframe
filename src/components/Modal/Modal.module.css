@@ -53,8 +53,8 @@
   margin: 0;
   padding-top: var(--space-4);
   font-family: var(--font-sans);
-  font-size: 18px;
-  font-weight: 700;
+  font-size: var(--font-size-18);
+  font-weight: var(--font-weight-700);
   color: var(--c-text-1);
 }
 

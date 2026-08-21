@@ -24,8 +24,8 @@
 
 .label {
   font-family: var(--font-sans);
-  font-size: 14px;
-  line-height: 20px;
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-20);
   color: var(--c-text-3);
 }
 
@@ -49,8 +49,8 @@
   cursor: pointer;
   background: var(--c-surface-alt);
   border-radius: var(--radius-100);
-  font-size: 20px;
-  line-height: 40px;
+  font-size: var(--font-size-20);
+  line-height: var(--line-height-40);
   color: var(--c-text-1);
 }
 
@@ -62,8 +62,8 @@
   width: 24px;
   text-align: center;
   font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-20);
   color: var(--c-text-1);
 }

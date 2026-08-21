@@ -41,8 +41,8 @@
   color: var(--c-text-nav);
 
   font-family: var(--font-sans);
-  font-size: 12px;
-  font-weight: 400;
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-400);
   white-space: nowrap;
 
   transition:

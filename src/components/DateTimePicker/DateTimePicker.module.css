@@ -49,9 +49,9 @@
 
 .tabText {
   font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-20);
   text-align: center;
   color: var(--c-text-2);
 }
@@ -100,9 +100,9 @@
 
 .monthTitle {
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size: var(--font-size-14);
   color: var(--c-text-1);
-  font-weight: 600;
+  font-weight: var(--font-weight-600);
 }
 
 .navBtn {
@@ -125,7 +125,7 @@
   gap: var(--space-6);
   padding: 0 var(--space-6) var(--space-6);
   font-family: var(--font-sans);
-  font-size: 12px;
+  font-size: var(--font-size-12);
   color: var(--c-text-3);
 }
 
@@ -143,7 +143,7 @@
   background: var(--c-surface);
   cursor: pointer;
   font-family: var(--font-sans);
-  font-size: 13px;
+  font-size: var(--font-size-13);
   color: var(--c-text-1);
 }
 
@@ -173,13 +173,13 @@
 
 .timeTitle {
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size: var(--font-size-14);
   color: var(--c-text-1);
-  font-weight: 600;
+  font-weight: var(--font-weight-600);
 }
 
 .tz {
-  font-weight: 400;
+  font-weight: var(--font-weight-400);
   color: var(--c-text-3);
   margin-left: var(--space-6);
 }
@@ -201,7 +201,7 @@
   cursor: pointer;
 
   font-family: var(--font-sans);
-  font-size: 13px;
+  font-size: var(--font-size-13);
   color: var(--c-text-1);
 }
 
@@ -227,7 +227,7 @@
   background: transparent;
   cursor: pointer;
   font-family: var(--font-sans);
-  font-size: 13px;
+  font-size: var(--font-size-13);
   color: var(--c-brand);
   padding: var(--space-6) var(--space-8);
   border-radius: var(--radius-12);

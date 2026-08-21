@@ -13,8 +13,8 @@
   background: var(--c-surface-2);
   color: var(--c-text-2);
   font-family: var(--font-sans);
-  font-weight: 600;
-  line-height: 1;
+  font-weight: var(--font-weight-600);
+  line-height: var(--line-height-1);
   user-select: none;
 }
 
@@ -33,29 +33,29 @@
 .xs {
   width: 24px;
   height: 24px;
-  font-size: 10px;
+  font-size: var(--font-size-10);
 }
 
 .sm {
   width: 32px;
   height: 32px;
-  font-size: 12px;
+  font-size: var(--font-size-12);
 }
 
 .md {
   width: 40px;
   height: 40px;
-  font-size: 14px;
+  font-size: var(--font-size-14);
 }
 
 .lg {
   width: 56px;
   height: 56px;
-  font-size: 20px;
+  font-size: var(--font-size-20);
 }
 
 .xl {
   width: 80px;
   height: 80px;
-  font-size: 28px;
+  font-size: var(--font-size-28);
 }

@@ -69,6 +69,6 @@
 
 .text {
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size: var(--font-size-14);
   color: var(--c-text-1);
 }

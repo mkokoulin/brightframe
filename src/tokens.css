@@ -77,6 +77,53 @@
      (self-hosted or otherwise). See README.md#fonts. */
   --font-sans: "PT Sans", "Helvetica Neue", Arial, sans-serif;
 
+  /* Font sizes, same "suffix = literal value" convention as spacing/radius —
+     centralizes the sizes already in use across components. */
+  --font-size-10: 10px;
+  --font-size-11: 11px;
+  --font-size-12: 12px;
+  --font-size-13: 13px;
+  --font-size-14: 14px;
+  --font-size-15: 15px;
+  --font-size-16: 16px;
+  --font-size-18: 18px;
+  --font-size-20: 20px;
+  --font-size-24: 24px;
+  --font-size-26: 26px;
+  --font-size-28: 28px;
+  --font-size-32: 32px;
+  --font-size-36: 36px;
+  --font-size-40: 40px;
+
+  /* Font weights, named by their numeric value. */
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+  --font-weight-700: 700;
+
+  /* Line heights. Fixed px values are line-box heights tied to a specific
+     font-size (e.g. vertically centering single-line UI text) — suffix is
+     that pixel value, same convention as everywhere else. The 120/140/150
+     tokens are relative type-scale ratios; suffix names the original
+     percentage, value is the unitless equivalent (CSS best practice —
+     unitless line-height doesn't compound across nested elements). */
+  --line-height-0: 0;
+  --line-height-1: 1;
+  --line-height-15: 15px;
+  --line-height-16: 16px;
+  --line-height-18: 18px;
+  --line-height-20: 20px;
+  --line-height-22: 22px;
+  --line-height-24: 24px;
+  --line-height-26: 26px;
+  --line-height-28: 28px;
+  --line-height-34: 34px;
+  --line-height-40: 40px;
+  --line-height-44: 44px;
+  --line-height-120: 1.2;
+  --line-height-140: 1.4;
+  --line-height-150: 1.5;
+
   /* ── Backgrounds ── */
   --c-bg: #fbfbfd;
   --c-surface: #ffffff;

@@ -4,7 +4,7 @@
 
 .nav {
   font-family: var(--font-sans);
-  font-size: 13px;
+  font-size: var(--font-size-13);
 }
 
 .list {
@@ -47,7 +47,7 @@
 
 .current {
   color: var(--c-text-1);
-  font-weight: 600;
+  font-weight: var(--font-weight-600);
 }
 
 .separator {

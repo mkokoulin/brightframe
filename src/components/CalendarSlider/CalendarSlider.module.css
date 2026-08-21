@@ -90,9 +90,9 @@
   flex: 1;
 
   font-family: var(--font-sans);
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 24px;
+  font-weight: var(--font-weight-600);
+  font-size: var(--font-size-16);
+  line-height: var(--line-height-24);
   color: var(--c-text-1);
   text-align: center;
   white-space: nowrap;
@@ -121,9 +121,9 @@
   flex-shrink: 0;
 
   font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-20);
   color: var(--c-text-3);
   user-select: none;
 }
@@ -208,9 +208,9 @@
 
 .dayNumber {
   font-family: var(--font-sans);
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-16);
+  line-height: var(--line-height-24);
   color: var(--c-text-1);
   user-select: none;
 }
@@ -264,9 +264,9 @@
   background: transparent;
   cursor: pointer;
 
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-20);
   color: var(--c-text-1);
   white-space: nowrap;
 
@@ -344,8 +344,8 @@
   .filterBtn {
     flex-shrink: 0;
     padding: var(--space-8) var(--space-16);
-    font-size: 14px;
-    line-height: 20px;
+    font-size: var(--font-size-14);
+    line-height: var(--line-height-20);
     white-space: nowrap;
   }
 
@@ -362,8 +362,8 @@
     cursor: pointer;
 
     font-family: var(--font-sans);
-    font-size: 14px;
-    font-weight: 500;
+    font-size: var(--font-size-14);
+    font-weight: var(--font-weight-500);
     color: var(--c-text-1);
     text-align: left;
 

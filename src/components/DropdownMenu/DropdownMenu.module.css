@@ -56,7 +56,7 @@
   background: transparent;
   color: var(--c-text-1);
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size: var(--font-size-14);
   text-align: left;
   cursor: pointer;
   transition: background var(--duration-120) var(--ease-native);

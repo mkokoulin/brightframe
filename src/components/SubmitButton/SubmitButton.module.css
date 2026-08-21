@@ -5,9 +5,9 @@
   cursor: pointer;
 
   font-family: var(--font-sans);
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 22px;
+  font-weight: var(--font-weight-700);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-22);
 
   transition: background var(--duration-160) var(--ease-native), transform var(--duration-120) var(--ease-native), box-shadow var(--duration-160) var(--ease-native), border-color var(--duration-160) var(--ease-native), color var(--duration-160) var(--ease-native);
 }

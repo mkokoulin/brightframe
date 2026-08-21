@@ -27,14 +27,14 @@
 
 .title {
   font-family: var(--font-sans);
-  font-size: 14px;
-  font-weight: 700;
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-700);
 }
 
 .description {
   font-family: var(--font-sans);
-  font-size: 13px;
-  line-height: 150%;
+  font-size: var(--font-size-13);
+  line-height: var(--line-height-150);
 }
 
 .closeBtn {

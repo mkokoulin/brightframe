@@ -28,8 +28,8 @@
   background: transparent;
   color: var(--c-text-2);
   font-family: var(--font-sans);
-  font-size: 13px;
-  font-weight: 600;
+  font-size: var(--font-size-13);
+  font-weight: var(--font-weight-600);
   cursor: pointer;
   transition: background var(--duration-140) var(--ease-native), color var(--duration-140) var(--ease-native);
 }
@@ -63,5 +63,5 @@
   min-width: 32px;
   height: 32px;
   color: var(--c-text-3);
-  font-size: 13px;
+  font-size: var(--font-size-13);
 }

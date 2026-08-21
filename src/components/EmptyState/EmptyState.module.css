@@ -24,16 +24,16 @@
 .title {
   margin: 0;
   font-family: var(--font-sans);
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 28px;
+  font-weight: var(--font-weight-700);
+  font-size: var(--font-size-20);
+  line-height: var(--line-height-28);
   color: var(--c-text-1);
 }
 
 .description {
   margin: var(--space-8) 0 0;
-  font-size: 15px;
-  line-height: 22px;
+  font-size: var(--font-size-15);
+  line-height: var(--line-height-22);
   color: var(--c-text-2);
   max-width: 360px;
 }

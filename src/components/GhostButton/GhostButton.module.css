@@ -14,7 +14,7 @@
 
   /* typography */
   font-style: normal;
-  font-weight: 600;
+  font-weight: var(--font-weight-600);
   letter-spacing: -0.02em;
   color: var(--c-text-2);
 
@@ -30,22 +30,22 @@
 .sm {
   padding: var(--space-4) var(--space-12);
   height: 28px;
-  font-size: 13px;
-  line-height: 18px;
+  font-size: var(--font-size-13);
+  line-height: var(--line-height-18);
 }
 
 .md {
   padding: var(--space-6) var(--space-16);
   height: 32px;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-20);
 }
 
 .lg {
   padding: var(--space-8) var(--space-20);
   height: 40px;
-  font-size: 15px;
-  line-height: 22px;
+  font-size: var(--font-size-15);
+  line-height: var(--line-height-22);
 }
 
 .icon {

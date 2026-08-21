@@ -1,14 +1,14 @@
 .title {
-  font-weight: 400;
-  font-size: 36px;
-  line-height: 44px;
+  font-weight: var(--font-weight-400);
+  font-size: var(--font-size-36);
+  line-height: var(--line-height-44);
   color: var(--c-brand);
   margin: 0 0 var(--space-12);
 }
 
 .subtitle {
-  font-size: 16px;
-  line-height: 26px;
+  font-size: var(--font-size-16);
+  line-height: var(--line-height-26);
   color: var(--c-text-2);
   margin: 0 0 var(--space-40);
   max-width: 640px;
@@ -27,7 +27,7 @@
 
 @media (max-width: 600px) {
   .title {
-    font-size: 26px;
-    line-height: 34px;
+    font-size: var(--font-size-26);
+    line-height: var(--line-height-34);
   }
 }

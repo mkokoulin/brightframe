@@ -42,19 +42,19 @@
 .sm {
   width: 40px;
   height: 40px;
-  font-size: 16px;
+  font-size: var(--font-size-16);
 }
 
 .md {
   width: 52px;
   height: 52px;
-  font-size: 20px;
+  font-size: var(--font-size-20);
 }
 
 .lg {
   width: 64px;
   height: 64px;
-  font-size: 24px;
+  font-size: var(--font-size-24);
 }
 
 /* ── Variants ── */
