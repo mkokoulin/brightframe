@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent, act } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Tooltip } from "./Tooltip";
 
 describe("Tooltip", () => {
@@ -82,5 +83,16 @@ describe("Tooltip", () => {
     });
     expect(screen.getByRole("tooltip")).toBeInTheDocument();
     vi.useRealTimers();
+  });
+
+  it("has no accessibility violations with the tooltip open", async () => {
+    const { container } = render(
+      <Tooltip content="Hint">
+        <button type="button">Trigger</button>
+      </Tooltip>,
+    );
+    const button = screen.getByRole("button", { name: "Trigger" });
+    fireEvent.focus(button);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

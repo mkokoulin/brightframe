@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { axe } from "jest-axe";
 import { GuestsCounter } from "./GuestsCounter";
 
 describe("GuestsCounter", () => {
@@ -52,5 +53,10 @@ describe("GuestsCounter", () => {
   it("forwards rest props to the root element", () => {
     render(<GuestsCounter value={1} onChange={() => {}} data-testid="counter" />);
     expect(screen.getByTestId("counter")).toBeInTheDocument();
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<GuestsCounter value={3} onChange={vi.fn()} min={1} max={3} />);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

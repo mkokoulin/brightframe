@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent, within } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { CalendarSlider } from "./CalendarSlider";
 
 const DAY = new Date(2026, 5, 10); // 10 Jun 2026 (Wednesday)
@@ -77,5 +78,10 @@ describe("CalendarSlider", () => {
   it("throws when neither range nor value is provided", () => {
     const renderInvalid = () => render(<CalendarSlider onChange={vi.fn()} />);
     expect(renderInvalid).toThrow();
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<CalendarSlider value={{ start: DAY, end: DAY }} onChange={vi.fn()} />);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

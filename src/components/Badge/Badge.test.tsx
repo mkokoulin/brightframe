@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Badge } from "./Badge";
 
 describe("Badge", () => {
@@ -34,5 +35,10 @@ describe("Badge", () => {
   it("merges a custom className", () => {
     render(<Badge className="custom">-20%</Badge>);
     expect(screen.getByText("-20%").className).toContain("custom");
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<Badge corner="bottom-left">-20%</Badge>);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Link } from "./Link";
 
 describe("Link", () => {
@@ -45,5 +46,10 @@ describe("Link", () => {
   it("forwards rest props to the anchor", () => {
     render(<Link href="#" data-testid="link">Learn more</Link>);
     expect(screen.getByTestId("link")).toBeInTheDocument();
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<Link href="https://example.com" target="_blank">Instagram</Link>);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

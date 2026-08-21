@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Breadcrumb, type BreadcrumbItem } from "./Breadcrumb";
 
 const ITEMS: BreadcrumbItem[] = [
@@ -37,5 +38,10 @@ describe("Breadcrumb", () => {
   it("renders a custom separator", () => {
     render(<Breadcrumb items={ITEMS} separator="/" />);
     expect(screen.getAllByText("/").length).toBe(ITEMS.length - 1);
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<Breadcrumb items={ITEMS} />);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

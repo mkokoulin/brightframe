@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { InfoCards, type InfoCardItem } from "./InfoCards";
 
 const items: InfoCardItem[] = [
@@ -52,5 +53,10 @@ describe("InfoCards", () => {
       />,
     );
     expect(screen.getByText("Plans")).toBeInTheDocument();
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<InfoCards items={items} />);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

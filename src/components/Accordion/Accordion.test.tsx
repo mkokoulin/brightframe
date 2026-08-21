@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Accordion, type AccordionItem } from "./Accordion";
 
 const ITEMS: AccordionItem[] = [
@@ -54,5 +55,11 @@ describe("Accordion", () => {
     expect(onChange).toHaveBeenCalledWith(["b"]);
     // still reflects the controlled value since the parent didn't update it
     expect(screen.getByRole("button", { name: "A" })).toHaveAttribute("aria-expanded", "true");
+  });
+
+  it("has no accessibility violations with an item open", async () => {
+    const { container } = render(<Accordion items={ITEMS} />);
+    fireEvent.click(screen.getByRole("button", { name: "A" }));
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

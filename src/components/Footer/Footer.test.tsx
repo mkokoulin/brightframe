@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Footer, FooterColumn } from "./Footer";
 
 describe("Footer", () => {
@@ -28,6 +29,17 @@ describe("Footer", () => {
   it("merges a custom className", () => {
     const { container } = render(<Footer className="custom" />);
     expect(container.firstElementChild?.className).toContain("custom");
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(
+      <Footer>
+        <FooterColumn title="About">
+          <a href="/coworking">Coworking</a>
+        </FooterColumn>
+      </Footer>,
+    );
+    expect(await axe(container)).toHaveNoViolations();
   });
 });
 

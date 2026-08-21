@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { ActionCard } from "./ActionCard";
 
 describe("ActionCard", () => {
@@ -37,5 +38,10 @@ describe("ActionCard", () => {
   it("merges a custom className", () => {
     render(<ActionCard title="Room rental" className="custom" data-testid="card" />);
     expect(screen.getByTestId("card").className).toContain("custom");
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<ActionCard title="Room rental" href="/rooms" />);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

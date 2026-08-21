@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Stack } from "./Stack";
 
 describe("Stack", () => {
@@ -68,5 +69,14 @@ describe("Stack", () => {
     const el = screen.getByText("Content");
     expect(el.style.background).toBe("red");
     expect(el.style.getPropertyValue("--stack-gap-base")).toBe("var(--space-8)");
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(
+      <Stack direction={{ base: "column", md: "row" }} gap={{ base: 8, lg: 24 }}>
+        Content
+      </Stack>,
+    );
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

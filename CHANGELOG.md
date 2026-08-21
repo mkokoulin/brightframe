@@ -29,6 +29,27 @@ before that date are dated by commit, not by release announcement.
   global overlay stack: tooltips/bubbles below menus/popovers below loading
   overlays below listbox/sheet overlays below modal/drawer below toast, gapped
   to leave room for new layers between tiers.
+- `jest-axe`-based accessibility assertions extended to the remaining 51
+  components (previously only `Modal`, `Drawer`, `Tabs`, `DropdownMenu`,
+  `RadioGroup`, `Combobox`, and `SelectField` had them) — every component in the
+  kit now asserts `toHaveNoViolations()` in its default (and, where meaningful,
+  open/expanded) state.
+- `Progress` gained a `label` prop (default `"Progress"`), used as the
+  `aria-label` on its `role="progressbar"` element.
+
+### Fixed
+
+- `Progress`'s `role="progressbar"` had no accessible name by default (axe:
+  `aria-progressbar-name`) — fixed via the new `label` prop above.
+- `MobileDatePicker`'s bottom sheet (and `FormDatePicker`, which renders it) had
+  no `role="dialog"` or accessible name on its portaled content (axe: `region`,
+  content not contained by a landmark) — it's now `role="dialog"` with
+  `aria-modal="true"` and an `aria-label` from the current step's hint text.
+- `Popover`'s panel had `role="dialog"` but no accessible name (axe:
+  `aria-dialog-name`) — the panel now gets `aria-labelledby` pointing at the
+  trigger button.
+
+  All three found while extending accessibility test coverage above.
 
 ### Changed
 

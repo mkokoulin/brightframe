@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Alert } from "./Alert";
 
 describe("Alert", () => {
@@ -55,5 +56,14 @@ describe("Alert", () => {
       </Alert>,
     );
     expect(screen.getByTestId("custom-icon")).toBeInTheDocument();
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(
+      <Alert variant="info" title="Heads up">
+        Check-in opens at 3 PM.
+      </Alert>,
+    );
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Popover } from "./Popover";
 
 describe("Popover", () => {
@@ -57,5 +58,17 @@ describe("Popover", () => {
       </Popover>,
     );
     expect(screen.getByRole("dialog")).toBeInTheDocument();
+  });
+
+  it("labels the panel from the trigger", () => {
+    render(<Popover trigger="Open">Panel content</Popover>);
+    fireEvent.click(screen.getByRole("button", { name: "Open" }));
+    expect(screen.getByRole("dialog", { name: "Open" })).toBeInTheDocument();
+  });
+
+  it("has no accessibility violations with the panel open", async () => {
+    render(<Popover trigger="Open">Panel content</Popover>);
+    fireEvent.click(screen.getByRole("button", { name: "Open" }));
+    expect(await axe(document.body)).toHaveNoViolations();
   });
 });

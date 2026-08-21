@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { GhostButton } from "./GhostButton";
 
 describe("GhostButton", () => {
@@ -52,5 +53,10 @@ describe("GhostButton", () => {
   it("forwards rest props to the anchor", () => {
     render(<GhostButton label="Go" href="/somewhere" data-testid="ghost-link" />);
     expect(screen.getByTestId("ghost-link")).toBeInTheDocument();
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<GhostButton label="Go" href="/somewhere" targetBlank />);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

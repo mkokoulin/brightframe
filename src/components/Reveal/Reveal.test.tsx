@@ -1,5 +1,6 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
 import { render, screen, act } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Reveal } from "./Reveal";
 import styles from "./Reveal.module.css";
 
@@ -124,5 +125,12 @@ describe("Reveal", () => {
 
     render(<Reveal threshold={0.5}>Content</Reveal>);
     expect(usedOptions?.threshold).toBe(0.5);
+  });
+
+  it("has no accessibility violations", async () => {
+    mockReducedMotion(true);
+    mockIntersectionObserver();
+    const { container } = render(<Reveal delay={200}>Content</Reveal>);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

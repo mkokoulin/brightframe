@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Grid, GridItem } from "./Grid";
 
 describe("Grid", () => {
@@ -66,6 +67,15 @@ describe("Grid", () => {
     const el = screen.getByText("Content");
     expect(el.style.background).toBe("red");
     expect(el.style.getPropertyValue("--grid-cols-base")).toBe("3");
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(
+      <Grid columns={3} style={{ background: "red" }}>
+        Content
+      </Grid>,
+    );
+    expect(await axe(container)).toHaveNoViolations();
   });
 });
 

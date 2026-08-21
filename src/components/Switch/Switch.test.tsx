@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { axe } from "jest-axe";
 import { Switch } from "./Switch";
 
 describe("Switch", () => {
@@ -31,5 +32,10 @@ describe("Switch", () => {
   it("forwards native input props", () => {
     render(<Switch checked={false} onChange={vi.fn()} label="Dark mode" data-testid="dm-switch" />);
     expect(screen.getByTestId("dm-switch")).toBeInTheDocument();
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<Switch checked label="Dark mode" onChange={vi.fn()} />);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

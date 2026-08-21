@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Progress } from "./Progress";
 
 describe("Progress", () => {
@@ -32,5 +33,20 @@ describe("Progress", () => {
   it("omits aria-valuenow when indeterminate (no value)", () => {
     render(<Progress />);
     expect(screen.getByRole("progressbar")).not.toHaveAttribute("aria-valuenow");
+  });
+
+  it("defaults to an accessible name of Progress", () => {
+    render(<Progress value={40} />);
+    expect(screen.getByRole("progressbar")).toHaveAttribute("aria-label", "Progress");
+  });
+
+  it("uses a custom label as the accessible name", () => {
+    render(<Progress value={40} label="Upload progress" />);
+    expect(screen.getByRole("progressbar", { name: "Upload progress" })).toBeInTheDocument();
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<Progress value={40} showLabel />);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

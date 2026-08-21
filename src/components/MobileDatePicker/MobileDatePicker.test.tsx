@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent, within } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { MobileDatePicker } from "./MobileDatePicker";
 
 const START = new Date(2026, 5, 10); // 10 Jun 2026
@@ -105,5 +106,10 @@ describe("MobileDatePicker", () => {
       <MobileDatePicker open onClose={vi.fn()} value={{ start: START, end: END }} onChange={vi.fn()} locale="ru-RU" />,
     );
     expect(screen.getAllByText("Пн").length).toBeGreaterThan(0);
+  });
+
+  it("has no accessibility violations", async () => {
+    render(<MobileDatePicker open onClose={vi.fn()} value={{ start: START, end: END }} onChange={vi.fn()} />);
+    expect(await axe(document.body)).toHaveNoViolations();
   });
 });

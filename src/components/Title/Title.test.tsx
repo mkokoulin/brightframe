@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Title } from "./Title";
 
 describe("Title", () => {
@@ -21,5 +22,10 @@ describe("Title", () => {
   it("forwards rest props", () => {
     render(<Title data-testid="title">Letters and Numbers</Title>);
     expect(screen.getByTestId("title")).toBeInTheDocument();
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<Title>Letters and Numbers</Title>);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

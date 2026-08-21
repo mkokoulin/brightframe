@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Eyebrow } from "./Eyebrow";
 
 describe("Eyebrow", () => {
@@ -17,5 +18,10 @@ describe("Eyebrow", () => {
   it("renders as a different tag when as is given", () => {
     render(<Eyebrow as="span">Coworking</Eyebrow>);
     expect(screen.getByText("Coworking").tagName).toBe("SPAN");
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<Eyebrow as="span">Coworking</Eyebrow>);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

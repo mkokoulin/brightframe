@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Navbar, NavbarItem } from "./Navbar";
 
 describe("Navbar", () => {
@@ -40,6 +41,15 @@ describe("Navbar", () => {
   it("merges a custom className", () => {
     const { container } = render(<Navbar className="custom" />);
     expect(container.firstElementChild?.className).toContain("custom");
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(
+      <Navbar>
+        <NavbarItem href="/">Home</NavbarItem>
+      </Navbar>,
+    );
+    expect(await axe(container)).toHaveNoViolations();
   });
 });
 

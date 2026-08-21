@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { SectionHeading } from "./SectionHeading";
 
 describe("SectionHeading", () => {
@@ -39,5 +40,10 @@ describe("SectionHeading", () => {
     render(<SectionHeading title="Our plans" />);
     expect(screen.getByRole("heading").className).not.toContain("center");
     expect(screen.getByRole("heading").className).not.toContain("right");
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<SectionHeading title="Our plans" subtitle="Sub" align="center" />);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

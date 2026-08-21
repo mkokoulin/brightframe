@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { DayBadge } from "./DayBadge";
 import styles from "./DayBadge.module.css";
 
@@ -46,5 +47,10 @@ describe("DayBadge", () => {
   it("forwards rest props to the root element", () => {
     const { getByTestId } = render(<DayBadge date={MONDAY} data-testid="badge" />);
     expect(getByTestId("badge")).toBeInTheDocument();
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<DayBadge date={MONDAY} size="compact" />);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

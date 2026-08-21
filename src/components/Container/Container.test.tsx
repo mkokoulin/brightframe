@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Container } from "./Container";
 
 describe("Container", () => {
@@ -21,5 +22,10 @@ describe("Container", () => {
   it("renders as a different tag when as is given", () => {
     render(<Container as="main">Page content</Container>);
     expect(screen.getByText("Page content").tagName).toBe("MAIN");
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<Container>Page content</Container>);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent, act } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { axe } from "jest-axe";
 import { ToastProvider, useToast } from "./Toast";
 
 function Probe() {
@@ -127,5 +128,16 @@ describe("ToastProvider / useToast", () => {
     });
     expect(screen.queryByText("Short")).not.toBeInTheDocument();
     vi.useRealTimers();
+  });
+
+  it("has no accessibility violations with a toast shown", async () => {
+    render(
+      <ToastProvider>
+        <Probe />
+      </ToastProvider>,
+    );
+    await userEvent.click(screen.getByText("fire info"));
+    expect(screen.getByText("Saved")).toBeInTheDocument();
+    expect(await axe(document.body)).toHaveNoViolations();
   });
 });

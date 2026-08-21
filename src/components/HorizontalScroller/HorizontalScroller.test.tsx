@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { axe } from "jest-axe";
 import { HorizontalScroller } from "./HorizontalScroller";
 
 function mockOverflow(row: HTMLElement, { scrollLeft = 0, clientWidth = 300, scrollWidth = 900 } = {}) {
@@ -72,5 +73,15 @@ describe("HorizontalScroller", () => {
     fireEvent.scroll(row);
 
     expect(screen.getByRole("button", { name: "Scroll left" })).toBeInTheDocument();
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(
+      <HorizontalScroller>
+        <div>Card 1</div>
+        <div>Card 2</div>
+      </HorizontalScroller>,
+    );
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

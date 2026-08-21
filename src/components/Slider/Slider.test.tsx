@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Slider } from "./Slider";
 
 describe("Slider", () => {
@@ -49,5 +50,10 @@ describe("Slider", () => {
   it("disables the input(s)", () => {
     render(<Slider label="Guests" value={4} onChange={vi.fn()} disabled />);
     expect(screen.getByRole("slider", { name: "Guests" })).toBeDisabled();
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<Slider label="Price range" value={[50, 200]} onChange={vi.fn()} min={0} max={500} />);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

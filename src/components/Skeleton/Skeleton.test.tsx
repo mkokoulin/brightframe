@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Skeleton } from "./Skeleton";
 
 describe("Skeleton", () => {
@@ -36,5 +37,10 @@ describe("Skeleton", () => {
   it("merges a custom className", () => {
     const { container } = render(<Skeleton className="custom" />);
     expect((container.firstElementChild as HTMLElement).className).toContain("custom");
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<Skeleton variant="text" lines={3} />);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

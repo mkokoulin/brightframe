@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { SubmitButton } from "./SubmitButton";
 
 describe("SubmitButton", () => {
@@ -34,5 +35,10 @@ describe("SubmitButton", () => {
   it("omits the fullWidth class when fullWidth=false", () => {
     render(<SubmitButton fullWidth={false}>Send</SubmitButton>);
     expect(screen.getByRole("button").className).not.toContain("fullWidth");
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<SubmitButton variant="ghost">Send</SubmitButton>);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

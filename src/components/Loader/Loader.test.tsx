@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Loader } from "./Loader";
 import styles from "./Loader.module.css";
 
@@ -43,5 +44,10 @@ describe("Loader", () => {
   it("forwards rest props to the root element", () => {
     const { getByTestId } = render(<Loader data-testid="loader" />);
     expect(getByTestId("loader")).toBeInTheDocument();
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<Loader />);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

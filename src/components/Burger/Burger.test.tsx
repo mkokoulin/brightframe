@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Burger } from "./Burger";
 import styles from "./Burger.module.css";
 
@@ -44,5 +45,11 @@ describe("Burger", () => {
   it("sets the --burger-color CSS variable when color is given", () => {
     render(<Burger open={false} setOpen={() => {}} color="#ff0000" />);
     expect(screen.getByRole("button")).toHaveStyle({ "--burger-color": "#ff0000" });
+  });
+
+  it("has no accessibility violations", async () => {
+    const setOpen = vi.fn();
+    const { container } = render(<Burger open={false} setOpen={setOpen} />);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

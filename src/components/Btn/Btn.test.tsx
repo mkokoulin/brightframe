@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { axe } from "jest-axe";
 import { Btn } from "./Btn";
 import styles from "./Btn.module.css";
 
@@ -60,5 +61,14 @@ describe("Btn", () => {
   it("merges a custom className", () => {
     render(<Btn className="custom">Register</Btn>);
     expect(screen.getByRole("button").className).toContain("custom");
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(
+      <Btn iconLeft={<span data-testid="icon-left" />} iconRight={<span data-testid="icon-right" />}>
+        Next
+      </Btn>,
+    );
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

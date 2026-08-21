@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Pagination } from "./Pagination";
 
 describe("Pagination", () => {
@@ -50,5 +51,10 @@ describe("Pagination", () => {
     render(<Pagination page={2} totalPages={5} onChange={onChange} />);
     screen.getByRole("button", { name: "Go to page 2" }).click();
     expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<Pagination page={3} totalPages={5} onChange={vi.fn()} />);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

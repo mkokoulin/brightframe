@@ -33,6 +33,7 @@ export function Popover({
   const isOpen = isControlled ? open : internalOpen;
 
   const panelId = useId();
+  const triggerId = useId();
   const containerRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
@@ -69,6 +70,7 @@ export function Popover({
     <div ref={containerRef} className={[styles.wrap, className].filter(Boolean).join(" ")}>
       <button
         ref={triggerRef}
+        id={triggerId}
         type="button"
         className={[styles.trigger, triggerClassName].filter(Boolean).join(" ")}
         aria-haspopup="dialog"
@@ -80,7 +82,12 @@ export function Popover({
       </button>
 
       {isOpen && (
-        <div id={panelId} role="dialog" className={[styles.panel, styles[position]].join(" ")}>
+        <div
+          id={panelId}
+          role="dialog"
+          aria-labelledby={triggerId}
+          className={[styles.panel, styles[position]].join(" ")}
+        >
           {children}
         </div>
       )}

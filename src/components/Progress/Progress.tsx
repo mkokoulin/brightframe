@@ -12,10 +12,20 @@ export type ProgressProps = {
   size?: ProgressSize;
   /** Shows the percentage above the bar. Ignored while indeterminate. Defaults to false. */
   showLabel?: boolean;
+  /** Accessible name for the progressbar role. Defaults to "Progress". */
+  label?: string;
   className?: string;
 } & Omit<React.HTMLAttributes<HTMLDivElement>, "className" | "children">;
 
-export function Progress({ value, max = 100, size = "md", showLabel = false, className, ...rest }: ProgressProps) {
+export function Progress({
+  value,
+  max = 100,
+  size = "md",
+  showLabel = false,
+  label = "Progress",
+  className,
+  ...rest
+}: ProgressProps) {
   const indeterminate = value === undefined;
   const clamped = indeterminate ? undefined : Math.min(max, Math.max(0, value));
   const percent = indeterminate ? undefined : Math.round((clamped! / max) * 100);
@@ -29,6 +39,7 @@ export function Progress({ value, max = 100, size = "md", showLabel = false, cla
       )}
       <div
         role="progressbar"
+        aria-label={label}
         aria-valuenow={indeterminate ? undefined : clamped}
         aria-valuemin={0}
         aria-valuemax={max}

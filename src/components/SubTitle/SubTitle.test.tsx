@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { SubTitle } from "./SubTitle";
 
 describe("SubTitle", () => {
@@ -16,5 +17,10 @@ describe("SubTitle", () => {
   it("renders as a different tag when as is given", () => {
     render(<SubTitle as="h3">Workspaces</SubTitle>);
     expect(screen.getByRole("heading", { level: 3 })).toBeInTheDocument();
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<SubTitle>Workspaces and meeting rooms</SubTitle>);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

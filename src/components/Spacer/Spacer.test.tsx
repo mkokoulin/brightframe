@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Spacer } from "./Spacer";
 
 describe("Spacer", () => {
@@ -40,5 +41,10 @@ describe("Spacer", () => {
   it("preserves a caller-supplied style", () => {
     const { container } = render(<Spacer style={{ background: "red" }} />);
     expect((container.firstElementChild as HTMLElement).style.background).toBe("red");
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<Spacer />);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

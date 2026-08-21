@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { SegmentedBar, SegmentedItem } from "./SegmentedBar";
 
 describe("SegmentedBar", () => {
@@ -21,5 +22,15 @@ describe("SegmentedBar", () => {
       </SegmentedBar>,
     );
     expect(screen.getByTestId("icon")).toBeInTheDocument();
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(
+      <SegmentedBar>
+        <SegmentedItem>Day</SegmentedItem>
+        <SegmentedItem>Week</SegmentedItem>
+      </SegmentedBar>,
+    );
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

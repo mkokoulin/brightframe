@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { InfoTooltip } from "./InfoTooltip";
 
 describe("InfoTooltip", () => {
@@ -77,5 +78,11 @@ describe("InfoTooltip", () => {
   it("forwards rest props to the wrapper", () => {
     render(<InfoTooltip label="Discount details" data-testid="wrap" />);
     expect(screen.getByTestId("wrap")).toBeInTheDocument();
+  });
+
+  it("has no accessibility violations with the tooltip open", async () => {
+    const { container } = render(<InfoTooltip label="Discount details" />);
+    fireEvent.click(screen.getByRole("button"));
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

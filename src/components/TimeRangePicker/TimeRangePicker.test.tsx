@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
+import { axe } from "jest-axe";
 import type { ComponentProps } from "react";
 import { TimeRangePicker } from "./TimeRangePicker";
 
@@ -82,5 +83,10 @@ describe("TimeRangePicker", () => {
     fireEvent.click(screen.getByRole("button", { name: "10:00" }));
     expect(screen.getByRole("option", { name: "08:00" })).toBeInTheDocument();
     expect(screen.queryByRole("option", { name: "11:00" })).not.toBeInTheDocument();
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = setup();
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { LabeledField } from "./LabeledField";
 
 describe("LabeledField", () => {
@@ -47,5 +48,12 @@ describe("LabeledField", () => {
     fireEvent.blur(screen.getByLabelText("Name"));
 
     expect(onBlur).toHaveBeenCalled();
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(
+      <LabeledField label="Phone" value="+37400000000" onChange={vi.fn()} prefix="+374" />,
+    );
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

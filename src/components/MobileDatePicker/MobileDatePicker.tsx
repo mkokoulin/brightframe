@@ -214,6 +214,9 @@ export function MobileDatePicker({
   return createPortal(
     <div className={styles.overlay} onPointerDown={onClose}>
       <div
+        role="dialog"
+        aria-modal="true"
+        aria-label={hintText}
         className={[styles.sheet, className].filter(Boolean).join(" ")}
         onPointerDown={(e) => e.stopPropagation()}
       >

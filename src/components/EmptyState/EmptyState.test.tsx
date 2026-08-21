@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { EmptyState } from "./EmptyState";
 
 describe("EmptyState", () => {
@@ -31,5 +32,12 @@ describe("EmptyState", () => {
   it("merges a custom className", () => {
     render(<EmptyState title="No reviews yet" className="custom" />);
     expect(screen.getByText("No reviews yet").closest("div")?.className).toContain("custom");
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(
+      <EmptyState title="No reviews yet" action={<button>Leave a review</button>} />,
+    );
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

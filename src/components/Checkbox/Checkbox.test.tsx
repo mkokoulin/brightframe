@@ -1,6 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { axe } from "jest-axe";
 import { Checkbox } from "./Checkbox";
 
 describe("Checkbox", () => {
@@ -39,5 +40,10 @@ describe("Checkbox", () => {
     render(<Checkbox checked={false} onChange={vi.fn()} label="Accept" error="Required" />);
     expect(screen.getByRole("alert")).toHaveTextContent("Required");
     expect(screen.getByRole("checkbox")).toHaveAttribute("aria-invalid", "true");
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<Checkbox checked={false} onChange={vi.fn()} label="Accept" error="Required" />);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

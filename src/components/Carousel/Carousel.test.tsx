@@ -1,6 +1,7 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
 import { render, screen, act } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { axe } from "jest-axe";
 import { Carousel } from "./Carousel";
 
 function Slides({ count = 3 }: { count?: number }) {
@@ -85,5 +86,10 @@ describe("Carousel", () => {
 
     const groups = screen.getAllByRole("group", { hidden: true });
     expect(groups[1]).toHaveAttribute("aria-hidden", "false");
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<Carousel dots>{Slides({ count: 3 })}</Carousel>);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

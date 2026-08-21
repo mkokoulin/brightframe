@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Card } from "./Card";
 import styles from "./Card.module.css";
 
@@ -41,5 +42,14 @@ describe("Card", () => {
   it("forwards rest props such as data attributes", () => {
     render(<Card data-testid="card">Content</Card>);
     expect(screen.getByTestId("card")).toBeInTheDocument();
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(
+      <Card variant="elevated" radius="xl">
+        Content
+      </Card>,
+    );
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

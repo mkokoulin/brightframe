@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
+import { axe } from "jest-axe";
 import { Avatar } from "./Avatar";
 
 describe("Avatar", () => {
@@ -31,5 +32,10 @@ describe("Avatar", () => {
     const { container } = render(<Avatar />);
     expect(screen.getByRole("img", { name: "Avatar" })).toBeInTheDocument();
     expect(container.querySelector("svg")).toBeInTheDocument();
+  });
+
+  it("has no accessibility violations", async () => {
+    const { container } = render(<Avatar src="https://example.com/a.jpg" name="Ana Torres" />);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });
