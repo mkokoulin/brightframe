@@ -72,8 +72,13 @@
 .panelInner {
   min-height: 0;
   overflow: hidden;
-  padding-bottom: var(--space-16);
+  padding-bottom: 0;
+  transition: padding-bottom var(--duration-220) var(--ease-native);
   font-family: var(--font-sans);
   font-size: var(--font-size-14);
   color: var(--c-text-2);
+}
+
+.itemOpen .panelInner {
+  padding-bottom: var(--space-16);
 }

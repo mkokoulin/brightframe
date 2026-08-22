@@ -296,19 +296,19 @@
 @container (max-width: 1199.98px) {
   .root {
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
     height: auto;
+    gap: var(--space-16);
   }
 
-  .colLeft {
-    width: 100%;
-    height: auto;
-  }
-
+  /* Each stacked month keeps its natural (624px/528px) width instead of
+     stretching to the block's full width — otherwise .selectionRow's arrows
+     end up spaced against the block edges instead of the day grid below it. */
+  .colLeft,
   .colRight {
-    width: 100%;
+    width: max-content;
+    max-width: 100%;
     height: auto;
-    align-items: flex-start;
   }
 }
 
