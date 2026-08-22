@@ -84,7 +84,6 @@ export function FormDatePicker({
             className={styles.trigger}
             onClick={() => setOpen(true)}
             aria-haspopup="dialog"
-            aria-invalid={!!error}
             aria-describedby={errorId}
           >
             <CalendarIcon />

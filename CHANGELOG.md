@@ -12,6 +12,20 @@ before that date are dated by commit, not by release announcement.
 
 ### Added
 
+- react-hook-form and Formik integration: `RHFTextField`, `RHFTextareaField`,
+  `RHFSelectField`, `RHFCheckbox`, `RHFRadioGroup`, `RHFSwitch`, `RHFCombobox` and their
+  Formik counterparts (`FormikTextField`, `FormikTextareaField`, `FormikSelectField`,
+  `FormikCheckbox`, `FormikRadioGroup`, `FormikSwitch`, `FormikCombobox`) — drop-in
+  wrappers around the existing controlled field components that wire `value`/`onChange`/
+  `onBlur`/`error` to a react-hook-form `useController`/`FormProvider` field or a Formik
+  `useField`, so validation errors from either library render through each field's
+  existing error UI. `react-hook-form` and `formik` are optional peer dependencies —
+  only pulled in if you import one of these components (each has its own build entry,
+  e.g. `brightframe/RHFTextField`).
+- ESLint (flat config), scoped to `react-hooks/rules-of-hooks`, `react-hooks/exhaustive-deps`,
+  and `eslint-plugin-jsx-a11y`'s recommended rules — the classic hook-correctness and
+  accessibility checks, not `react-hooks`' newer React Compiler-oriented rule set
+  (purity/immutability/gating/...), which doesn't apply here. Run via `npm run lint`.
 - `--radius-*` and `--duration-*` design tokens in `tokens.css`, on the same
   "suffix = literal value" convention as `--space-*` — centralizes the radii and
   transition/animation durations already in use across components.
@@ -67,6 +81,23 @@ before that date are dated by commit, not by release announcement.
   trigger button.
 
   All three found while extending accessibility test coverage above.
+- `DateTimePicker`'s date/time tab switcher nested two clickable `<span>`s
+  inside its trigger `<button>` — invalid HTML, and the "time" tab was
+  completely unreachable by keyboard (only the outer button was focusable, so
+  keyboard users could never select it). The trigger is now a plain `<div>`
+  wrapping two real `<button>`s, one per tab; the group also gained an Escape
+  key handler to close the popover, since switching from a single toggling
+  button to two non-toggling ones dropped that path.
+- `FormDatePicker`'s trigger `<button>` had `aria-invalid` set, which isn't a
+  valid ARIA property on the `button` role (jsx-a11y:
+  `role-supports-aria-props`) — removed; the existing `aria-describedby`
+  pointing at the error message already conveys the error to assistive tech.
+- Found via the new ESLint setup above.
+
+### Removed
+
+- `package-lock.json` — the project installs via `bun.lock` (see CI), so the
+  npm lockfile was stray, drift-prone cruft; now gitignored.
 
 ### Changed
 

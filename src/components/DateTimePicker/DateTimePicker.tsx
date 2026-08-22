@@ -176,48 +176,51 @@ export function DateTimePicker({
   }, [disableTime]);
 
   return (
-    <div ref={rootRef} className={[styles.root, className].filter(Boolean).join(" ")}>
-      <button
-        type="button"
-        className={styles.tabGroup}
-        onClick={() => !disabled && setOpen((v) => !v)}
-        aria-expanded={open}
-        disabled={disabled}
-      >
-        <span
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions -- listens for Escape bubbling from the focusable buttons/dialog inside, not itself interactive
+    <div
+      ref={rootRef}
+      className={[styles.root, className].filter(Boolean).join(" ")}
+      onKeyDown={(e) => {
+        if (e.key === "Escape" && open) setOpen(false);
+      }}
+    >
+      <div className={styles.tabGroup} data-disabled={disabled || undefined}>
+        <button
+          type="button"
           className={styles.tab}
           data-active={panel === "date"}
-          onClick={(e) => {
-            e.stopPropagation();
-            if (!disabled) {
-              setPanel("date");
-              setOpen(true);
-            }
+          disabled={disabled}
+          aria-pressed={panel === "date"}
+          aria-expanded={open}
+          onClick={() => {
+            setPanel("date");
+            setOpen(true);
           }}
         >
           <span className={styles.icon} aria-hidden>
             📅
           </span>
           <span className={styles.tabText}>{dateLabel}</span>
-        </span>
+        </button>
 
-        <span
+        <button
+          type="button"
           className={styles.tab}
           data-active={panel === "time"}
-          onClick={(e) => {
-            e.stopPropagation();
-            if (!disabled) {
-              setPanel("time");
-              setOpen(true);
-            }
+          disabled={disabled}
+          aria-pressed={panel === "time"}
+          aria-expanded={open}
+          onClick={() => {
+            setPanel("time");
+            setOpen(true);
           }}
         >
           <span className={styles.icon} aria-hidden>
             ⏰
           </span>
           <span className={styles.tabText}>{timeLabel}</span>
-        </span>
-      </button>
+        </button>
+      </div>
 
       <div className={styles.dropdown} data-open={open}>
         <div className={styles.dropdownInner}>

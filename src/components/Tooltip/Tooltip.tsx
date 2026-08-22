@@ -41,6 +41,7 @@ export function Tooltip({ content, position = "top", delay = 0, disabled = false
   }
 
   return (
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions -- listens for hover/focus bubbling from the focusable trigger inside, not itself interactive
     <span
       className={[styles.wrap, className].filter(Boolean).join(" ")}
       onMouseEnter={show}

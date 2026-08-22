@@ -52,11 +52,12 @@ describe("FormDatePicker", () => {
     expect(screen.queryByText("Apply")).not.toBeInTheDocument();
   });
 
-  it("shows the error message and marks the trigger invalid", () => {
+  it("shows the error message and associates it with the trigger", () => {
     render(<FormDatePicker value="" onChange={vi.fn()} error="Required" />);
 
-    expect(screen.getByRole("button")).toHaveAttribute("aria-invalid", "true");
-    expect(screen.getByRole("alert")).toHaveTextContent("Required");
+    const alert = screen.getByRole("alert");
+    expect(alert).toHaveTextContent("Required");
+    expect(screen.getByRole("button")).toHaveAttribute("aria-describedby", alert.id);
   });
 
   it("has no accessibility violations with the picker open", async () => {

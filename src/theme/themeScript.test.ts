@@ -42,7 +42,6 @@ describe("getThemeInitScript", () => {
     document.documentElement.removeAttribute("data-theme");
     window.localStorage.clear();
 
-    // eslint-disable-next-line no-new-func
     new Function(getThemeInitScript())();
 
     expect(document.documentElement).toHaveAttribute("data-theme", "dark");

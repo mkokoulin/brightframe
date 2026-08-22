@@ -42,7 +42,7 @@ export function Tabs({ items, value, defaultValue, onChange, variant = "line", f
     const n = items.length;
     if (n === 0) return;
 
-    let nextIdx: number | null = null;
+    let nextIdx: number;
     if (e.key === "ArrowRight") nextIdx = (idx + 1) % n;
     else if (e.key === "ArrowLeft") nextIdx = (idx - 1 + n) % n;
     else if (e.key === "Home") nextIdx = 0;

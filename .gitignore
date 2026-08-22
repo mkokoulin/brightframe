@@ -5,3 +5,4 @@ storybook-static/
 *.log
 .vscode/
 src/**/*.module.css.d.ts
+package-lock.json
