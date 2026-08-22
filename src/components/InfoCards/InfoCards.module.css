@@ -27,7 +27,7 @@
   padding: var(--space-24) var(--space-16);
 
   background: var(--c-surface);
-  border: 0.5px solid var(--c-border);
+  border: var(--border-width-05) solid var(--c-border);
   border-radius: var(--radius-20);
 
   text-decoration: none;
@@ -101,7 +101,7 @@
   font-weight: var(--font-weight-400);
   font-size: var(--font-size-14);
   line-height: var(--line-height-120);
-  letter-spacing: 0.5px;
+  letter-spacing: var(--letter-spacing-05px);
 
   color: var(--c-brand);
 }
@@ -167,7 +167,7 @@
     font-weight: var(--font-weight-700);
     font-size: var(--font-size-14);
     line-height: var(--line-height-20);
-    letter-spacing: 0.1px;
+    letter-spacing: var(--letter-spacing-01px);
 
     color: var(--c-text-1);
   }
@@ -176,7 +176,7 @@
     font-weight: var(--font-weight-600);
     font-size: var(--font-size-12);
     line-height: var(--line-height-16);
-    letter-spacing: 0.5px;
+    letter-spacing: var(--letter-spacing-05px);
 
     color: var(--c-text-2);
   }
@@ -191,7 +191,7 @@
     height: 40px;
 
     border-radius: var(--radius-999);
-    border: 1.5px solid var(--c-accent);
+    border: var(--border-width-15) solid var(--c-accent);
 
     align-items: center;
     justify-content: center;
@@ -216,6 +216,6 @@
 
     clip-path: polygon(30% 20%, 70% 50%, 30% 80%, 30% 65%, 50% 50%, 30% 35%);
     background: var(--c-accent);
-    border: 1px solid var(--c-accent);
+    border: var(--border-width-1) solid var(--c-accent);
   }
 }

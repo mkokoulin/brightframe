@@ -81,7 +81,7 @@
 .rangeHeader {
   flex-shrink: 0;
   padding: var(--space-12) var(--picker-inset) var(--space-16);
-  border-bottom: 1px solid var(--c-border-soft);
+  border-bottom: var(--border-width-1) solid var(--c-border-soft);
 }
 
 .chips {
@@ -95,7 +95,7 @@
   flex: 1;
   height: 44px;
   border-radius: var(--radius-12);
-  border: 1.5px solid transparent;
+  border: var(--border-width-15) solid transparent;
   background: transparent;
   cursor: pointer;
 
@@ -283,7 +283,7 @@
   outline: none;
 }
 .dayToday {
-  border: 1.5px solid var(--c-brand);
+  border: var(--border-width-15) solid var(--c-brand);
   color: var(--c-brand);
   font-weight: var(--font-weight-500);
 }
@@ -301,7 +301,7 @@
   gap: var(--space-12);
   padding: var(--space-14) var(--picker-inset);
   padding-bottom: max(var(--space-14), env(safe-area-inset-bottom));
-  border-top: 1px solid var(--c-border-soft);
+  border-top: var(--border-width-1) solid var(--c-border-soft);
   background: var(--c-surface);
 }
 
@@ -309,7 +309,7 @@
   flex: 0 0 auto;
   height: 48px;
   padding: 0 var(--picker-inset);
-  border: 1.5px solid var(--c-border);
+  border: var(--border-width-15) solid var(--c-border);
   border-radius: var(--radius-14);
   background: transparent;
   cursor: pointer;
@@ -354,7 +354,7 @@
 }
 
 .dayDisabled {
-  opacity: 0.3;
+  opacity: var(--opacity-30);
   cursor: default;
   pointer-events: none;
 }

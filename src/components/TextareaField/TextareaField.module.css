@@ -21,12 +21,12 @@
   background: var(--c-surface);
   border-radius: var(--radius-16);
   box-sizing: border-box;
-  box-shadow: 0 0 0 1.5px transparent;
+  box-shadow: 0 0 0 var(--border-width-15) transparent;
   transition: box-shadow var(--duration-160) var(--ease-native);
 }
 
 .rowError {
-  box-shadow: 0 0 0 1.5px var(--c-error);
+  box-shadow: 0 0 0 var(--border-width-15) var(--c-error);
 }
 
 .inner {

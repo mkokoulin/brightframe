@@ -79,7 +79,7 @@
   height: 18px;
   border-radius: 50%;
   background: #fff;
-  border: 2px solid var(--c-accent);
+  border: var(--border-width-2) solid var(--c-accent);
   box-shadow: var(--c-shadow-sm);
   cursor: pointer;
 }
@@ -88,7 +88,7 @@
   height: 18px;
   border-radius: 50%;
   background: #fff;
-  border: 2px solid var(--c-accent);
+  border: var(--border-width-2) solid var(--c-accent);
   box-shadow: var(--c-shadow-sm);
   cursor: pointer;
 }

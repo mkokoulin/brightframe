@@ -23,7 +23,7 @@
   z-index: var(--z-50);
   min-width: 180px;
   background: var(--c-surface);
-  border: 1px solid var(--c-border-soft);
+  border: var(--border-width-1) solid var(--c-border-soft);
   border-radius: var(--radius-12);
   box-shadow: var(--c-shadow-md);
   padding: var(--space-6);
@@ -69,7 +69,7 @@
 }
 
 .item:disabled {
-  opacity: 0.5;
+  opacity: var(--opacity-50);
   cursor: not-allowed;
 }
 

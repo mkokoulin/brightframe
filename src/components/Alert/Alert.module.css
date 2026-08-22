@@ -8,7 +8,7 @@
   gap: var(--space-10);
   padding: var(--space-12) var(--space-14);
   border-radius: var(--radius-12);
-  border: 1px solid transparent;
+  border: var(--border-width-1) solid transparent;
 }
 
 .icon {
@@ -49,7 +49,7 @@
   border-radius: 50%;
   background: transparent;
   cursor: pointer;
-  opacity: 0.7;
+  opacity: var(--opacity-70);
   transition: opacity var(--duration-140) var(--ease-native), background var(--duration-140) var(--ease-native);
 }
 .closeBtn:hover {

@@ -23,7 +23,7 @@
 .accent:hover:not(:disabled) {
   background: var(--c-accent-hover);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(255, 160, 95, 0.4);
+  box-shadow: var(--c-shadow-glow-accent-sm);
 }
 
 .brand {
@@ -33,13 +33,13 @@
 .brand:hover:not(:disabled) {
   background: var(--c-brand-hover);
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(29, 80, 134, 0.32);
+  box-shadow: var(--c-shadow-glow-brand-sm);
 }
 
 .ghost {
   background: transparent;
   color: var(--c-text-2);
-  border: 1px solid var(--c-border);
+  border: var(--border-width-1) solid var(--c-border);
 }
 .ghost:hover:not(:disabled) {
   background: var(--c-surface-2);
@@ -51,6 +51,6 @@
 }
 
 .btn:disabled {
-  opacity: 0.6;
+  opacity: var(--opacity-60);
   cursor: not-allowed;
 }

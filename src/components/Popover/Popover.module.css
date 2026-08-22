@@ -23,7 +23,7 @@
   min-width: 220px;
   max-width: 320px;
   background: var(--c-surface);
-  border: 1px solid var(--c-border-soft);
+  border: var(--border-width-1) solid var(--c-border-soft);
   border-radius: var(--radius-12);
   box-shadow: var(--c-shadow-md);
   padding: var(--space-16);

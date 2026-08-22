@@ -36,6 +36,23 @@ before that date are dated by commit, not by release announcement.
   open/expanded) state.
 - `Progress` gained a `label` prop (default `"Progress"`), used as the
   `aria-label` on its `role="progressbar"` element.
+- `--border-width-*` design tokens in `tokens.css`, on the same "suffix =
+  literal value" convention as `--space-*`/`--radius-*` (decimal point dropped,
+  e.g. `--border-width-15` is 1.5px) — centralizes the stroke widths already in
+  use across borders and focus-ring box-shadows.
+- `--opacity-*` design tokens in `tokens.css`, same convention, covering the
+  non-binary opacity values already in use for muted text, disabled states and
+  dimming overlays. Plain `0`/`1` (fade-animation endpoints, fully-hidden/
+  fully-shown toggles) are left as literal numbers, same call as the
+  in-component `z-index` values.
+- `--c-shadow-lg`/`xl`/`2xl`/`3xl` extending the existing `sm`/`md`/`card`
+  elevation tiers, and `--c-shadow-glow-accent`/`brand`/`info` (plus `-sm`
+  variants) for the colored hover shadows on filled buttons — centralizes the
+  box-shadow values already in use.
+- `--letter-spacing-*` design tokens in `tokens.css`, same value-based
+  convention (negative `em` values get an `n` prefix instead of a `-`; the two
+  stray `px`-based values keep a `px` suffix to disambiguate from the `em`
+  scale) — centralizes the letter-spacing values already in use.
 
 ### Fixed
 
@@ -67,6 +84,16 @@ before that date are dated by commit, not by release announcement.
   component's own stacking context (a carousel slide above its siblings, a badge
   above its card, a slider thumb above its track, ...) are left as plain numbers,
   since they aren't part of this global scale.
+- All components' hardcoded `border` widths (including the `1.5px` focus-ring
+  thickness baked into several `box-shadow: 0 0 0 1.5px …` declarations),
+  non-binary `opacity` values, and `box-shadow` values replaced with the new
+  `--border-width-*`/`--opacity-*`/`--c-shadow-*` tokens — no visual change.
+  `FormCard`'s shadow was identical to the existing `--c-shadow-card` and now
+  reuses it directly instead of getting a new token.
+- All components' hardcoded `letter-spacing` values replaced with the new
+  `--letter-spacing-*` tokens — no visual change. Every literal in use across
+  `src/components/**/*.module.css` is now a design token; color was already
+  fully tokenized (including per-theme overrides).
 
 ## [0.3.6] - 2026-08-19
 

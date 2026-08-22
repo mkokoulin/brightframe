@@ -20,13 +20,13 @@
 
 /* ── Variant: line ── */
 .line {
-  border-bottom: 1px solid var(--c-border-soft);
+  border-bottom: var(--border-width-1) solid var(--c-border-soft);
 }
 
 .line .tab {
   padding: var(--space-12) var(--space-16);
   border: none;
-  border-bottom: 2px solid transparent;
+  border-bottom: var(--border-width-2) solid transparent;
   background: transparent;
   margin-bottom: -1px;
 }
@@ -77,7 +77,7 @@
 }
 
 .tab:disabled {
-  opacity: 0.5;
+  opacity: var(--opacity-50);
   cursor: not-allowed;
 }
 

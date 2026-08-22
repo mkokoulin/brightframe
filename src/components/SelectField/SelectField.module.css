@@ -43,23 +43,23 @@
   padding: 0 var(--space-16) 0 var(--space-20);
   box-sizing: border-box;
   cursor: pointer;
-  box-shadow: 0 0 0 1.5px transparent;
+  box-shadow: 0 0 0 var(--border-width-15) transparent;
   transition: box-shadow var(--duration-160) var(--ease-native), border-radius var(--duration-140) var(--ease-native);
   text-align: left;
 }
 
 .trigger:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 1.5px var(--c-brand);
+  box-shadow: 0 0 0 var(--border-width-15) var(--c-brand);
 }
 
 .triggerOpen {
   border-radius: var(--radius-16) var(--radius-16) 0 0;
-  box-shadow: 0 0 0 1.5px var(--c-brand);
+  box-shadow: 0 0 0 var(--border-width-15) var(--c-brand);
 }
 
 .triggerError {
-  box-shadow: 0 0 0 1.5px var(--c-error);
+  box-shadow: 0 0 0 var(--border-width-15) var(--c-error);
 }
 
 .placeholder {
@@ -110,8 +110,8 @@
   background: var(--c-surface);
   border-radius: 0 0 var(--radius-16) var(--radius-16);
   box-shadow:
-    0 0 0 1.5px var(--c-brand),
-    0 8px 24px rgba(0, 0, 0, 0.10);
+    0 0 0 var(--border-width-15) var(--c-brand),
+    var(--c-shadow-xl);
   z-index: var(--z-200);
   list-style: none;
   margin: 0;

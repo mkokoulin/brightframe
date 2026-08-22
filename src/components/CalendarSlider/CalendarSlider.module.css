@@ -225,8 +225,8 @@
 .chevronRight {
   width: 10px;
   height: 10px;
-  border-right: 1.5px solid var(--c-text-3);
-  border-bottom: 1.5px solid var(--c-text-3);
+  border-right: var(--border-width-15) solid var(--c-text-3);
+  border-bottom: var(--border-width-15) solid var(--c-text-3);
   display: inline-block;
 }
 
@@ -356,7 +356,7 @@
     width: 100%;
     padding: var(--space-10) var(--space-16);
     margin-bottom: var(--space-8);
-    border: 1px solid var(--c-border);
+    border: var(--border-width-1) solid var(--c-border);
     border-radius: var(--radius-12);
     background: var(--c-surface);
     cursor: pointer;

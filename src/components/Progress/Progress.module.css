@@ -63,6 +63,6 @@
   .indeterminate {
     animation: none;
     width: 100% !important;
-    opacity: 0.5;
+    opacity: var(--opacity-50);
   }
 }

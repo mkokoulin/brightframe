@@ -39,7 +39,7 @@
   height: 40px;
 
   background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: var(--border-width-1) solid rgba(255, 255, 255, 0.6);
   border-radius: var(--radius-999);
   color: var(--c-text-1);
   cursor: pointer;

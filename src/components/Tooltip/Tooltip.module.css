@@ -36,7 +36,7 @@
 .bubble::after {
   content: '';
   position: absolute;
-  border: 5px solid transparent;
+  border: var(--border-width-5) solid transparent;
 }
 
 .top {

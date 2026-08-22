@@ -53,6 +53,18 @@
   --radius-999: 999px;
   --radius-pill: 999px;
 
+  /* ── Border width ──
+     Same convention as spacing/radius: token suffix = its pixel value
+     (fractional values have the decimal point dropped, e.g. `--border-width-15`
+     is 1.5px) — centralizes the stroke widths already in use across borders
+     and focus-ring box-shadows. */
+  --border-width-05: 0.5px;
+  --border-width-1: 1px;
+  --border-width-15: 1.5px;
+  --border-width-2: 2px;
+  --border-width-3: 3px;
+  --border-width-5: 5px;
+
   /* ── Motion ──
      Durations follow the spacing/radius convention: token suffix = its
      millisecond value, centralizing the values already in use for
@@ -139,6 +151,33 @@
   --line-height-140: 1.4;
   --line-height-150: 1.5;
 
+  /* Letter spacing. `em` values (the majority) follow the value×100
+     convention, same as the line-height ratios above — suffix is the
+     original value with its decimal point dropped (negative values get an
+     `n` prefix instead of a `-`, since `--` can't be followed by a bare
+     digit-after-hyphen sign). The couple of `px`-based values are rare
+     enough to disambiguate with a trailing `px` in the suffix instead. */
+  --letter-spacing-n1: -0.01em;
+  --letter-spacing-n2: -0.02em;
+  --letter-spacing-6: 0.06em;
+  --letter-spacing-12: 0.12em;
+  --letter-spacing-01px: 0.1px;
+  --letter-spacing-05px: 0.5px;
+
+  /* ── Opacity ──
+     Same "suffix = literal value" convention (decimal point dropped) —
+     centralizes the non-binary opacity values already in use for muted text,
+     disabled states and dimming overlays. Plain `0`/`1` (fade-animation
+     endpoints, fully-hidden/fully-shown toggles) are left as literal numbers,
+     same call as the small in-component z-index values. */
+  --opacity-30: 0.3;
+  --opacity-35: 0.35;
+  --opacity-40: 0.4;
+  --opacity-50: 0.5;
+  --opacity-60: 0.6;
+  --opacity-70: 0.7;
+  --opacity-85: 0.85;
+
   /* ── Backgrounds ── */
   --c-bg: #fbfbfd;
   --c-surface: #ffffff;
@@ -162,10 +201,25 @@
   --c-brand-hover: #1a4878;
   --c-brand-soft: rgba(29, 80, 134, 0.08);
 
-  /* ── Shadows ── */
+  /* ── Shadows ──
+     `sm`/`md`/`card` are the original elevation tiers; `lg`/`xl`/`2xl`/`3xl`
+     extend the same neutral (black-alpha) scale to cover the resting/hover/
+     panel shadows already in use, in ascending size order. `glow-*` are the
+     colored hover shadows on filled buttons — `-sm` is the smaller-blur
+     variant used on `SubmitButton`. None of these vary by theme (matches
+     the literal values they replace, which didn't either). */
   --c-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
   --c-shadow-md: 0px 4px 24px rgba(43, 72, 174, 0.12), 0px 12px 20px rgba(0, 30, 136, 0.14);
+  --c-shadow-lg: 0px 4px 16px rgba(0, 0, 0, 0.08);
+  --c-shadow-xl: 0 8px 24px rgba(0, 0, 0, 0.1);
+  --c-shadow-2xl: 0px 10px 30px rgba(0, 0, 0, 0.12);
+  --c-shadow-3xl: 0px 16px 36px rgba(0, 0, 0, 0.14);
   --c-shadow-card: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  --c-shadow-glow-accent: 0 4px 16px rgba(255, 160, 95, 0.4);
+  --c-shadow-glow-accent-sm: 0 4px 12px rgba(255, 160, 95, 0.4);
+  --c-shadow-glow-brand: 0 4px 16px rgba(29, 80, 134, 0.32);
+  --c-shadow-glow-brand-sm: 0 4px 12px rgba(29, 80, 134, 0.32);
+  --c-shadow-glow-info: 0 4px 16px rgba(34, 158, 217, 0.35);
 
   /* ── Errors / status ── */
   --c-error: #eb5757;

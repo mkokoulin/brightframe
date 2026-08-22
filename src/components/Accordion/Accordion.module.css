@@ -5,11 +5,11 @@
 .root {
   display: flex;
   flex-direction: column;
-  border-top: 1px solid var(--c-border-soft);
+  border-top: var(--border-width-1) solid var(--c-border-soft);
 }
 
 .item {
-  border-bottom: 1px solid var(--c-border-soft);
+  border-bottom: var(--border-width-1) solid var(--c-border-soft);
 }
 
 .heading {
@@ -44,7 +44,7 @@
 }
 
 .trigger:disabled {
-  opacity: 0.5;
+  opacity: var(--opacity-50);
   cursor: not-allowed;
 }
 

@@ -10,12 +10,12 @@
 
   /* ghost */
   background: transparent;
-  border: 1px solid transparent;
+  border: var(--border-width-1) solid transparent;
 
   /* typography */
   font-style: normal;
   font-weight: var(--font-weight-600);
-  letter-spacing: -0.02em;
+  letter-spacing: var(--letter-spacing-n2);
   color: var(--c-text-2);
 
   cursor: pointer;

@@ -20,7 +20,7 @@
 }
 
 .tabGroup:disabled {
-  opacity: 0.6;
+  opacity: var(--opacity-60);
   cursor: not-allowed;
 }
 
@@ -44,7 +44,7 @@
   height: 20px;
   display: grid;
   place-items: center;
-  opacity: 0.85;
+  opacity: var(--opacity-85);
 }
 
 .tabText {
@@ -82,8 +82,8 @@
 .dropdownInner {
   background: var(--c-surface);
   border-radius: var(--radius-16);
-  box-shadow: 0px 10px 30px rgba(0,0,0,0.12);
-  border: 1px solid var(--c-border-soft);
+  box-shadow: var(--c-shadow-2xl);
+  border: var(--border-width-1) solid var(--c-border-soft);
   padding: var(--space-12);
 }
 
@@ -156,7 +156,7 @@
 }
 
 .day:disabled {
-  opacity: 0.35;
+  opacity: var(--opacity-35);
   cursor: not-allowed;
 }
 
@@ -210,7 +210,7 @@
 }
 
 .timeItem:disabled {
-  opacity: 0.35;
+  opacity: var(--opacity-35);
   cursor: not-allowed;
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "brightframe",
-  "version": "0.3.11",
+  "version": "0.3.12",
   "description": "React UI component kit with buttons, cards, tags, form controls, and date/time pickers — themeable via a light/dark/high-contrast design token system and a drop-in ThemeProvider.",
   "keywords": [
     "react",
