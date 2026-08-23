@@ -29,6 +29,7 @@ jobs:
       - run: bun run build-storybook
         env:
           STORYBOOK_BASE_PATH: /${{ github.event.repository.name }}/
+          STORYBOOK_GA_ID: G-LL35EH9LL6
 
       - uses: actions/configure-pages@v5
 

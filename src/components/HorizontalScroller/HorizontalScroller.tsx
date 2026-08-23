@@ -10,6 +10,15 @@ export type HorizontalScrollerProps = {
   prevLabel?: string;
   nextLabel?: string;
   className?: string;
+  /** Gap between items, in px. Defaults to the kit's --space-16 token. */
+  gap?: number;
+  /**
+   * CSS `padding` shorthand applied to the scrollable track. The track clips
+   * its cross-axis overflow (an unavoidable consequence of `overflow-x: auto`
+   * clipping `overflow-y` too), so item box-shadows / hover-lift transforms
+   * that extend past the item's own box need this padding to not get cut off.
+   */
+  trackPadding?: string;
 } & Omit<HTMLAttributes<HTMLDivElement>, "children" | "className">;
 
 const ChevronLeft = () => (
@@ -33,6 +42,8 @@ export function HorizontalScroller({
   prevLabel = "Scroll left",
   nextLabel = "Scroll right",
   className,
+  gap,
+  trackPadding,
   ...rest
 }: HorizontalScrollerProps) {
   const rowRef = useRef<HTMLDivElement>(null);
@@ -64,7 +75,12 @@ export function HorizontalScroller({
 
   return (
     <div className={[styles.root, className].filter(Boolean).join(" ")} {...rest}>
-      <div className={styles.row} ref={rowRef} onScroll={updateEdges}>
+      <div
+        className={styles.row}
+        ref={rowRef}
+        onScroll={updateEdges}
+        style={gap !== undefined || trackPadding !== undefined ? { gap, padding: trackPadding } : undefined}
+      >
         {children}
       </div>
 
