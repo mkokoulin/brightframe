@@ -682,6 +682,16 @@ before that date are dated by commit, not by release announcement.
   (`.storybook/preview.tsx`) putting the "Overview" title group first, so visiting the bare dev
   server root (no `?path=`) lands on the full showcase page instead of an alphabetically-first
   component story.
+- **Addons panel starts closed on the `Overview / UI Kit` page** — new `.storybook/manager.ts`
+  sets `layoutCustomisations.showPanel` to return `false` when `state.storyId ===
+  "overview-ui-kit--default"`, falling back to Storybook's normal default everywhere else. The
+  Overview page (which opens by default per the entry above) is meant to be viewed as a full
+  page — the Controls/Actions/Accessibility dock at the bottom just ate canvas height for a page
+  that doesn't use Controls at all. Note the top-level `showPanel: boolean` shorthand some older
+  Storybook docs describe doesn't exist in this version (10.3.6); the real API nests it under
+  `layoutCustomisations` as a `(state, defaultValue) => boolean` callback, which is what makes
+  per-story scoping possible here. Required restarting the dev server — manager config, unlike
+  `preview.tsx`, isn't picked up by Vite's HMR.
 - react-hook-form and Formik integration: `RHFTextField`, `RHFTextareaField`,
   `RHFSelectField`, `RHFCheckbox`, `RHFRadioGroup`, `RHFSwitch`, `RHFCombobox` and their
   Formik counterparts (`FormikTextField`, `FormikTextareaField`, `FormikSelectField`,
