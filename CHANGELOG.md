@@ -10,6 +10,30 @@ before that date are dated by commit, not by release announcement.
 
 ## [Unreleased]
 
+## [0.4.1] - 2026-08-23
+
+### Fixed
+
+- **`dist/brightframe.css` was missing from the published package.** `vite.config.ts`'s
+  `cssCodeSplit: true` (needed so `brightframe/<Name>` pulls in only that component's own
+  CSS) meant no combined stylesheet was ever emitted for the root `"style"` /
+  `"./style.css"` exports, even though `package.json` pointed at
+  `dist/brightframe.css`. Any consumer importing `brightframe/style.css` (the
+  README/EXAMPLES-documented way to load all component styles at once) got a build
+  failure. Added `scripts/bundle-css.mjs`, run as part of `npm run build`, which
+  concatenates every per-component `dist/*.css` file (excluding `tokens.css`/`fonts.css`,
+  which stay separate, required imports per the README) into `dist/brightframe.css`.
+- **Root barrel (`import ... from "brightframe"`) crashed for any consumer without
+  `react-hook-form` installed**, even ones that never touch the RHF wrappers. `src/index.ts`
+  unconditionally did `export * from "./components/RHFTextField"` etc.; because `export *`
+  is statically linked, evaluating the root barrel evaluated those modules too, which
+  top-level `import` from `react-hook-form` — a peer dependency declared *optional* in
+  `peerDependenciesMeta`. Same latent issue for the `Formik*` wrappers and `formik`.
+  Removed the `RHF*`/`Formik*` re-exports from the root barrel; they're still importable
+  (and were always independently built as their own entries) via their own sub-path, e.g.
+  `brightframe/RHFTextField`, which only pulls in `react-hook-form` for consumers that
+  actually use it.
+
 ### Changed
 
 - **UI kit v2 visual revision, in progress** — recreating the `design_handoff_brightframe_v2`
