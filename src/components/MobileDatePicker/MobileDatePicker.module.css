@@ -3,10 +3,10 @@
   position: fixed;
   inset: 0;
   z-index: var(--z-200);
-  background: rgba(0, 0, 0, 0.4);
+  background: color-mix(in srgb, #030717 52%, transparent);
   display: flex;
   align-items: flex-end;
-  animation: overlayIn var(--duration-200) var(--ease-native) both;
+  animation: overlayIn var(--duration-200) ease both;
 }
 @keyframes overlayIn {
   from { opacity: 0; }
@@ -19,13 +19,14 @@
 .sheet {
   --picker-inset: var(--space-20);
   width: 100%;
+  max-width: 480px;
   max-height: 90svh;
   background: var(--c-surface);
-  border-radius: var(--radius-20) var(--radius-20) 0 0;
+  border-radius: var(--radius-24) var(--radius-24) 0 0;
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  animation: sheetUp var(--duration-300) cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: sheetUp var(--duration-260) var(--ease-native) both;
 }
 @keyframes sheetUp {
   from { transform: translateY(60px); opacity: 0; }
@@ -48,7 +49,7 @@
 }
 
 .handle {
-  width: 36px;
+  width: 44px;
   height: 4px;
   background: var(--c-border);
   border-radius: var(--radius-2);
@@ -69,7 +70,7 @@
   align-items: center;
   justify-content: center;
   color: var(--c-text-2);
-  transition: background var(--duration-140) var(--ease-native);
+  transition: background var(--duration-140) ease;
 }
 .closeBtn:hover,
 .closeBtn:focus-visible {
@@ -108,7 +109,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: border-color var(--duration-140) var(--ease-native), background var(--duration-140) var(--ease-native);
+  transition: border-color var(--duration-140) ease, background var(--duration-140) ease;
 }
 
 /* Inactive chip with a date */
@@ -188,7 +189,7 @@
   justify-content: center;
   color: var(--c-text-2);
   flex-shrink: 0;
-  transition: background var(--duration-140) var(--ease-native);
+  transition: background var(--duration-140) ease;
 }
 .navBtn:hover,
 .navBtn:focus-visible {
@@ -274,7 +275,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background var(--duration-120) var(--ease-native);
+  transition: background var(--duration-120) ease;
   user-select: none;
 }
 .dayBtn:hover:not(.daySelected),
@@ -289,7 +290,7 @@
 }
 .daySelected {
   background: var(--c-brand);
-  color: #ffffff;
+  color: var(--c-bg);
   font-weight: var(--font-weight-600);
 }
 
@@ -319,7 +320,7 @@
   font-weight: var(--font-weight-400);
   color: var(--c-text-2);
 
-  transition: border-color var(--duration-140) var(--ease-native), color var(--duration-140) var(--ease-native);
+  transition: border-color var(--duration-140) ease, color var(--duration-140) ease;
 }
 .resetBtn:hover,
 .resetBtn:focus-visible {
@@ -330,7 +331,7 @@
 
 .applyBtn {
   flex: 1;
-  height: 48px;
+  height: 52px;
   border: none;
   border-radius: var(--radius-14);
   background: var(--c-brand);
@@ -339,9 +340,9 @@
   font-family: var(--font-sans);
   font-size: var(--font-size-15);
   font-weight: var(--font-weight-600);
-  color: #ffffff;
+  color: var(--c-bg);
 
-  transition: background var(--duration-140) var(--ease-native), transform var(--duration-100) var(--ease-native);
+  transition: background var(--duration-140) ease, transform var(--duration-100) ease;
 }
 .applyBtn:hover,
 .applyBtn:focus-visible {
@@ -375,7 +376,7 @@
     width: 360px;
     max-height: 80vh;
     border-radius: var(--radius-20);
-    animation: dialogIn var(--duration-220) cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation: dialogIn var(--duration-220) var(--ease-spring) both;
   }
 }
 

@@ -1,4 +1,6 @@
-import { AnchorHTMLAttributes, ElementType, HTMLAttributes, PropsWithChildren, ReactNode } from "react";
+"use client";
+
+import { AnchorHTMLAttributes, ElementType, HTMLAttributes, PropsWithChildren, ReactNode, useEffect, useState } from "react";
 import styles from "./Navbar.module.css";
 
 export type NavbarProps = {
@@ -8,6 +10,8 @@ export type NavbarProps = {
   brand?: ReactNode;
   /** Right-aligned slot for controls — theme toggle, language select, `<Burger>` for mobile, ... */
   actions?: ReactNode;
+  /** Scroll offset (px) past which the bar compacts its padding and gains a shadow. Defaults to 8. */
+  scrollThreshold?: number;
 } & HTMLAttributes<HTMLElement>;
 
 /** A page header bar: brand slot, a row of `<NavbarItem>`s, and a right-aligned actions slot. */
@@ -17,10 +21,26 @@ export function Navbar({
   actions,
   children,
   className,
+  scrollThreshold = 8,
   ...rest
 }: PropsWithChildren<NavbarProps>) {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > scrollThreshold);
+    }
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [scrollThreshold]);
+
   return (
-    <Tag className={[styles.root, className].filter(Boolean).join(" ")} {...rest}>
+    <Tag
+      className={[styles.root, className].filter(Boolean).join(" ")}
+      data-scrolled={scrolled || undefined}
+      {...rest}
+    >
       {brand ? <div className={styles.brand}>{brand}</div> : null}
       {children ? <nav className={styles.nav}>{children}</nav> : null}
       {actions ? <div className={styles.actions}>{actions}</div> : null}

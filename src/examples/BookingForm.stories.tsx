@@ -10,7 +10,7 @@ import { GuestsCounter } from "../components/GuestsCounter/GuestsCounter";
 import { FormDatePicker, toYMD } from "../components/FormDatePicker/FormDatePicker";
 import { TimeRangePicker } from "../components/TimeRangePicker/TimeRangePicker";
 import { SubmitButton } from "../components/SubmitButton/SubmitButton";
-import { Tag } from "../components/Tag/Tag";
+import { Alert } from "../components/Alert/Alert";
 
 const ROOM_OPTIONS: SelectOption[] = [
   { value: "focus", label: "Focus room (2 people)" },
@@ -38,17 +38,7 @@ function BookingForm() {
         </Title>
       </div>
 
-      {submitted && (
-        <div
-          role="status"
-          style={{ padding: 12, borderRadius: 10, background: "var(--c-badge-green-bg)", color: "var(--c-badge-green-text)" }}
-        >
-          <Tag variant="brand" style={{ marginRight: 8 }}>
-            Sent
-          </Tag>
-          We'll confirm by email shortly.
-        </div>
-      )}
+      {submitted && <Alert variant="success" title="Request sent">We'll confirm by email shortly.</Alert>}
 
       <LabeledField label="Name" value={name} onChange={setName} placeholder="Jane Doe" />
       <LabeledField label="Email" value={email} onChange={setEmail} type="email" placeholder="jane@example.com" />

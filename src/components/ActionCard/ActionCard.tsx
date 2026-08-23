@@ -31,20 +31,18 @@ export function ActionCard({ icon, title, description, className, href, ...rest 
 
   const inner = (
     <>
-      <div className={styles.top}>
-        {icon ? (
-          <div className={styles.icon} aria-hidden="true">
-            {icon}
-          </div>
-        ) : (
-          <span />
-        )}
+      {icon ? (
+        <div className={styles.icon} aria-hidden="true">
+          {icon}
+        </div>
+      ) : null}
+      <p className={styles.title}>{title}</p>
+      {description ? <p className={styles.description}>{description}</p> : null}
+      <div className={styles.bottomRow}>
         <span className={styles.arrow} aria-hidden="true">
           <ArrowIcon />
         </span>
       </div>
-      <p className={styles.title}>{title}</p>
-      {description ? <p className={styles.description}>{description}</p> : null}
     </>
   );
 

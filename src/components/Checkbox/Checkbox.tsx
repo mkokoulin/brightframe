@@ -51,10 +51,10 @@ export function Checkbox({
             {...rest}
           />
           <span className={styles.box} aria-hidden="true">
-            <svg className={styles.check} width="12" height="10" viewBox="0 0 12 10" fill="none">
-              <path d="M1 5.4l3.2 3.2L11 1.4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <svg className={styles.check} width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M6 12.5l4 4L18.5 7.5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
-            <svg className={styles.dash} width="10" height="2" viewBox="0 0 10 2" fill="none">
+            <svg className={styles.dash} width="12" height="2" viewBox="0 0 10 2" fill="none">
               <path d="M1 1h8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
             </svg>
           </span>

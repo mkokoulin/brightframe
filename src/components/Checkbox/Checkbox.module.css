@@ -24,8 +24,8 @@
   position: relative;
   display: inline-flex;
   flex-shrink: 0;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
 }
 
 .input {
@@ -39,41 +39,41 @@
 .box {
   position: absolute;
   inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  place-items: center;
   border: var(--border-width-15) solid var(--c-border);
-  border-radius: var(--radius-6);
+  border-radius: var(--radius-8);
   background: var(--c-surface);
-  color: #fff;
-  transition: background var(--duration-140) var(--ease-native), border-color var(--duration-140) var(--ease-native);
+  color: var(--c-bg);
+  transition: background var(--duration-160) ease, border-color var(--duration-160) ease;
 }
 
 .check,
 .dash {
+  grid-area: 1 / 1;
   opacity: 0;
-  transition: opacity var(--duration-100) var(--ease-native);
+  transition: opacity var(--duration-100) ease;
 }
 
 .input:checked + .box {
-  background: var(--c-accent);
-  border-color: var(--c-accent);
+  background: var(--c-brand);
+  border-color: var(--c-brand);
 }
 .input:checked + .box .check {
   opacity: 1;
 }
 
 .input:indeterminate + .box {
-  background: var(--c-accent);
-  border-color: var(--c-accent);
+  background: var(--c-brand);
+  border-color: var(--c-brand);
 }
 .input:indeterminate + .box .dash {
   opacity: 1;
 }
 
 .input:focus-visible + .box {
-  outline: 2px solid var(--c-accent);
-  outline-offset: 2px;
+  outline: 2px solid var(--c-brand);
+  outline-offset: 3px;
 }
 
 .input:disabled + .box {
@@ -90,5 +90,5 @@
   font-family: var(--font-sans);
   font-size: var(--font-size-12);
   color: var(--c-error);
-  padding-left: 30px;
+  padding-left: 34px;
 }

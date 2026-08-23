@@ -1,39 +1,39 @@
 .btn {
-  height: 38px;
+  height: 50px;
   border: none;
-  border-radius: var(--radius-12);
+  border-radius: var(--radius-999);
   cursor: pointer;
 
   font-family: var(--font-sans);
   font-weight: var(--font-weight-700);
-  font-size: var(--font-size-14);
+  font-size: var(--font-size-15);
   line-height: var(--line-height-22);
 
-  transition: background var(--duration-160) var(--ease-native), transform var(--duration-120) var(--ease-native), box-shadow var(--duration-160) var(--ease-native), border-color var(--duration-160) var(--ease-native), color var(--duration-160) var(--ease-native);
+  transition: background var(--duration-160) ease, transform var(--duration-120) ease, box-shadow var(--duration-160) ease, border-color var(--duration-160) ease;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--c-brand);
+  outline-offset: 3px;
 }
 
 .fullWidth {
   width: 100%;
 }
 
-.accent {
-  background: var(--c-accent);
-  color: #ffffff;
-}
-.accent:hover:not(:disabled) {
-  background: var(--c-accent-hover);
-  transform: translateY(-1px);
-  box-shadow: var(--c-shadow-glow-accent-sm);
-}
-
+/* `accent` is kept as a visual alias of `brand` for existing call sites —
+   see Btn.module.css's role-split note: --c-accent never fills a button
+   background in this kit, only progress/slider/time-slot style fills. */
+.accent,
 .brand {
   background: var(--c-brand);
-  color: #ffffff;
+  color: var(--c-bg);
 }
+.accent:hover:not(:disabled),
 .brand:hover:not(:disabled) {
   background: var(--c-brand-hover);
   transform: translateY(-1px);
-  box-shadow: var(--c-shadow-glow-brand-sm);
+  box-shadow: var(--c-shadow-sm);
 }
 
 .ghost {
@@ -43,6 +43,7 @@
 }
 .ghost:hover:not(:disabled) {
   background: var(--c-surface-2);
+  transform: translateY(-1px);
 }
 
 .btn:active:not(:disabled) {
@@ -51,6 +52,6 @@
 }
 
 .btn:disabled {
-  opacity: var(--opacity-60);
+  opacity: var(--opacity-40);
   cursor: not-allowed;
 }

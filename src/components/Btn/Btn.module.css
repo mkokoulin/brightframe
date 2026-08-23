@@ -7,32 +7,34 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-8);
-  border: var(--border-width-2) solid transparent;
-  border-radius: var(--radius-12);
+  border: var(--border-width-1) solid transparent;
+  /* Buttons sit on one radius step (the pill) — see the kit's "one radius"
+     rule. `.pill` is kept as a no-op alias so the `pill` prop stays valid
+     on existing call sites. */
+  border-radius: var(--radius-999);
   cursor: pointer;
   font-family: var(--font-sans);
-  font-weight: var(--font-weight-600);
+  font-weight: var(--font-weight-700);
   text-decoration: none;
   white-space: nowrap;
   user-select: none;
   flex-shrink: 0;
   transition:
-    background var(--duration-160) var(--ease-native),
-    color var(--duration-160) var(--ease-native),
-    border-color var(--duration-160) var(--ease-native),
-    transform var(--duration-120) var(--ease-native),
-    box-shadow var(--duration-160) var(--ease-native),
-    opacity var(--duration-160) var(--ease-native);
+    background var(--duration-160) ease,
+    border-color var(--duration-160) ease,
+    box-shadow var(--duration-160) ease,
+    transform var(--duration-120) ease,
+    opacity var(--duration-160) ease;
 }
 
 .btn:focus-visible {
-  outline: 2px solid var(--c-accent);
-  outline-offset: 2px;
+  outline: 2px solid var(--c-brand);
+  outline-offset: 3px;
 }
 
 .btn:disabled,
 .btn[aria-disabled="true"] {
-  opacity: var(--opacity-50);
+  opacity: var(--opacity-40);
   cursor: not-allowed;
   pointer-events: none;
 }
@@ -47,104 +49,136 @@
 
 .sm {
   height: 36px;
-  padding: 0 var(--space-16);
+  padding: 0 var(--space-18);
   font-size: var(--font-size-13);
 }
 
 .md {
   height: 44px;
-  padding: 0 var(--space-24);
+  padding: 0 var(--space-22);
   font-size: var(--font-size-15);
 }
 
 .lg {
   height: 52px;
-  padding: 0 var(--space-32);
+  padding: 0 var(--space-26);
   font-size: var(--font-size-16);
-  font-weight: var(--font-weight-700);
+}
+
+/* ── Icon-only shape ──
+   A distinct, single treatment (not a per-variant modifier) — placed after the
+   size rules so it wins the cascade on width/height/padding regardless of `size`. */
+.iconOnly {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: transparent;
+  color: var(--c-text-1);
+  border-color: var(--c-border);
+}
+.iconOnly:hover:not(:disabled),
+.iconOnly:focus-visible:not(:disabled) {
+  background: var(--c-brand-soft);
+  border-color: var(--c-brand);
+  transform: none;
+  box-shadow: none;
+}
+.iconOnly:active:not(:disabled) {
+  transform: scale(0.96);
+}
+.iconOnly .icon svg,
+.iconOnly svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ── Loading spinner ── */
+.spinner {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: var(--border-width-2) solid currentColor;
+  border-top-color: var(--c-bg);
+  animation: btnSpin 700ms linear infinite;
+}
+@keyframes btnSpin {
+  to { transform: rotate(360deg); }
 }
 
 /* ── Variants ── */
 
-/* primary — main call to action */
-.primary {
-  background: var(--c-accent);
-  color: #fff;
+/* primary — main call to action. Brand (blue), not accent (orange): on this
+   kit --c-accent is reserved for progress/slider/time-slot fills, never
+   button backgrounds — see tokens.css's role-split note. `.brand` is kept
+   as a visual alias of `.primary` for existing call sites. */
+.primary,
+.brand {
+  background: var(--c-brand);
+  color: var(--c-bg);
   border-color: transparent;
 }
 .primary:hover:not(:disabled),
-.primary:focus-visible:not(:disabled) {
-  background: var(--c-accent-hover);
-  transform: translateY(-1px);
-  box-shadow: var(--c-shadow-glow-accent);
-}
-.primary:active:not(:disabled) {
-  transform: translateY(1px);
-  box-shadow: none;
-}
-
-/* secondary — alternative action, outlined */
-.secondary {
-  background: transparent;
-  color: var(--c-brand);
-  border-color: var(--c-brand);
-}
-.secondary:hover:not(:disabled),
-.secondary:focus-visible:not(:disabled) {
-  background: var(--c-brand);
-  color: #fff;
-  transform: translateY(-1px);
-}
-.secondary:active:not(:disabled) {
-  transform: translateY(1px);
-}
-
-/* brand — confirming with data, navigation action */
-.brand {
-  background: var(--c-brand);
-  color: #fff;
-  border-color: transparent;
-}
+.primary:focus-visible:not(:disabled),
 .brand:hover:not(:disabled),
 .brand:focus-visible:not(:disabled) {
   background: var(--c-brand-hover);
   transform: translateY(-1px);
-  box-shadow: var(--c-shadow-glow-brand);
+  box-shadow: var(--c-shadow-sm);
 }
+.primary:active:not(:disabled),
 .brand:active:not(:disabled) {
+  background: var(--c-brand-hover);
   transform: translateY(1px);
   box-shadow: none;
 }
 
-/* ghost — secondary action */
+/* secondary — alternative action, neutral outline */
+.secondary {
+  background: transparent;
+  color: var(--c-text-1);
+  border-color: var(--c-border);
+}
+.secondary:hover:not(:disabled),
+.secondary:focus-visible:not(:disabled) {
+  background: var(--c-surface-2);
+  transform: translateY(-1px);
+}
+.secondary:active:not(:disabled) {
+  background: var(--c-border);
+  transform: translateY(1px);
+}
+
+/* ghost ("Quiet" in the kit) — lowest-emphasis action, brand-tinted text */
 .ghost {
   background: transparent;
-  color: var(--c-text-2);
+  color: var(--c-brand-hover);
   border-color: transparent;
 }
 .ghost:hover:not(:disabled),
 .ghost:focus-visible:not(:disabled) {
-  background: var(--c-surface-2);
-  border-color: var(--c-border);
+  background: var(--c-brand-soft);
+  transform: translateY(-1px);
 }
 .ghost:active:not(:disabled) {
+  background: color-mix(in srgb, var(--c-brand) 16%, transparent);
   transform: translateY(1px);
 }
 
-/* danger — urgent / irreversible action */
+/* danger — urgent / irreversible action, quiet by default so destructive
+   actions don't visually compete with primary as a filled button would */
 .danger {
-  background: var(--c-error);
-  color: #fff;
-  border-color: transparent;
-  box-shadow: 0 4px 12px var(--c-error-soft);
+  background: transparent;
+  color: var(--c-error);
+  border-color: color-mix(in srgb, var(--c-error) 45%, transparent);
 }
 .danger:hover:not(:disabled),
 .danger:focus-visible:not(:disabled) {
-  background: var(--c-error-hover);
+  background: color-mix(in srgb, var(--c-error) 12%, transparent);
   transform: translateY(-1px);
-  box-shadow: 0 8px 20px var(--c-error-soft);
 }
 .danger:active:not(:disabled) {
+  background: color-mix(in srgb, var(--c-error) 20%, transparent);
   transform: translateY(1px);
   box-shadow: none;
 }

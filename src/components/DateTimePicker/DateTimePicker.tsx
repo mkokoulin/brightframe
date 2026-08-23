@@ -260,6 +260,7 @@ export function DateTimePicker({
                     {row.map((d) => {
                       const inMonth = d.getMonth() === viewMonth.getMonth();
                       const isSel = sameDay(d, selected);
+                      const isToday = sameDay(d, new Date());
                       const dis = dateDisabled(d);
                       return (
                         <button
@@ -268,6 +269,7 @@ export function DateTimePicker({
                           className={styles.day}
                           data-out={!inMonth}
                           data-selected={isSel}
+                          data-today={!isSel && isToday}
                           disabled={dis}
                           onClick={() => setDatePart(d)}
                         >

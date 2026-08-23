@@ -6,7 +6,10 @@ const meta: Meta<typeof Tag> = {
   component: Tag,
   tags: ["autodocs"],
   argTypes: {
-    variant: { control: "select", options: ["brand", "accent", "neutral", "error", "outline"] },
+    variant: {
+      control: "select",
+      options: ["brand", "accent", "neutral", "error", "outline", "blue", "orange", "green", "purple"],
+    },
     size: { control: "select", options: ["sm", "md", "lg"] },
     children: { control: "text" },
   },
@@ -32,7 +35,17 @@ export const Playground: Story = {
   },
 };
 
-const VARIANTS: TagVariant[] = ["brand", "accent", "neutral", "error", "outline"];
+const VARIANTS: TagVariant[] = [
+  "brand",
+  "accent",
+  "neutral",
+  "error",
+  "outline",
+  "blue",
+  "orange",
+  "green",
+  "purple",
+];
 
 export const AllVariants: Story = {
   name: "— All variants",

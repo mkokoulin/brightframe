@@ -60,7 +60,9 @@ export function Accordion({ items, multiple = false, value, defaultValue, onChan
                 onClick={() => toggle(item.id)}
               >
                 <span>{item.title}</span>
-                <ChevronIcon open={open} />
+                <span className={[styles.marker, open ? styles.markerOpen : ""].filter(Boolean).join(" ")} aria-hidden="true">
+                  <PlusIcon open={open} />
+                </span>
               </button>
             </h3>
             <div id={panelId} role="region" aria-labelledby={headerId} aria-hidden={!open} className={styles.panel}>
@@ -73,17 +75,16 @@ export function Accordion({ items, multiple = false, value, defaultValue, onChan
   );
 }
 
-function ChevronIcon({ open }: { open: boolean }) {
+function PlusIcon({ open }: { open: boolean }) {
   return (
     <svg
-      className={[styles.chevron, open ? styles.chevronOpen : ""].filter(Boolean).join(" ")}
-      width="16"
-      height="16"
+      className={[styles.markerIcon, open ? styles.markerIconOpen : ""].filter(Boolean).join(" ")}
+      width="17"
+      height="17"
       viewBox="0 0 16 16"
       fill="none"
-      aria-hidden="true"
     >
-      <path d="M3 6l5 5 5-5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M8 3v10M3 8h10" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
     </svg>
   );
 }

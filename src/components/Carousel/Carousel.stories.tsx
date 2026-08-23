@@ -159,6 +159,19 @@ function PhotoPlaceholder({ label, gradient }: { label: string; gradient: string
   );
 }
 
+export const Gallery: Story = {
+  name: "— gallery (counter + dots)",
+  render: () => (
+    <div style={{ maxWidth: 480 }}>
+      <Carousel dots counter arrows>
+        <PhotoPlaceholder label="Coworking on Tumanyan" gradient="linear-gradient(135deg, #1d5086, #4d97e0)" />
+        <PhotoPlaceholder label="Private garden" gradient="linear-gradient(135deg, #2f9e63, #7fd99a)" />
+        <PhotoPlaceholder label="Meeting room" gradient="linear-gradient(135deg, #c05800, #ffa05f)" />
+      </Carousel>
+    </div>
+  ),
+};
+
 export const InAConstrainedCard: Story = {
   name: "— sized to a constrained card (hero-style)",
   render: () => (

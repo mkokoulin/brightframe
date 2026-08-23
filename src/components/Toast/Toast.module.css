@@ -65,11 +65,11 @@
   width: 340px;
   max-width: 100%;
   padding: var(--space-12) var(--space-14);
-  border-radius: var(--radius-12);
+  border-radius: var(--radius-md);
   background: var(--c-surface);
   box-shadow: var(--c-shadow-md);
   border: var(--border-width-1) solid var(--c-border-soft);
-  animation: toastIn var(--duration-200) var(--ease-native) both;
+  animation: toastIn var(--duration-220) var(--ease-spring) both;
 }
 @keyframes toastIn {
   from { opacity: 0; transform: translateY(8px) scale(0.98); }
@@ -117,15 +117,15 @@
   background: transparent;
   color: var(--c-text-3);
   cursor: pointer;
-  transition: background var(--duration-140) var(--ease-native), color var(--duration-140) var(--ease-native);
+  transition: background var(--duration-140) ease, color var(--duration-140) ease;
 }
 .closeBtn:hover {
   background: var(--c-surface-2);
   color: var(--c-text-1);
 }
 .closeBtn:focus-visible {
-  outline: 2px solid var(--c-accent);
-  outline-offset: 2px;
+  outline: 2px solid var(--c-brand);
+  outline-offset: 3px;
 }
 
 /* ── Variant accent (left edge) ── */

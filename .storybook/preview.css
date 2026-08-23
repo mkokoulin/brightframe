@@ -1,0 +1,6 @@
+/* Default typeface for the whole Storybook canvas — matches --font-sans in
+   tokens.css. Individual components already set their own font-family, but
+   plain/undecorated elements (docs prose, example stories) fall back to this. */
+body {
+  font-family: var(--font-sans);
+}

@@ -61,7 +61,7 @@
   border: var(--border-width-15) solid var(--c-border);
   border-radius: 50%;
   background: var(--c-surface);
-  transition: border-color var(--duration-140) var(--ease-native);
+  transition: border-color var(--duration-160) ease;
 }
 
 .dot::after {
@@ -69,21 +69,21 @@
   position: absolute;
   inset: 4px;
   border-radius: 50%;
-  background: var(--c-accent);
+  background: var(--c-brand);
   transform: scale(0);
-  transition: transform var(--duration-140) var(--ease-native);
+  transition: transform var(--duration-200) ease;
 }
 
 .input:checked + .dot {
-  border-color: var(--c-accent);
+  border-color: var(--c-brand);
 }
 .input:checked + .dot::after {
   transform: scale(1);
 }
 
 .input:focus-visible + .dot {
-  outline: 2px solid var(--c-accent);
-  outline-offset: 2px;
+  outline: 2px solid var(--c-brand);
+  outline-offset: 3px;
 }
 
 .text {

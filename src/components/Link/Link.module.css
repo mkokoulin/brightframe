@@ -1,7 +1,7 @@
 .link {
   text-decoration: underline;
   text-underline-offset: 2px;
-  transition: color var(--duration-140) var(--ease-native);
+  transition: color var(--duration-140) ease;
 }
 
 .default {

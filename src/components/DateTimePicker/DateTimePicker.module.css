@@ -76,7 +76,7 @@
   opacity: 0;
   transform: translateY(-6px) scale(0.98);
   pointer-events: none;
-  transition: opacity var(--duration-160) var(--ease-native), transform var(--duration-160) var(--ease-native);
+  transition: opacity var(--duration-160) ease, transform var(--duration-160) ease;
 }
 
 .dropdown[data-open="true"] {
@@ -118,7 +118,7 @@
   border: none;
   background: var(--c-surface-alt);
   cursor: pointer;
-  transition: background var(--duration-140) var(--ease-native);
+  transition: background var(--duration-140) ease;
 }
 
 .navBtn:hover, .navBtn:focus-visible {
@@ -131,7 +131,8 @@
   gap: var(--space-6);
   padding: 0 var(--space-6) var(--space-6);
   font-family: var(--font-sans);
-  font-size: var(--font-size-12);
+  font-size: var(--font-size-11);
+  text-transform: uppercase;
   color: var(--c-text-3);
 }
 
@@ -145,24 +146,34 @@
 .day {
   height: 34px;
   border-radius: var(--radius-12);
-  border: none;
+  border: var(--border-width-1) solid transparent;
   background: var(--c-surface);
   cursor: pointer;
   font-family: var(--font-sans);
   font-size: var(--font-size-13);
   color: var(--c-text-1);
+  transition: background var(--duration-140) ease, color var(--duration-140) ease, border-color var(--duration-140) ease;
 }
 
 .day[data-out="true"] {
   color: var(--c-disabled);
 }
 
+.day[data-today="true"] {
+  border-color: var(--c-brand);
+  font-weight: var(--font-weight-700);
+}
+
 .day[data-selected="true"] {
-  background: rgba(255,160,95,0.22);
+  background: var(--c-brand);
+  color: var(--c-bg);
+  font-weight: var(--font-weight-700);
 }
 
 .day:disabled {
-  opacity: var(--opacity-35);
+  background: var(--c-surface-2);
+  color: var(--c-text-3);
+  opacity: var(--opacity-60);
   cursor: not-allowed;
 }
 
@@ -205,6 +216,7 @@
   border: none;
   background: var(--c-surface-alt);
   cursor: pointer;
+  transition: background var(--duration-140) ease, color var(--duration-140) ease;
 
   font-family: var(--font-sans);
   font-size: var(--font-size-13);
@@ -212,7 +224,9 @@
 }
 
 .timeItem[data-active="true"] {
-  background: rgba(255,160,95,0.35);
+  background: var(--c-accent);
+  color: var(--c-bg);
+  font-weight: var(--font-weight-700);
 }
 
 .timeItem:disabled {

@@ -6,8 +6,8 @@
   display: flex;
   align-items: flex-start;
   gap: var(--space-10);
-  padding: var(--space-12) var(--space-14);
-  border-radius: var(--radius-12);
+  padding: var(--space-18) var(--space-20);
+  border-radius: var(--radius-md);
   border: var(--border-width-1) solid transparent;
 }
 
@@ -27,14 +27,15 @@
 
 .title {
   font-family: var(--font-sans);
-  font-size: var(--font-size-14);
+  font-size: var(--font-size-15);
   font-weight: var(--font-weight-700);
 }
 
 .description {
   font-family: var(--font-sans);
-  font-size: var(--font-size-13);
-  line-height: var(--line-height-150);
+  font-size: var(--font-size-14);
+  line-height: var(--line-height-160);
+  opacity: var(--opacity-90);
 }
 
 .closeBtn {
@@ -50,11 +51,11 @@
   background: transparent;
   cursor: pointer;
   opacity: var(--opacity-70);
-  transition: opacity var(--duration-140) var(--ease-native), background var(--duration-140) var(--ease-native);
+  transition: opacity var(--duration-140) ease, background var(--duration-140) ease;
 }
 .closeBtn:hover {
   opacity: 1;
-  background: rgba(0, 0, 0, 0.06);
+  background: var(--c-hover-overlay);
 }
 .closeBtn:focus-visible {
   outline: 2px solid currentColor;

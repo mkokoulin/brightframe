@@ -35,7 +35,7 @@
 .label {
   font-family: var(--font-sans);
   font-size: var(--font-size-12);
-  font-weight: var(--font-weight-600);
+  font-weight: var(--font-weight-700);
   color: var(--c-text-3);
   white-space: nowrap;
 }

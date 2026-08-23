@@ -11,13 +11,13 @@
   gap: var(--space-2);
   padding: 1px;
   background: var(--c-surface);
-  border-radius: var(--radius-16);
+  border-radius: var(--radius-999);
   box-sizing: border-box;
 }
 
 .item {
   height: 44px;
-  border-radius: var(--radius-16);
+  border-radius: var(--radius-999);
   display: flex;
   align-items: center;
   gap: var(--space-8);
@@ -69,7 +69,7 @@
   cursor: pointer;
   padding: var(--space-2) var(--space-6);
   border-radius: var(--radius-8);
-  transition: background 0.15s var(--ease-native), color 0.15s var(--ease-native);
+  transition: background var(--duration-160) ease, color var(--duration-160) ease;
   white-space: nowrap;
 }
 
@@ -79,7 +79,7 @@
 
 .timeBtnActive {
   background: var(--c-accent);
-  color: #fff;
+  color: var(--c-bg);
 }
 
 .timeBtnActive:hover {
@@ -98,7 +98,7 @@
   font-size: var(--font-size-12);
   line-height: var(--line-height-16);
   color: var(--c-text-2);
-  background: var(--c-surface-alt);
+  background: var(--c-surface-2);
   border-radius: var(--radius-999);
   padding: 3px var(--space-10);
   white-space: nowrap;
@@ -113,11 +113,11 @@
   left: 0;
   background: var(--c-surface);
   border: var(--border-width-1) solid var(--c-border-soft);
-  border-radius: var(--radius-16);
+  border-radius: var(--radius-8);
   box-shadow: var(--c-shadow-md);
-  padding: var(--space-12);
+  padding: var(--space-8);
   z-index: var(--z-50);
-  animation: panelIn 0.14s var(--ease-native);
+  animation: panelIn var(--duration-140) ease;
 }
 
 @keyframes panelIn {
@@ -150,11 +150,11 @@
   font-family: inherit;
   font-size: var(--font-size-13);
   line-height: var(--line-height-1);
-  padding: var(--space-8) var(--space-4);
+  padding: var(--space-8);
   border-radius: var(--radius-8);
   cursor: pointer;
   text-align: center;
-  transition: background 0.12s var(--ease-native), color 0.12s var(--ease-native), transform 0.1s var(--ease-native);
+  transition: background var(--duration-120) ease, color var(--duration-120) ease, transform var(--duration-100) ease;
 }
 
 .slot:hover {
@@ -168,11 +168,11 @@
 
 .slotActive {
   background: var(--c-accent);
-  color: #fff;
+  color: var(--c-bg);
   font-weight: var(--font-weight-600);
 }
 
 .slotActive:hover {
   background: var(--c-accent-hover);
-  color: #fff;
+  color: var(--c-bg);
 }

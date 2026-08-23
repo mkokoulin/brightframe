@@ -137,7 +137,7 @@ export function ToastProvider({ children, position = "bottom-right", defaultDura
       {children}
       {mounted &&
         createPortal(
-          <div className={[styles.viewport, styles[position]].join(" ")} aria-live="polite" aria-label="Notifications">
+          <div className={[styles.viewport, styles[position]].join(" ")} role="region" aria-live="polite" aria-label="Notifications">
             {toasts.map((t) => (
               <ToastItem key={t.id} record={t} onDismiss={() => dismiss(t.id)} />
             ))}

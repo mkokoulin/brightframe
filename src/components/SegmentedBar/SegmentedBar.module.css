@@ -5,18 +5,27 @@
   gap: var(--space-2);
   padding: 1px;
   background: var(--c-surface);
-  border-radius: var(--radius-16);
+  border-radius: var(--radius-999);
   box-sizing: border-box;
 }
 
 .item {
   height: 44px;
-  border-radius: var(--radius-16);
+  border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   gap: var(--space-8);
   padding: 0 var(--space-12);
   box-sizing: border-box;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-14);
+  color: var(--c-text-1);
+  transition: background var(--duration-140) ease;
+}
+
+.item:hover {
+  background: var(--c-hover-overlay);
 }
 
 .icon {

@@ -1,6 +1,8 @@
 .title {
   font-weight: var(--font-weight-700);
   font-size: var(--font-size-40);
+  line-height: var(--line-height-110);
+  letter-spacing: var(--letter-spacing-n1);
   color: var(--c-text-1);
   text-transform: uppercase;
   margin: 0;

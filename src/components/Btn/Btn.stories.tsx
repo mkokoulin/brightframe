@@ -61,6 +61,48 @@ const VARIANTS: { v: BtnVariant; label: string; when: string }[] = [
 
 const SIZES: BtnSize[] = ["sm", "md", "lg"];
 
+const SearchIcon = () => (
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.75" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="11" cy="11" r="7" />
+    <path d="M21 21l-4.3-4.3" />
+  </svg>
+);
+
+export const IconOnly: Story = {
+  name: "— icon-only (44×44)",
+  render: () => (
+    <div style={{ display: "flex", gap: 12 }}>
+      <Btn iconOnly aria-label="Search">
+        <SearchIcon />
+      </Btn>
+      <Btn iconOnly aria-label="Search" disabled>
+        <SearchIcon />
+      </Btn>
+    </div>
+  ),
+};
+
+function LoadingDemo() {
+  const [loading, setLoading] = React.useState(false);
+  return (
+    <Btn
+      loading={loading}
+      loadingLabel="Sending"
+      onClick={() => {
+        setLoading(true);
+        setTimeout(() => setLoading(false), 1800);
+      }}
+    >
+      Send the request
+    </Btn>
+  );
+}
+
+export const Loading: Story = {
+  name: "— loading (width locked, label swaps)",
+  render: () => <LoadingDemo />,
+};
+
 export const AllVariants: Story = {
   name: "— All variants",
   parameters: { layout: "padded" },

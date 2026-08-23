@@ -19,8 +19,8 @@
   display: inline-flex;
   align-items: center;
   flex-shrink: 0;
-  width: 40px;
-  height: 24px;
+  width: 54px;
+  height: 30px;
   border-radius: var(--radius-999);
   background: var(--c-border);
 }
@@ -37,9 +37,9 @@
   position: absolute;
   inset: 0;
   border-radius: var(--radius-999);
-  background: var(--c-accent);
+  background: var(--c-brand);
   opacity: 0;
-  transition: opacity var(--duration-160) var(--ease-native);
+  transition: opacity var(--duration-220) ease;
 }
 
 .input:checked ~ .fill {
@@ -47,24 +47,24 @@
 }
 
 .input:checked ~ .thumb {
-  transform: translateX(16px);
+  transform: translateX(24px);
 }
 
 .thumb {
   position: absolute;
   top: 3px;
   left: 3px;
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
   border-radius: 50%;
   background: #fff;
   box-shadow: var(--c-shadow-sm);
-  transition: transform var(--duration-160) var(--ease-native);
+  transition: transform var(--duration-220) var(--ease-spring);
 }
 
 .input:focus-visible ~ .thumb {
-  outline: 2px solid var(--c-accent);
-  outline-offset: 2px;
+  outline: 2px solid var(--c-brand);
+  outline-offset: 3px;
 }
 
 .text {

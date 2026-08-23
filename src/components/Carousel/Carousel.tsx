@@ -10,6 +10,8 @@ export type CarouselProps = {
   arrows?: boolean;
   /** Show dot pagination. Defaults to false. */
   dots?: boolean;
+  /** Show a "current / total" counter pill in the bottom-right corner. Defaults to false. */
+  counter?: boolean;
   /** Auto-advance interval in ms. Omit to disable autoplay. Paused on hover/focus and when the user prefers reduced motion. */
   autoplayInterval?: number;
   /** Controlled active slide index. */
@@ -37,6 +39,7 @@ export function Carousel({
   children,
   arrows = true,
   dots = false,
+  counter = false,
   autoplayInterval,
   index,
   defaultIndex = 0,
@@ -97,6 +100,12 @@ export function Carousel({
               <ChevronRight />
             </button>
           </>
+        ) : null}
+
+        {counter && count > 1 ? (
+          <div className={styles.counter}>
+            {active + 1} / {count}
+          </div>
         ) : null}
       </div>
 

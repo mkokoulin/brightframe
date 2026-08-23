@@ -1,4 +1,9 @@
 .container {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-24);
   background-color: var(--c-surface);
   height: 100%;
 }

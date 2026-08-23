@@ -13,7 +13,7 @@
   z-index: var(--z-10);
 
   width: max-content;
-  max-width: 240px;
+  max-width: 220px;
   padding: var(--space-8) var(--space-10);
 
   background: var(--c-text-1);
@@ -26,7 +26,7 @@
   border-radius: var(--radius-8);
   box-shadow: var(--c-shadow-sm);
   pointer-events: none;
-  animation: fadeIn var(--duration-120) var(--ease-native) both;
+  animation: fadeIn var(--duration-120) ease both;
 }
 @keyframes fadeIn {
   from { opacity: 0; }

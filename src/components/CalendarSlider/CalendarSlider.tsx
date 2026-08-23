@@ -7,7 +7,9 @@ export type { Range };
 export type Preset = "week" | "today" | "tomorrow" | "weekend" | "month" | "custom";
 
 export type CalendarSliderLabels = {
+  /** Steps the visible window back 7 days. */
   prevMonth: string;
+  /** Steps the visible window forward 7 days. */
   nextMonth: string;
   week: string;
   today: string;
@@ -19,8 +21,8 @@ export type CalendarSliderLabels = {
 };
 
 export const DEFAULT_CALENDAR_SLIDER_LABELS: CalendarSliderLabels = {
-  prevMonth: "Previous month",
-  nextMonth: "Next month",
+  prevMonth: "Previous week",
+  nextMonth: "Next week",
   week: "Week",
   today: "Today",
   tomorrow: "Tomorrow",
@@ -61,15 +63,6 @@ function addDays(d: Date, n: number) {
   const x = new Date(d);
   x.setDate(x.getDate() + n);
   return x;
-}
-function addMonthsClamped(d: Date, dir: -1 | 1) {
-  const y = d.getFullYear();
-  const m = d.getMonth();
-  const day = d.getDate();
-  const targetMonth = m + dir;
-  const first = new Date(y, targetMonth, 1);
-  const lastDay = new Date(first.getFullYear(), first.getMonth() + 1, 0).getDate();
-  return startOfDay(new Date(first.getFullYear(), first.getMonth(), Math.min(day, lastDay)));
 }
 function normalizeRange(r: Range): Range {
   const a = startOfDay(r.start);
@@ -250,8 +243,8 @@ export function CalendarSlider(props: CalendarSliderProps) {
   const leftMonthLabel = capitalize(monthFmt.format(leftDates[0]));
   const rightMonthLabel = capitalize(monthFmt.format(rightDates[0]));
 
-  const shiftMonth = (dir: -1 | 1) => {
-    setWindowStart((d) => addMonthsClamped(d, dir));
+  const shiftWindow = (dir: -1 | 1) => {
+    setWindowStart((d) => addDays(d, dir * 7));
     setActivePreset("custom");
     setPendingStart(null);
   };
@@ -293,7 +286,7 @@ export function CalendarSlider(props: CalendarSliderProps) {
       <div className={styles.root}>
         <div className={styles.colLeft}>
           <div className={styles.selectionRow}>
-            <button type="button" className={styles.iconBtn} onClick={() => shiftMonth(-1)} aria-label={L.prevMonth}>
+            <button type="button" className={styles.iconBtn} onClick={() => shiftWindow(-1)} aria-label={L.prevMonth}>
               <span className={styles.chevronLeft} aria-hidden="true" />
             </button>
 
@@ -311,7 +304,7 @@ export function CalendarSlider(props: CalendarSliderProps) {
 
             <div className={styles.monthPill}>{rightMonthLabel}</div>
 
-            <button type="button" className={styles.iconBtn} onClick={() => shiftMonth(1)} aria-label={L.nextMonth}>
+            <button type="button" className={styles.iconBtn} onClick={() => shiftWindow(1)} aria-label={L.nextMonth}>
               <span className={styles.chevronRight} aria-hidden="true" />
             </button>
           </div>

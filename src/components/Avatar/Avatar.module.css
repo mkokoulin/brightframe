@@ -10,7 +10,7 @@
   flex-shrink: 0;
   overflow: hidden;
   border-radius: 50%;
-  background: var(--c-surface-2);
+  background: var(--c-surface-alt);
   color: var(--c-text-2);
   font-family: var(--font-sans);
   font-weight: var(--font-weight-600);

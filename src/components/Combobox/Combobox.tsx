@@ -27,7 +27,7 @@ export function Combobox({
   options,
   placeholder,
   error,
-  emptyMessage = "No matches",
+  emptyMessage = "Nothing found",
   className,
 }: ComboboxProps) {
   const id = useId();
@@ -163,6 +163,11 @@ export function Combobox({
                   onPointerEnter={() => setFocusedIdx(idx)}
                 >
                   {opt.label}
+                  {opt.value === value && (
+                    <svg className={styles.optionTick} width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                      <path d="M3 8.5l3.2 3.2L13 4.8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  )}
                 </li>
               ))
             )}

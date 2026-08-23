@@ -22,7 +22,7 @@
   user-select: none;
   text-decoration: none;
 
-  transition: background var(--duration-140) var(--ease-native), border-color var(--duration-140) var(--ease-native), transform var(--duration-120) var(--ease-native);
+  transition: background var(--duration-160) ease, border-color var(--duration-160) ease, box-shadow var(--duration-160) ease, transform var(--duration-120) ease;
 
   border: none;
 }

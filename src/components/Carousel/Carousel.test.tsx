@@ -59,6 +59,18 @@ describe("Carousel", () => {
     expect(groups[2]).toHaveAttribute("aria-hidden", "false");
   });
 
+  it("renders a current/total counter pill when counter=true", async () => {
+    render(<Carousel counter>{Slides({ count: 3 })}</Carousel>);
+    expect(screen.getByText("1 / 3")).toBeInTheDocument();
+    await userEvent.click(screen.getByRole("button", { name: "Next slide" }));
+    expect(screen.getByText("2 / 3")).toBeInTheDocument();
+  });
+
+  it("does not render the counter by default", () => {
+    render(<Carousel>{Slides({ count: 3 })}</Carousel>);
+    expect(screen.queryByText("1 / 3")).not.toBeInTheDocument();
+  });
+
   it("calls onIndexChange with the new index", async () => {
     const onIndexChange = vi.fn();
     render(

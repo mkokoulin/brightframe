@@ -78,7 +78,7 @@
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: #fff;
+  background: var(--c-bg);
   border: var(--border-width-2) solid var(--c-accent);
   box-shadow: var(--c-shadow-sm);
   cursor: pointer;
@@ -87,19 +87,19 @@
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: #fff;
+  background: var(--c-bg);
   border: var(--border-width-2) solid var(--c-accent);
   box-shadow: var(--c-shadow-sm);
   cursor: pointer;
 }
 
 .input:focus-visible::-webkit-slider-thumb {
-  outline: 2px solid var(--c-accent);
-  outline-offset: 2px;
+  outline: 2px solid var(--c-brand);
+  outline-offset: 3px;
 }
 .input:focus-visible::-moz-range-thumb {
-  outline: 2px solid var(--c-accent);
-  outline-offset: 2px;
+  outline: 2px solid var(--c-brand);
+  outline-offset: 3px;
 }
 
 .input:disabled::-webkit-slider-thumb {

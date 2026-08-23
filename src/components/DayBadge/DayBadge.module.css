@@ -27,7 +27,7 @@
   font-size: var(--font-size-18);
   line-height: var(--line-height-22);
   letter-spacing: var(--letter-spacing-n1);
-  color: var(--c-surface-alt);
+  color: var(--c-bg);
   text-transform: capitalize;
   word-break: break-word;
 }
@@ -37,7 +37,7 @@
   font-size: var(--font-size-40);
   line-height: var(--line-height-40);
   letter-spacing: var(--letter-spacing-n2);
-  color: var(--c-surface-alt);
+  color: var(--c-bg);
 }
 
 .compact {

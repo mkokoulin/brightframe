@@ -2,7 +2,7 @@
   width: 100%;
   height: auto;
   background: var(--c-form-accent-bg);
-  box-shadow: var(--c-shadow-card);
+  box-shadow: var(--c-shadow-sm);
   border-radius: var(--radius-24);
   padding: var(--space-24);
   box-sizing: border-box;

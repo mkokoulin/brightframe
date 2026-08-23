@@ -63,6 +63,49 @@ describe("Btn", () => {
     expect(screen.getByRole("button").className).toContain("custom");
   });
 
+  it("renders as a fixed 44×44 icon-only button", () => {
+    render(
+      <Btn iconOnly aria-label="Search">
+        <span data-testid="icon" />
+      </Btn>,
+    );
+    const btn = screen.getByRole("button", { name: "Search" });
+    expect(btn.className).toContain(styles.iconOnly);
+    expect(screen.getByTestId("icon")).toBeInTheDocument();
+  });
+
+  it("shows a spinner, disables the button, and swaps the label while loading", () => {
+    render(
+      <Btn loading loadingLabel="Sending">
+        Send the request
+      </Btn>,
+    );
+    const btn = screen.getByRole("button", { name: "Sending" });
+    expect(btn).toBeDisabled();
+    expect(btn).toHaveAttribute("aria-busy", "true");
+    expect(screen.queryByText("Send the request")).not.toBeInTheDocument();
+  });
+
+  it("keeps the original label while loading if no loadingLabel is given", () => {
+    render(<Btn loading>Register</Btn>);
+    expect(screen.getByRole("button", { name: "Register" })).toBeInTheDocument();
+  });
+
+  it("locks the button's pre-loading width so loading doesn't shift the layout", () => {
+    const widthSpy = vi.spyOn(HTMLElement.prototype, "offsetWidth", "get").mockReturnValue(190);
+    try {
+      const { rerender } = render(<Btn>Send the request</Btn>);
+      rerender(
+        <Btn loading loadingLabel="Sending">
+          Send the request
+        </Btn>,
+      );
+      expect(screen.getByRole("button").style.minWidth).toBe("190px");
+    } finally {
+      widthSpy.mockRestore();
+    }
+  });
+
   it("has no accessibility violations", async () => {
     const { container } = render(
       <Btn iconLeft={<span data-testid="icon-left" />} iconRight={<span data-testid="icon-right" />}>

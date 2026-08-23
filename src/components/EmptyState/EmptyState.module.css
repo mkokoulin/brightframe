@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: var(--space-40) var(--space-16);
+  padding: var(--space-40);
 }
 
 .icon {
@@ -13,12 +13,14 @@
   width: 48px;
   height: 48px;
   margin-bottom: var(--space-16);
+  border: var(--border-width-2) solid var(--c-border);
+  border-radius: 50%;
   color: var(--c-text-3);
 }
 
 .icon svg {
-  width: 100%;
-  height: 100%;
+  width: 22px;
+  height: 22px;
 }
 
 .title {
@@ -33,7 +35,7 @@
 .description {
   margin: var(--space-8) 0 0;
   font-size: var(--font-size-15);
-  line-height: var(--line-height-22);
+  line-height: var(--line-height-155);
   color: var(--c-text-2);
   max-width: 360px;
 }

@@ -23,6 +23,26 @@ No app framework, i18n, or routing dependencies — every component here is a pu
 
 <p align="center"><em>Same components, same code — the booking form above switches from light to dark purely through <code>data-theme</code>, no per-component dark-mode styles. See it live in <a href="https://mkokoulin.github.io/brightframe/?path=/story/examples-booking-form--default">Storybook</a>.</em></p>
 
+## Full showcase
+
+Every component in the kit lives together on one scrollable page — **[Overview / UI Kit](https://mkokoulin.github.io/brightframe/?path=/story/overview-ui-kit--default)** in Storybook — 20 numbered sections mirroring the original design handoff, from buttons and forms through dates, layout primitives, and full page-composition examples (a booking form, an events poster). It doubles as an integration check: everything shown below renders together, in the same page, from the same tokens.
+
+<p align="center">
+  <img src="./docs/overview-hero.jpg" alt="Overview / UI Kit page header — hero, token summary (one radius, one height, one focus ring, one animation), and a component index grouped by section" width="90%" />
+</p>
+
+<p align="center">
+  <img src="./docs/overview-buttons.jpg" alt="Buttons section — primary, secondary, quiet and danger variants at three sizes, plus icon buttons, loading state and keyboard focus" width="46%" />
+  &nbsp;&nbsp;
+  <img src="./docs/overview-buttons-dark.jpg" alt="The same buttons section in dark theme, driven by the same tokens" width="46%" />
+</p>
+
+<p align="center">
+  <img src="./docs/overview-cards.jpg" alt="Cards section — three pricing plans with a featured tier, two event cards, and a loading skeleton" width="46%" />
+  &nbsp;&nbsp;
+  <img src="./docs/overview-dates.jpg" alt="Dates section — a two-week day strip with range selection, a combined date and time picker, and a form date field" width="46%" />
+</p>
+
 ## Why brightframe
 
 - **Token-driven theming, not per-component overrides.** Light, dark, and high-contrast modes come from one `tokens.css` file and a `data-theme`/`data-a11y` attribute — components never hardcode colors.

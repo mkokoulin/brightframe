@@ -32,30 +32,26 @@
 /* ── Radius ── */
 
 .rsm  { border-radius: var(--radius-8); }
-.rmd  { border-radius: var(--radius-12); }
-.rlg  { border-radius: var(--radius-16); }
+.rmd  { border-radius: var(--radius-md); }
+.rlg  { border-radius: var(--radius-lg); }
 .rxl  { border-radius: var(--radius-20); }
 
 /* ── Hover animation ── */
 
-/* Slow ease-in on exit, fast ease-out on enter — standard spring feel */
 .hover {
   transition:
-    transform var(--duration-200) cubic-bezier(0.4, 0, 0.6, 1),
-    box-shadow var(--duration-200) cubic-bezier(0.4, 0, 0.6, 1);
+    transform var(--duration-200) ease,
+    box-shadow var(--duration-200) ease;
   cursor: pointer;
 }
 
 .hover:hover,
 .hover:focus-visible {
-  transform: translateY(-5px);
-  box-shadow: var(--c-shadow-3xl);
-  transition:
-    transform var(--duration-380) cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow var(--duration-380) cubic-bezier(0.22, 1, 0.36, 1);
+  transform: translateY(-4px);
+  box-shadow: var(--c-shadow-md);
 }
 
 .hover:focus-visible {
-  outline: 2px solid var(--c-accent);
-  outline-offset: 2px;
+  outline: 2px solid var(--c-brand);
+  outline-offset: 3px;
 }

@@ -24,13 +24,13 @@
   min-width: 180px;
   background: var(--c-surface);
   border: var(--border-width-1) solid var(--c-border-soft);
-  border-radius: var(--radius-12);
+  border-radius: var(--radius-md);
   box-shadow: var(--c-shadow-md);
-  padding: var(--space-6);
+  padding: var(--space-8);
   display: flex;
   flex-direction: column;
   gap: 1px;
-  animation: fadeIn var(--duration-140) var(--ease-native) both;
+  animation: fadeIn var(--duration-160) ease both;
 }
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(-4px); }
@@ -50,16 +50,16 @@
   align-items: center;
   gap: var(--space-8);
   width: 100%;
-  padding: 9px var(--space-10);
+  padding: var(--space-12) var(--space-14);
   border: none;
-  border-radius: var(--radius-8);
+  border-radius: var(--radius-10);
   background: transparent;
   color: var(--c-text-1);
   font-family: var(--font-sans);
   font-size: var(--font-size-14);
   text-align: left;
   cursor: pointer;
-  transition: background var(--duration-120) var(--ease-native);
+  transition: background var(--duration-120) ease;
 }
 
 .item:hover:not(:disabled),

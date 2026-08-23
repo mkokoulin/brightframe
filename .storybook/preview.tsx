@@ -1,5 +1,7 @@
 import type { Preview } from "@storybook/react-vite";
 import "../src/tokens.css";
+import "../src/fonts.css";
+import "./preview.css";
 
 const preview: Preview = {
   parameters: {
@@ -10,6 +12,13 @@ const preview: Preview = {
         { name: "light", value: "#fbfbfd" },
         { name: "dark", value: "#0c0e14" },
       ],
+    },
+    options: {
+      // Puts Overview/UI Kit first in the sidebar, which is also what Storybook
+      // opens by default when no ?path= is given (e.g. visiting localhost:6006/).
+      storySort: {
+        order: ["Overview", "*"],
+      },
     },
   },
   globalTypes: {

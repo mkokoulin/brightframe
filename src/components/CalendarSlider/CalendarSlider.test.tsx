@@ -66,12 +66,14 @@ describe("CalendarSlider", () => {
     expect(weekBtn.className).toMatch(/filterActive/);
   });
 
-  it("navigates to the next month via the arrow button", () => {
+  it("navigates the visible window forward 7 days per arrow click", () => {
     render(<CalendarSlider value={{ start: DAY, end: DAY }} onChange={vi.fn()} />);
 
-    fireEvent.click(screen.getByRole("button", { name: "Next month" }));
+    const nextBtn = screen.getByRole("button", { name: "Next week" });
+    fireEvent.click(nextBtn);
+    fireEvent.click(nextBtn);
 
-    // After moving forward a month, June should no longer be the only month pill shown
+    // Two 7-day steps from 10 Jun push the right-hand group's first day past June 30.
     expect(screen.getAllByText(/July|August/).length).toBeGreaterThan(0);
   });
 
