@@ -6,7 +6,12 @@ import styles from "./Popover.module.css";
 export type PopoverPosition = "top" | "bottom" | "left" | "right";
 
 export type PopoverProps = {
-  /** Content of the trigger button that opens/closes the popover. */
+  /**
+   * Content of the trigger button that opens/closes the popover. Must be
+   * non-interactive (text, icon, styled `<span>`) — Popover already renders its
+   * own `<button>` around it, so passing another button/link/`Btn` here nests
+   * two interactive controls (invalid HTML, fails WCAG 4.1.2).
+   */
   trigger: React.ReactNode;
   children: React.ReactNode;
   position?: PopoverPosition;

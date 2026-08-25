@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useId } from "react";
 import { IMaskInput } from "react-imask";
 import styles from "./LabeledField.module.css";

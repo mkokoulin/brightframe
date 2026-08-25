@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { Switch } from "./Switch";
 
 describe("Switch", () => {
@@ -36,6 +36,6 @@ describe("Switch", () => {
 
   it("has no accessibility violations", async () => {
     const { container } = render(<Switch checked label="Dark mode" onChange={vi.fn()} />);
-    expect(await axe(container)).toHaveNoViolations();
+    await expectNoA11yViolations(container);
   });
 });

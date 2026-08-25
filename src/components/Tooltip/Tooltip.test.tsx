@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent, act } from "@testing-library/react";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { Tooltip } from "./Tooltip";
 
 describe("Tooltip", () => {
@@ -93,6 +93,6 @@ describe("Tooltip", () => {
     );
     const button = screen.getByRole("button", { name: "Trigger" });
     fireEvent.focus(button);
-    expect(await axe(container)).toHaveNoViolations();
+    await expectNoA11yViolations(container);
   });
 });

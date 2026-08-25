@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { Footer, FooterColumn } from "./Footer";
 
 describe("Footer", () => {
@@ -39,7 +39,7 @@ describe("Footer", () => {
         </FooterColumn>
       </Footer>,
     );
-    expect(await axe(container)).toHaveNoViolations();
+    await expectNoA11yViolations(container);
   });
 });
 

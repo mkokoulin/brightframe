@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { Slider } from "./Slider";
 
 describe("Slider", () => {
@@ -54,6 +54,6 @@ describe("Slider", () => {
 
   it("has no accessibility violations", async () => {
     const { container } = render(<Slider label="Price range" value={[50, 200]} onChange={vi.fn()} min={0} max={500} />);
-    expect(await axe(container)).toHaveNoViolations();
+    await expectNoA11yViolations(container);
   });
 });

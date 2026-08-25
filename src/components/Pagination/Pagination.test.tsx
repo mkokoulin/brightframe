@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { Pagination } from "./Pagination";
 
 describe("Pagination", () => {
@@ -55,6 +55,6 @@ describe("Pagination", () => {
 
   it("has no accessibility violations", async () => {
     const { container } = render(<Pagination page={3} totalPages={5} onChange={vi.fn()} />);
-    expect(await axe(container)).toHaveNoViolations();
+    await expectNoA11yViolations(container);
   });
 });

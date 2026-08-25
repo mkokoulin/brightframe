@@ -1,3 +1,5 @@
+"use client";
+
 import { ButtonHTMLAttributes, CSSProperties } from "react";
 import styles from "./Burger.module.css";
 

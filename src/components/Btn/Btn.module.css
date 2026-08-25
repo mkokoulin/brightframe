@@ -201,13 +201,15 @@
 
 /* external — linking to an external service (Telegram, Instagram…) */
 .external {
-  background: #229ED9;
+  /* Darkened from the literal Telegram/Instagram blue (#229ED9) to clear WCAG AA
+     4.5:1 for the white label text (old value measured 3.01:1). */
+  background: #1076a3;
   color: #fff;
   border-color: transparent;
 }
 .external:hover:not(:disabled),
 .external:focus-visible:not(:disabled) {
-  background: #1a8cbf;
+  background: #0e648b;
   transform: translateY(-1px);
   box-shadow: var(--c-shadow-glow-info);
 }

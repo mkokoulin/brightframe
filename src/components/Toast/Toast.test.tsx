@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent, act } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { ToastProvider, useToast } from "./Toast";
 
 function Probe() {
@@ -138,6 +138,6 @@ describe("ToastProvider / useToast", () => {
     );
     await userEvent.click(screen.getByText("fire info"));
     expect(screen.getByText("Saved")).toBeInTheDocument();
-    expect(await axe(document.body)).toHaveNoViolations();
+    await expectNoA11yViolations(document.body);
   });
 });

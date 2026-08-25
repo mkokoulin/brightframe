@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { Checkbox } from "./Checkbox";
 
 describe("Checkbox", () => {
@@ -44,6 +44,6 @@ describe("Checkbox", () => {
 
   it("has no accessibility violations", async () => {
     const { container } = render(<Checkbox checked={false} onChange={vi.fn()} label="Accept" error="Required" />);
-    expect(await axe(container)).toHaveNoViolations();
+    await expectNoA11yViolations(container);
   });
 });

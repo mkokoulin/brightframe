@@ -14,5 +14,6 @@
     "declaration": true,
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src", "vite.config.ts", "vitest.config.ts", "vitest.setup.ts", ".storybook"]
+  "include": ["src", "codemods", "vite.config.ts", "vitest.config.ts", "vitest.setup.ts", ".storybook"],
+  "exclude": ["codemods/**/__fixtures__"]
 }

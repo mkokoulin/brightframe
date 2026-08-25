@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { GhostButton } from "./GhostButton";
 
 describe("GhostButton", () => {
@@ -57,6 +57,6 @@ describe("GhostButton", () => {
 
   it("has no accessibility violations", async () => {
     const { container } = render(<GhostButton label="Go" href="/somewhere" targetBlank />);
-    expect(await axe(container)).toHaveNoViolations();
+    await expectNoA11yViolations(container);
   });
 });

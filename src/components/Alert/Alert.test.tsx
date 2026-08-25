@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { Alert } from "./Alert";
 
 describe("Alert", () => {
@@ -64,6 +64,6 @@ describe("Alert", () => {
         Check-in opens at 3 PM.
       </Alert>,
     );
-    expect(await axe(container)).toHaveNoViolations();
+    await expectNoA11yViolations(container);
   });
 });

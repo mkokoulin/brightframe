@@ -9,6 +9,15 @@ export type HorizontalScrollerProps = {
   arrows?: boolean;
   prevLabel?: string;
   nextLabel?: string;
+  /**
+   * Accessible name for the scrollable region itself (distinct from `prevLabel`/
+   * `nextLabel`, which name the arrow buttons). Give each instance on a page its
+   * own descriptive label (e.g. "Upcoming events") when more than one
+   * `HorizontalScroller` renders at once — screen readers require landmark
+   * regions on the same page to have unique names. Defaults to "Scrollable
+   * content", which is fine for a single instance.
+   */
+  label?: string;
   className?: string;
   /** Gap between items, in px. Defaults to the kit's --space-16 token. */
   gap?: number;
@@ -41,6 +50,7 @@ export function HorizontalScroller({
   arrows = true,
   prevLabel = "Scroll left",
   nextLabel = "Scroll right",
+  label = "Scrollable content",
   className,
   gap,
   trackPadding,
@@ -79,6 +89,17 @@ export function HorizontalScroller({
         className={styles.row}
         ref={rowRef}
         onScroll={updateEdges}
+        // Makes the scrollable track keyboard-reachable (Tab, then arrow keys scroll it
+        // natively) — without this, a scrollable region with no other focusable
+        // descendants is unreachable by keyboard (axe: scrollable-region-focusable).
+        // `role="region"` gives it an accessible landmark name; jsx-a11y's
+        // no-noninteractive-tabindex rule only recognizes widget roles as
+        // justifying tabIndex, not landmark roles like "region", so this specific,
+        // deliberate case is disabled rather than silencing the rule generally.
+        role="region"
+        aria-label={label}
+        // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
+        tabIndex={0}
         style={gap !== undefined || trackPadding !== undefined ? { gap, padding: trackPadding } : undefined}
       >
         {children}

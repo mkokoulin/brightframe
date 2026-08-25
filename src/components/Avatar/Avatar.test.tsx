@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { Avatar } from "./Avatar";
 
 describe("Avatar", () => {
@@ -36,6 +36,6 @@ describe("Avatar", () => {
 
   it("has no accessibility violations", async () => {
     const { container } = render(<Avatar src="https://example.com/a.jpg" name="Ana Torres" />);
-    expect(await axe(container)).toHaveNoViolations();
+    await expectNoA11yViolations(container);
   });
 });

@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { Navbar, NavbarItem } from "./Navbar";
 
 describe("Navbar", () => {
@@ -49,7 +49,7 @@ describe("Navbar", () => {
         <NavbarItem href="/">Home</NavbarItem>
       </Navbar>,
     );
-    expect(await axe(container)).toHaveNoViolations();
+    await expectNoA11yViolations(container);
   });
 });
 

@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { SubTitle } from "./SubTitle";
 
 describe("SubTitle", () => {
@@ -21,6 +21,6 @@ describe("SubTitle", () => {
 
   it("has no accessibility violations", async () => {
     const { container } = render(<SubTitle>Workspaces and meeting rooms</SubTitle>);
-    expect(await axe(container)).toHaveNoViolations();
+    await expectNoA11yViolations(container);
   });
 });

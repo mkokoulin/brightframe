@@ -1,6 +1,6 @@
+import type { ReactNode } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { DropdownMenu, type DropdownMenuEntry } from "./DropdownMenu";
-import { Btn } from "../Btn";
 
 const meta: Meta<typeof DropdownMenu> = {
   title: "Molecules/DropdownMenu",
@@ -17,7 +17,7 @@ const meta: Meta<typeof DropdownMenu> = {
 import { DropdownMenu } from "brightframe/DropdownMenu";
 
 <DropdownMenu
-  trigger={<button>Actions</button>}
+  trigger="Actions"
   items={[
     { id: "edit", label: "Edit", onSelect: () => {} },
     { id: "delete", label: "Delete", danger: true, onSelect: () => {} },
@@ -40,10 +40,34 @@ const ITEMS: DropdownMenuEntry[] = [
   { id: "delete", label: "Delete", danger: true },
 ];
 
+// DropdownMenu already renders its own <button> around `trigger` (for the
+// aria-haspopup/aria-expanded wiring) — `trigger` itself must be non-interactive
+// content (text, icon, styled span), never another button/link, or the two nest
+// into invalid, inaccessible markup (WCAG 4.1.2, axe rule "nested-interactive").
+function TriggerLabel({ children }: { children: ReactNode }) {
+  return (
+    <span
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        height: 36,
+        padding: "0 18px",
+        borderRadius: "var(--radius-999)",
+        border: "1px solid var(--c-border)",
+        fontFamily: "var(--font-sans)",
+        fontSize: 14,
+        fontWeight: 700,
+      }}
+    >
+      {children}
+    </span>
+  );
+}
+
 export const Playground: Story = {
   render: () => (
     <div style={{ padding: 60 }}>
-      <DropdownMenu trigger={<Btn variant="secondary">Actions</Btn>} items={ITEMS} />
+      <DropdownMenu trigger={<TriggerLabel>Actions</TriggerLabel>} items={ITEMS} />
     </div>
   ),
 };
@@ -51,7 +75,7 @@ export const Playground: Story = {
 export const AlignEnd: Story = {
   render: () => (
     <div style={{ padding: 60, display: "flex", justifyContent: "flex-end" }}>
-      <DropdownMenu trigger={<Btn variant="secondary">Actions</Btn>} items={ITEMS} align="end" />
+      <DropdownMenu trigger={<TriggerLabel>Actions</TriggerLabel>} items={ITEMS} align="end" />
     </div>
   ),
 };

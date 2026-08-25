@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { Tag } from "./Tag";
 import styles from "./Tag.module.css";
 
@@ -31,6 +31,6 @@ describe("Tag", () => {
 
   it("has no accessibility violations", async () => {
     const { container } = render(<Tag variant="error" size="lg">Sold out</Tag>);
-    expect(await axe(container)).toHaveNoViolations();
+    await expectNoA11yViolations(container);
   });
 });

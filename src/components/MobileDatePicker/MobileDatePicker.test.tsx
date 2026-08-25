@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent, within } from "@testing-library/react";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { MobileDatePicker } from "./MobileDatePicker";
 
 const START = new Date(2026, 5, 10); // 10 Jun 2026
@@ -110,6 +110,6 @@ describe("MobileDatePicker", () => {
 
   it("has no accessibility violations", async () => {
     render(<MobileDatePicker open onClose={vi.fn()} value={{ start: START, end: END }} onChange={vi.fn()} />);
-    expect(await axe(document.body)).toHaveNoViolations();
+    await expectNoA11yViolations(document.body);
   });
 });

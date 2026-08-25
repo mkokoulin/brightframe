@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
 import { render, screen, act } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { Carousel } from "./Carousel";
 
 function Slides({ count = 3 }: { count?: number }) {
@@ -102,6 +102,6 @@ describe("Carousel", () => {
 
   it("has no accessibility violations", async () => {
     const { container } = render(<Carousel dots>{Slides({ count: 3 })}</Carousel>);
-    expect(await axe(container)).toHaveNoViolations();
+    await expectNoA11yViolations(container);
   });
 });

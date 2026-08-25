@@ -1123,7 +1123,7 @@ function MediaSection() {
           <style>{`@keyframes brightframe-ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }`}</style>
         </Specimen>
         <Specimen label="Horizontal scroller">
-          <HorizontalScroller>
+          <HorizontalScroller label="Rooms">
             {["Room A", "Room B", "Room C", "Room D", "Room E"].map((r) => (
               <div key={r} style={{ ...cardStyle, width: 220 }}>{r}</div>
             ))}
@@ -1437,7 +1437,7 @@ function PickingSection() {
           </FormCard>
         </Specimen>
         <Specimen label="Horizontal scroller with arrows">
-          <HorizontalScroller>
+          <HorizontalScroller label="Pricing tiers">
             {[
               { label: "1 hour", price: "1 300 ֏" },
               { label: "4 hours", price: "3 000 ֏" },

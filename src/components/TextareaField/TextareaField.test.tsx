@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { TextareaField } from "./TextareaField";
 
 describe("TextareaField", () => {
@@ -24,6 +24,6 @@ describe("TextareaField", () => {
 
   it("has no accessibility violations", async () => {
     const { container } = render(<TextareaField label="Comment" value="" onChange={() => {}} error="Required" />);
-    expect(await axe(container)).toHaveNoViolations();
+    await expectNoA11yViolations(container);
   });
 });

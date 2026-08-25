@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { EmptyState } from "./EmptyState";
 
 describe("EmptyState", () => {
@@ -38,6 +38,6 @@ describe("EmptyState", () => {
     const { container } = render(
       <EmptyState title="No reviews yet" action={<button>Leave a review</button>} />,
     );
-    expect(await axe(container)).toHaveNoViolations();
+    await expectNoA11yViolations(container);
   });
 });

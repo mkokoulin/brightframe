@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { SubmitButton } from "./SubmitButton";
 
 describe("SubmitButton", () => {
@@ -39,6 +39,6 @@ describe("SubmitButton", () => {
 
   it("has no accessibility violations", async () => {
     const { container } = render(<SubmitButton variant="ghost">Send</SubmitButton>);
-    expect(await axe(container)).toHaveNoViolations();
+    await expectNoA11yViolations(container);
   });
 });

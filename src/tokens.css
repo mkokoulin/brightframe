@@ -214,7 +214,10 @@
 
   /* ── Text ── */
   --c-text-1: #030717;
-  --c-text-2: #5f6b78;
+  /* Darkened slightly from #5f6b78 (2026-08-24): measured 4.45:1 as Alert's
+     description text on the info/success badge-tint backgrounds, just under
+     WCAG AA's 4.5:1. */
+  --c-text-2: #5c6874;
   --c-text-3: #6f7274;
   --c-text-nav: #4f4f4f;
 
@@ -222,9 +225,15 @@
   --c-border: #ccd6e6;
   --c-border-soft: #e8eaec;
 
-  /* ── Accents ── */
-  --c-accent: #ffa05f;
-  --c-accent-hover: #f09050;
+  /* ── Accents ──
+     Darkened from the original #ffa05f/#f09050 (2026-08-24): that orange measured
+     2.01:1 as text on white and only 1.94:1 as a solid fill under white/--c-bg text
+     (e.g. Progress/Slider fills, DayBadge, Eyebrow) — both fail WCAG AA's 4.5:1.
+     Same hue, same "warm decorative, never a button fill" role (see docs/rsc.md's
+     sibling design-system rule), just dark enough to clear 4.5:1 in every place it's
+     paired with white text, including on top of the lighter --c-form-accent-bg tint. */
+  --c-accent: #955419;
+  --c-accent-hover: #7f4715;
   --c-brand: #1d5086;
   --c-brand-hover: #1a4878;
   --c-brand-soft: rgba(29, 80, 134, 0.08);
@@ -249,9 +258,14 @@
   --c-shadow-glow-brand-sm: 0 4px 12px rgba(29, 80, 134, 0.32);
   --c-shadow-glow-info: 0 4px 16px rgba(34, 158, 217, 0.35);
 
-  /* ── Errors / status ── */
-  --c-error: #c34747;
-  --c-error-hover: #a83d3d;
+  /* ── Errors / status ──
+     Darkened once more (2026-08-24), from #c34747/#a83d3d: that shade already
+     cleared 4.5:1 for white text on a *solid* --c-error fill (Fab danger, Tag
+     error, DayBadge), but only measured 4.23:1 as Alert's error-variant title
+     text sitting on the softer --c-error-soft tint — same token, opposite
+     polarity, needed independently checking. */
+  --c-error: #b23e3e;
+  --c-error-hover: #993535;
   --c-error-soft: rgba(235, 87, 87, 0.12);
 
   /* ── UI states ── */
@@ -274,7 +288,8 @@
   --c-badge-blue-bg: #dbeafe;
   --c-badge-blue-text: #1d5086;
   --c-badge-orange-bg: #ffe8d0;
-  --c-badge-orange-text: #c05800;
+  /* Darkened from #c05800 (3.81:1 on --c-badge-orange-bg, fails 4.5:1) — same hue. */
+  --c-badge-orange-text: #a04a00;
   --c-badge-green-bg: #d4f0d4;
   --c-badge-green-text: #1a6b1a;
   --c-badge-purple-bg: #ede8fb;

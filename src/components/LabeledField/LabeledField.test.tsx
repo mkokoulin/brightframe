@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { LabeledField } from "./LabeledField";
 
 describe("LabeledField", () => {
@@ -54,6 +54,6 @@ describe("LabeledField", () => {
     const { container } = render(
       <LabeledField label="Phone" value="+37400000000" onChange={vi.fn()} prefix="+374" />,
     );
-    expect(await axe(container)).toHaveNoViolations();
+    await expectNoA11yViolations(container);
   });
 });

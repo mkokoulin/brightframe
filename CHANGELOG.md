@@ -10,6 +10,98 @@ before that date are dated by commit, not by release announcement.
 
 ## [Unreleased]
 
+### Added
+
+- **React Server Components audit**: every component under `src/components/**` is now correctly
+  marked `"use client"` (client-only hooks or own-JSX DOM event handlers) or intentionally left
+  unmarked (pure props-in/markup-out, safe inside a Server Component tree). Found and fixed a real
+  gap: the entire `Formik*` field-wrapper family (`FormikCheckbox`, `FormikCombobox`,
+  `FormikRadioGroup`, `FormikSelectField`, `FormikSwitch`, `FormikTextareaField`,
+  `FormikTextField`) called `useField()` from `formik` without the directive, while every parallel
+  `RHF*` wrapper already had it — an inconsistency caught by grepping hook usage against existing
+  directives, not by manual review. Also fixed: `Breadcrumb`, `Burger` (no internal state, but
+  declares `onClick` in its own JSX — still needs the directive), `CalendarSlider`,
+  `DateTimePicker`, `GuestsCounter`, `LabeledField`, `TextareaField`. Added
+  `scripts/check-use-client.mjs` (runs in CI) as a permanent guard so new components can't silently
+  ship without the correct marker, and `docs/rsc.md` covering the rule, the `ThemeProvider`/
+  `useTheme()` client-boundary requirement, `getThemeInitScript` SSR flash-of-wrong-theme
+  mitigation, and a deliberately-unresolved edge case (`Progress`/`Skeleton`'s `{...rest}`
+  passthrough could carry a consumer's event handler — left marked rather than mechanically
+  "corrected," since unmarking is the riskier direction).
+- CI (`ci.yml`) now also runs `bun run lint` (previously only available as a script, never wired
+  into CI despite ESLint being configured) and `node scripts/check-use-client.mjs`.
+- **Accessibility: story-level, real-browser axe audit in CI**, on top of the existing
+  per-component `jest-axe` unit tests. Added `@storybook/addon-vitest` + Vitest 4 browser mode
+  (Playwright/Chromium) as a second Vitest project (`"storybook"` in `vitest.config.ts`, alongside
+  the existing jsdom `"unit"` project — both run via the unchanged `bun run test`), wired to the
+  already-installed `@storybook/addon-a11y` with `parameters.a11y.test = "error"` set globally.
+  Extracted `src/test-utils/a11y.ts` (`expectNoA11yViolations`) and mechanically refactored all 73
+  `*.test.tsx` files to use it instead of a duplicated inline `jest-axe` call. Running the new
+  story-level audit for the first time surfaced 29 real violations across 16 story files that no
+  isolated per-component test could have caught (composition bugs, real rendered contrast, a
+  duplicate-landmark-name issue) — see `docs/a11y-audit.md` for the full root-cause breakdown and
+  every fix, including: darkened `--c-accent`/`--c-badge-orange-text`/`--c-error`/
+  `--c-error-hover`/`--c-text-2` (light theme only) for WCAG AA contrast; merged `Alert.module.css`'s
+  two conflicting `.description` rules (an `opacity: 90%` blend was dragging text below 4.5:1);
+  replaced a hardcoded literal `#229ED9` in `Btn`'s `.external` variant with a darker, still-legible
+  shade; fixed `DropdownMenu`/`Popover`'s own stories (and doc comments) demonstrating a nested-
+  button anti-pattern; made `HorizontalScroller`'s scrollable track keyboard-focusable (new optional
+  `label` prop for unique region names when multiple instances share a page); fixed an
+  inline-link-relying-on-color-alone story in `Link.stories.tsx`; and swapped an `opacity`-based
+  dimming hack in `EventsPoster.stories.tsx` for an opaque muted color. One exception is
+  deliberately left open and tracked (`BookingForm.stories.tsx`'s `Default` story, `a11y.test:
+  "todo"`) — a real design decision, not a mechanical fix; see `docs/a11y-audit.md`.
+- **Visual regression testing**: a third Vitest project (`"visual"`, reusing the same Chromium/
+  Playwright browser mode added for the a11y audit above) screenshots one representative story per
+  component x light/dark theme (142 baselines, 71 of 73 components — see `docs/visual-regression.md`
+  for the two exclusions and why) via Vitest 4's native `toMatchScreenshot()`, committed under
+  `src/test-utils/__screenshots__/`. Verified end-to-end: a deliberate CSS regression introduced
+  into `Btn`'s `.primary` background was caught immediately (including in `Modal`/`Drawer`'s own
+  baselines, which compose a primary `Btn`), then reverted. New scripts `test:visual`/
+  `test:visual:update`; CI uploads the screenshots directory as an artifact on any failure.
+- **Bundle size budget, enforced in CI**: `size-limit` + `@size-limit/preset-small-lib` (not
+  `@size-limit/file` — `dist/Btn.js` is a 99-byte re-export shim over a Rollup-hashed shared chunk,
+  so a raw-file-size check would report the wrong number entirely; `preset-small-lib` re-bundles
+  via esbuild following the real import graph). New `.size-limit.json` checks the full kit (JS +
+  CSS) and one representative component (`Btn`, JS + CSS); budgets are the real numbers from the
+  first measured run (39.85 kB / 11.83 kB / 641 B / 890 B, all minified + brotli), not invented
+  ones. New `bun run size` script, wired into CI after the build step. README gained a "Bundle
+  size" table with the same real numbers.
+- **Headless `useCombobox` hook**, exported alongside the styled `Combobox` from
+  `brightframe/Combobox` — first component to get a headless counterpart (see
+  `docs/headless-hooks.md` for why `Combobox` over `SelectField`/`DropdownMenu`). Extracted its
+  open/query/filter/keyboard-nav/outside-click logic out of `Combobox.tsx` into
+  `useCombobox.ts`, with a Downshift-style prop-getter API (`getInputProps`/`getListProps`/
+  `getOptionProps`) and a controlled/uncontrolled `open` option matching `DropdownMenu`'s existing
+  shape. `Combobox.tsx` itself now consumes the hook internally — same public props, same rendered
+  DOM/ARIA, `Combobox.test.tsx` passes unmodified as the regression baseline. New
+  `useCombobox.test.ts` (hook-only, via `renderHook`) and a new, genuinely unstyled
+  `Combobox.headless.stories.tsx` demo proving the hook works standalone.
+- **Found and fixed a second, related "use client" gap** while wiring up the new hook (see
+  `docs/rsc.md`): `useCombobox.ts` and the pre-existing `CalendarSlider/useMediaQuery.ts` are both
+  standalone hooks, and the original `check-use-client.mjs` only scanned `.tsx` files — harmless
+  for `useMediaQuery` (only ever imported by an already-marked `CalendarSlider.tsx`), but a real gap
+  now that `useCombobox` ships as its own public, directly-importable export. Fixed both and
+  widened the guard script to scan `.ts` as well as `.tsx`.
+- **Generic `migrate-legacy-kit` codemod** (`codemods/migrate-legacy-kit/`, a repo-local dev tool —
+  not published on npm, see its own README for why): a ts-morph-based transform engine, config-
+  driven rather than hardcoded to any one legacy kit. Two rule kinds: `safe-rename` (default
+  import → named `brightframe` import, plus renaming every reference in that file, applied only
+  with `--write`) and `manual-review` (reported with an explanatory note, never auto-rewritten —
+  used for e.g. a `Button`/`Btn` pair that isn't behaviorally equivalent). Also detects plain
+  (non-CSS-Modules) stylesheet imports as a separate, always-reported finding. `--write` is the
+  only thing that ever calls `project.saveSync()` — verified directly via `sourceFile.isSaved()`
+  in `migrate-legacy-kit.test.ts`, run against fixtures through an in-memory ts-morph `Project`.
+  `configs/lan-site.example.ts` is a worked example grounded in brightframe's real "Origin"
+  history. Ran it dry (no `--write`) against lan-site's actual orphaned pre-extraction component
+  directory as a demonstration — correctly found all 9 dead components' plain-CSS imports and
+  flagged `Button` (2 files) as manual-review for its `to`/router-push behavior that `Btn` doesn't
+  have; found zero `safe-rename` matches, which is expected, not a bug — this run only scanned the
+  orphaned components' own directory, and lan-site's real app pages already migrated to
+  `brightframe` imports directly, so there's nothing left in that specific scope for a rename rule
+  to match. Confirmed via `git status` in `lan-site` that nothing there changed. Report committed
+  at `codemods/migrate-legacy-kit/reports/lan-site-dry-run.md`.
+
 ## [0.4.1] - 2026-08-23
 
 ### Fixed

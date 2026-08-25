@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { Tabs, type TabItem } from "./Tabs";
 
 const ITEMS: TabItem[] = [
@@ -73,6 +73,6 @@ describe("Tabs", () => {
 
   it("has no accessibility violations", async () => {
     const { container } = render(<Tabs items={ITEMS} />);
-    expect(await axe(container)).toHaveNoViolations();
+    await expectNoA11yViolations(container);
   });
 });

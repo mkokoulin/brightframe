@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Formik, Form } from "formik";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { FormikSelectField } from "./FormikSelectField";
 import type { SelectOption } from "../SelectField";
 
@@ -40,6 +40,6 @@ describe("FormikSelectField", () => {
 
   it("has no accessibility violations", async () => {
     const { container } = render(<TestForm />);
-    expect(await axe(container)).toHaveNoViolations();
+    await expectNoA11yViolations(container);
   });
 });

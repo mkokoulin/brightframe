@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { SegmentedBar, SegmentedItem } from "./SegmentedBar";
 
 describe("SegmentedBar", () => {
@@ -31,6 +31,6 @@ describe("SegmentedBar", () => {
         <SegmentedItem>Week</SegmentedItem>
       </SegmentedBar>,
     );
-    expect(await axe(container)).toHaveNoViolations();
+    await expectNoA11yViolations(container);
   });
 });

@@ -6,6 +6,12 @@ import "./preview.css";
 const preview: Preview = {
   parameters: {
     layout: "centered",
+    // Runs axe (via @storybook/addon-a11y) as part of the Vitest "storybook" project
+    // and fails that test on any violation. Override to "todo" on an individual story
+    // only with a comment explaining why — see docs/a11y-audit.md.
+    a11y: {
+      test: "error",
+    },
     backgrounds: {
       default: "light",
       values: [

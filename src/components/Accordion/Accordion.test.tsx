@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { Accordion, type AccordionItem } from "./Accordion";
 
 const ITEMS: AccordionItem[] = [
@@ -60,6 +60,6 @@ describe("Accordion", () => {
   it("has no accessibility violations with an item open", async () => {
     const { container } = render(<Accordion items={ITEMS} />);
     fireEvent.click(screen.getByRole("button", { name: "A" }));
-    expect(await axe(container)).toHaveNoViolations();
+    await expectNoA11yViolations(container);
   });
 });

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useMemo, useState } from "react";
 import styles from "./CalendarSlider.module.css";
 import { MobileDatePicker, type Range } from "../MobileDatePicker/MobileDatePicker";

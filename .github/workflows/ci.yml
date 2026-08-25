@@ -19,6 +19,24 @@ jobs:
 
       - run: bun run typecheck
 
+      - run: bun run lint
+
+      - run: node scripts/check-use-client.mjs
+
+      # Chromium for the Vitest "storybook" project (browser-mode story tests —
+      # a11y via @storybook/addon-a11y and visual regression, both driven by
+      # @storybook/addon-vitest). See docs/a11y-audit.md / docs/visual-regression.md.
+      - run: bunx playwright install --with-deps chromium
+
       - run: bun run test
 
+      - if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-regression-diffs
+          path: src/test-utils/__screenshots__/
+          retention-days: 14
+
       - run: bun run build
+
+      - run: bun run size

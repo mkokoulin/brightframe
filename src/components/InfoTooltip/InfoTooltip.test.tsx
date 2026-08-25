@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { InfoTooltip } from "./InfoTooltip";
 
 describe("InfoTooltip", () => {
@@ -83,6 +83,6 @@ describe("InfoTooltip", () => {
   it("has no accessibility violations with the tooltip open", async () => {
     const { container } = render(<InfoTooltip label="Discount details" />);
     fireEvent.click(screen.getByRole("button"));
-    expect(await axe(container)).toHaveNoViolations();
+    await expectNoA11yViolations(container);
   });
 });

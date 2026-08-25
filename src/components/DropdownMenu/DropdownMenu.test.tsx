@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { DropdownMenu, type DropdownMenuEntry } from "./DropdownMenu";
 
 const ITEMS: DropdownMenuEntry[] = [
@@ -71,6 +71,6 @@ describe("DropdownMenu", () => {
   it("has no accessibility violations with the menu open", async () => {
     const { container } = render(<DropdownMenu trigger="Actions" items={ITEMS} />);
     fireEvent.click(screen.getByRole("button", { name: "Actions" }));
-    expect(await axe(container)).toHaveNoViolations();
+    await expectNoA11yViolations(container);
   });
 });

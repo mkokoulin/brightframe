@@ -6,3 +6,4 @@ storybook-static/
 .vscode/
 src/**/*.module.css.d.ts
 package-lock.json
+.vitest-attachments/

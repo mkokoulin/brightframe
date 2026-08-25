@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { Popover } from "./Popover";
 
 describe("Popover", () => {
@@ -69,6 +69,6 @@ describe("Popover", () => {
   it("has no accessibility violations with the panel open", async () => {
     render(<Popover trigger="Open">Panel content</Popover>);
     fireEvent.click(screen.getByRole("button", { name: "Open" }));
-    expect(await axe(document.body)).toHaveNoViolations();
+    await expectNoA11yViolations(document.body);
   });
 });

@@ -93,6 +93,19 @@ import { Btn } from "brightframe/Btn";
 
 `brightframe/<Name>` mirrors the named export (`Btn`, `Modal`, `Tabs`, `ThemeProvider` via `brightframe/theme`, `PinIcon` via `brightframe/icons`, ...), and `brightframe/<Name>.css` is that component's own stylesheet — both are tree-shaken independently of `brightframe/style.css`, so unused components add nothing to your bundle.
 
+### Bundle size
+
+Measured with [size-limit](https://github.com/ai/size-limit) (`bun run size`), enforced in CI so a regression fails the build instead of quietly shipping:
+
+| Entry | Minified + brotli |
+| --- | --- |
+| Whole kit (`import { ... } from "brightframe"`, JS) | 40.13 kB |
+| Whole kit (`brightframe/style.css`) | 11.83 kB |
+| One component (`brightframe/Btn`, JS) | 641 B |
+| One component's styles (`brightframe/Btn.css`) | 890 B |
+
+The gap between "whole kit" and "one component" is the point of the per-component entry points above — importing `Btn` alone costs 641 B, not 39.85 kB.
+
 ### Fonts
 
 Every component reads its font from one custom property, `--font-sans`, defined in `tokens.css`:

@@ -1,0 +1,24 @@
+[
+  {
+    "name": "Full kit (JS)",
+    "path": "dist/brightframe.js",
+    "import": "*",
+    "limit": "45 kB"
+  },
+  {
+    "name": "Full kit (CSS)",
+    "path": "dist/brightframe.css",
+    "limit": "14 kB"
+  },
+  {
+    "name": "Btn (JS, single component)",
+    "path": "dist/Btn.js",
+    "import": "{ Btn }",
+    "limit": "1 kB"
+  },
+  {
+    "name": "Btn (CSS)",
+    "path": "dist/Btn.css",
+    "limit": "1.2 kB"
+  }
+]

@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent, within } from "@testing-library/react";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { DateTimePicker } from "./DateTimePicker";
 
 const VALUE = new Date(2026, 5, 10, 14, 30); // 10 Jun 2026, 14:30
@@ -96,6 +96,6 @@ describe("DateTimePicker", () => {
   it("has no accessibility violations with the picker open", async () => {
     const { container } = render(<DateTimePicker value={VALUE} onChange={vi.fn()} />);
     fireEvent.click(screen.getByText("10 June"));
-    expect(await axe(container)).toHaveNoViolations();
+    await expectNoA11yViolations(container);
   });
 });

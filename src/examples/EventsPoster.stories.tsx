@@ -204,8 +204,11 @@ function EventRow({ event }: { event: PosterEvent }) {
             fontSize: "var(--font-size-17)",
             lineHeight: 1.35,
             fontWeight: "var(--font-weight-700)",
-            color: "var(--c-text-1)",
-            opacity: event.past ? 0.55 : 1,
+            // A past event is already marked with the "Past" tag above — de-emphasize
+            // its title with a lower-contrast (but still opaque, still AA-compliant)
+            // text color rather than `opacity`, which would blend it below 4.5:1
+            // against this card's background (axe: color-contrast).
+            color: event.past ? "var(--c-text-2)" : "var(--c-text-1)",
           }}
         >
           {event.title}

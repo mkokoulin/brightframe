@@ -18,6 +18,12 @@ export type DropdownMenuEntry = DropdownMenuItem | "separator";
 export type DropdownMenuAlign = "start" | "end";
 
 export type DropdownMenuProps = {
+  /**
+   * Content of the trigger button. Must be non-interactive (text, icon, styled
+   * `<span>`) — DropdownMenu already renders its own `<button>` around it, so
+   * passing another button/link/`Btn` here nests two interactive controls
+   * (invalid HTML, fails WCAG 4.1.2).
+   */
   trigger: React.ReactNode;
   items: DropdownMenuEntry[];
   align?: DropdownMenuAlign;

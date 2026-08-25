@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { RadioGroup, type RadioOption } from "./RadioGroup";
 
 const OPTIONS: RadioOption[] = [
@@ -48,6 +48,6 @@ describe("RadioGroup", () => {
 
   it("has no accessibility violations", async () => {
     const { container } = render(<RadioGroup options={OPTIONS} value="a" onChange={vi.fn()} label="Plan" />);
-    expect(await axe(container)).toHaveNoViolations();
+    await expectNoA11yViolations(container);
   });
 });

@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { Modal } from "./Modal";
 
 describe("Modal", () => {
@@ -96,6 +96,6 @@ describe("Modal", () => {
         Body content
       </Modal>,
     );
-    expect(await axe(document.body)).toHaveNoViolations();
+    await expectNoA11yViolations(document.body);
   });
 });

@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
 import { render, screen, act } from "@testing-library/react";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { Reveal } from "./Reveal";
 import styles from "./Reveal.module.css";
 
@@ -131,6 +131,6 @@ describe("Reveal", () => {
     mockReducedMotion(true);
     mockIntersectionObserver();
     const { container } = render(<Reveal delay={200}>Content</Reveal>);
-    expect(await axe(container)).toHaveNoViolations();
+    await expectNoA11yViolations(container);
   });
 });

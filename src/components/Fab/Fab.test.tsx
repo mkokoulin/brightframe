@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { Fab } from "./Fab";
 
 describe("Fab", () => {
@@ -51,6 +51,6 @@ describe("Fab", () => {
 
   it("has no accessibility violations", async () => {
     const { container } = render(<Fab label="Scroll down">↓</Fab>);
-    expect(await axe(container)).toHaveNoViolations();
+    await expectNoA11yViolations(container);
   });
 });

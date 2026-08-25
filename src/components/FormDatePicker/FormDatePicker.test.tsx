@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent, within } from "@testing-library/react";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { FormDatePicker, parseYMD, toYMD } from "./FormDatePicker";
 
 describe("parseYMD / toYMD", () => {
@@ -63,6 +63,6 @@ describe("FormDatePicker", () => {
   it("has no accessibility violations with the picker open", async () => {
     render(<FormDatePicker value="2026-06-10" onChange={vi.fn()} />);
     fireEvent.click(screen.getByRole("button", { name: /June 10, 2026/ }));
-    expect(await axe(document.body)).toHaveNoViolations();
+    await expectNoA11yViolations(document.body);
   });
 });

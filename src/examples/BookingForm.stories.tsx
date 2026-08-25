@@ -87,4 +87,11 @@ type Story = StoryObj<typeof BookingForm>;
 
 export const Default: Story = {
   render: () => <BookingForm />,
+  parameters: {
+    // Known, tracked exception — see docs/a11y-audit.md ("GuestsCounter's label on
+    // FormCard's tinted background"). GuestsCounter's `.label` (--c-text-3, tuned
+    // for white/surface) drops to 3.75:1 on FormCard's --c-form-accent-bg purple —
+    // a real, open design decision, not a mechanical token fix.
+    a11y: { test: "todo" },
+  },
 };

@@ -35,7 +35,7 @@
   font-family: var(--font-sans);
   font-size: var(--font-size-14);
   line-height: var(--line-height-160);
-  opacity: var(--opacity-90);
+  color: var(--c-text-2);
 }
 
 .closeBtn {
@@ -82,8 +82,4 @@
 .error {
   background: var(--c-error-soft);
   color: var(--c-error);
-}
-
-.description {
-  color: var(--c-text-2);
 }

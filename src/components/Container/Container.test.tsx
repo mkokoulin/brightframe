@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { axe } from "jest-axe";
+import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { Container } from "./Container";
 
 describe("Container", () => {
@@ -26,6 +26,6 @@ describe("Container", () => {
 
   it("has no accessibility violations", async () => {
     const { container } = render(<Container>Page content</Container>);
-    expect(await axe(container)).toHaveNoViolations();
+    await expectNoA11yViolations(container);
   });
 });

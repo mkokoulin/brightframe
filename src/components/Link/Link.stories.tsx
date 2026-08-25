@@ -50,12 +50,16 @@ export const NoUnderline: Story = {
 export const InParagraph: Story = {
   name: "— Inline in a paragraph",
   render: () => (
+    // Inline links within a block of body text need an underline (or another
+    // non-color cue) so they're distinguishable without relying on color alone
+    // (WCAG 1.4.1) — `underline={false}` is for links that already read as
+    // clearly interactive from context (nav items, footer links), not this case.
     <p style={{ maxWidth: 420, color: "var(--c-text-2)", lineHeight: 1.6 }}>
       By continuing you agree to our{" "}
-      <Link href="#" variant="brand" underline={false}>
+      <Link href="#" variant="brand">
         terms of service
       </Link>{" "}
-      and <Link href="#" variant="brand" underline={false}>privacy policy</Link>.
+      and <Link href="#" variant="brand">privacy policy</Link>.
     </p>
   ),
 };
