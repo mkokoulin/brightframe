@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="./docs/brightframe-cover.png" alt="brightframe — open-source React UI kit. Extracted from a real product, then audited like one, in CI. Tree-shaken, RSC-safe, a11y-audited: tree-shaken 641 B, rsc-safe checked in CI, a11y 29 found / 29 fixed, 1 tracked, visual-diff 73 baselines. npm install brightframe" width="100%" />
+</p>
+
 # brightframe
 
 [![npm version](https://img.shields.io/npm/v/brightframe.svg)](https://www.npmjs.com/package/brightframe)
@@ -7,7 +11,7 @@
 [![license](https://img.shields.io/npm/l/brightframe.svg)](./LICENSE)
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-support-ffdd00?logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/kokoulin92u)
 
-[📖 Storybook](https://mkokoulin.github.io/brightframe/) · [☕ Support this project](https://buymeacoffee.com/kokoulin92u)
+[📖 Storybook](https://mkokoulin.github.io/brightframe/) · [📝 Read the writeup](https://dev.to/mikhail_kokoulin_d39d37a5/i-open-sourced-a-ui-kit-then-went-looking-for-everything-i-got-wrong-about-it-4m72) · [☕ Support this project](https://buymeacoffee.com/kokoulin92u)
 
 This is an independent, solo-maintained project. If you find it useful, a ⭐ on [GitHub](https://github.com/mkokoulin/brightframe) is a nice way to show it — and any feedback or suggestions are always welcome.
 
@@ -294,6 +298,8 @@ All components are named exports and ship their own `.d.ts` types.
 See [EXAMPLES.md](./EXAMPLES.md) for copy-paste snippets (basic usage, theming, Next.js flash-free setup, page composition), and [`examples/basic-vite`](./examples/basic-vite) for a full runnable app. The [Storybook](https://mkokoulin.github.io/brightframe/) also has an **Examples/Booking Form** story showing most form components wired together into one working form.
 
 ## Quality & tooling
+
+The short version of each of these below; the full story (why, what broke, what it took to fix) is in [this writeup](https://dev.to/mikhail_kokoulin_d39d37a5/i-open-sourced-a-ui-kit-then-went-looking-for-everything-i-got-wrong-about-it-4m72).
 
 ### React Server Components
 
