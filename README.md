@@ -49,6 +49,8 @@ Every component in the kit lives together on one scrollable page — **[Overview
 - **Tree-shakeable per component.** Every component is also its own entry point (`brightframe/Btn`, `brightframe/Btn.css`), so importing one button doesn't pull in the rest of the kit.
 - **No framework lock-in.** No Next.js, no router, no i18n dependency — just React and CSS Modules, so it drops into any React 18+ app.
 - **Built for real product screens, not just a demo.** It ships full flows like date/time range pickers and a booking form example, not only buttons and cards.
+- **Server Components-safe.** Every component is either marked `"use client"` or verified safe to render in a Server Component tree — checked in CI, not just claimed. See [React Server Components](#react-server-components).
+- **Accessibility checked where it actually breaks.** `jest-axe` per component, plus every real Storybook story audited in a real browser — composition bugs an isolated test can't see. See [Accessibility](#accessibility).
 
 ## Install
 
@@ -283,18 +285,46 @@ Interactive form widgets (`MobileDatePicker`, `CalendarSlider`, `TimeRangePicker
 
 All components are named exports and ship their own `.d.ts` types.
 
+### Headless hooks
+
+`Combobox` also ships its logic standalone as `useCombobox` (same open/filter/keyboard-nav behavior, no styling) — for when you need the interaction but not the markup. See [docs/headless-hooks.md](./docs/headless-hooks.md).
+
 ## Examples
 
 See [EXAMPLES.md](./EXAMPLES.md) for copy-paste snippets (basic usage, theming, Next.js flash-free setup, page composition), and [`examples/basic-vite`](./examples/basic-vite) for a full runnable app. The [Storybook](https://mkokoulin.github.io/brightframe/) also has an **Examples/Booking Form** story showing most form components wired together into one working form.
+
+## Quality & tooling
+
+### React Server Components
+
+Components that use hooks or declare their own DOM event handlers are marked `"use client"`; pure presentational components (`Card`, `Tag`, `Container`, ...) aren't, and cost nothing in a Server Component tree. `scripts/check-use-client.mjs` enforces this in CI so a new component can't ship un-marked. `ThemeProvider`/`useTheme()` need a Client Component boundary — see [docs/rsc.md](./docs/rsc.md) for the details and a Next.js App Router example.
+
+### Accessibility
+
+Every component has a `jest-axe` unit test, and in CI every real Storybook story is also audited in a live Chromium via `@storybook/addon-vitest` + `@storybook/addon-a11y` — catching composition bugs (two components combined breaking each other's semantics) that an isolated per-component test can't. See [docs/a11y-audit.md](./docs/a11y-audit.md) for what that first full pass found and fixed.
+
+### Visual regression
+
+One screenshot baseline per component per theme (light/dark), committed and diffed on every CI run via Vitest's browser-mode `toMatchScreenshot()` — a CSS regression in one component fails the build, including in other components that compose it. See [docs/visual-regression.md](./docs/visual-regression.md).
+
+### Migrating from a legacy kit
+
+If you're moving off an inline, pre-extraction component library the way this kit itself was extracted from `lan-site`'s (see [Origin](#origin)), `codemods/migrate-legacy-kit/` is a generic, config-driven codemod for exactly that — dry-run by default, never rewrites anything it isn't sure about. See its own [README](./codemods/migrate-legacy-kit/README.md).
 
 ## Local development
 
 ```bash
 npm install
 npm run storybook       # interactive component playground on :6006
-npm run build            # emit dist/ (ESM + CJS + types + CSS)
+npm run build             # emit dist/ (ESM + CJS + types + CSS)
 npm run typecheck
-npm run test              # vitest, jsdom
+npm run lint
+npm run test              # all of the below in one run: jsdom units, browser-mode a11y, visual regression
+npm run test:unit         # jsdom unit tests only
+npm run test:storybook    # every Storybook story, audited for a11y in a real browser (needs Chromium: `npx playwright install chromium`)
+npm run test:visual       # screenshot regression against the committed baselines
+npm run test:visual:update # regenerate baselines after an intentional visual change
+npm run size              # bundle-size budget check (size-limit)
 npm run css-types         # regenerate *.module.css.d.ts (typed class names); runs automatically before build/typecheck/dev
 npm run css-types:watch   # same, but watches for CSS changes
 ```
