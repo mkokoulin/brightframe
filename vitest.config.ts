@@ -34,6 +34,11 @@ export default defineConfig({
         ],
         test: {
           name: "storybook",
+          // Default 15s isn't enough for the first tests in a worker, which pay for
+          // Playwright's browser launch + page-pool cold start — cheap and instant
+          // locally on a warm machine, but easily 15s+ on a shared CI runner.
+          testTimeout: 30_000,
+          hookTimeout: 30_000,
           browser: {
             enabled: true,
             headless: true,
@@ -48,6 +53,10 @@ export default defineConfig({
           name: "visual",
           include: ["src/test-utils/visual.stories.test.tsx"],
           setupFiles: ["./src/test-utils/visual.setup.ts"],
+          // Same cold-start reasoning as "storybook" above, plus each test here also
+          // does a real screenshot capture + pixel comparison on top of the render.
+          testTimeout: 30_000,
+          hookTimeout: 30_000,
           browser: {
             enabled: true,
             headless: true,

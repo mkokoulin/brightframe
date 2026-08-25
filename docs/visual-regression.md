@@ -45,6 +45,20 @@ git diff --stat -- src/test-utils/__screenshots__/
 Only the PNGs for the component(s) you touched should show up. If something unrelated changed
 too, that's a real regression worth investigating before committing, not routing around.
 
+## Baselines are platform-scoped
+
+Vitest's `toMatchScreenshot` suffixes each baseline filename with browser + OS (e.g.
+`Badge-light-chromium-win32.png`) because font rendering/antialiasing differs enough across
+platforms to produce false positives otherwise. That means baselines generated on a dev machine
+only satisfy CI if committed *from a matching platform* — a `-win32` baseline is invisible to the
+`ci.yml` `test` job, which runs on `ubuntu-latest` and looks for `-linux`.
+
+If CI is failing every visual test with "No existing reference screenshot found" (or a fresh
+component/platform has no baseline yet), run the **Update visual baselines** workflow
+(`.github/workflows/update-visual-baselines.yml`, manually triggered) — it runs
+`bun run test:visual:update` on `ubuntu-latest` and opens a PR with the generated PNGs. Review the
+diff before merging, same as updating a baseline locally.
+
 ## Two components are excluded
 
 `Loader` and `MobileDatePicker` are skipped (see the `EXCLUDED_COMPONENTS` set in
