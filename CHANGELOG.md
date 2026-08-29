@@ -140,6 +140,15 @@ before that date are dated by commit, not by release announcement.
   specimen (section 14) now nests a real `LabeledField` instead of just a heading and a button —
   closing the specific gap flagged in an earlier session ("the FormCard demo on the page doesn't
   nest real fields inside it").
+- **New `BorderBeam` component** (`brightframe/BorderBeam`): a purely decorative wrapper that
+  loops a gradient beam around a container's border — for login panels, recommendation cards,
+  AI-feature modules, or key CTA blocks, inspired by the component of the same name added to antd
+  6.4.0. `colors`/`duration`/`size`/`lineWidth`/`radius` props, plus `triggerOnHover` to only
+  animate on hover. CSS-only (a rotating oversized conic-gradient clipped to a fixed ring via the
+  padding-box/content-box mask-exclude trick, driven entirely by custom properties set from props)
+  — no hooks, no own-JSX event handlers, so unlike `Reveal` it needs no `"use client"` directive
+  and stays safe inside a Server Component tree. Freezes instead of spinning under
+  `prefers-reduced-motion`.
 
 ## [0.4.1] - 2026-08-23
 

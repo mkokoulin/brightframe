@@ -7,6 +7,7 @@ export * from "./components/Eyebrow";
 export * from "./components/SectionHeading";
 export * from "./components/DayBadge";
 export * from "./components/Reveal";
+export * from "./components/BorderBeam";
 export * from "./components/InfoCards";
 export * from "./components/Loader";
 export * from "./components/Burger";

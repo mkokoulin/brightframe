@@ -1,0 +1,66 @@
+.wrapper {
+  position: relative;
+  border-radius: var(--bf-radius);
+}
+
+/* .beam (a real <span>, not a pseudo-element) owns the mask: padding +
+   content-box/padding-box mask-exclude clips its own painted content down to
+   a `--bf-line-width`-thick ring, so only the border stroke is ever visible —
+   this stays fixed to the wrapper's rectangle regardless of what rotates
+   inside it. */
+.beam {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: var(--bf-line-width);
+  pointer-events: none;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  overflow: hidden;
+}
+
+/* The actual color: an oversized (300%) conic-gradient square, rotated by
+   the parent's mask rather than moved — the mask stays put, this block
+   spins underneath it, so only the "beam" sweeps rather than the ring shape
+   itself. Oversizing keeps the corners covered through a full turn. */
+.beam::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent calc(360deg - var(--bf-arc)),
+    var(--bf-color-1) calc(360deg - (var(--bf-arc) / 2)),
+    var(--bf-color-2) 360deg
+  );
+  animation: bf-spin var(--bf-duration) linear infinite;
+}
+
+@keyframes bf-spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+.hoverOnly .beam::before {
+  opacity: 0;
+  animation-play-state: paused;
+  transition: opacity var(--duration-200) ease;
+}
+
+.hoverOnly:hover .beam::before {
+  opacity: 1;
+  animation-play-state: running;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .beam::before {
+    animation: none;
+  }
+}
