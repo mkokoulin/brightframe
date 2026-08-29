@@ -157,9 +157,37 @@ before that date are dated by commit, not by release announcement.
   straight out into the page behind the overlay, and focus was never moved into the dialog or back
   to the triggering element. (`Popover`/`MobileDatePicker` also render `role="dialog"` content but
   weren't touched in this pass — flagged for a follow-up, not fixed here.)
+- **`scripts/a11y-score.mjs`** (`bun run a11y:score`): a per-component accessibility heuristic
+  score, deliberately scoped to what the existing DOM-based checks (`jest-axe` per component,
+  `@storybook/addon-a11y` on every real-browser story) structurally cannot verify — correctness of
+  *behavior*, not just presence of the right markup. AST-walks every component with `ts-morph`
+  (already a devDependency, used by the legacy-kit codemod) for two structural rules —
+  `role="dialog" aria-modal="true"` without a `useFocusTrap` call, and an `<svg>` with no
+  `aria-hidden`/accessible name anywhere in its JSX ancestry, correctly skipping unexported
+  single-use icon helpers a caller already wraps — plus three source/CSS heuristics: a
+  `formatValue`d range input missing `aria-valuetext`, increase/decrease-labelled controls with no
+  `aria-live`, and a looping (`infinite`) CSS animation with no `prefers-reduced-motion` guard.
+  Always exits `0` — a report, not a gate. Two false positives surfaced and fixed while calibrating
+  it against the real kit, not left as noise: `Accordion`'s private, single-use `PlusIcon` helper
+  (wrapped in `aria-hidden` by its one call site — invisible to per-file AST analysis across that
+  composition boundary, so the dialog rule now only descends into *exported* functions) and
+  `Popover` (a deliberately non-modal `role="dialog"` disclosure panel with no `aria-modal` —
+  trapping its focus would have been a regression, not a fix, so the rule now requires
+  `aria-modal="true"` too). Currently 75/75 components clean, 100/100 average.
 
 ### Fixed
 
+- **The four real findings `a11y-score` surfaced on its first calibration run**:
+  - `MobileDatePicker`: same gap as `Modal`/`Drawer` above — `role="dialog" aria-modal="true"`
+    with no focus management. Wired to `useFocusTrap`.
+  - `Loader`: the root had no accessible name at all (screen readers announced nothing while
+    content was loading), and its decorative `<svg>` wasn't hidden from assistive tech. Added a
+    `label` prop (default `"Loading"`) as `role="status"`/`aria-label` on the root, `aria-hidden`
+    on the `<svg>`. Also slowed (not disabled) its spin under `prefers-reduced-motion`, unlike
+    `Reveal`/`BorderBeam`'s purely decorative motion — the spin is this component's *only* visual
+    loading signal, so removing it outright would leave reduced-motion users with a static ring
+    and no indication anything is happening. `Btn`'s loading spinner got the same slow-down
+    treatment, for the same reason, for consumers that don't pass `loadingLabel`.
 - **Screen-reader-specific gaps that axe's static ARIA checks don't catch**, found by walking the
   interactive components' actual announced behavior rather than just their markup:
   - `Slider`: the native `<input type="range">` announces its raw numeric value, which silently

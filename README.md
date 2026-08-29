@@ -56,6 +56,33 @@ Every component in the kit lives together on one scrollable page — **[Overview
 - **Server Components-safe.** Every component is either marked `"use client"` or verified safe to render in a Server Component tree — checked in CI, not just claimed. See [React Server Components](#react-server-components).
 - **Accessibility checked where it actually breaks.** `jest-axe` per component, plus every real Storybook story audited in a real browser — composition bugs an isolated test can't see. See [Accessibility](#accessibility).
 
+## Environment Support
+
+- Modern browsers
+- Server-side Rendering (Next.js App Router, see [React Server Components](#react-server-components))
+- React 18+
+- TypeScript 5.0+ (built and tested against 5.6)
+
+| Chrome | Firefox | Safari | Edge |
+|---|---|---|---|
+| last 2 versions | last 2 versions | last 2 versions | last 2 versions |
+
+No IE support — components rely on CSS custom properties and CSS Modules, neither of which IE implements. Building from source requires Node.js 18+.
+
+Beyond the table above, a few components use specific browser APIs and fall back gracefully where noted:
+
+- `IntersectionObserver` — `Reveal`'s scroll-in animation.
+- `matchMedia` — `ThemeProvider`'s `system` theme option and `useMediaQuery` (used internally by `CalendarSlider`).
+- `prefers-reduced-motion` — respected by `Reveal`, `Skeleton`, `Carousel`, `Progress`, and `BorderBeam` to disable/simplify animation.
+
+**Module format:** ships as a dual ESM/CJS package (`import`/`require` both resolve via `exports` in `package.json`), plus per-component entry points (`brightframe/Btn`, etc.) — no bundler-specific config needed to consume either format.
+
+**CSS Modules:** styles are shipped pre-compiled (`dist/*.css`), not raw `.module.css` — your bundler doesn't need its own CSS Modules support (e.g. `css-loader`'s `modules` option) to consume brightframe; a plain static CSS import is enough.
+
+**Frameworks:** tested against Next.js (App Router, including SSR/RSC — see [React Server Components](#react-server-components)) and Vite (see [`examples/basic-vite`](./examples/basic-vite)). Should work unchanged with any other React 18+ setup (CRA, Remix, ...) since there's no bundler-specific tooling involved — untested there, but nothing in the kit assumes a particular build tool.
+
+**React Native:** not supported. Every component renders DOM elements and ships CSS Modules — there's no React Native variant, unlike UI kits that publish a separate RN package.
+
 ## Install
 
 ```bash

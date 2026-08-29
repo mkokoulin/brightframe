@@ -106,6 +106,16 @@
   to { transform: rotate(360deg); }
 }
 
+/* Slowed rather than disabled outright — same reasoning as Loader's spinner (see that
+   component's CSS): the spin is the only visual signal of the loading state for
+   consumers that don't pass `loadingLabel`, so removing it entirely would leave
+   reduced-motion users with no indication anything is happening beyond aria-busy. */
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation-duration: 2.8s;
+  }
+}
+
 /* ── Variants ── */
 
 /* primary — main call to action. Brand (blue), not accent (orange): on this

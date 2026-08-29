@@ -35,3 +35,14 @@
     transform: rotate(360deg);
   }
 }
+
+/* Slowed rather than disabled outright (unlike Reveal/BorderBeam's motion, which is
+   purely decorative chrome and safe to freeze) — the spin is this component's only
+   visual signal that something is in progress, so removing it entirely would leave
+   reduced-motion users with a static ring and no indication anything is happening.
+   A slow, gentle rotation is a common accepted middle ground for this specific case. */
+@media (prefers-reduced-motion: reduce) {
+  .circle {
+    animation-duration: 8s;
+  }
+}

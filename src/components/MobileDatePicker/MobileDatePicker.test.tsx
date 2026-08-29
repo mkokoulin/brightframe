@@ -32,6 +32,11 @@ describe("MobileDatePicker", () => {
     expect(onClose).toHaveBeenCalled();
   });
 
+  it("moves focus to the sheet's first focusable element (the close button) on open", () => {
+    render(<MobileDatePicker open onClose={vi.fn()} value={{ start: START, end: END }} onChange={vi.fn()} />);
+    expect(document.activeElement).toBe(screen.getByRole("button", { name: "Close" }));
+  });
+
   it("closes when clicking the overlay", () => {
     const onClose = vi.fn();
     render(<MobileDatePicker open onClose={onClose} value={{ start: START, end: END }} onChange={vi.fn()} />);

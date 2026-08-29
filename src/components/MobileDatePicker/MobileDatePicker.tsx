@@ -1,6 +1,7 @@
 "use client";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { useFocusTrap } from "../../a11y";
 import styles from "./MobileDatePicker.module.css";
 
 export type Range = { start: Date; end: Date };
@@ -106,10 +107,12 @@ export function MobileDatePicker({
   const L = { ...DEFAULT_MOBILE_DATE_PICKER_LABELS, ...labels };
   const weekdays = useMemo(() => buildWeekdayLabels(locale), [locale]);
 
+  const sheetRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
   }, []);
+  useFocusTrap(sheetRef, open && mounted);
   const [draft, setDraft] = useState<Range>(() => normalize(value.start, value.end));
   const [step, setStep] = useState<Step>("selectStart");
   const [anchor, setAnchor] = useState<Date | null>(null);
@@ -214,9 +217,11 @@ export function MobileDatePicker({
   return createPortal(
     <div className={styles.overlay} onPointerDown={onClose}>
       <div
+        ref={sheetRef}
         role="dialog"
         aria-modal="true"
         aria-label={hintText}
+        tabIndex={-1}
         className={[styles.sheet, className].filter(Boolean).join(" ")}
         onPointerDown={(e) => e.stopPropagation()}
       >

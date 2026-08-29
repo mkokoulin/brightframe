@@ -14,6 +14,8 @@ export type LoaderProps = {
   /** Dims the background behind the loader (for an overlay on top of content) */
   overlay?: boolean;
   size?: LoaderSize;
+  /** Accessible name announced by screen readers. Defaults to "Loading". */
+  label?: string;
   className?: string;
 } & Omit<HTMLAttributes<HTMLDivElement>, "className">;
 
@@ -21,19 +23,26 @@ export function Loader({
   color = "var(--c-accent)",
   overlay = true,
   size = "md",
+  label = "Loading",
   className,
   ...rest
 }: LoaderProps) {
   const px = SIZE_PX[size];
 
   return (
-    <div className={[styles.root, overlay ? styles.rootBg : "", className].filter(Boolean).join(" ")} {...rest}>
+    <div
+      role="status"
+      aria-label={label}
+      className={[styles.root, overlay ? styles.rootBg : "", className].filter(Boolean).join(" ")}
+      {...rest}
+    >
       <svg
         width={px}
         height={px}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 100 100"
         preserveAspectRatio="xMidYMid"
+        aria-hidden="true"
         style={{ background: "none" }}
       >
         <circle

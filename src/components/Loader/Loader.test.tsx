@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { expectNoA11yViolations } from "../../test-utils/a11y";
 import { Loader } from "./Loader";
 import styles from "./Loader.module.css";
@@ -44,6 +44,21 @@ describe("Loader", () => {
   it("forwards rest props to the root element", () => {
     const { getByTestId } = render(<Loader data-testid="loader" />);
     expect(getByTestId("loader")).toBeInTheDocument();
+  });
+
+  it("announces itself as a status region labeled 'Loading' by default", () => {
+    render(<Loader />);
+    expect(screen.getByRole("status")).toHaveAccessibleName("Loading");
+  });
+
+  it("accepts a custom label", () => {
+    render(<Loader label="Fetching results" />);
+    expect(screen.getByRole("status")).toHaveAccessibleName("Fetching results");
+  });
+
+  it("hides the decorative svg from assistive tech", () => {
+    const { container } = render(<Loader />);
+    expect(container.querySelector("svg")).toHaveAttribute("aria-hidden", "true");
   });
 
   it("has no accessibility violations", async () => {
