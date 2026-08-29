@@ -48,7 +48,9 @@ export function GuestsCounter({
         <button type="button" className={styles.btn} onClick={dec} aria-label={decreaseLabel}>
           –
         </button>
-        <div className={styles.value}>{value}</div>
+        <div className={styles.value} role="status" aria-live="polite" aria-atomic="true" aria-label={`${resolvedLabel} ${value}`}>
+          {value}
+        </div>
         <button type="button" className={styles.btn} onClick={inc} aria-label={increaseLabel}>
           +
         </button>

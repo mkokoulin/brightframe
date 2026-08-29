@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useEffect, useId, useState } from "react";
+import React, { useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { useFocusTrap } from "../../a11y";
 import styles from "./Modal.module.css";
 
 export type ModalSize = "sm" | "md" | "lg";
@@ -32,11 +33,14 @@ export function Modal({
   className,
 }: ModalProps) {
   const titleId = useId();
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useFocusTrap(dialogRef, open && mounted);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -63,9 +67,11 @@ export function Modal({
       }}
     >
       <div
+        ref={dialogRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby={title ? titleId : undefined}
+        tabIndex={-1}
         className={[styles.dialog, styles[size], className].filter(Boolean).join(" ")}
         onPointerDown={(e) => e.stopPropagation()}
       >

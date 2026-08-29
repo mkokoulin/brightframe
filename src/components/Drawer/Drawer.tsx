@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useEffect, useId, useState } from "react";
+import React, { useEffect, useId, useRef, useState } from "react";
 import { createPortal } from "react-dom";
+import { useFocusTrap } from "../../a11y";
 import styles from "./Drawer.module.css";
 
 export type DrawerPlacement = "left" | "right" | "top" | "bottom";
@@ -30,11 +31,14 @@ export function Drawer({
   className,
 }: DrawerProps) {
   const titleId = useId();
+  const panelRef = useRef<HTMLDivElement>(null);
 
   const [mounted, setMounted] = useState(false);
   useEffect(() => {
     setMounted(true);
   }, []);
+
+  useFocusTrap(panelRef, open && mounted);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -61,9 +65,11 @@ export function Drawer({
       }}
     >
       <div
+        ref={panelRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby={title ? titleId : undefined}
+        tabIndex={-1}
         className={[styles.panel, styles[placement], className].filter(Boolean).join(" ")}
         onPointerDown={(e) => e.stopPropagation()}
       >

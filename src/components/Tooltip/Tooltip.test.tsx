@@ -85,6 +85,24 @@ describe("Tooltip", () => {
     vi.useRealTimers();
   });
 
+  it("puts aria-describedby on the trigger element, not the wrapper, so screen readers announce it", () => {
+    render(
+      <Tooltip content="Hint">
+        <button type="button">Trigger</button>
+      </Tooltip>,
+    );
+    const button = screen.getByRole("button", { name: "Trigger" });
+    const wrap = button.parentElement as HTMLElement;
+
+    expect(button).not.toHaveAttribute("aria-describedby");
+    expect(wrap).not.toHaveAttribute("aria-describedby");
+
+    fireEvent.focus(button);
+    const tooltip = screen.getByRole("tooltip");
+    expect(button).toHaveAttribute("aria-describedby", tooltip.id);
+    expect(wrap).not.toHaveAttribute("aria-describedby");
+  });
+
   it("has no accessibility violations with the tooltip open", async () => {
     const { container } = render(
       <Tooltip content="Hint">

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { describe, it, expect, vi } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { expectNoA11yViolations } from "../../test-utils/a11y";
@@ -88,6 +89,38 @@ describe("Modal", () => {
       </Modal>,
     );
     expect(screen.getByRole("button", { name: "Confirm" })).toBeInTheDocument();
+  });
+
+  it("moves focus to the dialog's first focusable element (the close button) on open", () => {
+    render(
+      <Modal open onClose={vi.fn()} title="Title">
+        <button type="button">Body button</button>
+      </Modal>,
+    );
+    expect(document.activeElement).toBe(screen.getByRole("button", { name: "Close" }));
+  });
+
+  it("restores focus to the trigger element when it closes", () => {
+    function Wrapper() {
+      const [open, setOpen] = useState(false);
+      return (
+        <>
+          <button type="button" onClick={() => setOpen(true)}>
+            Open
+          </button>
+          <Modal open={open} onClose={() => setOpen(false)} title="Title">
+            Body
+          </Modal>
+        </>
+      );
+    }
+    render(<Wrapper />);
+    const trigger = screen.getByRole("button", { name: "Open" });
+    trigger.focus();
+    fireEvent.click(trigger);
+    expect(screen.getByRole("dialog")).toBeInTheDocument();
+    fireEvent.keyDown(document, { key: "Escape" });
+    expect(document.activeElement).toBe(trigger);
   });
 
   it("has no accessibility violations", async () => {

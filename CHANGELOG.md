@@ -149,6 +149,33 @@ before that date are dated by commit, not by release announcement.
   — no hooks, no own-JSX event handlers, so unlike `Reveal` it needs no `"use client"` directive
   and stays safe inside a Server Component tree. Freezes instead of spinning under
   `prefers-reduced-motion`.
+- **New `useFocusTrap` hook** (`brightframe/a11y`, alongside a new `src/a11y/` module): implements
+  the WAI-ARIA modal dialog keyboard contract for a portalled container — moves focus inside on
+  activation, traps Tab/Shift+Tab cycling within it, restores focus to whatever was focused before
+  activation once it deactivates. Wired into `Modal` and `Drawer`, neither of which had any of
+  this despite already carrying `role="dialog"`/`aria-modal="true"` — a keyboard user could Tab
+  straight out into the page behind the overlay, and focus was never moved into the dialog or back
+  to the triggering element. (`Popover`/`MobileDatePicker` also render `role="dialog"` content but
+  weren't touched in this pass — flagged for a follow-up, not fixed here.)
+
+### Fixed
+
+- **Screen-reader-specific gaps that axe's static ARIA checks don't catch**, found by walking the
+  interactive components' actual announced behavior rather than just their markup:
+  - `Slider`: the native `<input type="range">` announces its raw numeric value, which silently
+    diverged from what `formatValue` shows sighted users (e.g. `"$50"`/`"50%"`) — screen reader
+    users heard `"50"` regardless. Added `aria-valuetext={formatValue(...)}` to both the
+    single-thumb and two-thumb (min/max) inputs so the announced value always matches what's
+    rendered.
+  - `Tooltip`: `aria-describedby` was set on the wrapping `<span>` that only exists to bridge
+    hover/focus events from the trigger — screen readers resolve `aria-describedby` against
+    whichever element actually has focus, so it was never read. Now cloned onto the trigger
+    element itself (`React.cloneElement`, since `children` is always a single focusable element by
+    the component's own contract) instead of the wrapper.
+  - `GuestsCounter`: the count display was a plain `<div>` — clicking Increase/Decrease updated it
+    visually with zero screen-reader feedback. Added `role="status"`/`aria-live="polite"`/
+    `aria-atomic="true"` plus an `aria-label` that names the counter (`"Guests 3"` rather than a
+    bare `"3"`), so each change is announced on its own.
 
 ## [0.4.1] - 2026-08-23
 

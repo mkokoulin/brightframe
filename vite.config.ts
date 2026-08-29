@@ -10,11 +10,12 @@ const componentNames = readdirSync(componentsDir, { withFileTypes: true })
   .map((d) => d.name);
 
 // One entry per component (so `brightframe/Btn` pulls in only Btn's JS + CSS),
-// plus the full barrel, theme, and icons entries.
+// plus the full barrel, theme, icons, and a11y entries.
 const entry: Record<string, string> = {
   brightframe: resolve(__dirname, "src/index.ts"),
   theme: resolve(__dirname, "src/theme/index.ts"),
   icons: resolve(__dirname, "src/icons/index.ts"),
+  a11y: resolve(__dirname, "src/a11y/index.ts"),
 };
 for (const name of componentNames) {
   entry[name] = resolve(componentsDir, name, "index.ts");

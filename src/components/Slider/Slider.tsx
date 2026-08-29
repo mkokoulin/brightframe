@@ -58,6 +58,7 @@ export function Slider({
             max={max}
             step={step}
             value={value}
+            aria-valuetext={formatValue(value)}
             disabled={disabled}
             onChange={(e) => onChange(Number(e.target.value))}
           />
@@ -90,6 +91,7 @@ export function Slider({
           max={hi}
           step={step}
           value={lo}
+          aria-valuetext={formatValue(lo)}
           disabled={disabled}
           onChange={(e) => onChange([Number(e.target.value), hi])}
         />
@@ -101,6 +103,7 @@ export function Slider({
           max={max}
           step={step}
           value={hi}
+          aria-valuetext={formatValue(hi)}
           disabled={disabled}
           onChange={(e) => onChange([lo, Number(e.target.value)])}
         />

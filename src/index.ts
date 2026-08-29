@@ -69,3 +69,4 @@ export * from "./components/DateTimePicker";
 
 export * from "./icons";
 export * from "./theme";
+export * from "./a11y";

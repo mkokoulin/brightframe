@@ -40,6 +40,15 @@ export function Tooltip({ content, position = "top", delay = 0, disabled = false
     setOpen(false);
   }
 
+  // aria-describedby has to live on the focusable trigger itself, not this wrapping
+  // span — screen readers only resolve it against whatever element actually has focus,
+  // so putting it here would announce nothing.
+  const trigger = React.isValidElement(children)
+    ? React.cloneElement(children as React.ReactElement<{ "aria-describedby"?: string }>, {
+        "aria-describedby": open ? tooltipId : undefined,
+      })
+    : children;
+
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions -- listens for hover/focus bubbling from the focusable trigger inside, not itself interactive
     <span
@@ -51,9 +60,8 @@ export function Tooltip({ content, position = "top", delay = 0, disabled = false
       onKeyDown={(e) => {
         if (e.key === "Escape") hide();
       }}
-      aria-describedby={open ? tooltipId : undefined}
     >
-      {children}
+      {trigger}
       {open && !disabled && (
         <span id={tooltipId} role="tooltip" className={[styles.bubble, styles[position]].join(" ")}>
           {content}
