@@ -220,7 +220,7 @@ Interactive form widgets (`MobileDatePicker`, `CalendarSlider`, `TimeRangePicker
 |---|---|
 | `Btn` | Unified button/link — 7 variants (`primary`, `secondary`, `brand`, `ghost`, `danger`, `external`, `white`), 3 sizes, pill/fullWidth/icon slots |
 | `Card` | Surface wrapper — `surface`/`outlined`/`elevated` variants, configurable radius, optional hover animation, renders as `<a>` when `href` is passed |
-| `Tag` | Inline label/badge — 5 variants, 3 sizes |
+| `Tag` | Inline label/badge — 9 variants, 3 sizes, optional `onDismiss` for removable filter tags |
 | `InfoTooltip` | Hover/focus/click tooltip triggered by a question-mark icon |
 | `GhostButton` | Minimal text button with a leading icon (defaults to a pin icon) |
 | `Eyebrow` | Small uppercase label above a heading |
@@ -245,11 +245,13 @@ Interactive form widgets (`MobileDatePicker`, `CalendarSlider`, `TimeRangePicker
 | `Accordion` | Collapsible disclosure list — single or multiple panels open, CSS-only expand animation |
 | `Tooltip` | General-purpose hover/focus bubble around any trigger, 4 positions, optional show delay |
 | `Avatar` | Image with initials (from `name`) or icon fallback, 5 sizes |
+| `AvatarGroup` | Overlapping avatar stack with a ringed border, optional `max` collapsing the rest into a "+N" avatar |
 | `Skeleton` | Shimmering loading placeholder — `text`/`circle`/`rect`, multi-line text, respects `prefers-reduced-motion` |
 | `Divider` | Horizontal/vertical separator, optional centered label |
 | `Alert` | Inline status banner — info/success/warning/error, optional dismiss button |
 | `Progress` | Linear progress bar — determinate or indeterminate, 3 sizes |
 | `Breadcrumb` | Nav trail from an `items` array — last item renders as the current page |
+| `LanguageSwitch` | Controlled locale pill group, default RU/EN/HY, custom `options` |
 | `Pagination` | Page number list with Previous/Next, collapses distant pages behind an ellipsis |
 | `Popover` | Click-triggered floating panel for richer content than `Tooltip` — click-outside/Escape to close |
 | `DropdownMenu` | Click-triggered action menu — `role="menu"`, arrow-key navigation, separators, danger items |

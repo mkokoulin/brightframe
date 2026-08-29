@@ -14,7 +14,8 @@
   width: 100%;
   height: 48px;
   background: var(--c-bg);
-  border: var(--border-width-1) solid var(--c-border);
+  /* --field-border-color: set by FormCard to `transparent` for nested fields — see FormCard.module.css */
+  border: var(--border-width-1) solid var(--field-border-color, var(--c-border));
   border-radius: var(--radius-999);
   display: flex;
   align-items: center;

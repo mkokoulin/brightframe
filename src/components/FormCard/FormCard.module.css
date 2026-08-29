@@ -6,4 +6,11 @@
   border-radius: var(--radius-24);
   padding: var(--space-24);
   box-sizing: border-box;
+  /* Contract with LabeledField/TextareaField/SelectField/Combobox/FormDatePicker: their resting
+     border reads `var(--field-border-color, var(--c-border))`, so a nested field's own border
+     disappears without any JS wiring — the card's tinted background already frames them, and a
+     literal 1px border around every field on top of it reads as boxes-within-a-box. Focus/error
+     border colors are unaffected since those rules use --c-brand/--c-error directly, not this
+     variable — nested fields still show a clear focus ring. */
+  --field-border-color: transparent;
 }

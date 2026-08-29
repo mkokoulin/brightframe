@@ -77,3 +77,37 @@
   background: var(--c-badge-purple-bg);
   color: var(--c-badge-purple-text);
 }
+
+/* ── Dismissible ── */
+
+.dismissible {
+  gap: 6px;
+  padding-right: var(--space-6);
+}
+
+.dismissBtn {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  opacity: var(--opacity-70);
+  cursor: pointer;
+  transition: opacity 150ms ease, background 150ms ease;
+}
+
+.dismissBtn:hover {
+  opacity: 1;
+  background: var(--c-hover-overlay);
+}
+
+.dismissBtn:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}

@@ -41,6 +41,8 @@ import { Slider } from "../components/Slider/Slider";
 import { GuestsCounter } from "../components/GuestsCounter/GuestsCounter";
 import { TimeRangePicker } from "../components/TimeRangePicker/TimeRangePicker";
 import { Avatar } from "../components/Avatar/Avatar";
+import { AvatarGroup } from "../components/Avatar/AvatarGroup";
+import { LanguageSwitch } from "../components/LanguageSwitch/LanguageSwitch";
 import { DayBadge } from "../components/DayBadge/DayBadge";
 import { FormCard } from "../components/FormCard/FormCard";
 import { Eyebrow } from "../components/Eyebrow/Eyebrow";
@@ -695,24 +697,6 @@ const BOOKING_ROWS: { guest: string; plan: string; date: string; status: string;
   { guest: "Maria Klimenko", plan: "lan+", date: "13 March", status: "Active", statusVariant: "green" },
 ];
 
-function RemovableTag({ children, onRemove }: { children: React.ReactNode; onRemove: () => void }) {
-  return (
-    <Tag variant="outline">
-      <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
-        {children}
-        <button
-          type="button"
-          onClick={onRemove}
-          aria-label={`Remove ${children}`}
-          style={{ border: "none", background: "none", padding: 0, cursor: "pointer", color: "inherit", lineHeight: 1, fontSize: 14 }}
-        >
-          ×
-        </button>
-      </span>
-    </Tag>
-  );
-}
-
 function DataSection() {
   const [plan, setPlan] = useState("7days");
   const [page, setPage] = useState(1);
@@ -765,9 +749,9 @@ function DataSection() {
               <Tag variant="blue">Pass</Tag>
               <Tag variant="purple">Event</Tag>
               {filters.map((f) => (
-                <RemovableTag key={f} onRemove={() => setFilters((prev) => prev.filter((x) => x !== f))}>
+                <Tag key={f} variant="outline" onDismiss={() => setFilters((prev) => prev.filter((x) => x !== f))}>
                   {f}
-                </RemovableTag>
+                </Tag>
               ))}
             </div>
             <p style={{ margin: 0, fontSize: 13, color: "var(--c-text-2)" }}>A badge reports status and is not clickable. A tag with a cross is a filter and can be removed.</p>
@@ -1138,42 +1122,10 @@ function MediaSection() {
 // 12 Utility / 13 Feedback
 // ────────────────────────────────────────────────────────────────────────
 
-function LanguageSwitch() {
-  const [lang, setLang] = useState("EN");
-  return (
-    <div style={{ display: "inline-flex", gap: 2, padding: 4, background: "var(--c-surface-2)", borderRadius: "var(--radius-999)" }}>
-      {["RU", "EN", "HY"].map((code) => {
-        const active = code === lang;
-        return (
-          <button
-            key={code}
-            type="button"
-            onClick={() => setLang(code)}
-            style={{
-              minHeight: 32,
-              padding: "0 14px",
-              border: "none",
-              borderRadius: "var(--radius-999)",
-              background: active ? "var(--c-surface)" : "transparent",
-              boxShadow: active ? "var(--c-shadow-sm)" : "none",
-              color: active ? "var(--c-text-1)" : "var(--c-text-2)",
-              fontFamily: "var(--font-sans)",
-              fontSize: "var(--font-size-13)",
-              fontWeight: "var(--font-weight-700)",
-              cursor: "pointer",
-            }}
-          >
-            {code}
-          </button>
-        );
-      })}
-    </div>
-  );
-}
-
 const SOCIAL_LINKS = ["TG", "IG", "FB"];
 
 function UtilitySection() {
+  const [lang, setLang] = useState("en");
   return (
     <SectionBlock
       id="service"
@@ -1188,7 +1140,7 @@ function UtilitySection() {
         </Specimen>
         <Specimen label="Language">
           <Stack gap={10}>
-            <LanguageSwitch />
+            <LanguageSwitch value={lang} onChange={setLang} />
             <p style={{ margin: 0, fontSize: 13, color: "var(--c-text-2)" }}>Three interface languages: Russian, English, Armenian.</p>
           </Stack>
         </Specimen>
@@ -1329,6 +1281,7 @@ function PickingSection() {
   const [date, setDate] = useState(toYMD(new Date()));
   const [startTime, setStartTime] = useState("10:00");
   const [endTime, setEndTime] = useState("14:00");
+  const [requestName, setRequestName] = useState("");
 
   const dayThu = new Date(2026, 2, 12);
   const dayFri = new Date(2026, 2, 13);
@@ -1391,32 +1344,11 @@ function PickingSection() {
               <Avatar name={AVATAR_NAMES[3]} size="lg" />
               <Avatar name={AVATAR_NAMES[4]} size="xl" />
             </div>
-            <div style={{ display: "flex" }}>
-              {AVATAR_NAMES.slice(0, 2).map((n, i) => (
-                <div key={n} style={{ marginLeft: i === 0 ? 0 : -10 }}>
-                  <Avatar name={n} size="md" />
-                </div>
+            <AvatarGroup max={3}>
+              {AVATAR_NAMES.map((n) => (
+                <Avatar key={n} name={n} size="md" />
               ))}
-              <div
-                style={{
-                  marginLeft: -10,
-                  width: 40,
-                  height: 40,
-                  borderRadius: "var(--radius-999)",
-                  background: "var(--c-surface-2)",
-                  border: "2px solid var(--c-surface)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontFamily: "var(--font-sans)",
-                  fontSize: 12,
-                  fontWeight: 700,
-                  color: "var(--c-text-2)",
-                }}
-              >
-                +7
-              </div>
-            </div>
+            </AvatarGroup>
           </Stack>
         </Specimen>
       </div>
@@ -1432,9 +1364,14 @@ function PickingSection() {
           <FormCard>
             <Stack gap={14}>
               <SubTitle as="h3" style={{ fontSize: 18, margin: 0 }}>Leave a request</SubTitle>
+              <LabeledField label="Name" value={requestName} onChange={setRequestName} placeholder="Jane Doe" />
               <Btn variant="primary" style={{ width: "100%" }}>Send</Btn>
             </Stack>
           </FormCard>
+          <p style={{ margin: "10px 0 0", fontSize: 13, color: "var(--c-text-2)" }}>
+            Fields nested inside a form card drop their own border — the card's tinted background
+            already frames them.
+          </p>
         </Specimen>
         <Specimen label="Horizontal scroller with arrows">
           <HorizontalScroller label="Pricing tiers">

@@ -1,0 +1,42 @@
+/* ──────────────────────────────────────────
+   LanguageSwitch — compact locale pill group
+   ────────────────────────────────────────── */
+
+.root {
+  display: inline-flex;
+  gap: 2px;
+  padding: 4px;
+  background: var(--c-surface-2);
+  border-radius: var(--radius-999);
+}
+
+.item {
+  min-height: 32px;
+  padding: 0 var(--space-14);
+  border: none;
+  border-radius: var(--radius-999);
+  background: transparent;
+  box-shadow: none;
+  color: var(--c-text-2);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-13);
+  font-weight: var(--font-weight-700);
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease, box-shadow 150ms ease;
+}
+
+.item:hover {
+  color: var(--c-text-1);
+}
+
+.item:focus-visible {
+  outline: 2px solid var(--c-brand);
+  outline-offset: 3px;
+}
+
+.active,
+.active:hover {
+  background: var(--c-surface);
+  box-shadow: var(--c-shadow-sm);
+  color: var(--c-text-1);
+}

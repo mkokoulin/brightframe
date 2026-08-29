@@ -101,6 +101,45 @@ before that date are dated by commit, not by release announcement.
   `brightframe` imports directly, so there's nothing left in that specific scope for a rename rule
   to match. Confirmed via `git status` in `lan-site` that nothing there changed. Report committed
   at `codemods/migrate-legacy-kit/reports/lan-site-dry-run.md`.
+- **UI kit v2 follow-up: three demo-only gaps promoted to real shipped APIs.** The UI kit v2 pass
+  had built these as one-off helpers on `examples/UIKitOverview.stories.tsx` rather than component
+  features; now real, tested, exported components/props, and the Overview page consumes them
+  directly instead of its local helpers.
+  - **`Tag` gained `onDismiss`/`dismissLabel`**: renders a small × button (same close-button
+    pattern as `Alert`'s — `currentColor`-based, since `Tag` has many background colours and a
+    single brand-coloured ring wouldn't read on all of them) that fires `onDismiss` when clicked.
+    Additive — omitting the prop renders the exact same non-dismissible tag as before.
+  - **New `AvatarGroup` component** (`brightframe/Avatar`, alongside `Avatar`): overlapping
+    stack (`-10px` margin) with a `--c-surface`-coloured ring per avatar for separation, and an
+    optional `max` prop that collapses the remainder into a real "+N" avatar (built by passing a
+    computed `name` straight through `Avatar`'s own initials logic, not a bespoke pill).
+  - **New `LanguageSwitch` component** (`brightframe/LanguageSwitch`): a controlled `value`/
+    `onChange` pill group, default options RU/EN/HY, `options` prop for custom locale sets.
+  - Fixed a latent bug this surfaced in `src/test-utils/visual.stories.test.tsx`: its component
+    identity for visual-regression baselines was derived from the *directory* name, which
+    silently collides if a directory ever holds more than one component's `.stories.tsx` file
+    (exactly what adding `Avatar/AvatarGroup.stories.tsx` did — both baselines would have been
+    named `Avatar-*`). Switched the derivation to the stories *filename* instead; no other
+    component's baseline name changes since this was previously a one-file-per-directory
+    convention everywhere else.
+- **UI kit v2: `FormCard`'s "fields drop their border inside" contract, the last open item from
+  that pass.** `LabeledField`, `TextareaField`, `SelectField`, `Combobox`, and `FormDatePicker`
+  (the five components sharing the "section-02 field anatomy" — 48px pill/rounded, `1px
+  var(--c-border)` resting border) now read that border colour as `var(--field-border-color,
+  var(--c-border))` instead of the literal token. `FormCard` sets `--field-border-color:
+  transparent` on its own root, which cascades to any nested field automatically via normal CSS
+  custom-property inheritance — no context or JS wiring between the two components, and zero
+  effect outside a `FormCard` since the custom property is simply unset there. Focus/error border
+  colours are untouched (`--c-brand`/`--c-error` are set directly in those rules, not through this
+  variable), so a nested field's focus ring stays fully visible — checked in Storybook by tabbing
+  into a field inside the new `FormCard` story. Deliberately scoped to these five text/select-style
+  fields, not `Checkbox`/`RadioGroup`/`Switch` — those are a distinct toggle-control visual
+  language the original spec's "fields" language never referred to, and the real-world reference
+  (`BookingForm.stories.tsx`'s `FormCard` usage) only ever nests the five. New `FormCard.stories.tsx`
+  "— With nested fields (borderless contract)" story, and the Overview page's own "Form card"
+  specimen (section 14) now nests a real `LabeledField` instead of just a heading and a button —
+  closing the specific gap flagged in an earlier session ("the FormCard demo on the page doesn't
+  nest real fields inside it").
 
 ## [0.4.1] - 2026-08-23
 

@@ -59,3 +59,21 @@
   height: 80px;
   font-size: var(--font-size-28);
 }
+
+/* ── Group — overlapping stack with a "+N" overflow avatar ── */
+
+.group {
+  display: inline-flex;
+}
+
+.groupItem {
+  margin-left: -10px;
+}
+
+.groupItem:first-child {
+  margin-left: 0;
+}
+
+.ring {
+  box-shadow: 0 0 0 2px var(--c-surface);
+}

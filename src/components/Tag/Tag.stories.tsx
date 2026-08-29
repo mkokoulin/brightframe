@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { Tag, type TagVariant } from "./Tag";
 
@@ -56,4 +57,23 @@ export const AllVariants: Story = {
       ))}
     </div>
   ),
+};
+
+export const Dismissible: Story = {
+  name: "— Dismissible (filter tags)",
+  render: () => {
+    function Wrapper() {
+      const [tags, setTags] = useState(["Meeting room", "Quiet room", "Parking", "Guest"]);
+      return (
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+          {tags.map((t) => (
+            <Tag key={t} variant="outline" onDismiss={() => setTags((prev) => prev.filter((x) => x !== t))}>
+              {t}
+            </Tag>
+          ))}
+        </div>
+      );
+    }
+    return <Wrapper />;
+  },
 };

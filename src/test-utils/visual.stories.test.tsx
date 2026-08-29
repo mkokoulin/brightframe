@@ -18,10 +18,12 @@ function freezeAnimations() {
 // One baseline per component × theme — not every story variant, which would make this
 // suite (and its baseline count) grow without bound as stories are added. "Which story":
 // the first export matching /^Default/i, falling back to the first exported story —
-// deterministic, no per-component judgment call needed. `.headless.stories.tsx` files
-// (e.g. Combobox's) are filtered out below — a second story file in the same directory
-// would collide on this rule's per-directory naming, and an intentionally-unstyled
-// reference demo has no CSS drift for this suite to protect against anyway.
+// deterministic, no per-component judgment call needed. Component identity is the stories
+// filename (not the directory) — a directory can hold more than one real component's
+// story file (e.g. Avatar/AvatarGroup.stories.tsx beside Avatar/Avatar.stories.tsx), and
+// each still deserves its own baseline. `.headless.stories.tsx` files (e.g. Combobox's)
+// are filtered out below — an intentionally-unstyled reference demo has no CSS drift for
+// this suite to protect against.
 const ALL_STORY_MODULES = import.meta.glob("../components/*/*.stories.tsx", {
   eager: true,
 }) as Record<string, Record<string, unknown>>;
@@ -45,7 +47,7 @@ const EXCLUDED_COMPONENTS = new Set(["Loader", "MobileDatePicker"]);
 
 const COMPONENTS: ComponentEntry[] = Object.entries(STORY_MODULES)
   .map(([path, mod]) => {
-    const match = /\/components\/([^/]+)\//.exec(path);
+    const match = /\/([^/]+)\.stories\.tsx$/.exec(path);
     return { name: match ? match[1] : path, storyExports: mod };
   })
   .filter((entry) => !EXCLUDED_COMPONENTS.has(entry.name));
