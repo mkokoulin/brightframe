@@ -313,13 +313,13 @@
   }
 }
 
-/* ===== Mobile ===== */
-@media (max-width: 768px) {
-  .block {
-    width: 100%;
-  }
-
-  /* Hide the full calendar on mobile */
+/* ===== Compact (narrow container) ===== */
+/* Queried against .block's own inline size, same as the 1199.98px breakpoint
+   above — not the viewport. A container can't query its own size, so unlike
+   that rule this can't also set .block's width, but .block is width:100%
+   unconditionally already (see .block above), so there's nothing to set. */
+@container (max-width: 768px) {
+  /* Hide the full calendar in a narrow container */
   .root {
     display: none;
   }

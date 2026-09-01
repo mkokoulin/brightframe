@@ -1,0 +1,347 @@
+/* ──────────────────────────────────────────
+   Table
+   ────────────────────────────────────────── */
+
+.wrap {
+  overflow-x: auto;
+  border: var(--border-width-1) solid var(--c-border);
+  border-radius: var(--radius-lg);
+  background: var(--c-surface);
+  box-shadow: var(--c-shadow-sm);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-sans);
+}
+
+.caption {
+  padding: var(--space-16) var(--space-16) 0;
+  text-align: left;
+  font-size: var(--font-size-13);
+  color: var(--c-text-3);
+}
+
+/* ── Header cells ────────────────────────── */
+
+.th {
+  padding: 0;
+  border-bottom: var(--border-width-1) solid var(--c-border);
+  text-align: left;
+  font-size: var(--font-size-12);
+  font-weight: var(--font-weight-600);
+  letter-spacing: var(--letter-spacing-6);
+  text-transform: uppercase;
+  color: var(--c-text-3);
+  white-space: nowrap;
+  transition: background var(--duration-140) ease;
+}
+
+.thInner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-12) var(--space-16);
+}
+
+.thLabel {
+  flex: none;
+}
+
+.checkboxCell,
+.dragHandleCell {
+  width: 1%;
+  padding: var(--space-12) 0 var(--space-12) var(--space-16);
+}
+
+.sortBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.sortBtn:hover {
+  color: var(--c-text-1);
+}
+
+.sortBtn:focus-visible,
+.filterBtn:focus-visible,
+.dragHandle:focus-visible,
+.editTrigger:focus-visible {
+  outline: 2px solid var(--c-brand);
+  outline-offset: 2px;
+}
+
+.sortIcon {
+  opacity: var(--opacity-40);
+  transition: opacity var(--duration-140) ease;
+}
+
+.sortIconActive {
+  opacity: 1;
+  color: var(--c-brand);
+}
+
+/* ── Column highlight ────────────────────── */
+
+.columnHighlighted {
+  background: var(--c-brand-soft);
+}
+
+.rowHighlighted {
+  background: var(--c-brand-soft);
+}
+
+/* ── Filter popover ──────────────────────── */
+
+.filterWrap {
+  position: relative;
+  display: inline-flex;
+  margin-left: auto;
+}
+
+.filterBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: var(--radius-8);
+  background: none;
+  color: var(--c-text-3);
+  opacity: var(--opacity-60);
+  cursor: pointer;
+  transition: background var(--duration-140) ease, opacity var(--duration-140) ease, color var(--duration-140) ease;
+}
+
+.filterBtn:hover {
+  opacity: 1;
+  background: var(--c-hover-overlay);
+}
+
+.filterBtnActive {
+  opacity: 1;
+  color: var(--c-brand);
+}
+
+.filterPanel {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+  padding: var(--space-8);
+  border: var(--border-width-1) solid var(--c-border);
+  border-radius: var(--radius-md);
+  background: var(--c-surface);
+  box-shadow: var(--c-shadow-md);
+  text-transform: none;
+  letter-spacing: normal;
+  font-weight: var(--font-weight-400);
+}
+
+.filterInput {
+  width: 140px;
+  padding: var(--space-6) var(--space-8);
+  border: var(--border-width-1) solid var(--c-border);
+  border-radius: var(--radius-8);
+  background: var(--c-bg);
+  color: var(--c-text-1);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-13);
+  transition: border-color var(--duration-160) ease;
+}
+
+.filterInput:focus-visible {
+  outline: none;
+  border-color: var(--c-brand);
+}
+
+.filterClear {
+  flex: none;
+  border: none;
+  background: none;
+  padding: var(--space-4);
+  color: var(--c-text-3);
+  font-size: var(--font-size-12);
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.filterClear:hover {
+  color: var(--c-text-1);
+}
+
+/* ── Body rows/cells ─────────────────────── */
+
+.tr {
+  transition: background var(--duration-140) ease, opacity var(--duration-140) ease;
+}
+
+.tr:not(:last-child) .td,
+.tr:not(:last-child) .checkboxCell,
+.tr:not(:last-child) .dragHandleCell {
+  border-bottom: var(--border-width-1) solid var(--c-border-soft);
+}
+
+.tr:hover {
+  background: var(--c-brand-soft);
+}
+
+.tr.selected {
+  background: var(--c-brand-soft);
+}
+
+.tr.dragging {
+  opacity: var(--opacity-60);
+  box-shadow: var(--c-shadow-md);
+}
+
+.tr.dropBefore {
+  box-shadow: inset 0 2px 0 var(--c-brand);
+}
+
+.tr.dropAfter {
+  box-shadow: inset 0 -2px 0 var(--c-brand);
+}
+
+.td {
+  padding: var(--space-12) var(--space-16);
+  font-size: var(--font-size-14);
+  color: var(--c-text-1);
+  vertical-align: middle;
+}
+
+.align-start {
+  text-align: left;
+  justify-content: flex-start;
+}
+
+.align-center {
+  text-align: center;
+  justify-content: center;
+}
+
+.align-end {
+  text-align: right;
+  justify-content: flex-end;
+}
+
+.empty {
+  padding: var(--space-30) var(--space-16);
+  text-align: center;
+  font-size: var(--font-size-14);
+  color: var(--c-text-3);
+}
+
+/* ── Drag handle (rows + columns) ────────── */
+
+.dragHandle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: var(--radius-8);
+  background: none;
+  color: var(--c-text-3);
+  cursor: grab;
+  touch-action: none;
+  transition: background var(--duration-140) ease, color var(--duration-140) ease;
+}
+
+.dragHandle:hover {
+  background: var(--c-hover-overlay);
+  color: var(--c-text-1);
+}
+
+.dragHandle:active,
+.dragHandle[aria-pressed="true"] {
+  cursor: grabbing;
+  color: var(--c-brand);
+}
+
+/* ── Inline cell editing ─────────────────── */
+
+.editTrigger {
+  display: block;
+  width: 100%;
+  border: var(--border-width-1) solid transparent;
+  border-radius: var(--radius-8);
+  background: none;
+  margin: calc(var(--space-6) * -1) calc(var(--space-8) * -1);
+  padding: var(--space-6) var(--space-8);
+  color: inherit;
+  font: inherit;
+  text-align: inherit;
+  cursor: text;
+  transition: background var(--duration-140) ease, border-color var(--duration-140) ease;
+}
+
+.editTrigger:hover {
+  background: var(--c-hover-overlay);
+  border-color: var(--c-border);
+}
+
+.editInput {
+  width: 100%;
+  border: var(--border-width-1) solid var(--c-brand);
+  border-radius: var(--radius-8);
+  background: var(--c-bg);
+  margin: calc(var(--space-6) * -1) calc(var(--space-8) * -1);
+  padding: var(--space-6) var(--space-8);
+  color: var(--c-text-1);
+  font-family: var(--font-sans);
+  font-size: var(--font-size-14);
+}
+
+.editInput:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--c-brand-soft);
+}
+
+/* ── Footer ───────────────────────────────── */
+
+.tfoot {
+  border-top: var(--border-width-1) solid var(--c-border);
+}
+
+.footerContent {
+  padding: var(--space-12) var(--space-16);
+  font-size: var(--font-size-14);
+  color: var(--c-text-1);
+}
+
+.footerPagination {
+  display: flex;
+  justify-content: center;
+  padding: var(--space-12) var(--space-16);
+}
+
+/* ── Utility ──────────────────────────────── */
+
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

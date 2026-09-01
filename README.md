@@ -280,6 +280,7 @@ Interactive form widgets (`MobileDatePicker`, `CalendarSlider`, `TimeRangePicker
 | `Breadcrumb` | Nav trail from an `items` array — last item renders as the current page |
 | `LanguageSwitch` | Controlled locale pill group, default RU/EN/HY, custom `options` |
 | `Pagination` | Page number list with Previous/Next, collapses distant pages behind an ellipsis |
+| `Table` | Data table — controlled sorting, row selection, column filters, column highlight, inline cell editing, drag-and-drop row/column reordering (pointer + keyboard), and `Pagination`/footer integration, all opt-in. Also exports `TableRow`/`TableCell`/`TableHeaderCell`/`TableFooter` primitives and a headless `useReorder` hook for hand-rolled table markup |
 | `Popover` | Click-triggered floating panel for richer content than `Tooltip` — click-outside/Escape to close |
 | `DropdownMenu` | Click-triggered action menu — `role="menu"`, arrow-key navigation, separators, danger items |
 | `Drawer` | Portal side panel — left/right/top/bottom placement, same overlay/Escape/body-lock behavior as `Modal` |

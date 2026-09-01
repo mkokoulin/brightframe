@@ -3,12 +3,12 @@
     "name": "Full kit (JS)",
     "path": "dist/brightframe.js",
     "import": "*",
-    "limit": "45 kB"
+    "limit": "50 kB"
   },
   {
     "name": "Full kit (CSS)",
     "path": "dist/brightframe.css",
-    "limit": "14 kB"
+    "limit": "15 kB"
   },
   {
     "name": "Btn (JS, single component)",

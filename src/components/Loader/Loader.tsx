@@ -11,7 +11,13 @@ const SIZE_PX: Record<LoaderSize, number> = {
 
 export type LoaderProps = {
   color?: string;
-  /** Dims the background behind the loader (for an overlay on top of content) */
+  /**
+   * Dims the background behind the loader. Either way, the root is
+   * `position: absolute; inset: 0` — this only toggles the scrim, not the
+   * positioning — so `<Loader>` must always be placed inside a
+   * `position: relative` ancestor with a defined size, even with
+   * `overlay={false}`. See the "— All sizes" story for the expected wrapper.
+   */
   overlay?: boolean;
   size?: LoaderSize;
   /** Accessible name announced by screen readers. Defaults to "Loading". */

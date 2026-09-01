@@ -38,6 +38,7 @@ export * from "./components/Progress";
 export * from "./components/Breadcrumb";
 export * from "./components/LanguageSwitch";
 export * from "./components/Pagination";
+export * from "./components/Table";
 export * from "./components/Popover";
 export * from "./components/DropdownMenu";
 export * from "./components/Drawer";

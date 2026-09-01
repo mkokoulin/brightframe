@@ -174,6 +174,73 @@ before that date are dated by commit, not by release announcement.
   `Popover` (a deliberately non-modal `role="dialog"` disclosure panel with no `aria-modal` —
   trapping its focus would have been a regression, not a fix, so the rule now requires
   `aria-modal="true"` too). Currently 75/75 components clean, 100/100 average.
+- **New `Table` component** (`brightframe/Table`): the design handoff's screen map explicitly had
+  no matching component for its "Table" spec — closes that gap. A real `<table>` (not a div-grid),
+  generic over row type `T`: `columns` (`id`/`header`/`cell`/`sortable`/`align`/`width`) + `data` +
+  `getRowId`. Sorting and row selection are both controlled, matching `Pagination`'s existing
+  `page`/`onChange` precedent rather than introducing a new stateful pattern — `sort`/
+  `onSortChange` for a tri-state (asc → desc → unsorted) sort on any `sortable` column, and
+  `selectedRowIds`/`onSelectedRowIdsChange` for a header "select all" + per-row checkbox column
+  (reuses the existing `Checkbox` component, including its indeterminate state for a partial
+  selection) — omit either pair to render without that behaviour. Empty state renders a plain
+  muted row (same convention as `Combobox`'s "Nothing found"), `caption` prop for an optional
+  a11y-friendly table description. Marked `"use client"` (declares its own `onClick`/`onChange`
+  handlers in JSX, same rule as `Burger`). `npm run a11y:score`: 100/100.
+- **`Table` split into primitives, plus filters/inline editing/column highlight/drag-reorder/
+  pagination.** User asked for this as a follow-up to the `Table` component above: separate row/
+  cell/header/footer pieces, and a much larger feature set. Repo research first (no existing
+  Context-based compound-component pattern anywhere in this kit — `Tabs`/`Accordion`/`DropdownMenu`
+  all take a flat config array, and the one `createContext` usage in the whole repo is
+  `ToastProvider`, a different shape) ruled out a `Table.Row`-style dot-notation/Context API in
+  favour of the one real multi-piece precedent that exists, `SegmentedBar`/`SegmentedItem` — plain
+  standalone named exports sharing no context/state.
+  - **New standalone primitives** (`brightframe/Table`): `TableRow`, `TableCell`, `TableHeaderCell`,
+    `TableFooter` — fully-controlled, explicit-props building blocks `Table` is now built from
+    internally (zero behaviour change confirmed by the pre-existing `Table.test.tsx`'s 8 tests
+    passing unmodified through the refactor) and that are also usable standalone for hand-rolled
+    table markup — see the new `Composed from primitives` story.
+  - **Column filters**: `filterable` per column renders a funnel button + popover (same
+    controlled-open, outside-`pointerdown`/Escape-to-close mechanics duplicated across
+    `Popover`/`Combobox`/`DropdownMenu` already — matched rather than newly abstracted, consistent
+    with how the codebase already handles this in 6+ places). `filters`/`onFiltersChange`, like
+    `sort`, never touch `data` — `Table` reports the filter text, the consumer re-filters and passes
+    a new `data` array back down, exactly like it already doesn't sort internally.
+  - **Inline cell editing**: `editable`/`getEditValue`/`onEditCommit` per column. An editable
+    `TableCell` renders its content inside a plain `<button>` that swaps to an `<input>` on
+    click/Enter/Space (commit on Enter/blur, cancel on Escape) — deliberately not a full WAI-ARIA
+    "Data Grid" (`role="grid"`/roving tabindex); that's the textbook-correct pattern for a fully
+    editable grid but a much bigger a11y undertaking that doesn't match how the rest of this kit
+    builds interactive things (trigger → panel/input swap, e.g. `Popover`, `FormDatePicker`). Each
+    edit trigger's `aria-label` includes the row's current value (`"Edit Guests: 3"`, not just
+    `"Edit Guests"`) — the first pass used a column-only label and a test caught that every row in a
+    column collapsed to the same accessible name.
+  - **Column highlighting**: `TableHeaderCell`/`TableCell` accept `highlighted`; `Table` drives it
+    from header-cell hover by default (self-managed, ephemeral UI state — no props required), or
+    fully via `highlightedColumnId`/`onHighlightColumnChange` using the same
+    `isControlled = x !== undefined` conditional-controlled pattern already used by
+    `Popover`/`DropdownMenu`/`useCombobox`.
+  - **Row and column drag-and-drop reordering**: new headless `useReorder` hook (`brightframe/
+    Table`, exported like `useCombobox`) — pointer drag (closest-row/column-by-bounding-rect-
+    midpoint hit-testing) plus a WAI-ARIA-APG "reorderable list" keyboard alternative (Space/Enter
+    grabs, Arrow keys move one position at a time — reordering live rather than staging a pending
+    move, since `Table` never owns `data`/`columns` itself and has to assume the consumer applies
+    each `onReorderRows(from, to)`/`onReorderColumns(from, to)` call, same trust model as
+    `sort`/`filters`; Space/Enter drops, Escape cancels), with a `role="status" aria-live="polite"`
+    announcer reusing `GuestsCounter`'s existing live-region pattern verbatim. No new dependency —
+    repo has no dnd/sortable library installed (only runtime dep is `react-imask`) and the kit's
+    established "measured, not invented" bundle-budget culture pushed toward hand-built over adding
+    one for this. `reorderableRows`/`reorderableColumns` add an opt-in grip-dots drag-handle column/
+    per-header-cell handle (the one hand-rolled icon in this pass that's filled dots rather than the
+    kit's usual single-stroke line-icon convention — a grip glyph doesn't read as a line icon).
+  - **Pagination + footer**: `pagination` prop renders the real `Pagination` component (unmodified)
+    inside a new `<tfoot>` row; `footer` renders arbitrary custom content (e.g. totals) above it.
+  - Bundle-size budget remeasured and bumped with headroom, same "real numbers, not invented"
+    approach as the original budget: full-kit JS 44.36 kB → 50 kB limit (was 45 kB), CSS 13.08 kB →
+    15 kB limit (was 14 kB); `Btn`'s per-component budget is unaffected.
+  - Verified: `typecheck`/`lint`/`test:unit` (36 Table-area tests, up from 9)/`test:storybook` (7 new
+    stories, 253/253 passing, zero new a11y violations)/`test:visual` (Table's baselines
+    regenerated — genuinely changed rendered output, not a regression)/`build`/`size`/`a11y:score`
+    (100/100) all clean.
 
 ### Fixed
 
@@ -204,6 +271,27 @@ before that date are dated by commit, not by release announcement.
     visually with zero screen-reader feedback. Added `role="status"`/`aria-live="polite"`/
     `aria-atomic="true"` plus an `aria-label` that names the counter (`"Guests 3"` rather than a
     bare `"3"`), so each change is announced on its own.
+
+## [0.4.9] - 2026-09-01
+
+### Fixed
+
+- **`CalendarSlider` overflowed its own box when embedded in a container narrower than the
+  viewport** (a sidebar, a grid column, a dashboard widget — anything not full-bleed). The
+  two-column-vs-stacked layout switch already used a CSS container query against `.block`'s own
+  width, but the stacked-vs-compact-button switch (`isMobile`, driving both a `@media (max-width:
+  768px)` rule and a `useMediaQuery` hook) was keyed to the viewport width instead. Result: a
+  component sitting in a <=768px-wide container on an otherwise-wide screen would stack its two
+  full-size (624px/528px) month grids instead of collapsing to the compact button, overflowing
+  past its own edges into whatever sits next to it. Replaced `useMediaQuery` (removed, was
+  private to this component) with a new `useContainerNarrow` hook (`ResizeObserver` on the
+  `.block` ref) and converted the `768px` breakpoint from `@media` to `@container`, so both
+  breakpoints now agree with each other and with the component's actual rendered width.
+- **`Loader`**: removed the dead, never-referenced `.fixed` CSS class left over from an earlier
+  attempt at a non-overlay layout mode. Clarified `overlay`'s doc comment: it only toggles the
+  dimming scrim, not positioning — the root is unconditionally `position: absolute; inset: 0` (by
+  design, matching its tests and the "All sizes" story), so `<Loader overlay={false}>` still
+  requires a `position: relative`, explicitly-sized ancestor. No behavior change.
 
 ## [0.4.1] - 2026-08-23
 

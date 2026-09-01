@@ -19,14 +19,6 @@
   transform-origin: center center 0;
 }
 
-.fixed {
-  top: 50%;
-  position: fixed;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: var(--z-100);
-}
-
 @keyframes rotate {
   0% {
     transform: rotate(0deg);

@@ -3,7 +3,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import styles from "./CalendarSlider.module.css";
 import { MobileDatePicker, type Range } from "../MobileDatePicker/MobileDatePicker";
-import { useMediaQuery } from "./useMediaQuery";
+import { useContainerNarrow } from "./useContainerNarrow";
 
 export type { Range };
 export type Preset = "week" | "today" | "tomorrow" | "weekend" | "month" | "custom";
@@ -222,7 +222,7 @@ export function CalendarSlider(props: CalendarSliderProps) {
   const [activePreset, setActivePreset] = useState<Preset>(initialPreset);
   const [pendingStart, setPendingStart] = useState<Date | null>(null);
   const [mobilePicker, setMobilePicker] = useState(false);
-  const isMobile = useMediaQuery("(max-width: 768px)");
+  const { ref: blockRef, narrow: isMobile } = useContainerNarrow<HTMLDivElement>(768);
 
   useEffect(() => {
     const winEnd = addDays(windowStart, WINDOW_DAYS - 1);
@@ -284,7 +284,7 @@ export function CalendarSlider(props: CalendarSliderProps) {
   ];
 
   return (
-    <div className={[styles.block, className].filter(Boolean).join(" ")}>
+    <div className={[styles.block, className].filter(Boolean).join(" ")} ref={blockRef}>
       <div className={styles.root}>
         <div className={styles.colLeft}>
           <div className={styles.selectionRow}>
