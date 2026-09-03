@@ -18,6 +18,8 @@ export type TableHeaderCellProps = {
   onHighlightLeave?: () => void;
   /** A drag-handle element (typically a small icon button) rendered before the header content. */
   dragHandle?: React.ReactNode;
+  /** A resize-handle element rendered at the cell's trailing edge, e.g. from `useColumnResize`. */
+  resizeHandle?: React.ReactNode;
   children: React.ReactNode;
   className?: string;
 };
@@ -49,6 +51,7 @@ export function TableHeaderCell({
   onHighlightEnter,
   onHighlightLeave,
   dragHandle,
+  resizeHandle,
   children,
   className,
 }: TableHeaderCellProps) {
@@ -157,6 +160,8 @@ export function TableHeaderCell({
           </div>
         )}
       </span>
+
+      {resizeHandle}
     </th>
   );
 }

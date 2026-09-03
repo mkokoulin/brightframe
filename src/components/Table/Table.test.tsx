@@ -208,6 +208,42 @@ describe("Table", () => {
     expect(onReorderColumns).toHaveBeenCalledWith(0, 1);
   });
 
+  it("renders a resize handle per header cell when resizableColumns, and reports width changes via keyboard", async () => {
+    const user = userEvent.setup();
+    const onColumnWidthsChange = vi.fn();
+    render(
+      <Table
+        columns={columns}
+        data={rows}
+        getRowId={(r) => r.id}
+        resizableColumns
+        columnWidths={{}}
+        onColumnWidthsChange={onColumnWidthsChange}
+      />,
+    );
+    const handles = screen.getAllByRole("separator", { name: /Resize (Name|Guests) column/ });
+    expect(handles).toHaveLength(columns.length);
+
+    handles[0].focus();
+    await user.keyboard("{ArrowRight}");
+    expect(onColumnWidthsChange).toHaveBeenCalledWith({ name: 170 });
+  });
+
+  it("defaults a resizable column's width from `column.width` when given", () => {
+    const widthColumns: TableColumn<Guest>[] = [{ id: "name", header: "Name", cell: (r) => r.name, width: "220px" }];
+    render(
+      <Table
+        columns={widthColumns}
+        data={rows}
+        getRowId={(r) => r.id}
+        resizableColumns
+        columnWidths={{}}
+        onColumnWidthsChange={vi.fn()}
+      />,
+    );
+    expect(screen.getByRole("separator", { name: "Resize Name column" })).toHaveAttribute("aria-valuenow", "220");
+  });
+
   it("has no accessibility violations with every feature enabled", async () => {
     const fullColumns: TableColumn<Guest>[] = [
       { id: "name", header: "Name", cell: (r) => r.name, sortable: true, filterable: true, editable: true, getEditValue: (r) => r.name, onEditCommit: vi.fn() },
@@ -227,6 +263,9 @@ describe("Table", () => {
         onReorderRows={vi.fn()}
         reorderableColumns
         onReorderColumns={vi.fn()}
+        resizableColumns
+        columnWidths={{}}
+        onColumnWidthsChange={vi.fn()}
         pagination={{ page: 1, totalPages: 3, onChange: vi.fn() }}
         footer="Totals"
       />,

@@ -241,6 +241,20 @@ before that date are dated by commit, not by release announcement.
     stories, 253/253 passing, zero new a11y violations)/`test:visual` (Table's baselines
     regenerated — genuinely changed rendered output, not a regression)/`build`/`size`/`a11y:score`
     (100/100) all clean.
+- **`Table` column resizing** (`resizableColumns` + controlled `columnWidths`/`onColumnWidthsChange`,
+  same conditional-controlled pattern as `filters`/`highlightedColumnId`): a drag handle on each
+  header cell's trailing edge, widened via pointer drag or, once focused, Left/Right arrow keys
+  (Home/End jump to the min/max bound) — a new headless `useColumnResize` hook (`brightframe/Table`,
+  exported like `useReorder`) implementing the WAI-ARIA APG "window splitter" pattern
+  (`role="separator" aria-orientation="vertical"` with `aria-valuenow`/`-min`/`-max`), not a custom
+  gesture. A column's starting width is `columnWidths[col.id] ?? column.width ?? 160px`, clamped to
+  a 60px floor so a column can't be dragged into an unusable sliver; width is applied the same way
+  the existing static `column.width` already was (inline `style` on the `<th>` only, no
+  `table-layout: fixed`/`<colgroup>` — this kit's tables have never needed pixel-exact column
+  control, and adding one would change the default `auto`-layout rendering of every non-resizable
+  `Table` too). Verified: `typecheck`/`lint`/`test:unit` (new `useColumnResize.test.ts` covering the
+  keyboard path and aria attributes, plus `Table.test.tsx` coverage for the rendered handles and
+  `columnWidths` reporting)/`build` all clean.
 - **`Table` filter popover clipped by the table's own horizontal scroll container** — user
   screenshot ("такого не должно быть"): opening the leftmost filterable column's filter panel
   showed "h name…" instead of "Search name…", the left half sheared off. `.filterPanel` was

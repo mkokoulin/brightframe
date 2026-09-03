@@ -10,3 +10,5 @@ export { TableFooter } from "./TableFooter";
 export type { TableFooterProps } from "./TableFooter";
 export { useReorder } from "./useReorder";
 export type { UseReorderOptions, UseReorderReturn } from "./useReorder";
+export { useColumnResize } from "./useColumnResize";
+export type { UseColumnResizeOptions, UseColumnResizeReturn } from "./useColumnResize";

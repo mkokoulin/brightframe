@@ -8,7 +8,11 @@ import { TableFooter } from "./TableFooter";
 import { TableHeaderCell } from "./TableHeaderCell";
 import { TableRow } from "./TableRow";
 import { useReorder } from "./useReorder";
+import { useColumnResize } from "./useColumnResize";
 import styles from "./Table.module.css";
+
+const DEFAULT_COLUMN_WIDTH = 160;
+const MIN_COLUMN_WIDTH = 60;
 
 export type TableSort = { columnId: string; direction: "asc" | "desc" };
 
@@ -66,6 +70,12 @@ export type TableProps<T> = {
   reorderableColumns?: boolean;
   onReorderColumns?: (fromIndex: number, toIndex: number) => void;
 
+  /** Adds a drag handle at each header cell's trailing edge to resize columns by pointer drag or, when the handle is focused, Left/Right arrow keys. */
+  resizableColumns?: boolean;
+  /** Column widths in px, keyed by column id. Uncontrolled (self-managed, starting from `column.width` or a 160px default) if omitted. */
+  columnWidths?: Record<string, number>;
+  onColumnWidthsChange?: (widths: Record<string, number>) => void;
+
   /** Renders the real `Pagination` component inside a table footer row. */
   pagination?: TablePaginationConfig;
   /** Custom footer row content (e.g. totals), rendered above `pagination` if both are given. */
@@ -110,6 +120,9 @@ export function Table<T>({
   onReorderRows,
   reorderableColumns = false,
   onReorderColumns,
+  resizableColumns = false,
+  columnWidths,
+  onColumnWidthsChange,
   pagination,
   footer,
 }: TableProps<T>) {
@@ -135,6 +148,19 @@ export function Table<T>({
     if (!filtersControlled) setInternalFilters(next);
     onFiltersChange?.(next);
   }
+
+  const columnWidthsControlled = columnWidths !== undefined;
+  const [internalColumnWidths, setInternalColumnWidths] = useState<Record<string, number>>({});
+  const activeColumnWidths = columnWidthsControlled ? (columnWidths as Record<string, number>) : internalColumnWidths;
+  function setColumnWidth(columnId: string, width: number) {
+    const next = { ...activeColumnWidths, [columnId]: width };
+    if (!columnWidthsControlled) setInternalColumnWidths(next);
+    onColumnWidthsChange?.(next);
+  }
+  function effectiveWidth(col: TableColumn<T>): number {
+    return activeColumnWidths[col.id] ?? (col.width ? parseInt(col.width, 10) || DEFAULT_COLUMN_WIDTH : DEFAULT_COLUMN_WIDTH);
+  }
+  const columnResize = useColumnResize({ minWidth: MIN_COLUMN_WIDTH, onResize: setColumnWidth });
 
   const [editingCell, setEditingCell] = useState<{ rowId: string; columnId: string; value: string } | null>(null);
 
@@ -197,7 +223,7 @@ export function Table<T>({
               <TableHeaderCell
                 key={col.id}
                 align={col.align}
-                width={col.width}
+                width={resizableColumns ? `${effectiveWidth(col)}px` : col.width}
                 sortable={col.sortable}
                 sortDirection={sort?.columnId === col.id ? sort.direction : null}
                 onSort={() => onSortChange?.(nextDirection(sort, col.id))}
@@ -218,6 +244,18 @@ export function Table<T>({
                     >
                       <GripIcon />
                     </button>
+                  ) : undefined
+                }
+                resizeHandle={
+                  resizableColumns ? (
+                    <div
+                      className={styles.resizeHandle}
+                      {...columnResize.getResizeHandleProps(
+                        col.id,
+                        effectiveWidth(col),
+                        typeof col.header === "string" ? col.header : col.id,
+                      )}
+                    />
                   ) : undefined
                 }
               >

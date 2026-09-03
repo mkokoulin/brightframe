@@ -254,6 +254,31 @@ export const ReorderableColumns: Story = {
   },
 };
 
+export const ResizableColumns: Story = {
+  render: () => {
+    function ResizableColumnsExample() {
+      const [columnWidths, setColumnWidths] = useState<Record<string, number>>({});
+      const columns: TableColumn<Booking>[] = [
+        { id: "guest", header: "Guest", cell: (row) => row.guest },
+        { id: "plan", header: "Plan", cell: (row) => row.plan },
+        { id: "guests", header: "Guests", cell: (row) => row.guests, align: "end" },
+      ];
+      return (
+        <Table
+          columns={columns}
+          data={BOOKINGS}
+          getRowId={(row) => row.id}
+          resizableColumns
+          columnWidths={columnWidths}
+          onColumnWidthsChange={setColumnWidths}
+          caption="Drag a header's right edge (or focus it and use Left/Right arrows) to resize"
+        />
+      );
+    }
+    return <ResizableColumnsExample />;
+  },
+};
+
 export const WithPaginationAndFooter: Story = {
   render: () => {
     function PaginatedExample() {
