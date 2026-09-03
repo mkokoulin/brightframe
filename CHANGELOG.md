@@ -241,8 +241,18 @@ before that date are dated by commit, not by release announcement.
     stories, 253/253 passing, zero new a11y violations)/`test:visual` (Table's baselines
     regenerated — genuinely changed rendered output, not a regression)/`build`/`size`/`a11y:score`
     (100/100) all clean.
-
-### Fixed
+- **`Table` filter popover clipped by the table's own horizontal scroll container** — user
+  screenshot ("такого не должно быть"): opening the leftmost filterable column's filter panel
+  showed "h name…" instead of "Search name…", the left half sheared off. `.filterPanel` was
+  right-anchored (`right: 0`) to its trigger, which for a narrow first column pushes the ~200px
+  panel's left edge past the table's own left boundary — and `.wrap`'s `overflow-x: auto` (needed
+  for the table's own responsive horizontal scroll) clips anything that overflows it, including this
+  absolutely-positioned popover. Switched to left-anchored (`left: 0`, grows rightward from the
+  funnel button instead of leftward) — fixes the leftmost-column case outright and matches
+  `Popover`/`DropdownMenu`'s own precedent of no collision/flip detection (good enough for the
+  common case, not chasing every column-width edge case). Verified visually in Storybook (typed into
+  the now-fully-visible input, filtering still worked) and confirmed the fix doesn't touch `Table`'s
+  visual-regression baseline (the popover isn't open in the captured story state).
 
 - **The four real findings `a11y-score` surfaced on its first calibration run**:
   - `MobileDatePicker`: same gap as `Modal`/`Drawer` above — `role="dialog" aria-modal="true"`
