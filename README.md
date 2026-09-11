@@ -132,12 +132,14 @@ Measured with [size-limit](https://github.com/ai/size-limit) (`bun run size`), e
 
 | Entry | Minified + brotli |
 | --- | --- |
-| Whole kit (`import { ... } from "brightframe"`, JS) | 40.13 kB |
-| Whole kit (`brightframe/style.css`) | 11.83 kB |
+| Whole kit (`import { ... } from "brightframe"`, JS) | 44.87 kB |
+| Whole kit (`brightframe/style.css`) | 13.18 kB |
 | One component (`brightframe/Btn`, JS) | 641 B |
-| One component's styles (`brightframe/Btn.css`) | 890 B |
+| One component's styles (`brightframe/Btn.css`) | 919 B |
+| `Table` (`brightframe/Table`, JS) | 5.19 kB |
+| `Table`'s styles (`brightframe/Table.css`) | 1.31 kB |
 
-The gap between "whole kit" and "one component" is the point of the per-component entry points above — importing `Btn` alone costs 641 B, not 39.85 kB.
+The gap between "whole kit" and "one component" is the point of the per-component entry points above — importing `Btn` alone costs 641 B, not 44.87 kB. `Table` costs more than most (it's the kit's most complex component — sorting, filters, drag reorder, resize, inline editing all opt-in) but still just over a tenth of the whole kit.
 
 ### Fonts
 

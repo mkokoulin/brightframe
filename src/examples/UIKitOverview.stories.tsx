@@ -18,7 +18,7 @@ import { Combobox } from "../components/Combobox/Combobox";
 import { DropdownMenu } from "../components/DropdownMenu/DropdownMenu";
 import { Tag } from "../components/Tag/Tag";
 import { Skeleton } from "../components/Skeleton/Skeleton";
-import { Pagination } from "../components/Pagination/Pagination";
+import { Table, type TableColumn } from "../components/Table/Table";
 import { DateTimePicker } from "../components/DateTimePicker/DateTimePicker";
 import { Alert } from "../components/Alert/Alert";
 import { Navbar, NavbarItem } from "../components/Navbar/Navbar";
@@ -697,6 +697,13 @@ const BOOKING_ROWS: { guest: string; plan: string; date: string; status: string;
   { guest: "Maria Klimenko", plan: "lan+", date: "13 March", status: "Active", statusVariant: "green" },
 ];
 
+const BOOKING_COLUMNS: TableColumn<(typeof BOOKING_ROWS)[number]>[] = [
+  { id: "guest", header: "Guest", cell: (r) => r.guest },
+  { id: "plan", header: "Plan", cell: (r) => r.plan },
+  { id: "date", header: "Date", cell: (r) => r.date },
+  { id: "status", header: "Status", cell: (r) => <Tag variant={r.statusVariant} size="sm">{r.status}</Tag> },
+];
+
 function DataSection() {
   const [plan, setPlan] = useState("7days");
   const [page, setPage] = useState(1);
@@ -759,46 +766,12 @@ function DataSection() {
         </Specimen>
       </div>
       <Specimen label="Bookings this week · 12 bookings · March">
-        <div style={{ overflowX: "auto" }}>
-          <table style={{ width: "100%", borderCollapse: "collapse", fontFamily: "var(--font-sans)" }}>
-            <thead>
-              <tr>
-                {["Guest", "Plan", "Date", "Status"].map((h) => (
-                  <th
-                    key={h}
-                    style={{
-                      textAlign: "left",
-                      padding: "0 0 10px",
-                      fontSize: "var(--font-size-11)",
-                      fontWeight: 700,
-                      letterSpacing: "var(--letter-spacing-10)",
-                      textTransform: "uppercase",
-                      color: "var(--c-text-3)",
-                      borderBottom: "1px solid var(--c-border-soft)",
-                    }}
-                  >
-                    {h}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {BOOKING_ROWS.map((r) => (
-                <tr key={r.guest}>
-                  <td style={{ padding: "12px 0", fontSize: 14, color: "var(--c-text-1)", borderBottom: "1px solid var(--c-border-soft)" }}>{r.guest}</td>
-                  <td style={{ padding: "12px 0", fontSize: 14, color: "var(--c-text-2)", borderBottom: "1px solid var(--c-border-soft)" }}>{r.plan}</td>
-                  <td style={{ padding: "12px 0", fontSize: 14, color: "var(--c-text-2)", borderBottom: "1px solid var(--c-border-soft)" }}>{r.date}</td>
-                  <td style={{ padding: "12px 0", borderBottom: "1px solid var(--c-border-soft)" }}>
-                    <Tag variant={r.statusVariant} size="sm">{r.status}</Tag>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <div style={{ marginTop: 16 }}>
-          <Pagination page={page} totalPages={3} onChange={setPage} />
-        </div>
+        <Table
+          columns={BOOKING_COLUMNS}
+          data={BOOKING_ROWS}
+          getRowId={(r) => r.guest}
+          pagination={{ page, totalPages: 3, onChange: setPage }}
+        />
       </Specimen>
     </SectionBlock>
   );

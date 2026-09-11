@@ -295,6 +295,24 @@ before that date are dated by commit, not by release announcement.
     visually with zero screen-reader feedback. Added `role="status"`/`aria-live="polite"`/
     `aria-atomic="true"` plus an `aria-label` that names the counter (`"Guests 3"` rather than a
     bare `"3"`), so each change is announced on its own.
+- **`Table` polish pass — closing gaps left over from its own build**:
+  - The `Overview / UI Kit` showcase page's "06 Data" section was still hand-rolling a raw
+    `<table>` + a separate `<Pagination>`, predating `Table`'s existence — the one place in the kit
+    still demoing a mockup instead of the real shipped component. Rewired to the real `Table`
+    (columns for Guest/Plan/Date/Status, `Tag` cells, `Table`'s own `pagination` prop) — same class
+    of fix as the earlier `Tag`/`LanguageSwitch` dogfooding passes.
+  - `docs/headless-hooks.md` still claimed `useCombobox` was "the first (and so far only)" headless
+    hook — false since `Table` shipped `useReorder`/`useColumnResize`. Added full sections for both
+    (shape, example, WAI-ARIA pattern each follows), matching the doc's existing structure.
+  - `.size-limit.json` tracked the full kit plus one representative component (`Btn`) but had no
+    entry for `Table` — the kit's largest single component chunk. Added `Table` JS/CSS budgets from
+    a real measured run (5.19 kB / 1.31 kB, minified + brotli; 6 kB / 1.5 kB limits). README's
+    "Bundle size" table refreshed with current numbers across the board (drifted since the original
+    budget was set — whole kit 40.13→44.87 kB JS, 11.83→13.18 kB CSS — from components added since).
+  - Verified: `typecheck`/`lint`/`test` (1018/1020; the 2 failures are `DateTimePicker`'s visual
+    baseline timing out — pre-existing, reproducible before this pass too, and unrelated to any
+    change here; not yet root-caused or added to `docs/visual-regression.md`'s exclusion list, so
+    flagged here rather than silently left out)/`build`/`size` all clean.
 
 ## [0.4.9] - 2026-09-01
 

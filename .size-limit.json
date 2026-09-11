@@ -20,5 +20,16 @@
     "name": "Btn (CSS)",
     "path": "dist/Btn.css",
     "limit": "1.2 kB"
+  },
+  {
+    "name": "Table (JS, single component)",
+    "path": "dist/Table.js",
+    "import": "{ Table }",
+    "limit": "6 kB"
+  },
+  {
+    "name": "Table (CSS)",
+    "path": "dist/Table.css",
+    "limit": "1.5 kB"
   }
 ]
