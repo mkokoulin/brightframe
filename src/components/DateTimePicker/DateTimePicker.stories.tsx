@@ -29,7 +29,10 @@ type Story = StoryObj<typeof DateTimePicker>;
 export const Playground: Story = {
   render: () => {
     function Wrapper() {
-      const [value, setValue] = useState<Date>(new Date());
+      // Fixed, not `new Date()` — this is the story the visual-regression suite screenshots
+      // (src/test-utils/visual.stories.test.tsx picks the first export), and a live "today"
+      // value made the committed baseline mismatch as soon as the real date moved on.
+      const [value, setValue] = useState<Date>(new Date(2026, 2, 12, 14, 30));
       return <DateTimePicker value={value} onChange={setValue} />;
     }
     return <Wrapper />;

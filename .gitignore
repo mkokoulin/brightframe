@@ -7,3 +7,7 @@ storybook-static/
 src/**/*.module.css.d.ts
 package-lock.json
 .vitest-attachments/
+# Vitest's own failure-diff dumps for toMatchScreenshot() -- distinct from the real
+# `<name>-<theme>-chromium-<platform>.png` baselines that live alongside them and are
+# committed on purpose.
+src/test-utils/__screenshots__/**/-*.png

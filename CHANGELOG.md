@@ -314,6 +314,20 @@ before that date are dated by commit, not by release announcement.
     change here; not yet root-caused or added to `docs/visual-regression.md`'s exclusion list, so
     flagged here rather than silently left out)/`build`/`size` all clean.
 
+- **Root-caused and fixed the `DateTimePicker` visual-baseline timeout** flagged in the previous
+  entry. Not a harness limitation like `Loader`/`MobileDatePicker` — `DateTimePicker.stories.tsx`'s
+  `Playground` story (the one the visual suite auto-picks) seeded its value with `new Date()`, so
+  the rendered date/time drifted further from the committed baseline every day. `toMatchScreenshot()`
+  doesn't fail fast on a mismatch — it polls until the 30s `testTimeout` before reporting, which is
+  why this surfaced as a timeout rather than a diff. Fixed by seeding `Playground` with a fixed date
+  instead; baselines regenerated (`vitest run --project=visual -u -t DateTimePicker`, 3.6s instead
+  of timing out). Also found and fixed while here: two of `toMatchScreenshot()`'s own failure-diff
+  dump files (`-DateTimePicker--matches-its-*-baseline-1.png`, distinct from the real
+  `<name>-<theme>-chromium-<platform>.png` baselines beside them) had been accidentally committed
+  alongside the real baselines back when `Table` was first added — untracked and gitignored
+  (`src/test-utils/__screenshots__/**/-*.png`) so future failed local runs don't repeat this.
+  Verified: `typecheck`/`lint`/`test` (1020/1020, all green)/`build` all clean.
+
 ## [0.4.9] - 2026-09-01
 
 ### Fixed
