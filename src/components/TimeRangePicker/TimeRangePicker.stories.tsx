@@ -42,7 +42,11 @@ type Story = StoryObj<typeof TimeRangePicker>;
 export const Playground: Story = {
   render: () => {
     function Wrapper() {
-      const [date, setDate] = useState(toYMD(new Date()));
+      // Fixed, not `new Date()` — Playground is the story the visual-regression suite
+      // screenshots (src/test-utils/visual.stories.test.tsx picks the first export), and
+      // this date is rendered visibly (the date button), so a live "today" made the
+      // committed baseline drift a little further out of tolerance every day.
+      const [date, setDate] = useState(toYMD(new Date(2026, 2, 12)));
       const [startTime, setStartTime] = useState("10:00");
       const [endTime, setEndTime] = useState("11:00");
       return (

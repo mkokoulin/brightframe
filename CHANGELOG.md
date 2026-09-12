@@ -328,6 +328,21 @@ before that date are dated by commit, not by release announcement.
   (`src/test-utils/__screenshots__/**/-*.png`) so future failed local runs don't repeat this.
   Verified: `typecheck`/`lint`/`test` (1020/1020, all green)/`build` all clean.
 
+- **Found and fixed two more instances of the `DateTimePicker` visual-baseline bug** (live
+  `new Date()` in the first/`Playground` story, drifting away from the committed baseline every
+  day — see the previous entry): `CalendarSlider.stories.tsx`'s `Wrapper` and
+  `TimeRangePicker.stories.tsx`'s `Playground` both seeded their date from `new Date()`, and both
+  render it visibly (`CalendarSlider`'s day-strip cell numbers via `d.getDate()`; `TimeRangePicker`'s
+  formatted date button). Hadn't failed outright yet — the day-to-day pixel delta happened to still
+  land inside the 1% `allowedMismatchedPixelRatio` tolerance most days — but same drift, same
+  eventual failure mode. Fixed both to a fixed date and regenerated baselines.
+  **Note**: both now intermittently time out when run as part of the full local `test:visual` suite
+  (150 sequential tests in one browser-mode process) despite passing cleanly in isolation with
+  byte-identical content — the same browser-mode resource-pressure flakiness already seen once with
+  `AvatarGroup`'s baseline. Not chased further, consistent with that precedent: local win32 runs
+  don't gate the real ubuntu-latest CI, and the pixel/timeout tolerances are explicitly provisional
+  pending real CI noise data (see `docs/visual-regression.md`).
+
 ## [0.4.9] - 2026-09-01
 
 ### Fixed
