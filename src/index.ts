@@ -1,6 +1,7 @@
 export * from "./components/Btn";
 export * from "./components/Card";
 export * from "./components/Tag";
+export * from "./components/LikeButton";
 export * from "./components/InfoTooltip";
 export * from "./components/GhostButton";
 export * from "./components/Eyebrow";

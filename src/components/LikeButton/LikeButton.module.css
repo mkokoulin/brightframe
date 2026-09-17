@@ -1,0 +1,52 @@
+/* ──────────────────────────────────────────
+   LikeButton — heart icon + count toggle
+   ────────────────────────────────────────── */
+
+.likeButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-6);
+  border: var(--border-width-1) solid var(--c-border);
+  background: var(--c-surface);
+  color: var(--c-text-2);
+  border-radius: var(--radius-999);
+  padding: var(--space-4) var(--space-8);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--font-size-12);
+  line-height: 1;
+  cursor: pointer;
+  transition: color var(--duration-160) var(--ease-native),
+              border-color var(--duration-160) var(--ease-native),
+              transform var(--duration-120) var(--ease-native);
+}
+
+.likeButton:hover,
+.likeButton:focus-visible {
+  color: var(--c-error);
+  border-color: var(--c-error);
+}
+
+.likeButton:focus-visible {
+  outline: 2px solid var(--c-brand);
+  outline-offset: 2px;
+}
+
+.likeButton:active {
+  transform: scale(0.94);
+}
+
+.likeButton:disabled {
+  cursor: not-allowed;
+  opacity: var(--opacity-50);
+}
+
+.likeButtonActive {
+  color: var(--c-error);
+  border-color: var(--c-error);
+}
+
+.count {
+  min-width: 1ch;
+  font-variant-numeric: tabular-nums;
+}

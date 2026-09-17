@@ -12,6 +12,12 @@ before that date are dated by commit, not by release announcement.
 
 ### Added
 
+- **New `LikeButton` component** (`brightframe/LikeButton`): a heart-icon + count toggle for
+  liking/favoriting cards and list items. Fully controlled (`liked`, `count`, `onToggle`) — no
+  internal state, no data fetching — same pattern as `Switch`. Stops click propagation internally
+  since it's most often nested inside a larger clickable card; accepts an optional `tooltip` prop
+  (wraps itself in `Tooltip` when given one). Extracted from a one-off implementation in a consumer
+  app that had reinvented this exact pattern.
 - **React Server Components audit**: every component under `src/components/**` is now correctly
   marked `"use client"` (client-only hooks or own-JSX DOM event handlers) or intentionally left
   unmarked (pure props-in/markup-out, safe inside a Server Component tree). Found and fixed a real
@@ -342,6 +348,14 @@ before that date are dated by commit, not by release announcement.
   `AvatarGroup`'s baseline. Not chased further, consistent with that precedent: local win32 runs
   don't gate the real ubuntu-latest CI, and the pixel/timeout tolerances are explicitly provisional
   pending real CI noise data (see `docs/visual-regression.md`).
+
+### Changed
+
+- **`HorizontalScroller`'s `trackPadding` now defaults to `"4px"`** instead of unset (no padding).
+  The prop was already documented as needed to avoid clipping item shadows/hover-lift against the
+  track's `overflow-x: auto` edge, but being opt-in meant a consumer could easily forget to pass
+  it — which is exactly what happened downstream. `"4px"` is a small-enough safety margin that it
+  shouldn't visibly change existing tight layouts; pass `trackPadding="0"` to opt back out entirely.
 
 ## [0.4.9] - 2026-09-01
 

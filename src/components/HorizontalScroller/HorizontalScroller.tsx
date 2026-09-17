@@ -26,6 +26,12 @@ export type HorizontalScrollerProps = {
    * its cross-axis overflow (an unavoidable consequence of `overflow-x: auto`
    * clipping `overflow-y` too), so item box-shadows / hover-lift transforms
    * that extend past the item's own box need this padding to not get cut off.
+   *
+   * Defaults to `"4px"` — a small safety margin that covers typical shadow
+   * blur / hover-lift without visibly changing tight layouts. Pass a larger
+   * value (or `"0"` to opt out entirely) if your items need more room, e.g.
+   * a bigger hover-lift transform or a decorative outline that extends
+   * further past the item's own box.
    */
   trackPadding?: string;
 } & Omit<HTMLAttributes<HTMLDivElement>, "children" | "className">;
@@ -53,7 +59,7 @@ export function HorizontalScroller({
   label = "Scrollable content",
   className,
   gap,
-  trackPadding,
+  trackPadding = "4px",
   ...rest
 }: HorizontalScrollerProps) {
   const rowRef = useRef<HTMLDivElement>(null);
