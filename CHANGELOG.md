@@ -12,6 +12,10 @@ before that date are dated by commit, not by release announcement.
 
 ### Added
 
+- **`HorizontalScroller` gained a `fade` prop** (defaults to `true`, matching prior behavior). Set
+  `fade={false}` to keep the prev/next arrows while dropping the gradient mask over the scrollable
+  edges — that mask can read as an unwanted shadow when it lands over decorative content near the
+  edge, e.g. a card's own accent border/ring.
 - **New `LikeButton` component** (`brightframe/LikeButton`): a heart-icon + count toggle for
   liking/favoriting cards and list items. Fully controlled (`liked`, `count`, `onToggle`) — no
   internal state, no data fetching — same pattern as `Switch`. Stops click propagation internally

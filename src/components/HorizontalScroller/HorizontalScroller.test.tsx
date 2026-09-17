@@ -61,6 +61,35 @@ describe("HorizontalScroller", () => {
     expect(row.scrollBy).toHaveBeenCalledWith({ left: 240, behavior: "smooth" });
   });
 
+  it("renders the fade mask alongside a visible arrow by default", () => {
+    const { container } = render(
+      <HorizontalScroller>
+        <div>Card 1</div>
+        <div>Card 2</div>
+      </HorizontalScroller>,
+    );
+    const row = container.querySelector("[class*='row']") as HTMLElement;
+    mockOverflow(row, { scrollLeft: 0, clientWidth: 300, scrollWidth: 900 });
+    fireEvent.scroll(row);
+
+    expect(container.querySelector("[class*='fadeRight']")).toBeInTheDocument();
+  });
+
+  it("keeps the arrow but drops the fade mask when fade=false", () => {
+    const { container } = render(
+      <HorizontalScroller fade={false}>
+        <div>Card 1</div>
+        <div>Card 2</div>
+      </HorizontalScroller>,
+    );
+    const row = container.querySelector("[class*='row']") as HTMLElement;
+    mockOverflow(row, { scrollLeft: 0, clientWidth: 300, scrollWidth: 900 });
+    fireEvent.scroll(row);
+
+    expect(screen.getByRole("button", { name: "Scroll right" })).toBeInTheDocument();
+    expect(container.querySelector("[class*='fadeRight']")).not.toBeInTheDocument();
+  });
+
   it("shows the prev arrow once scrolled away from the start", () => {
     const { container } = render(
       <HorizontalScroller>

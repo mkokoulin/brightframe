@@ -69,6 +69,19 @@ export const ArrowsDisabled: Story = {
   ),
 };
 
+export const FadeDisabled: Story = {
+  name: "— fade=false (keep arrows, drop the edge gradient)",
+  render: () => (
+    <HorizontalScroller fade={false}>
+      {Array.from({ length: 8 }, (_, i) => (
+        <Card key={i} variant="outlined" style={{ width: 240, padding: 20 }}>
+          <h3 style={{ margin: 0, fontFamily: "var(--font-sans)", color: "var(--c-text-1)" }}>Event {i + 1}</h3>
+        </Card>
+      ))}
+    </HorizontalScroller>
+  ),
+};
+
 export const WithPricingCards: Story = {
   name: "— with pricing-style cards (narrower, more items)",
   render: () => (

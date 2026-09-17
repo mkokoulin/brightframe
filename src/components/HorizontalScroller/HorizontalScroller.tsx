@@ -7,6 +7,14 @@ export type HorizontalScrollerProps = {
   children: ReactNode;
   /** Show the prev/next arrow controls. Defaults to true. */
   arrows?: boolean;
+  /**
+   * Show the gradient fade mask over hidden content at the scrollable edges
+   * (only visible alongside `arrows`, in whichever direction there's more to
+   * scroll). Defaults to true. Set false to keep the arrows without the fade
+   * — e.g. when the fade reads as an unwanted shadow over decorative content
+   * near the edge, like a card's own accent border.
+   */
+  fade?: boolean;
   prevLabel?: string;
   nextLabel?: string;
   /**
@@ -54,6 +62,7 @@ const ChevronRight = () => (
 export function HorizontalScroller({
   children,
   arrows = true,
+  fade = true,
   prevLabel = "Scroll left",
   nextLabel = "Scroll right",
   label = "Scrollable content",
@@ -111,8 +120,8 @@ export function HorizontalScroller({
         {children}
       </div>
 
-      {arrows && canScrollPrev ? <div className={[styles.fade, styles.fadeLeft].join(" ")} aria-hidden="true" /> : null}
-      {arrows && canScrollNext ? <div className={[styles.fade, styles.fadeRight].join(" ")} aria-hidden="true" /> : null}
+      {fade && arrows && canScrollPrev ? <div className={[styles.fade, styles.fadeLeft].join(" ")} aria-hidden="true" /> : null}
+      {fade && arrows && canScrollNext ? <div className={[styles.fade, styles.fadeRight].join(" ")} aria-hidden="true" /> : null}
 
       {arrows && canScrollPrev ? (
         <button type="button" className={[styles.navBtn, styles.navBtnLeft].join(" ")} aria-label={prevLabel} onClick={() => scrollByPage(-1)}>
